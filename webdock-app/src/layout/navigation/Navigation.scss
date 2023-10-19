@@ -1,3 +1,17 @@
-div {
-    background-color: #ff69b4;
+@use "../../global-styling/Variables.scss" as v;
+
+nav {
+    display: flex;
+    @media screen and (min-width: v.$desktop-screen) {
+    }
+}
+
+.navigation-logo {
+    width: 66px;
+
+
+    &__img {
+        height: auto;
+        width: 100%;
+    }
 }
