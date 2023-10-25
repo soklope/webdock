@@ -1,45 +1,188 @@
 @use "../../global-styling/Variables.scss" as v;
 
 nav {
-    margin: 20px;
-    border-bottom: solid 1px #ededed;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    .menu-items {
-        display: none;
-    }
+  @media screen and (min-width: v.$desktop-screen) {
+    height: 100px;
+    padding: 10px 30px;
+  }
 
- 
+  .menu-items {
+    display: none;
+
     @media screen and (min-width: v.$desktop-screen) {
-        .menu-items {
-            list-style: none;
-            
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 60px;            
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
 
-           li {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-           }
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        position: relative;
+        padding: 10px 0;
 
+        a {
+          display: flex;
+          gap: 15px;
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 600;
+          color: v.$black;
 
+          img {
+            height: 20px;
+          }
+
+          &::after {
+            background: v.$primary-color;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 2px;
+            left: 50%;
+            position: absolute;
+            transition: width 0.3s ease 0s, left 0.3s ease 0s;
+            width: 0;
+          }
+
+          &:hover::after {
+            width: 100%;
+            left: 0;
+          }
         }
+      }
     }
+  }
+
+  .burger-menu-icon {
+    @media screen and (min-width: v.$desktop-screen) {
+      display: none;
+    }
+  }
+
+  @keyframes slide {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .dark-backdrop {
+    animation: slide 0.2s;
+    position: absolute;
+    left: 0;
+    top: 70px;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background-color: rgb(0, 0, 0);
+    opacity: 0.5;
+    z-index: 1;
+
+    @media screen and (min-width: v.$desktop-screen) {
+      display: none;
+    }
+  }
+
+  .dropdown-menu {
+    animation: slide 0.5s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding: 20px;
+    background-color: v.$white;
+    margin-top: 70px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    @media screen and (min-width: v.$desktop-screen) {
+      display: none;
+    }
+
+    &__items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: 40px;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        position: relative;
+        padding: 10px 0;
+
+        a {
+          display: flex;
+          gap: 15px;
+          text-decoration: none;
+          font-size: 1rem;
+          font-weight: 600;
+          color: v.$black;
+
+          img {
+            height: 20px;
+          }
+
+          &::after {
+            background: v.$primary-color;
+            bottom: 0;
+            content: "";
+            display: block;
+            height: 2px;
+            left: 50%;
+            position: absolute;
+            transition: width 0.3s ease 0s, left 0.3s ease 0s;
+            width: 0;
+          }
+
+          &:hover::after {
+            width: 100%;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 .navigation-logo {
-    width: 66px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 
+  &__img {
+    height: auto;
+    width: 100%;
+    max-width: 50px;
+  }
 
-    &__img {
-        height: auto;
-        width: 100%;
-    }
+  &__company-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: v.$secondary-font;
+  }
+}
+
+.navigation-profile-pic {
+  width: 30px;
+  border-radius: 50%;
 }
