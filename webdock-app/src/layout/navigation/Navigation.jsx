@@ -13,7 +13,7 @@ export default function Navigation() {
 
   // Function to toggle the dropdown menu visibility
   const toggleDropdownMenu = () => {
-    setIsOpen(prevIsOpen => !prevIsOpen);
+    setIsOpen((prevIsOpen) => !prevIsOpen);
     console.log(isOpen);
   };
 
@@ -23,7 +23,11 @@ export default function Navigation() {
         <div className="navigation-logo">
           {/* Clickable logo */}
           <Link to="/">
-            <img className="navigation-logo__img" src={logo} alt="Webdock logo" />
+            <img
+              className="navigation-logo__img"
+              src={logo}
+              alt="Webdock logo"
+            />
           </Link>
 
           {/* Company name */}
@@ -55,16 +59,26 @@ export default function Navigation() {
 
           <li>
             {/* User profile picture and username */}
-            <img src={placeholderProfilePic} alt="username icon" className="navigation-profile-pic" />
+            <img
+              src={placeholderProfilePic}
+              alt="username icon"
+              className="navigation-profile-pic"
+            />
             <p>user_name</p>
           </li>
         </ul>
 
         <div className="burger-menu-icon">
           {/* Hamburger menu icon */}
-          <Hamburger direction="left" toggled={isOpen} toggle={toggleDropdownMenu} rounded />
+          <Hamburger
+            direction="left"
+            toggled={isOpen}
+            toggle={toggleDropdownMenu}
+            rounded
+          />
         </div>
 
+        {/* Short hand if/else statement "If isOpen === true, then show the dropdown menu"*/}
         {isOpen ? (
           <>
             <div className="dark-backdrop" />
@@ -73,20 +87,28 @@ export default function Navigation() {
               <ul className="dropdown-menu__items">
                 <li>
                   {/* User profile picture and username in the dropdown */}
-                  <img src={placeholderProfilePic} alt="username icon" className="navigation-profile-pic" />
+                  <img
+                    src={placeholderProfilePic}
+                    alt="username icon"
+                    className="navigation-profile-pic"
+                  />
                   <p>user_name</p>
                 </li>
 
                 {/* Dropdown navigation links */}
                 <li>
-                  <Link to="/roadmap"> {/* Update to the actual routes */}
+                  <Link to="/roadmap">
+                    {" "}
+                    {/* Update to the actual routes */}
                     <img src={roadmap_icon} alt="roadmap icon" />
                     Roadmap
                   </Link>
                 </li>
 
                 <li>
-                  <Link to="/feature-request"> {/* Update to the actual routes */}
+                  <Link to="/feature-request">
+                    {" "}
+                    {/* Update to the actual routes */}
                     <img src={feature_icon} alt="feature icon" />
                     Feature Request
                   </Link>
