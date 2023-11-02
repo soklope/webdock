@@ -8,4 +8,8 @@
     padding: 10px;
     border-radius: 5px;
     z-index: 1; // Ensure it's displayed above other content
+
+    ul {
+      list-style-type: none;
+    }
   }
