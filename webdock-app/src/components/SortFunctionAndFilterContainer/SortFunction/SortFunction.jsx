@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './SortFunction.scss';
-import DropdownMenu from './DropdownMenu/DropdownMenu';
+import '../../SortFunctionAndFilterContainer/SortFunction/SortFunction.scss';
+import DropdownMenu from '../../SortFunctionAndFilterContainer/SortFunction/DropdownMenu/DropdownMenu.jsx';
 
 export default function SortFunction() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
