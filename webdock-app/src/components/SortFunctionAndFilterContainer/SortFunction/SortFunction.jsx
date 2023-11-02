@@ -19,6 +19,8 @@ export default function SortFunction() {
     handleSortChange(sortOption);
   };
 
+  const sortOptions = ['Trending', 'Top', 'New'];
+
   return (
     <div className="sort-function">
       <button
@@ -31,9 +33,11 @@ export default function SortFunction() {
       {isDropdownOpen && (
         <div className="dropdown-menu">
           <ul>
-            <li onClick={() => handleSortClick('Trending')}>Trending</li>
-            <li onClick={() => handleSortClick('Top')}>Top</li>
-            <li onClick={() => handleSortClick('New')}>New</li>
+            {sortOptions.map((option) => (
+              <li key={option} onClick={() => handleSortClick(option)}>
+                {option}
+              </li>
+            ))}
           </ul>
         </div>
       )}
