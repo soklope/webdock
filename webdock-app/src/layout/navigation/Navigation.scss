@@ -1,7 +1,7 @@
 @use "../../global-styling/Variables.scss" as v;
 
 nav {
-  position: fixed;
+  position: sticky;
   height: 70px;
   width: 100%;
   padding: 10px;
