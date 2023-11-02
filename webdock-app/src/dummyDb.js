@@ -5,6 +5,7 @@ export const plannedArrayDb = [
         numberOfComments: 5,
         numberOfUpvotes: 34,
         status: "Planned",
+        category: "Personal",
     },
     {
         title: "WordPress Hosting",
@@ -12,6 +13,7 @@ export const plannedArrayDb = [
         numberOfComments: 8,
         numberOfUpvotes: 50,
         status: "Planned",
+        category: "Web Hosting",
     },
     {
         title: "VPS Hosting",
@@ -19,6 +21,7 @@ export const plannedArrayDb = [
         numberOfComments: 18,
         numberOfUpvotes: 78,
         status: "Planned",
+        category: "Web Hosting",
     },
     {
         title: "Email Hosting",
@@ -26,6 +29,7 @@ export const plannedArrayDb = [
         numberOfComments: 3,
         numberOfUpvotes: 22,
         status: "Planned",
+        category: "Email Hosting",
     },
 ];
 
@@ -36,6 +40,7 @@ export const inProgressArrayDb = [
         numberOfComments: 10,
         numberOfUpvotes: 72,
         status: "In Progress",
+        category: "Business",
     },
     {
         title: "Enterprise Plan",
@@ -43,6 +48,7 @@ export const inProgressArrayDb = [
         numberOfComments: 15,
         numberOfUpvotes: 98,
         status: "In Progress",
+        category: "Business",
     },
     {
         title: "Reseller Hosting",
@@ -50,6 +56,7 @@ export const inProgressArrayDb = [
         numberOfComments: 30,
         numberOfUpvotes: 125,
         status: "In Progress",
+        category: "Web Hosting",
     }
 ];
 
@@ -60,6 +67,7 @@ export const completeArrayDb = [
         numberOfComments: 20,
         numberOfUpvotes: 112,
         status: "Complete",
+        category: "Business",
     },
     {
         title: "Cloud Hosting",
@@ -67,6 +75,7 @@ export const completeArrayDb = [
         numberOfComments: 12,
         numberOfUpvotes: 65,
         status: "Complete",
+        category: "Web Hosting",
     },
     {
         title: "Dedicated Servers",
@@ -74,5 +83,6 @@ export const completeArrayDb = [
         numberOfComments: 25,
         numberOfUpvotes: 102,
         status: "Complete",
+        category: "Web Hosting",
     }
 ];

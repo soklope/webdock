@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./RoadmapContainer.scss";
 
 import { completeArrayDb } from "../../dummyDb";
+import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
+
 export default function RoadmapContainerComplete() {
 
   const [containerIsOpen, setContainerIsOpen] = useState(false)
@@ -20,6 +22,7 @@ export default function RoadmapContainerComplete() {
 
     <>
       <div className="roadmap-container">
+
         <div className="roadmap-container__tooltip" onClick={openContainer}>
           <p>Complete</p>
           <span className={`roadmap-container__dropdown-icon complete-color ${containerIsOpen ? "rotate" : ""}`}></span>
@@ -32,20 +35,15 @@ export default function RoadmapContainerComplete() {
           <div className="roadmap-container__dropdown">
             <>
                 {completeArrayDb.map((post, index) => (
-                    <div key={index} className="roadmap-child-container">
-                        <button>Up</button>
-
-                        <div className="roadmap-child-container__title-category-tag">
-                            <p className="roadmap-child-container__title">{post.title}</p>
-                            <p className="roadmap-child-container__category">Hardware and products</p>
-                            <p className="roadmap-child-container__tag">{post.status}</p>
-                        </div>
-
-                        <div className="roadmap-child-container__comment">
-                            <span className="roadmap-child-container__comment__icon"></span>
-                            <p>{post.numberOfComments}</p>
-                        </div>
-                    </div>
+                  <div key={index} className="roadmap-child-container">
+                    <RoadmapChildren 
+                      title={post.title}
+                      category={post.category}
+                      status={post.status}
+                      numberOfComments={post.numberOfComments}
+                      statusColor={"tag-complete-color"}
+                    />
+                  </div>
                 ))}
             </>
           </div>
@@ -56,18 +54,13 @@ export default function RoadmapContainerComplete() {
           <>
               {completeArrayDb.map((post, index) => (
                   <div key={index} className="roadmap-child-container">
-                      <button>Up</button>
-
-                      <div className="roadmap-child-container__title-category-tag">
-                          <p className="roadmap-child-container__title">{post.title}</p>
-                          <p className="roadmap-child-container__category">Hardware and products</p>
-                          <p className="roadmap-child-container__tag">{post.status}</p>
-                      </div>
-
-                      <div className="roadmap-child-container__comment">
-                          <span className="roadmap-child-container__comment__icon"></span>
-                          <p>{post.numberOfComments}</p>
-                      </div>
+                    <RoadmapChildren 
+                      title={post.title}
+                      category={post.category}
+                      status={post.status}
+                      numberOfComments={post.numberOfComments}
+                      statusColor={"tag-complete-color"}
+                    />
                   </div>
               ))}
           </>

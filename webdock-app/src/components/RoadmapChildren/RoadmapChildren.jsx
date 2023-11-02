@@ -1,28 +1,21 @@
-import { useEffect, useState } from "react";
 import "./RoadmapChildren.scss"
 
-import { plannedArrayDb } from "../../dummyDb";
-
-export default function RoadmapChildren() {
+export default function RoadmapChildren( {title, category, status, numberOfComments, statusColor} ) {
 
     return (
         <>
-            {plannedArrayDb.map((post, index) => (
-                <div key={index} className="roadmap-child-container">
-                    <button>Up</button>
+            <button>Up</button>
 
-                    <div className="roadmap-child-container__title-category-tag">
-                        <p className="roadmap-child-container__title">{post.title}</p>
-                        <p className="roadmap-child-container__category">Hardware and products</p>
-                        <p className="roadmap-child-container__tag">{post.status}</p>
-                    </div>
+            <div className="roadmap-child-container__title-category-tag">
+                <p className="roadmap-child-container__title">{title}</p>
+                <p className="roadmap-child-container__category">{category}</p>
+                <p className={`roadmap-child-container__tag ${statusColor}`}>{status}</p>
+            </div>
 
-                    <div className="roadmap-child-container__comment">
-                        <span className="roadmap-child-container__comment__icon"></span>
-                        <p>{post.numberOfComments}</p>
-                    </div>
-                </div>
-            ))}
+            <div className="roadmap-child-container__comment">
+                <span className="roadmap-child-container__comment__icon"></span>
+                <p>{numberOfComments}</p>
+            </div>
         </>
     );
 }

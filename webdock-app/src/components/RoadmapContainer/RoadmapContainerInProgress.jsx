@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./RoadmapContainer.scss";
 
+import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
 import { inProgressArrayDb } from "../../dummyDb";
 
 export default function RoadmapContainerInProgress() {
@@ -32,20 +33,15 @@ export default function RoadmapContainerInProgress() {
           <div className="roadmap-container__dropdown">
             <>
                 {inProgressArrayDb.map((post, index) => (
-                    <div key={index} className="roadmap-child-container">
-                        <button>Up</button>
-
-                        <div className="roadmap-child-container__title-category-tag">
-                            <p className="roadmap-child-container__title">{post.title}</p>
-                            <p className="roadmap-child-container__category">Hardware and products</p>
-                            <p className="roadmap-child-container__tag">{post.status}</p>
-                        </div>
-
-                        <div className="roadmap-child-container__comment">
-                            <span className="roadmap-child-container__comment__icon"></span>
-                            <p>{post.numberOfComments}</p>
-                        </div>
-                    </div>
+                  <div key={index} className="roadmap-child-container">
+                    <RoadmapChildren 
+                      title={post.title}
+                      category={post.category}
+                      status={post.status}
+                      numberOfComments={post.numberOfComments}
+                      statusColor={"tag-in-progress-color"}
+                    />
+                  </div>
                 ))}
             </>
           </div>
@@ -56,18 +52,13 @@ export default function RoadmapContainerInProgress() {
           <>
               {inProgressArrayDb.map((post, index) => (
                   <div key={index} className="roadmap-child-container">
-                      <button>Up</button>
-
-                      <div className="roadmap-child-container__title-category-tag">
-                          <p className="roadmap-child-container__title">{post.title}</p>
-                          <p className="roadmap-child-container__category">Hardware and products</p>
-                          <p className="roadmap-child-container__tag">{post.status}</p>
-                      </div>
-
-                      <div className="roadmap-child-container__comment">
-                          <span className="roadmap-child-container__comment__icon"></span>
-                          <p>{post.numberOfComments}</p>
-                      </div>
+                    <RoadmapChildren 
+                      title={post.title}
+                      category={post.category}
+                      status={post.status}
+                      numberOfComments={post.numberOfComments}
+                      statusColor={"tag-in-progress-color"}
+                    />
                   </div>
               ))}
           </>
