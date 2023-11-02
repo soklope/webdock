@@ -1,28 +1,41 @@
 @use '../../../global-styling/Variables.scss' as v;
 
-.sort-function-btn{
-border-radius: 5px;
-border: 0.5px solid v.$black;
-background: v.$white;
+.sort-function-btn {
+  border-radius: 5px;
+  border: 0.5px solid v.$black;
+  background: v.$white;
 
-font-family: v.$secondary-font;
-font-size: 15px;
-font-weight: 500;
+  font-family: v.$secondary-font;
+  font-size: 15px;
+  font-weight: 500;
 
-display: inline-flex;
-height: 35px;
-padding: 5px 15px;
-align-items: center;
-gap: 10px;
+  display: inline-flex;
+  height: 35px;
+  padding: 5px 15px;
+  align-items: center;
+  gap: 10px;
 
-&__icon {
+  &__icon {
     background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
     width: 14px;
     height: 9px;
-    }
+  }
 
-    &.active {
-        background: darken(v.$offwhite, 10%); // Change the background color to gray when clicked
-      }
-    
+  &.active {
+    background: darken(v.$offwhite, 10%); // Change the background color to gray when clicked
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  background: v.$white;
+  border: 1px solid v.$offblack; /* Solid border with a 2px width */
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05); /* Box shadow with the desired values */
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1; // Ensure it's displayed above other content
+
+  ul {
+    list-style-type: none;
+  }
 }
