@@ -2,6 +2,7 @@
 // import Navigation from "./layout/navigation/Navigation";
 // import CreatePostBtn from "./components/CreatePostBtn/CreatePostBtn";
 import SortFunctionAndFilterContainer from "./components/SortFunctionAndFilterContainer/SortFunctionFilterContainer.jsx";
+import PostList from "./components/PostContent.jsx";
 
 export default function App() {
   return (
@@ -15,6 +16,8 @@ export default function App() {
         {/* <CreatePostBtn /> */}
 
         <SortFunctionAndFilterContainer />
+
+        <PostList />
   
       </div>
     </div>
