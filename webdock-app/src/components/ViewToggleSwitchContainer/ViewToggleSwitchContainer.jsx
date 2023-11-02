@@ -12,7 +12,7 @@ export default function ViewToggleSwitchContainer() {
   // Function to toggle between Roadmap and List views
   const toggleView = () => {
     // Update the state to the opposite of its current value
-    setIsRoadmapView((prevIsRoadmapView) => !prevIsRoadmapView);
+    setIsRoadmapView((isActive) => !isActive);
     // Update the text based on the current view state
     setDisplayText(isRoadmapView ? "List View" : "Roadmap View");
   };
