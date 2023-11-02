@@ -4,9 +4,9 @@ import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
 import placeholderProfilePic from "../../content/images/placeholder_profile.webp";
 import logo from "../../content/images/logo_200x200.png";
-import roadmap_icon from "../../content/gfx/roadmap-icon.svg";
-import feature_icon from "../../content/gfx/feature-request-icon.svg";
-import search_icon from "../../content/gfx/search-icon.svg";
+import roadmap_icon from "../../content/gfx/icons/roadmap-icon.svg";
+import feature_icon from "../../content/gfx/icons/feature-request-icon.svg";
+import search_icon from "../../content/gfx/icons/search-icon.svg";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
