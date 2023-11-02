@@ -1,0 +1,23 @@
+@use '../../global-styling/Variables.scss' as v;
+
+.sort-function-btn{
+border-radius: 5px;
+border: 0.5px solid v.$black;
+background: v.$white;
+
+font-family: v.$secondary-font;
+font-size: 15px;
+font-weight: 500;
+
+display: inline-flex;
+height: 35px;
+padding: 5px 15px;
+align-items: center;
+gap: 10px;
+
+&__icon {
+    background-image: url('../../content/gfx/Icons/arrow-down-icon.svg');
+    width: 14px;
+    height: 9px;
+    }
+}
