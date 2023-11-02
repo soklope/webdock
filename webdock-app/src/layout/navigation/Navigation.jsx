@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
@@ -21,12 +21,10 @@ export default function Navigation() {
     <>
       <nav>
         <div className="navigation-logo">
-          {/* Clickable logo */}
           <Link to="/">
             <img className="navigation-logo__img" src={logo} alt="Webdock logo" />
           </Link>
 
-          {/* Company name */}
           <div className="navigation-logo__company-name">Webdock.io</div>
         </div>
 
