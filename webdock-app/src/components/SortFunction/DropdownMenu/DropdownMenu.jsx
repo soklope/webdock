@@ -1,4 +1,4 @@
-import '../DropdownMenu/DropdownMenu.scss';
+import './DropdownMenu.scss';
 
 export default function DropdownMenu({ onSortChange }) {
     const handleSortClick = (sortOption) => {
@@ -9,9 +9,9 @@ export default function DropdownMenu({ onSortChange }) {
     return (
       <div className="dropdown-menu">
         <ul>
-          <li onClick={() => handleSortClick('trending')}>Trending</li>
-          <li onClick={() => handleSortClick('top')}>Top</li>
-          <li onClick={() => handleSortClick('new')}>New</li>
+          <li onClick={() => handleSortClick('Trending')}>Trending</li>
+          <li onClick={() => handleSortClick('Top')}>Top</li>
+          <li onClick={() => handleSortClick('New')}>New</li>
         </ul>
       </div>
     );

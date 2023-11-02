@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './SortFunction.scss';
-import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import DropdownMenu from './DropdownMenu/DropdownMenu';
 
 export default function SortFunction() {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -11,13 +11,9 @@ export default function SortFunction() {
     };
   
     const handleSortChange = (sortOption) => {
-      setSelectedSortOption(capitalizeFirstLetter(sortOption)); // Capitalize the first letter
+      setSelectedSortOption(sortOption); // Set the selected sort option as-is
       // Implement your sorting logic here based on the selected sort option
     };
-  
-    function capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
   
     return (
       <div className="sort-function">
