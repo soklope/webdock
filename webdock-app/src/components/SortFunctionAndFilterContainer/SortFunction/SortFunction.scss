@@ -22,18 +22,18 @@
   }
 
   &.active {
-    background: darken(v.$offwhite, 10%); // Change the background color to gray when clicked
+    background: darken(v.$offwhite, 10%); 
   }
 }
 
 .dropdown-menu {
   position: absolute;
   background: v.$white;
-  border: 1px solid v.$offblack; /* Solid border with a 2px width */
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05); /* Box shadow with the desired values */
+  border: 1px solid v.$offblack; 
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05); 
   padding: 10px;
   border-radius: 5px;
-  z-index: 1; // Ensure it's displayed above other content
+  z-index: 1; 
 
   ul {
     list-style-type: none;
