@@ -6,11 +6,15 @@ import "./ViewToggleSwitchContainer.scss";
 export default function ViewToggleSwitchContainer() {
   // State variable to keep track of the current view (Roadmap or List)
   const [isRoadmapView, setIsRoadmapView] = useState(true);
+  // State variable to track the text content displayed above the toggle switches
+  const [displayText, setDisplayText] = useState("Roadmap View");
 
   // Function to toggle between Roadmap and List views
   const toggleView = () => {
     // Update the state to the opposite of its current value
     setIsRoadmapView((prevIsRoadmapView) => !prevIsRoadmapView);
+    // Update the text based on the current view state
+    setDisplayText(isRoadmapView ? "List View" : "Roadmap View");
   };
 
   // Render the switch components
@@ -18,6 +22,8 @@ export default function ViewToggleSwitchContainer() {
     <>
       {/* Container for the toggle switches */}
       <div className="toggle-switches-container">
+        {/* Display the current text */}
+        <p>{displayText}</p>
         {/* First switch for Roadmap view */}
         <ViewToogleSwitch
           // Dynamically set the class name for Roadmap view based on isRoadmapView state
