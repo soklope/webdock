@@ -1,9 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./layout/navigation/Navigation";
 import CreatePostBtn from "./components/CreatePostBtn/CreatePostBtn";
-import RoadmapContainer from "./components/RoadmapContainer/RoadmapContainer";
+import RoadmapChildren from "./components/RoadmapChildren/RoadmapChildren";
+
+import RoadmapContainerPlanned from "./components/RoadmapContainer/RoadmapContainerPlanned"
+import RoadmapContainerInProgress from "./components/RoadmapContainer/RoadmapContainerInProgress"
+import RoadmapContainerComplete from "./components/RoadmapContainer/RoadmapContainerComplete"
 
 export default function App() {
+
   return (
     <div className="background">
       <div className="background__image">
@@ -13,26 +18,10 @@ export default function App() {
           </Routes>
         </BrowserRouter>
         {/* <CreatePostBtn /> */}
-        <RoadmapContainer 
-          statusTitle={"Planned"} 
-          postCount={69}
-          statusColor={"planned-color"}
-          statusColorDesktop={"planned-color"}
-        />
 
-        <RoadmapContainer 
-          statusTitle={"In Progress"} 
-          postCount={69}
-          statusColor={"in-progress-color"}
-          statusColorDesktop={"in-progress-color"}
-        />
-
-        <RoadmapContainer 
-          statusTitle={"Complete"} 
-          postCount={69}
-          statusColor={"complete-color"}
-          statusColorDesktop={"complete-color"}
-        />
+        <RoadmapContainerPlanned />
+        <RoadmapContainerInProgress />
+        <RoadmapContainerComplete />
       </div>
     </div>
   );
