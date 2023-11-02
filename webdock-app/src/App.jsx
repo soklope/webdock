@@ -1,6 +1,7 @@
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import Navigation from "./layout/navigation/Navigation";
-import CreatePostBtn from "./components/CreatePostBtn/CreatePostBtn";
+// import CreatePostBtn from "./components/CreatePostBtn/CreatePostBtn";
+import DropdownMenu from "./components/DropdownMenu/DropdownMenu";
 import SortFunction from "./components/SortFunction/SortFunction";
 
 export default function App() {
@@ -12,7 +13,7 @@ export default function App() {
             {/* <Route path="/" element={<Navigation />}></Route>
           </Routes>
         </BrowserRouter> */}
-        <CreatePostBtn />
+        {/* <CreatePostBtn /> */}
         <SortFunction />
       </div>
     </div>

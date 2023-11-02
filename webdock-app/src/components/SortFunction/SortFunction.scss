@@ -20,4 +20,9 @@ gap: 10px;
     width: 14px;
     height: 9px;
     }
+
+    &.active {
+        background: darken(v.$offwhite, 10%); // Change the background color to gray when clicked
+      }
+    
 }
