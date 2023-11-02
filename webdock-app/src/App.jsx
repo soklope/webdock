@@ -14,12 +14,8 @@ export default function App() {
         </BrowserRouter> */}
         {/* <CreatePostBtn /> */}
 
-
         <SortFunctionAndFilterContainer />
-        
-
-        
-
+  
       </div>
     </div>
   );

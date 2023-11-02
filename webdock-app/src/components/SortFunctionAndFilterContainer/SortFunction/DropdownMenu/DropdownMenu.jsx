@@ -1,6 +1,7 @@
 import '../../../SortFunctionAndFilterContainer/SortFunction/DropdownMenu/DropdownMenu.scss';
 
 export default function DropdownMenu({ onSortChange }) {
+
     const handleSortClick = (sortOption) => {
       // Call the provided callback function to handle sorting based on the selected option
       onSortChange(sortOption);
