@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../../SortFunctionAndFilterContainer/SortFunction/SortFunction.scss';
 
-export default function SortFunction() {
+export default function SortFunction({ onSortChange }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('');
 
@@ -12,11 +12,7 @@ export default function SortFunction() {
   const handleSortChange = (sortOption) => {
     setSelectedSortOption(sortOption);
     setDropdownOpen(false);
-    // Implement your sorting logic here based on the selected sort option
-  };
-
-  const handleSortClick = (sortOption) => {
-    handleSortChange(sortOption);
+    onSortChange(sortOption); // Pass the selected sort option to the parent component
   };
 
   const sortOptions = ['Trending', 'Top', 'New'];
@@ -34,14 +30,13 @@ export default function SortFunction() {
         <div className="dropdown-menu">
           <ul>
             {sortOptions.map((option) => (
-              <li key={option} onClick={() => handleSortClick(option)}>
+              <li key={option} onClick={() => handleSortChange(option)}>
                 {option}
               </li>
             ))}
           </ul>
         </div>
       )}
-      {selectedSortOption && <p>Selected Sort: {selectedSortOption}</p>}
     </div>
   );
 }
