@@ -1,5 +1,9 @@
 .sort-ff-container {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
   }
+
+  /* Add margin to create space between components */
+.sort-ff-container > * {
+  margin-right: 20px; /* Adjust the value as needed for the desired spacing */
+}
