@@ -46,3 +46,7 @@ function CategoryBtnContainer() {
 
 // Export the 'CategoryBtnContainer' component for use in other parts of the application.
 export default CategoryBtnContainer;
+
+// To do after code review
+// - Move "export default" to the component declaration on line 8
+// - Remove "import useState" since it is not being used

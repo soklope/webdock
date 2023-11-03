@@ -4,7 +4,7 @@ import SortFunction from './SortFunction/SortFunction';'./SortFunction/SortFunct
 export default function SortFunctionAndFilterContainer() {
     return (
         <div className="sort-ff-container">
-            <SortFunction />
+            <SortFunction/>
             <SortFunction />
             <SortFunction />   
         </div>

@@ -70,3 +70,7 @@ export default function RoadmapContainerPlanned() {
     </>
   )
 }
+
+// Todo fter code review 
+// Clean up react fragments
+// More transparency either in comments or better classes (cant see what is mobile and what is desktop)

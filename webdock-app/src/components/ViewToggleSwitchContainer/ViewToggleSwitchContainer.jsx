@@ -8,7 +8,7 @@ export default function ViewToggleSwitchContainer() {
   const [isRoadmapView, setIsRoadmapView] = useState(true);
   // State variable to track the text content displayed above the toggle switches
   const [displayText, setDisplayText] = useState("Roadmap View");
-
+  
   // Function to toggle between Roadmap and List views
   const toggleView = () => {
     // Update the state to the opposite of its current value
@@ -47,3 +47,10 @@ export default function ViewToggleSwitchContainer() {
     </>
   );
 }
+
+// To do after review //
+// - Change name of "toogle" component
+// - Clean up comments, for easier readable code ( use chatGPT "essential" comments )
+// - Clean up toggleView function on line 15, use "!isRoadMapView" instead
+// - Remove parent fragment since it is not necessary on line 22 + 47
+// - BONUS: Format prop attributes for easier reading

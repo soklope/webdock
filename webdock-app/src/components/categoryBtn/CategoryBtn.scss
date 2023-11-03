@@ -133,3 +133,9 @@
         flex-shrink: 0;
     }
 }
+
+// To do after code review
+// - Use global variables for the colors (v.$VARIABLE_NAME)
+// - Clean up naming of classes (category-btn-mypost-text) is not actually what it is used for
+// - Delete classes that are not being used
+// - Clean up margin usage line 41 - 43

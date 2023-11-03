@@ -14,3 +14,6 @@ export default function ViewToogleSwitch({ switchIcon, onToggle }) {
     </button>
   );
 }
+
+// To do after review //
+// - Clean up comments a big, seems overkill

@@ -22,3 +22,10 @@ export default function RoadmapChildren( {title, category, status, numberOfComme
         </>
     );
 }
+
+// Todo after code review
+// - Revisit class naming "roadmap-child-container...."
+// - optinal, look at spread operator afor props (...)
+// 
+//<div className="roadmap-child">
+  // <p className="roadmap-child__title">{title}</p>

@@ -40,3 +40,6 @@ export default function SortFunction({ onSortChange }) {
     </div>
   );
 }
+
+// To do after code review
+// - Delete onSortChange prop since it is not being used

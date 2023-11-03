@@ -40,3 +40,7 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
     </>
   );
 }
+
+// To do after review
+// - SLET DEN FUCKING FRAGMENT
+// - Adjust shorthand JSX syntax on 29 if statements, to use &&
