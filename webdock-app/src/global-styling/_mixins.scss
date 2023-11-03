@@ -1,7 +1,26 @@
+@use './Variables.scss' as v;
 
     @mixin icon-image-centering {
         width: 20px;
         height: 20px;
         background-repeat: no-repeat;
         background-position: center;
+    }
+
+    @mixin filter-btn-styling {
+      border-radius: 5px;
+      border: 0.5px solid v.$black;
+      background: v.$white;
+      font-family: v.$secondary-font;
+      font-size: 15px;
+      font-weight: 500;
+      display: inline-flex;
+      height: 35px;
+      padding: 5px 15px;
+      align-items: center;
+      gap: 10px;
+    
+      .active {
+        background: darken(v.$offwhite, 10%);
+      }
     }
