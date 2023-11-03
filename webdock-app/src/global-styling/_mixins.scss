@@ -24,3 +24,27 @@
         background: darken(v.$offwhite, 10%);
       }
     }
+
+    @mixin arrow-icon-size {
+      width: 14px;
+      height: 9px;
+    }
+
+    @mixin dropdown-menu-styling {
+      position: absolute;
+      background: v.$white;
+      border: 1px solid v.$offblack;
+      box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1;
+    
+      ul {
+        list-style-type: none;
+      }
+    
+      &__list-item:hover {
+        background: darken(v.$offwhite, 10%);
+      }
+    }

@@ -1,31 +1,15 @@
 @use '../../../global-styling/Variables.scss' as v;
-@import '../../../global-styling/mixins';
+@use '../../../global-styling/mixins' as mix;
 
 .sort-function-btn {
-  @include filter-btn-styling;
+  @include mix.filter-btn-styling;
 
   &__icon {
-    background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
-    width: 14px;
-    height: 9px;
+  @include mix.arrow-icon-size;
+  background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
   }
 }
 
 .dropdown-menu {
-  position: absolute;
-  background: v.$white;
-  border: 1px solid v.$offblack;
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 1; 
-
-  ul {
-    list-style-type: none;
-  }
-
-  &__list-item:hover {
-    background: darken(v.$offwhite, 10%);
-  }
+  @include mix.dropdown-menu-styling;
 }
