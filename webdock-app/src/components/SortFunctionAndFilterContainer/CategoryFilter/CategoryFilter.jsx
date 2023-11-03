@@ -10,12 +10,17 @@ export default function CategoryFilter() {
     setShowDropdown(!showDropdown);
   };
 
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+    setShowDropdown(false); // Close the dropdown when an option is selected
+  };
+
   const filterPosts = (data) => {
     if (selectedCategory === 'All Categories') {
       return data; // Return all posts if no category is selected.
     }
 
-    return data.filter(post => post.category === selectedCategory);
+    return data.filter((post) => post.category === selectedCategory);
   };
 
   return (
@@ -26,7 +31,7 @@ export default function CategoryFilter() {
       </button>
       {showDropdown && (
         <div className="category-dropdown">
-          <select onChange={(e) => setSelectedCategory(e.target.value)}>
+          <select onChange={handleCategoryChange} value={selectedCategory}>
             <option value="All Categories">All Categories</option>
             <option value="Dashboard Features">Dashboard Features</option>
             <option value="Documentation">Documentation</option>
@@ -41,7 +46,7 @@ export default function CategoryFilter() {
         </div>
       )}
       <div className="filtered-posts">
-        {filterPosts([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]).map(post => (
+        {filterPosts([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]).map((post) => (
           <div key={post.title}>
             <h3>{post.title}</h3>
             <p>{post.description}</p>
@@ -53,6 +58,7 @@ export default function CategoryFilter() {
     </div>
   );
 }
+
 
 
 
