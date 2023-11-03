@@ -1,0 +1,38 @@
+@use '../../global-styling/Variables.scss' as v;
+
+div,
+main {
+    border: 1px solid black;
+}
+
+.heading {
+
+    &__title {
+        font-size: v.$h1;
+
+    }
+}
+
+.filter-grid-container {
+    // height: 400px;
+
+    display: grid;
+    grid-template-areas:
+        "createBtn toggleBtn"
+        "sortFilter sortFilter"
+    ;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.filter-grid-create-btn {
+    grid-area: createBtn;
+}
+
+.filter-grid-toggle-btn {
+    grid-area: toggleBtn;
+}
+
+.filter-grid-sort-filter {
+    grid-area: sortFilter;
+}

@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import CreatePostBtn from '../components/CreatePostBtn/CreatePostBtn';
 import Navigation from '../layout/navigation/Navigation';
 import RoadmapView from '../views/RoadmapView';
+import ListView from '../views/ListView';
 
 const Router = () => {
   return (
@@ -11,7 +11,7 @@ const Router = () => {
     <Navigation />
       <Routes>
         <Route exact path="/" element={<RoadmapView />} />
-        <Route  path="/CreatePostBtn" element={<CreatePostBtn />} />
+        <Route path="/listview" element={<ListView />} />
         {/* Add more routes here as needed */}
       </Routes>
     </BrowserRouter>

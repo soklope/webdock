@@ -3,16 +3,19 @@
 
 // Define styles for the .create-post-btn class
 .create-post-btn {
-    background-color: v.$primary-color; // Use the primary color variable from Variables.scss
-    border-radius: 5px;
     display: flex;
-    width: 200px;
-    height: 55px;
-    padding: 10px;
     justify-content: center;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
+
+    width: 200px;
+    height: 55px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    
+    background-color: v.$primary-color; // Use the primary color variable from Variables.scss
     color: v.$white; // Use the white color variable from Variables.scss
     font-family: v.$secondary-font; // Use the secondary font variable from Variables.scss
     font-size: 15px;
@@ -21,7 +24,7 @@
     line-height: normal;
     letter-spacing: 0.75px;
     text-transform: uppercase;
-
+    
     // Define styles for the nested .create-post-btn__icon class
     &__icon {
         background-image: url('../../content/gfx/Icons/create-icon.svg');

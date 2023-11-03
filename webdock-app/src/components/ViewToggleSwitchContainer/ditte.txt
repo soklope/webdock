@@ -1,3 +1,0 @@
- import ViewToggleSwitchContainer from "./components/ViewToggleSwitchContainer/ViewToggleSwitchContainer";
-
- <ViewToggleSwitchContainer />

@@ -19,7 +19,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav>
+      <nav className="wrap">
         <div className="navigation-logo">
           <Link to="/">
             <img className="navigation-logo__img" src={logo} alt="Webdock logo" />
