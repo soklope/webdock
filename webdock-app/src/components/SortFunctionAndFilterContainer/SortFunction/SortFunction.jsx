@@ -20,22 +20,16 @@ export default function SortFunction() {
     switch (sortOption) {
       case 'Trending':
         sortedData = [...dataToSort].sort((a, b) => {
-          // Add your sorting logic for trending here
-          // Example: Sort by the number of upvotes or any other criteria
           return b.numberOfComments - a.numberOfComments;
         });
         break;
       case 'Top':
         sortedData = [...dataToSort].sort((a, b) => {
-          // Add your sorting logic for top here
-          // Example: Sort by the number of comments or any other criteria
           return b.numberOfUpvotes - a.numberOfUpvotes;
         });
         break;
         case 'New':
           sortedData = [...dataToSort].sort((a, b) => {
-            // Add your sorting logic for new here
-            // Sort by the createdAt field
             return b.createdAt - a.createdAt;
           });
           break;

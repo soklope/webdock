@@ -59,11 +59,11 @@ export const plannedArrayDb = [
     {
       title: "Reseller Hosting",
       description: "Host and manage multiple websites with your own control panel",
-      numberOfComments: 30,
+      numberOfComments: 12,
       numberOfUpvotes: 125,
       status: "In Progress",
       category: "Web Hosting",
-      createdAt: new Date("2023-11-30"),
+      createdAt: new Date("2019-11-30"),
     },
   ];
   
@@ -71,11 +71,11 @@ export const plannedArrayDb = [
     {
       title: "Pro Plan",
       description: "Designed for growing businesses and multiple websites",
-      numberOfComments: 20,
+      numberOfComments: 35,
       numberOfUpvotes: 112,
       status: "Complete",
       category: "Business",
-      createdAt: new Date("2022-05-15"),
+      createdAt: new Date("2021-05-15"),
     },
     {
       title: "Cloud Hosting",
@@ -93,6 +93,6 @@ export const plannedArrayDb = [
       numberOfUpvotes: 102,
       status: "Complete",
       category: "Web Hosting",
-      createdAt: new Date("2022-07-10"),
+      createdAt: new Date("2020-07-10"),
     },
   ];
