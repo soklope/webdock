@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import '../../SortFunctionAndFilterContainer/SortFunction/SortFunction.scss';
+import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
 
-export default function SortFunction({ onSortChange }) {
+export default function SortFunction() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('');
+  const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -12,7 +14,30 @@ export default function SortFunction({ onSortChange }) {
   const handleSortChange = (sortOption) => {
     setSelectedSortOption(sortOption);
     setDropdownOpen(false);
-    onSortChange(sortOption); // Pass the selected sort option to the parent component
+
+    let sortedData;
+
+    switch (sortOption) {
+      case 'Trending':
+        sortedData = [...dataToSort].sort((a, b) => {
+          // Add your sorting logic for trending here
+        });
+        break;
+      case 'Top':
+        sortedData = [...dataToSort].sort((a, b) => {
+          // Add your sorting logic for top here
+        });
+        break;
+      case 'New':
+        sortedData = [...dataToSort].sort((a, b) => {
+          // Add your sorting logic for new here
+        });
+        break;
+      default:
+        sortedData = dataToSort;
+    }
+
+    setDataToSort(sortedData);
   };
 
   const sortOptions = ['Trending', 'Top', 'New'];
@@ -35,6 +60,15 @@ export default function SortFunction({ onSortChange }) {
               </li>
             ))}
           </ul>
+        </div>
+      )}
+
+      {dataToSort.map((item) => 
+        // Render each item from the sorted data here
+        <div key={item.title}>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          {/* Add more properties as needed */}
         </div>
       )}
     </div>
