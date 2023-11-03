@@ -22,15 +22,15 @@
   }
 
   &.active {
-    background: darken(v.$offwhite, 10%); 
+    background: darken(v.$offwhite, 10%);
   }
 }
 
 .dropdown-menu {
   position: absolute;
   background: v.$white;
-  border: 1px solid v.$offblack; 
-  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05); 
+  border: 1px solid v.$offblack;
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
@@ -45,3 +45,6 @@
   }
   
 }
+
+// To do after code review
+// Remove & on line 24

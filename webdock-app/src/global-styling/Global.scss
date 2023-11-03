@@ -23,7 +23,11 @@
     }
 }
 
-// .wrap {
-//     width: 80%;
-//     margin: auto;
-// }
+.wrap {
+    width: 100vw;
+    padding: 0 20px;
+
+    @media screen and (min-width: v.$desktop-screen) {
+        padding: 0 115px;
+    }
+}
