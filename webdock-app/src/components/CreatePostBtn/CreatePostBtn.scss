@@ -1,35 +1,38 @@
+// Import variables from '../../global-styling/Variables.scss'
 @use '../../global-styling/Variables.scss' as v;
 
+// Define styles for the .create-post-btn class
 .create-post-btn {
-background-color: v.$primary-color;
-border-radius: 5px;
-display: flex;
-width: 200px;
-height: 55px;
-padding: 10px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
-color: v.$white;
-font-family: v.$secondary-font;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-letter-spacing: 0.75px;
-text-transform: uppercase;
+    background-color: v.$primary-color; // Use the primary color variable from Variables.scss
+    border-radius: 5px;
+    display: flex;
+    width: 200px;
+    height: 55px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    color: v.$white; // Use the white color variable from Variables.scss
+    font-family: v.$secondary-font; // Use the secondary font variable from Variables.scss
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
 
-&__icon {
-    background-image: url('../../content/gfx/Icons/create-icon.svg');
-    width: 15px;
-height: 15px;
-flex-shrink: 0;
+    // Define styles for the nested .create-post-btn__icon class
+    &__icon {
+        background-image: url('../../content/gfx/Icons/create-icon.svg');
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+    }
 
-}
-@media screen and (min-width: v.$desktop-screen) {
-height: 35px;
-    
-  }
+    // Media query for screens with a minimum width of the desktop-screen variable
+    @media screen and (min-width: v.$desktop-screen) {
+        height: 35px; // Override the height for larger screens
+    }
 }
 

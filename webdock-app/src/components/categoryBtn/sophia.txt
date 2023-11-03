@@ -1,0 +1,2 @@
+ import CategoryBtnContainer from "./components/CategoryBtnContainer/CategoryBtnContainer";
+ <CategoryBtnContainer />

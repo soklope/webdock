@@ -1,0 +1,19 @@
+@use '../../global-styling/Variables.scss' as v;
+
+/* 
+   Define a flex container to arrange child elements using flexbox.
+   Enable horizontal scrolling when the content overflows the container.
+*/
+.flex-container {
+  display: flex;
+  overflow: scroll;
+}
+
+/* 
+   Define flex elements within the container.
+   Each element has equal flexibility, occupying available space evenly.
+*/
+.flex-element {
+  flex: 1;
+}
+
