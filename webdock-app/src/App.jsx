@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./layout/navigation/Navigation";
 import CreatePostBtn from "./components/CreatePostBtn/CreatePostBtn";
-import ViewToggleSwitchContainer from "./components/ViewToggleSwitchContainer/ViewToggleSwitchContainer";
 
 export default function App() {
   return (
@@ -13,7 +12,6 @@ export default function App() {
           </Routes>
         </BrowserRouter>
         <CreatePostBtn /> */}
-        <ViewToggleSwitchContainer />
       </div>
     </div>
   );
