@@ -29,25 +29,23 @@ export default function RoadmapView() {
               </div>
               
               <div className="filter-grid-sort-filter">
-                <span>
-                  sortfilter here
-                </span>
-                {/* <SortFunctionAndFilterContainer /> */}
+                <SortFunctionAndFilterContainer />
               </div>
 
           </section>
-{/* 
-          <div>
+
+          <div className="roadmap-flex-container">
             <RoadmapContainerPlanned />
             <RoadmapContainerInProgress />
             <RoadmapContainerComplete />
-          </div> */}
+          </div>
+
         </main>
       </div>
-
+{/* 
       <Link to="listview">
         <p>go to list view</p>
-      </Link>
+      </Link> */}
     </>
   );
 }

@@ -10,7 +10,7 @@
     color: v.$grey;
     border: v.$border-size solid v.$grey;
     cursor: pointer;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,6 +39,7 @@
 
     &__text {
         color: v.$offblack;
+        font-family: v.$secondary-font;
 
         &--active {
             color: v.$offwhite;

@@ -11,13 +11,14 @@
     border-radius: 5px;
     border: #1E9E85 2px solid;
     cursor: pointer;
-    
+
     &__roadmap {
         width: 30px;
         height: 30px;
         flex-shrink: 0;
         background-image: url('../../../content/gfx/Icons/roadmap-view-icon.svg');
     }
+
     &__roadmap--active {
         @extend .view-toggle-switch__roadmap;
         width: 100%;
@@ -29,8 +30,8 @@
         background-position: center;
         background-repeat: no-repeat;
     }
-    
-    &__list{
+
+    &__list {
         width: 30px;
         height: 30px;
         flex-shrink: 0;

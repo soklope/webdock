@@ -1,21 +1,18 @@
 @use '../../global-styling/Variables.scss' as v;
 
-div,
-main {
-    border: 1px solid black;
-}
-
 .heading {
 
     &__title {
         font-size: v.$h1;
+        margin-bottom: 20px;
 
+        @media screen and (min-width: v.$desktop-screen) {
+            font-size: v.$h1-desktop;
+        }
     }
 }
 
 .filter-grid-container {
-    // height: 400px;
-
     display: grid;
     grid-template-areas:
         "createBtn toggleBtn"
@@ -23,6 +20,18 @@ main {
     ;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: v.$desktop-screen) {
+        grid-template-areas:
+            "createBtn"
+            "toggleBtn"
+            "sortFilter"
+        ;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
 }
 
 .filter-grid-create-btn {
@@ -35,4 +44,12 @@ main {
 
 .filter-grid-sort-filter {
     grid-area: sortFilter;
+}
+
+.roadmap-flex-container {
+    @media screen and (min-width: v.$desktop-screen) {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
 }

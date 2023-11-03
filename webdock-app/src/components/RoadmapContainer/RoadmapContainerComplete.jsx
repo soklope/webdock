@@ -41,6 +41,7 @@ export default function RoadmapContainerComplete() {
                       category={post.category}
                       status={post.status}
                       numberOfComments={post.numberOfComments}
+                      totalUpvotes={post.numberOfUpvotes}
                       statusColor={"tag-complete-color"}
                     />
                   </div>
@@ -59,6 +60,7 @@ export default function RoadmapContainerComplete() {
                       category={post.category}
                       status={post.status}
                       numberOfComments={post.numberOfComments}
+                      totalUpvotes={post.numberOfUpvotes}
                       statusColor={"tag-complete-color"}
                     />
                   </div>

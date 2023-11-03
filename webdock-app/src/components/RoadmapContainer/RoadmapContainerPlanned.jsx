@@ -40,6 +40,7 @@ export default function RoadmapContainerPlanned() {
                     category={post.category}
                     status={post.status}
                     numberOfComments={post.numberOfComments}
+                    totalUpvotes={post.numberOfUpvotes}
                     statusColor={"tag-planned-color"}
                   />
                 </div>
@@ -58,6 +59,7 @@ export default function RoadmapContainerPlanned() {
                       category={post.category}
                       status={post.status}
                       numberOfComments={post.numberOfComments}
+                      totalUpvotes={post.numberOfUpvotes}
                       statusColor={"tag-planned-color"}
                     />
                   </div>

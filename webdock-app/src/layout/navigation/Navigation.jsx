@@ -28,8 +28,7 @@ export default function Navigation() {
           <div className="navigation-logo__company-name">Webdock.io</div>
         </div>
 
-        <ul className="menu-items">
-          {/* Navigation links */}
+        {/* <ul className="menu-items">
           <li>
             <Link to="/roadmap">
               <img src={roadmap_icon} alt="roadmap icon" />
@@ -52,11 +51,10 @@ export default function Navigation() {
           </li>
 
           <li>
-            {/* User profile picture and username */}
             <img src={placeholderProfilePic} alt="username icon" className="navigation-profile-pic" />
             <p>user_name</p>
           </li>
-        </ul>
+        </ul> */}
 
         <div className="burger-menu-icon">
           {/* Hamburger menu icon */}

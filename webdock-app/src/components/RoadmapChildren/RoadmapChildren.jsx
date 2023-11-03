@@ -1,10 +1,13 @@
 import "./RoadmapChildren.scss"
+import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
 
-export default function RoadmapChildren( {title, category, status, numberOfComments, statusColor} ) {
+export default function RoadmapChildren( {title, category, status, numberOfComments, statusColor, totalUpvotes} ) {
 
     return (
         <>
-            <button>Up</button>
+            <UpvoteBtn 
+                numberOfUpvotes={totalUpvotes}
+            />
 
             <div className="roadmap-child-container__title-category-tag">
                 <p className="roadmap-child-container__title">{title}</p>

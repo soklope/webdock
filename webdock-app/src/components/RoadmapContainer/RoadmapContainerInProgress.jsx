@@ -39,6 +39,7 @@ export default function RoadmapContainerInProgress() {
                       category={post.category}
                       status={post.status}
                       numberOfComments={post.numberOfComments}
+                      totalUpvotes={post.numberOfUpvotes}
                       statusColor={"tag-in-progress-color"}
                     />
                   </div>
@@ -57,6 +58,7 @@ export default function RoadmapContainerInProgress() {
                       category={post.category}
                       status={post.status}
                       numberOfComments={post.numberOfComments}
+                      totalUpvotes={post.numberOfUpvotes}
                       statusColor={"tag-in-progress-color"}
                     />
                   </div>

@@ -26,9 +26,8 @@
 }
 
 .roadmap-container {
-    margin: auto; //remove this in prod
     margin-bottom: 20px; // remove this in prod
-    width: 300px;
+    width: 100%;
     background-color: white;
     font: v.$primary-font;
 
@@ -76,6 +75,9 @@
     }
 
     @media screen and (min-width: v.$desktop-screen) {
+
+        width: 380px;
+
 
         &__children {
             display: block;

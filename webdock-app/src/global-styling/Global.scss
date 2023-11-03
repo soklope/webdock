@@ -25,10 +25,9 @@
 
 .wrap {
     width: 100vw;
-    margin: 0 20px;
+    padding: 0 20px;
 
     @media screen and (min-width: v.$desktop-screen) {
-        width: 100vw;
-        margin: 0 115px;
+        padding: 0 115px;
     }
 }

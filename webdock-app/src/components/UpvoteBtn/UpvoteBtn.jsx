@@ -2,7 +2,7 @@ import { React, useState } from "react";
 
 import "./UpvoteBtn.scss";
 
-export default function UpvoteBtn() {
+export default function UpvoteBtn( {numberOfUpvotes} ) {
   const [isUpvoted, setIsUpvoted] = useState(false);
   const [upvotes, setUpvotes] = useState(3);
 
@@ -33,7 +33,8 @@ export default function UpvoteBtn() {
         <div
          className={`upvote-btn__text${isUpvoted ? "--active" : ""}`}
          >
-            {upvotes}
+            {/* {upvotes} */}
+            {numberOfUpvotes}
         </div>
       </div>
     </>

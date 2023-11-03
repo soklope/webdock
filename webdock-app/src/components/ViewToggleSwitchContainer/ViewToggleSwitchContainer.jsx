@@ -23,7 +23,7 @@ export default function ViewToggleSwitchContainer() {
       {/* Container for the toggle switches */}
       <div className="toggle-switches-container">
         {/* Display the current text */}
-        <p>{displayText}</p>
+        {/* <p>{displayText}</p> */}
         {/* First switch for Roadmap view */}
         <ViewToogleSwitch
           // Dynamically set the class name for Roadmap view based on isRoadmapView state
