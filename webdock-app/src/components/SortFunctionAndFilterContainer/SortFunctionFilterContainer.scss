@@ -1,8 +1,7 @@
 .sort-ff-container {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    gap: 20px;
   }
 
-.sort-ff-container > * {
-  margin-right: 20px; 
-}
+
