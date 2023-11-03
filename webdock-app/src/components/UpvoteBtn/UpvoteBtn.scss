@@ -1,0 +1,48 @@
+@use '../../global-styling/Variables.scss' as v;
+@import '../../global-styling/mixins';
+
+.upvote-btn {
+    height: 50px;
+    width: 50px;
+
+    border-radius: 5px;
+    background-color: v.$white;
+    color: v.$grey;
+    border: v.$border-size solid v.$grey;
+    cursor: pointer;
+    
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+        opacity: .9;
+    }
+
+    &--active {
+        @extend .upvote-btn;
+        background-color: v.$primary-color;
+        border-color: v.$primary-color;
+    }
+
+    &__icon {
+        background-image: url('../../content/gfx/Icons/upvote-arrow-white.svg');
+        @include icon-image-centering;
+
+
+        &--active {
+            background-image: url('../../content/gfx/Icons/upvote-arrow.svg');
+            @include icon-image-centering;
+        }
+    }
+
+    &__text {
+        color: v.$black;
+
+        &--active {
+            color: v.$white;
+        }
+    }
+
+}
