@@ -21,18 +21,24 @@ export default function SortFunction() {
       case 'Trending':
         sortedData = [...dataToSort].sort((a, b) => {
           // Add your sorting logic for trending here
+          // Example: Sort by the number of upvotes or any other criteria
+          return b.numberOfComments - a.numberOfComments;
         });
         break;
       case 'Top':
         sortedData = [...dataToSort].sort((a, b) => {
           // Add your sorting logic for top here
+          // Example: Sort by the number of comments or any other criteria
+          return b.numberOfUpvotes - a.numberOfUpvotes;
         });
         break;
-      case 'New':
-        sortedData = [...dataToSort].sort((a, b) => {
-          // Add your sorting logic for new here
-        });
-        break;
+        case 'New':
+          sortedData = [...dataToSort].sort((a, b) => {
+            // Add your sorting logic for new here
+            // Sort by the createdAt field
+            return b.createdAt - a.createdAt;
+          });
+          break;
       default:
         sortedData = dataToSort;
     }
@@ -63,17 +69,16 @@ export default function SortFunction() {
         </div>
       )}
 
-      {dataToSort.map((item) => 
+      {dataToSort.map((item) => (
         // Render each item from the sorted data here
         <div key={item.title}>
           <h3>{item.title}</h3>
           <p>{item.description}</p>
           {/* Add more properties as needed */}
         </div>
-      )}
+      ))}
     </div>
   );
 }
-
 // To do after code review
 // - Delete onSortChange prop since it is not being used
