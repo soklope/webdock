@@ -21,7 +21,7 @@
     height: 9px;
   }
 
-  &.active {
+  .active {
     background: darken(v.$offwhite, 10%);
   }
 }
@@ -40,11 +40,7 @@
     list-style-type: none;
   }
 
-  &__list-item:hover { /* Add hover effect to the dropdown-menu when the container is hovered */
+  &__list-item:hover {
     background: darken(v.$offwhite, 10%);
-  }
-  
+  } 
 }
-
-// To do after code review
-// Remove & on line 24
