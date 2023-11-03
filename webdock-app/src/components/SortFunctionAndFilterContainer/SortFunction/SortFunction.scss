@@ -33,9 +33,15 @@
   box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05); 
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
   z-index: 1; 
 
   ul {
     list-style-type: none;
   }
+
+  &__list-item:hover { /* Add hover effect to the dropdown-menu when the container is hovered */
+    background: darken(v.$offwhite, 10%);
+  }
+  
 }

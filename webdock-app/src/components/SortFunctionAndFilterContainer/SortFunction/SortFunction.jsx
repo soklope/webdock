@@ -30,7 +30,7 @@ export default function SortFunction({ onSortChange }) {
         <div className="dropdown-menu">
           <ul>
             {sortOptions.map((option) => (
-              <li key={option} onClick={() => handleSortChange(option)}>
+              <li className="dropdown-menu__list-item" key={option} onClick={() => handleSortChange(option)}>
                 {option}
               </li>
             ))}
