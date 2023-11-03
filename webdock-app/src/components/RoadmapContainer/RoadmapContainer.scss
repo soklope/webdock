@@ -1,0 +1,120 @@
+@use '../../global-styling/Variables.scss' as v;
+
+.my-post-color {
+    filter: invert(67%) sepia(74%) saturate(4267%) hue-rotate(1deg) brightness(97%) contrast(96%);
+}
+
+.review-color {
+    filter: invert(70%) sepia(23%) saturate(358%) hue-rotate(131deg) brightness(93%) contrast(89%);
+}
+
+.planned-color {
+    filter: invert(54%) sepia(91%) saturate(2206%) hue-rotate(181deg) brightness(96%) contrast(110%);
+}
+
+.in-progress-color {
+    filter: invert(64%) sepia(56%) saturate(4088%) hue-rotate(225deg) brightness(99%) contrast(109%);
+}
+
+.complete-color {
+    filter: invert(81%) sepia(45%) saturate(766%) hue-rotate(46deg) brightness(93%) contrast(76%);
+}
+
+.rotate {
+    transition: 0.1s;
+    transform: rotate(180deg);
+}
+
+.roadmap-container {
+    margin-bottom: 20px; // remove this in prod
+    width: 100%;
+    background-color: white;
+    font: v.$primary-font;
+
+    &__children {
+        display: none;
+    }
+
+    &__dropdown {
+        margin-top: 5px;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.10);
+        padding: 15px;
+        overflow: auto;
+        height: 260px;
+    }
+
+    &__tooltip {
+        width: 100%;
+        cursor: pointer;
+        font-weight: 600;
+        height: 75px;
+        border-radius: 5px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.10);
+        padding: 15px;
+    }
+
+    &__dropdown-icon {
+        transition: 0.1s;
+        height: 25px;
+        width: 25px;
+        background-image: url('../../content/gfx/Icons/dropdown-icon.svg');
+    }
+
+    &__postcount {
+        margin-left: auto;
+    }
+
+    &__color-indicator {
+        display: none;
+        background-color: black;
+    }
+
+    @media screen and (min-width: v.$desktop-screen) {
+
+        width: 380px;
+
+
+        &__children {
+            display: block;
+            margin-top: 5px;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.10);
+            padding: 15px;
+            height: 450px;
+            overflow: auto;
+        }
+
+        &__dropdown {
+            display: none;
+        }
+
+        &__tooltip {
+            width: 100%;
+            height: 55px;
+            padding: 0px 0px 0px 20px;
+        }
+
+        &__postcount {
+            margin-right: 20px;
+        }
+
+        &__color-indicator {
+            display: block;
+            width: 4px;
+            height: 100%;
+        }
+
+        &__dropdown-icon {
+            display: none;
+        }
+    }
+}
+
+// Todo after code review
+// COLORS, use the colors from variables.scss

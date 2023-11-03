@@ -1,0 +1,44 @@
+@use '../../../global-styling/Variables.scss' as v;
+
+.sort-function-btn {
+  border-radius: 5px;
+  border: 0.5px solid v.$black;
+  background: v.$white;
+
+  font-family: v.$secondary-font;
+  font-size: 15px;
+  font-weight: 500;
+
+  display: inline-flex;
+  height: 35px;
+  padding: 5px 15px;
+  align-items: center;
+  gap: 10px;
+
+  &__icon {
+    background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
+    width: 14px;
+    height: 9px;
+  }
+
+  &.active {
+    background: darken(v.$offwhite, 10%);
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  background: v.$white;
+  border: 1px solid v.$offblack;
+  box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1;
+
+  ul {
+    list-style-type: none;
+  }
+}
+
+// To do after code review
+// Remove & on line 24

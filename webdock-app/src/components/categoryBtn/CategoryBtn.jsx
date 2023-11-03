@@ -24,3 +24,8 @@ export default function CategoryBtn({ indicationColor, title, borderColor, backg
     </>
   );
 }
+
+// To do after code review
+// - Delete consts on line 15, 16, since they have no usage
+// - Delete fragment line 19, 24, since it is not needed
+// - Clean up comments line 1, 2
