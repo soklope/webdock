@@ -6,7 +6,7 @@
     width: 50px;
 
     border-radius: 5px;
-    background-color: v.$white;
+    background-color: v.$offwhite;
     color: v.$grey;
     border: v.$border-size solid v.$grey;
     cursor: pointer;
@@ -38,10 +38,10 @@
     }
 
     &__text {
-        color: v.$black;
+        color: v.$offblack;
 
         &--active {
-            color: v.$white;
+            color: v.$offwhite;
         }
     }
 
