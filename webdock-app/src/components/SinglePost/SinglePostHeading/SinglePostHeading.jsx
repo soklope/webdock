@@ -7,7 +7,9 @@ export default function SinglePostHeading() {
   return (
     <>
       <div>
-        <UpvoteBtn />
+        <UpvoteBtn
+        // numberOfUpvotes={33}
+        />
       </div>
       <div>
         heading component (actual post)

@@ -1,7 +1,10 @@
 
-    @mixin icon-image-centering {
+    @mixin icon-image-centering($imgpath) {
         width: 20px;
         height: 20px;
+
+        background-image: url('../../content/gfx/Icons/#{$imgpath}.svg');
         background-repeat: no-repeat;
         background-position: center;
     }
+

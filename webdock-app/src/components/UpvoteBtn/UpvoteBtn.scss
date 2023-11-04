@@ -27,13 +27,11 @@
     }
 
     &__icon {
-        background-image: url('../../content/gfx/Icons/upvote-arrow-white.svg');
-        @include icon-image-centering;
-
+        // I'm using a mixin with a variable being the url for the upvoted and un-upvoted states
+        @include icon-image-centering('upvote-arrow-white');
 
         &--active {
-            background-image: url('../../content/gfx/Icons/upvote-arrow.svg');
-            @include icon-image-centering;
+            @include icon-image-centering('upvote-arrow');
         }
     }
 
@@ -46,6 +44,3 @@
         }
     }
 }
-
-// to do after review
-// - utilize mixin props
