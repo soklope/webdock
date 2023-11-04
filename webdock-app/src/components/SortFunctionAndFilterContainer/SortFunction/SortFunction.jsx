@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../../SortFunctionAndFilterContainer/SortFunction/SortFunction.scss';
 import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
 
@@ -6,6 +6,24 @@ export default function SortFunction() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('');
   const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
+  const sortRef = useRef(null); 
+
+  useEffect(() => {
+    // Add an event listener to the document to handle clicks outside the button and dropdown
+    function handleClickOutside(event) {
+      if (sortRef.current && !sortRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+
+    // Attach the event listener when the component mounts
+    document.addEventListener('click', handleClickOutside);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -28,11 +46,11 @@ export default function SortFunction() {
           return b.numberOfUpvotes - a.numberOfUpvotes;
         });
         break;
-        case 'New':
-          sortedData = [...dataToSort].sort((a, b) => {
-            return b.createdAt - a.createdAt;
-          });
-          break;
+      case 'New':
+        sortedData = [...dataToSort].sort((a, b) => {
+          return b.createdAt - a.createdAt;
+        });
+        break;
       default:
         sortedData = dataToSort;
     }
@@ -43,7 +61,7 @@ export default function SortFunction() {
   const sortOptions = ['Trending', 'Top', 'New'];
 
   return (
-    <div className="sort-function">
+    <div ref={sortRef} className="sort-function">
       <button
         className={`sort-function-btn ${isDropdownOpen ? 'active' : ''}`}
         onClick={toggleDropdown}
