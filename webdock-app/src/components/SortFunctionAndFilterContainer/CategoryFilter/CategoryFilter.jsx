@@ -10,7 +10,7 @@ export default function CategoryFilter() {
     if (selectedCategory === 'All Categories') {
       return data; // Return all posts if no category is selected.
     }
-  
+
     return data.filter((post) => post.category === selectedCategory);
   };
 
@@ -38,7 +38,10 @@ export default function CategoryFilter() {
 
   return (
     <div className="category-filter">
-      <button onClick={toggleDropdown} className="category-filter-btn">
+      <button
+        onClick={toggleDropdown}
+        className={`category-filter-btn ${showDropdown ? 'active' : ''}`}
+      >
         {selectedCategory}
         <span className="category-filter-btn__icon"></span>
       </button>
@@ -66,6 +69,7 @@ export default function CategoryFilter() {
     </div>
   );
 }
+
 
 
 

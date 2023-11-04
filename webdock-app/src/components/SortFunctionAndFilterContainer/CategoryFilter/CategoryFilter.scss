@@ -4,7 +4,7 @@
 .category-filter-btn {
   @include mix.filter-btn-styling;
 
-  .active {
+  &.active {
     background: darken(v.$offwhite, 10%);
   }
 
