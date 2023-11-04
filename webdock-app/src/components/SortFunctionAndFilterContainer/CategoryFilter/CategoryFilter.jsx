@@ -6,22 +6,35 @@ export default function CategoryFilter() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-    setShowDropdown(false); // Close the dropdown when an option is selected
-  };
-
   const filterPosts = (data) => {
     if (selectedCategory === 'All Categories') {
       return data; // Return all posts if no category is selected.
     }
-
+  
     return data.filter((post) => post.category === selectedCategory);
   };
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setShowDropdown(false); // Close the list when a category is selected
+  };
+
+  const categoryOptions = [
+    'All Categories',
+    'Dashboard Features',
+    'Documentation',
+    'Billing Features',
+    'Networking',
+    'Hardware and Products',
+    'Perfect Server Stacks',
+    'Mobile App',
+    'Webdock API',
+    'Competition',
+  ];
 
   return (
     <div className="category-filter">
@@ -30,19 +43,14 @@ export default function CategoryFilter() {
         <span className="category-filter-btn__icon"></span>
       </button>
       {showDropdown && (
-        <div className="category-dropdown">
-          <select onChange={handleCategoryChange} value={selectedCategory}>
-            <option value="All Categories">All Categories</option>
-            <option value="Dashboard Features">Dashboard Features</option>
-            <option value="Documentation">Documentation</option>
-            <option value="Billing Features">Billing Features</option>
-            <option value="Networking">Networking</option>
-            <option value="Hardware and Products">Hardware and Products</option>
-            <option value="Perfect Server Stacks">Perfect Server Stacks</option>
-            <option value="Mobile App">Mobile App</option>
-            <option value="Webdock API">Webdock API</option>
-            <option value="Competition">Competition</option>
-          </select>
+        <div className="category-list">
+          <ul>
+            {categoryOptions.map((category) => (
+              <li key={category}>
+                <button onClick={() => handleCategoryChange(category)}>{category}</button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
       <div className="filtered-posts">
