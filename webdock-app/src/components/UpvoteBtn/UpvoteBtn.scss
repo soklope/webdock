@@ -28,10 +28,10 @@
 
     &__icon {
         // I'm using a mixin with a variable being the url for the upvoted and un-upvoted states
-        @include icon-image-centering('upvote-arrow-white');
+        @include icon-image-centering('../../content/gfx/Icons/upvote-arrow-white.svg', 20px, 20px);
 
         &--active {
-            @include icon-image-centering('upvote-arrow');
+            @include icon-image-centering('../../content/gfx/Icons/upvote-arrow.svg', 20px, 20px);
         }
     }
 
