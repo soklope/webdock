@@ -1,4 +1,5 @@
 import Router from "./router/router";
+import ViewToggleSwitchContainer from "./components/ViewToggleSwitchContainer/ViewToggleSwitchContainer";
 
 export default function App() {
   return (

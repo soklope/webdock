@@ -1,7 +1,22 @@
+@mixin icon-image-centering {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
-    @mixin icon-image-centering {
-        width: 20px;
-        height: 20px;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
+@mixin toggle-switch-active {
+    width: 100%;
+    height: 100%;
+    background-color: v.$medium-green;
+    border: none;
+    cursor: not-allowed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@mixin toggle-switch-default {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+}
