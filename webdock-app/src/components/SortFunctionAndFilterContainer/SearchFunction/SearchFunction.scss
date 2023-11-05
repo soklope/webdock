@@ -5,9 +5,7 @@
     @include mix.filter-btn-styling;
 
     &__icon {
+        @include mix.icon-image-centering;
         background-image: url('../../../content/gfx/Icons/search-function-icon.svg');
-        background-position: center;
-        width: 20px;
-        height: 20px;
       }
 }
