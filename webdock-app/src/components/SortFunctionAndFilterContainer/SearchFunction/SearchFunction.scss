@@ -1,2 +1,13 @@
 @use '../../../global-styling/mixins' as mix;
 @use '../../../global-styling/Variables.scss' as v;
+
+.search-function-btn {
+    @include mix.filter-btn-styling;
+
+    &__icon {
+        background-image: url('../../../content/gfx/Icons/search-function-icon.svg');
+        background-position: center;
+        width: 20px;
+        height: 20px;
+      }
+}

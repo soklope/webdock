@@ -1,5 +1,6 @@
 import '../SortFunctionAndFilterContainer/SortFunctionFilterContainer.scss';
 import CategoryFilter from './CategoryFilter/CategoryFilter';
+import SearchFunction from './SearchFunction/SearchFunction';
 import SortFunction from './SortFunction/SortFunction';'./SortFunction/SortFunction.jsx'
 
 export default function SortFunctionAndFilterContainer() {
@@ -7,7 +8,7 @@ export default function SortFunctionAndFilterContainer() {
         <div className="sort-function-and-filter-container">
             <SortFunction/>
             <CategoryFilter />
-            <SortFunction />   
+            <SearchFunction />   
         </div>
     )
 }
