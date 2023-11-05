@@ -1,13 +1,20 @@
 import '../SearchFunction/SearchFunction.scss';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function SearchFunction() {
   const [isInputVisible, setInputVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const inputRef = useRef(null);
 
   const toggleInput = () => {
     setInputVisible(!isInputVisible);
   };
+
+  useEffect(() => {
+    if (isInputVisible) {
+      inputRef.current.focus();
+    }
+  }, [isInputVisible]);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -22,6 +29,7 @@ function SearchFunction() {
           onChange={handleInputChange}
           placeholder="Search..."
           className={`search-input ${isInputVisible ? 'active' : ''}`}
+          ref={inputRef}
         />
       ) : (
         <button onClick={toggleInput} className="search-function-btn">
@@ -34,3 +42,4 @@ function SearchFunction() {
 }
 
 export default SearchFunction;
+
