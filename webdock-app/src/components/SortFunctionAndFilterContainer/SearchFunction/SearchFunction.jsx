@@ -1,5 +1,4 @@
 import '../SearchFunction/SearchFunction.scss';
-
 import { useState } from 'react';
 
 function SearchFunction() {
@@ -21,24 +20,17 @@ function SearchFunction() {
           type="text"
           value={searchQuery}
           onChange={handleInputChange}
-          placeholder="Enter your search query"
+          placeholder="Search..."
+          className={`search-input ${isInputVisible ? 'active' : ''}`}
         />
       ) : (
-        <button 
-        onClick={toggleInput}
-        className={"search-function-btn"}>Search...
-        <span className="search-function-btn__icon"></span>
+        <button onClick={toggleInput} className="search-function-btn">
+          Search...
+          <span className="search-function-btn__icon"></span>
         </button>
-
       )}
     </div>
   );
 }
 
 export default SearchFunction;
-
-
-
-
-
-

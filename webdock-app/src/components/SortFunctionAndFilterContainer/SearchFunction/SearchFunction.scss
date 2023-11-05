@@ -2,10 +2,30 @@
 @use '../../../global-styling/Variables.scss' as v;
 
 .search-function-btn {
-    @include mix.filter-btn-styling;
+  @include mix.filter-btn-styling;
 
-    &__icon {
-        @include mix.icon-image-centering;
-        background-image: url('../../../content/gfx/Icons/search-function-icon.svg');
-      }
+  &__icon {
+    @include mix.icon-image-centering;
+    background-image: url('../../../content/gfx/Icons/search-function-icon.svg');
+  }
+}
+
+.search-input {
+  @include mix.filter-btn-styling;
+
+  &.active {
+@include mix.filter-btn-styling
+  }
+
+  input {
+    border: none;
+    background: transparent;
+    font-family: v.$secondary-font;
+    font-size: 15px;
+    font-weight: 500;
+    height: 35px;
+    padding: 5px 15px;
+    align-items: center;
+    gap: 10px;
+  }
 }
