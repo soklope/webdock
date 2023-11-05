@@ -1,11 +1,9 @@
-// Import the 'useState' hook from React for future use (not used in this component).
-import { useState } from 'react';
 // Import the 'CategoryBtn' component and the associated SCSS file.
 import CategoryBtn from '../categoryBtn/CategoryBtn';
 import './CategoryBtnContainer.scss';
 
 // Define the 'CategoryBtnContainer' component, which serves as a container for category buttons.
-function CategoryBtnContainer() {
+export default function CategoryBtnContainer() {
   return (
     // Create a container div with the 'flex-container' class.
     <div className="flex-container">
@@ -45,8 +43,6 @@ function CategoryBtnContainer() {
 }
 
 // Export the 'CategoryBtnContainer' component for use in other parts of the application.
-export default CategoryBtnContainer;
+ CategoryBtnContainer;
 
-// To do after code review
-// - Move "export default" to the component declaration on line 8
 // - Remove "import useState" since it is not being used

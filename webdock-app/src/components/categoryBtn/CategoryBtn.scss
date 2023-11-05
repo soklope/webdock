@@ -4,18 +4,8 @@
 // Import variables from the 'Variables.scss' file
 @use '../../global-styling/Variables.scss' as v;
 
-// Base styling for .test class
-.test {
-    background-color: #1c215d;
-}
-
-// Placeholder for border color styles
-.border-color {
-    // Add border-color styles here
-}
-
-// Styling for .category-btn-mypost-text class
-.category-btn-mypost-text {
+// Styling for .category-btn class
+.category-btn {
     border-style: solid;
     position: relative;
     width: 110px;
@@ -25,7 +15,7 @@
     // Uncomment this line to set the background color to white
     // background-color: white;
 
-    color: #404040;
+    color:v.$offblack;
     text-align: center;
     font-family: Poppins;
     font-size: 15px;
@@ -38,18 +28,16 @@
 
     border-radius: 5px;
     overflow: hidden;
-    margin: 5px;
     margin-left: 5px;
-    margin-right: 5px;
     outline: none;
     border-radius: 5px;
     border: 0.5px solid;
 
-    // Styling for the .category-btn-mypost-text__indicator sub-element
+    // Styling for the .category-btn__indicator sub-element
     &__indicator {
         width: 4px;
         height: 100%;
-        background-color: #ED8007;
+        background-color: v.$secondary-color;
         position: absolute;
         right: 0%;
         top: 0;
@@ -58,84 +46,78 @@
 
 // Background color classes for specific categories
 .MyPost {
-    background-color: #ED8007;
+    background-color: v.$secondary-color;
 }
 
 .Review {
-    background-color: #85B5B5;
+    background-color: v.$light-green;
 }
 
 .Planned {
-    background-color: #1FA0FF;
+    background-color: v.$blue;
 }
 
 .InProgress {
-    background-color: #C17AFF;
+    background-color: v.$purple;
 }
 
 .Complete {
-    background-color: #6CD345;
+    background-color: v.$green;
 }
 
 // Border color classes for specific categories
 // Use these classes to set border colors
 .MyPost-border-color {
-    border-color: #ED8007;
+    border-color: v.$secondary-color;
 }
 
 .Review-border-color {
-    border-color: #85B5B5;
+    border-color:v.$light-green;
 }
 
 .Planned-border-color {
-    border-color: #1FA0FF;
+    border-color: v.$blue;
 }
 
 .InProgress-border-color {
-    border-color: #C17AFF;
+    border-color: v.$purple ;
 }
 
 .Complete-border-color {
-    border-color: #6CD345;
+    border-color: v.$green;
 }
 
 // Background color classes for specific categories when toggled
 .MyPost-background-color {
-    background-color: #ED8007;
-    color: white;
+    background-color: v.$secondary-color;
+    color: v.$white;
 }
 
 .Review-background-color {
-    background-color: #85B5B5;
-    color: white;
+    background-color: v.$light-green;
+    color: v.$white;
 }
 
 .Planned-background-color {
-    background-color: #1FA0FF;
-    color: white;
+    background-color: v.$blue;
+    color: v.$white;
 }
 
 .InProgress-background-color {
-    background-color: #C17AFF;
-    color: white;
+    background-color:v.$purple;
+    color:v.$white;
 }
 
 .Complete-background-color {
-    background-color: #6CD345;
-    color: white;
+    background-color:v.$green;
+    color: v.$white;
 }
 
 // Media query for larger screens
 @media screen and (min-width: v.$desktop-screen) {
-    .category-btn-mypost-text {
+    .category-btn {
         height: 35px;
         width: 116.153px;
         flex-shrink: 0;
     }
 }
-
-// To do after code review
-// - Use global variables for the colors (v.$VARIABLE_NAME)
-// - Clean up naming of classes (category-btn-mypost-text) is not actually what it is used for
-// - Delete classes that are not being used
-// - Clean up margin usage line 41 - 43
