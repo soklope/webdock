@@ -1,0 +1,1 @@
+import '../SearchFunction/SearchFunction.scss';
