@@ -1,8 +1,18 @@
 @use './Variables.scss' as v;
 
-@mixin icon-image-centering {
-    width: 20px;
-    height: 20px;
+// @mixin icon-image-centering {
+//     width: 20px;
+//     height: 20px;
+//     background-repeat: no-repeat;
+//     background-position: center;
+// }
+
+//I use variables/props in the mixin so i can change logo url and sizing when i do @include
+@mixin icon-image-centering($imgpath, $width, $height ) {
+    width: $width;
+    height: $height;
+
+    background-image: url(#{$imgpath});
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -70,4 +80,12 @@
     &__list-item:hover {
         background: darken(v.$offwhite, 10%);
     }
+}
+
+//In this mixin the variables/props are defined with a default value
+@mixin flex-center($justify-content: center, $align-items: center, $gap: v.$gap ) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    gap: $gap;
 }
