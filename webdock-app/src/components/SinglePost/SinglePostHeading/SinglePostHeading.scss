@@ -1,6 +1,47 @@
+@use "../../../global-styling/Variables.scss" as v;
+@import '../../../global-styling/mixins';
 
-@use '../../../global-styling/Variables.scss' as v;
+.single-post-heading {
+	@include flex-center;
 
+	@media screen and (min-width: v.$desktop-screen) {
+		gap: v.$gap-desktop;
+	}
 
+	&__meta {
+		width: 100%;
 
+		&-container {
+			@include flex-center(start);
 
+			@media screen and (min-width: v.$desktop-screen) {
+				gap: v.$gap-desktop;
+			}
+		}
+	}
+
+	&__title {
+		margin-bottom: 5px;
+		font-size: v.$h1;
+
+		@media screen and (min-width: v.$desktop-screen) {
+			font-size: v.$h1-desktop;
+		}
+	}
+
+	&__desktop {
+		display: none;
+
+		color: v.$black;
+		font-family: v.$primary-font;
+		font-size: 12px;
+        
+        & span {
+            color: v.$grey;
+        }
+
+		@media screen and (min-width: v.$desktop-screen) {
+			@include flex-center($gap: 5px);
+		}
+	}
+}

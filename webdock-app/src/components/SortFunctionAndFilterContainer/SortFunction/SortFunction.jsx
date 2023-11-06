@@ -1,9 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import '../../SortFunctionAndFilterContainer/SortFunction/SortFunction.scss';
+import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
 
-export default function SortFunction({ onSortChange }) {
+export default function SortFunction() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('');
+  const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
+  const sortRef = useRef(null); 
+
+  useEffect(() => {
+    // Add an event listener to the document to handle clicks outside the button and dropdown
+    function handleClickOutside(event) {
+      if (sortRef.current && !sortRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+
+    // Attach the event listener when the component mounts
+    document.addEventListener('click', handleClickOutside);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -12,13 +32,36 @@ export default function SortFunction({ onSortChange }) {
   const handleSortChange = (sortOption) => {
     setSelectedSortOption(sortOption);
     setDropdownOpen(false);
-    onSortChange(sortOption); // Pass the selected sort option to the parent component
+
+    let sortedData;
+
+    switch (sortOption) {
+      case 'Trending':
+        sortedData = [...dataToSort].sort((a, b) => {
+          return b.numberOfComments - a.numberOfComments;
+        });
+        break;
+      case 'Top':
+        sortedData = [...dataToSort].sort((a, b) => {
+          return b.numberOfUpvotes - a.numberOfUpvotes;
+        });
+        break;
+      case 'New':
+        sortedData = [...dataToSort].sort((a, b) => {
+          return b.createdAt - a.createdAt;
+        });
+        break;
+      default:
+        sortedData = dataToSort;
+    }
+
+    setDataToSort(sortedData);
   };
 
   const sortOptions = ['Trending', 'Top', 'New'];
 
   return (
-    <div className="sort-function">
+    <div ref={sortRef} className="sort-function">
       <button
         className={`sort-function-btn ${isDropdownOpen ? 'active' : ''}`}
         onClick={toggleDropdown}
@@ -30,16 +73,22 @@ export default function SortFunction({ onSortChange }) {
         <div className="dropdown-menu">
           <ul>
             {sortOptions.map((option) => (
-              <li key={option} onClick={() => handleSortChange(option)}>
+              <li className="dropdown-menu__list-item" key={option} onClick={() => handleSortChange(option)}>
                 {option}
               </li>
             ))}
           </ul>
         </div>
       )}
+
+      {dataToSort.map((item) => (
+        // Render each item from the sorted data here
+        <div key={item.title}>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          {/* Add more properties as needed */}
+        </div>
+      ))}
     </div>
   );
 }
-
-// To do after code review
-// - Delete onSortChange prop since it is not being used
