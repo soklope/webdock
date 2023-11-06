@@ -45,14 +45,17 @@ function SearchFunction() {
   return (
     <div>
       {isInputVisible ? (
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleInputChange}
-          placeholder="Search..."
-          className={`search-input ${isInputVisible ? 'active' : ''}`}
-          ref={inputRef}
-        />
+        <div className="search-input">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleInputChange}
+            placeholder="Search..."
+            className={`search-input ${isInputVisible ? 'active' : ''}`}
+            ref={inputRef}
+          />
+          <span className="input-icon"></span>
+        </div>
       ) : (
         <button onClick={toggleInput} className="search-function-btn">
           Search...
