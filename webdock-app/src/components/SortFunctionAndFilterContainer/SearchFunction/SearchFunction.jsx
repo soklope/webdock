@@ -1,6 +1,6 @@
 import '../SearchFunction/SearchFunction.scss';
 import { useState, useEffect, useRef } from 'react';
-import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb'; // Import your dummyDb data
+import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
 
 function SearchFunction() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -21,8 +21,18 @@ function SearchFunction() {
   const handleInputChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
-    const results = performSearch(query);
-    setSearchResults(results);
+  };
+
+  const handleIconClick = () => {
+    // Trigger the search when the icon is clicked
+    performSearch(searchQuery);
+  };
+
+  const handleEnterPress = (event) => {
+    if (event.key === 'Enter') {
+      // Trigger the search when the Enter key is pressed
+      performSearch(searchQuery);
+    }
   };
 
   // Perform search and return matching items from the dummyDb arrays
@@ -33,13 +43,15 @@ function SearchFunction() {
       ...completeArrayDb,
     ];
 
-    return allData.filter((item) => {
+    const results = allData.filter((item) => {
       const title = item.title.toLowerCase();
       const description = item.description.toLowerCase();
       const lowerCaseQuery = query.toLowerCase();
 
       return title.includes(lowerCaseQuery) || description.includes(lowerCaseQuery);
     });
+
+    setSearchResults(results);
   };
 
   return (
@@ -47,15 +59,16 @@ function SearchFunction() {
       {isInputVisible ? (
         <div className="search-input">
           <div className="input-container">
-          <input
-  type="text"
-  value={searchQuery}
-  onChange={handleInputChange}
-  placeholder="Search..."
-  className={`search-input ${isInputVisible ? 'active' : ''} ${isInputVisible ? 'no-border' : ''}`}
-  ref={inputRef}
-/>
-            <span className="input-icon"></span> {/* This is a placeholder for the icon */}
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleInputChange}
+              onKeyPress={handleEnterPress}
+              placeholder="Search..."
+              className={`search-input ${isInputVisible ? 'active' : ''} ${isInputVisible ? 'no-border' : ''}`}
+              ref={inputRef}
+            />
+            <span className="input-icon" onClick={handleIconClick}></span> {/* Clickable icon */}
           </div>
         </div>
       ) : (
