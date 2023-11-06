@@ -14,6 +14,8 @@ function SearchFunction() {
 
   const closeInput = () => {
     setInputVisible(false);
+    setSearchQuery(''); // Clear the search query
+    setSearchResults([]); // Clear the search results
   };
 
   useEffect(() => {
