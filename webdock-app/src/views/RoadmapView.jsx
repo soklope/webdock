@@ -2,7 +2,6 @@ import React from "react";
 
 import CreatePostBtn from "../components/CreatePostBtn/CreatePostBtn";
 import ViewToggleSwitchContainer from "../components/ViewToggleSwitchContainer/ViewToggleSwitchContainer";
-import SortFunctionAndFilterContainer from "../components/SortFunctionAndFilterContainer/SortFunctionFilterContainer";
 import RoadmapContainerPlanned from "../components/RoadmapContainer/RoadmapContainerPlanned";
 import RoadmapContainerInProgress from "../components/RoadmapContainer/RoadmapContainerInProgress";
 import RoadmapContainerComplete from "../components/RoadmapContainer/RoadmapContainerComplete";
@@ -29,7 +28,8 @@ export default function RoadmapView() {
               </div>
               
               <div className="filter-grid-sort-filter">
-                <SortFunctionAndFilterContainer />
+                {/* <SortFunctionAndFilterContainer /> */}
+                sort and filter kommer her
               </div>
 
           </section>

@@ -1,11 +1,5 @@
 @use './Variables.scss' as v;
 
-// @mixin icon-image-centering {
-//     width: 20px;
-//     height: 20px;
-//     background-repeat: no-repeat;
-//     background-position: center;
-// }
 
 //I use variables/props in the mixin so i can change logo url and sizing when i do @include
 @mixin icon-image-centering($imgpath, $width, $height ) {

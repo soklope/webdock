@@ -1,20 +1,20 @@
-@use '../../../global-styling/mixins' as mix;
 @use '../../../global-styling/Variables.scss' as v;
+@import '../../../global-styling/mixins.scss';
 
 .search-function-btn {
-  @include mix.filter-btn-styling;
+  @include filter-btn-styling;
 
   &__icon {
-    @include mix.icon-image-centering;
-    background-image: url('../../../content/gfx/Icons/search-function-icon.svg');
+    @include icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
+    // background-image: url('../../../content/gfx/Icons/search-function-icon.svg');
   }
 }
 
 .search-input {
-  @include mix.filter-btn-styling;
+  @include filter-btn-styling;
 
   &.active {
-@include mix.filter-btn-styling
+@include filter-btn-styling
   }
 
   input {
