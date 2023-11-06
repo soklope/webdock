@@ -1,21 +1,22 @@
-@use '../../../global-styling/mixins' as mix;
+// @use '../../../global-styling/mixins' as mix;
 @use '../../../global-styling/Variables.scss' as v;
+@import '../../../global-styling/mixins';
 
 .category-filter-btn {
-  @include mix.filter-btn-styling;
+  @include filter-btn-styling;
 
   &.active {
     background: darken(v.$offwhite, 10%);
   }
 
   &__icon {
-    @include mix.arrow-icon-size;
+    @include arrow-icon-size;
     background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
   }
 }
 
 .category-list {
-  @include mix.dropdown-menu-styling;
+  @include dropdown-menu-styling;
 
   ul {
     list-style-type: none;
