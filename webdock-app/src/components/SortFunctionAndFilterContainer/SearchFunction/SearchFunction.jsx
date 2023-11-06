@@ -47,14 +47,14 @@ function SearchFunction() {
       {isInputVisible ? (
         <div className="search-input">
           <div className="input-container">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={handleInputChange}
-              placeholder="Search..."
-              className={`search-input ${isInputVisible ? 'active' : ''}`}
-              ref={inputRef}
-            />
+          <input
+  type="text"
+  value={searchQuery}
+  onChange={handleInputChange}
+  placeholder="Search..."
+  className={`search-input ${isInputVisible ? 'active' : ''} ${isInputVisible ? 'no-border' : ''}`}
+  ref={inputRef}
+/>
             <span className="input-icon"></span> {/* This is a placeholder for the icon */}
           </div>
         </div>

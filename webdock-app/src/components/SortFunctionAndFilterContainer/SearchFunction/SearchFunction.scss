@@ -30,6 +30,16 @@
     font-weight: 500;
     height: 35px;
     width: 100%;
+
+    
+    &:focus, &:not(:focus) {
+      border-radius: 0px;
+      border-left:none;
+      border-right: none;
+      outline: none;
+  
+
+    }
   }
 
   .input-icon {
