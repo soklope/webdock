@@ -47,9 +47,13 @@
 }
 
 .roadmap-flex-container {
+    position: relative;
+
     @media screen and (min-width: v.$desktop-screen) {
         display: flex;
         justify-content: space-between;
         gap: 20px;
+        overflow: auto;
+        /* Apply a shadow on the right side */
     }
 }

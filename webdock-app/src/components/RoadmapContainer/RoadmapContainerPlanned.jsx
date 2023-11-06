@@ -24,7 +24,7 @@ export default function RoadmapContainerPlanned() {
       <div className="roadmap-container">
         <div className="roadmap-container__tooltip" onClick={openContainer}>
           <p>Planned</p>
-          <span className={`roadmap-container__dropdown-icon planned-color ${containerIsOpen ? "rotate" : ""}`}></span>
+          <span className={`roadmap-container__dropdown-icon ${containerIsOpen ? "rotate" : ""}`}></span>
           <p className="roadmap-container__postcount">{postCount}</p>
           <div className={`roadmap-container__color-indicator planned-color`}/>
         </div>

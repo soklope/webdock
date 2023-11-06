@@ -1,5 +1,9 @@
 @use "./Variables.scss" as v; // Import variables from Variables.scss for use in this file.
 
+main {
+    max-width: 1200px;
+}
+
 * {
     margin: 0;
     padding: 0;
