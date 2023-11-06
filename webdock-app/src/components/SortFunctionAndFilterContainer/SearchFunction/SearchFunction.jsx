@@ -12,6 +12,10 @@ function SearchFunction() {
     setInputVisible(!isInputVisible);
   };
 
+  const closeInput = () => {
+    setInputVisible(false);
+  };
+
   useEffect(() => {
     if (isInputVisible) {
       inputRef.current.focus();
@@ -59,6 +63,7 @@ function SearchFunction() {
       {isInputVisible ? (
         <div className="search-input">
           <div className="input-container">
+            <span className="input-icon" onClick={handleIconClick}></span>
             <input
               type="text"
               value={searchQuery}
@@ -68,13 +73,13 @@ function SearchFunction() {
               className={`search-input ${isInputVisible ? 'active' : ''} ${isInputVisible ? 'no-border' : ''}`}
               ref={inputRef}
             />
-            <span className="input-icon" onClick={handleIconClick}></span> {/* Clickable icon */}
+            <span className="close-icon" onClick={closeInput}></span>
           </div>
         </div>
       ) : (
         <button onClick={toggleInput} className="search-function-btn">
           Search...
-          <span className="search-function-btn__icon"></span> {/* This is a placeholder for the icon */}
+          <span className="search-function-btn__icon"></span>
         </button>
       )}
 
@@ -95,3 +100,4 @@ function SearchFunction() {
 }
 
 export default SearchFunction;
+
