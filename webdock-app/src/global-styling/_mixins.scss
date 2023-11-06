@@ -33,12 +33,6 @@
     flex-shrink: 0;
 }
 
-@mixin icon-image-centering {
-    width: 20px;
-    height: 20px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 
 @mixin filter-btn-styling {
     border-radius: 5px;
