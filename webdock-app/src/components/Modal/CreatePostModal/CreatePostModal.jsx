@@ -1,4 +1,6 @@
+import CategoryFilter from "../../SortFunctionAndFilterContainer/CategoryFilter/CategoryFilter";
 import ModalBackground from "../ModalBackground";
+import SelectCategory from "../SelectCategory/SelectCategory";
 import './CreatePostModal.scss'
 
 export default function CreatePostModal() {
@@ -7,7 +9,8 @@ export default function CreatePostModal() {
             <ModalBackground />
         <div className="container">
             <div className="create-post-modal-container">
-            <p>Hello</p>
+            <p className="titles">Category</p>
+            <SelectCategory />
             </div>
         </div>
         </>
