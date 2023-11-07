@@ -14,7 +14,7 @@
     // Add border-color styles here
 }
 
-// Styling for .Statusfilters-mypost-text class
+// Styling for .category-btn-mypost-text class
 .Statusfilters-btn-mypost-text {
     border-style: solid;
     position: relative;
@@ -45,7 +45,7 @@
     border-radius: 5px;
     border: 0.5px solid;
 
-    // Styling for the .Statusfilters-btn-mypost-text__indicator sub-element
+    // Styling for the .category-btn-mypost-text__indicator sub-element
     &__indicator {
         width: 4px;
         height: 100%;
@@ -127,7 +127,7 @@
 
 // Media query for larger screens
 @media screen and (min-width: v.$desktop-screen) {
-    .category-btn-mypost-text {
+    .Statusfilters-btn-mypost-text {
         height: 35px;
         width: 116.153px;
         flex-shrink: 0;

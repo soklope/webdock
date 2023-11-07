@@ -4,7 +4,7 @@ import { useState } from "react";
 import './Statusfilters.scss'
 
 // This is a Statusfilters  component
-export default function CategoryBtn({ indicationColor, title, borderColor, backgroundColor }) {
+export default function Statusfilter({ indicationColor, title, borderColor, backgroundColor }) {
   const [isToggled, setIsToggled] = useState(false);
 
   const handleButtonClick = () => {
@@ -13,15 +13,20 @@ export default function CategoryBtn({ indicationColor, title, borderColor, backg
   }
 
   const textClassName = isToggled ? 'Statusfilters-btn-mypost-text-toggled' : 'Statusfilters-btn-mypost-text';
-  const fontClassName = isToggled ? 'category-btn-mypost-text-font-toggled' : 'category-btn-mypost-text-font';
+  const fontClassName = isToggled ? 'Statusfilters-btn-mypost-text-font-toggled' : 'Statusfilters-btn-mypost-text-font';
 
   return (
     <>
       <button className={`Statusfilters-btn-mypost-text ${borderColor} ${isToggled && backgroundColor}`} onClick={handleButtonClick}>
         <p>{title}</p>
         <div className={`Statusfilters-btn-mypost-text__indicator ${indicationColor}`}></div>
+
+  
       </button>
     </>
   );
+  
 }
+
+
 
