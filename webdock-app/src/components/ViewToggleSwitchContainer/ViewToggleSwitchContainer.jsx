@@ -1,15 +1,18 @@
 import { useState } from "react";
 import ViewToggleSwitch from "../ViewToggleSwitchContainer/ViewToggleSwitch/ViewToggleSwitch";
 import "./ViewToggleSwitchContainer.scss";
+import useRoadmapStore from "../../stores/viewStore";
 
 // Component managing toggle switches between Roadmap and List views.
 export default function ViewToggleSwitchContainer() {
+  const { toggleRoadmapView } = useRoadmapStore();
   const [isRoadmapView, setIsRoadmapView] = useState(true); 
   //const [displayText, setDisplayText] = useState("Roadmap View"); 
 
   // Function to toggle between Roadmap and List views
   const toggleView = () => {
     setIsRoadmapView(!isRoadmapView);
+    toggleRoadmapView()
     //setDisplayText(isRoadmapView ? "List View" : "Roadmap View");
   };
 

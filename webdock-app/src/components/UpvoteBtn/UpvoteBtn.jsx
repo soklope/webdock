@@ -31,7 +31,7 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
         <div
          className={`upvote-btn__text${isUpvoted ? "--active" : ""}`}
          >
-            {upvotes}
+            {/* {upvotes} */}
             {numberOfUpvotes}
         </div>
       </div>
