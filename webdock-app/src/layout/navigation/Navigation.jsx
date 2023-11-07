@@ -4,9 +4,6 @@ import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
 import placeholderProfilePic from "../../content/images/placeholder_profile.webp";
 import logo from "../../content/images/logo_200x200.png";
-import roadmap_icon from "../../content/gfx/icons/roadmap-icon.svg";
-import feature_icon from "../../content/gfx/icons/feature-request-icon.svg";
-import search_icon from "../../content/gfx/icons/search-icon.svg";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +15,6 @@ export default function Navigation() {
   };
 
   return (
-    <>
       <nav className="wrap">
         <div className="navigation-logo">
           <Link to="/">
@@ -75,8 +71,8 @@ export default function Navigation() {
           <>
             <div className="dark-backdrop" />
             {/* Dropdown menu */}
-            <div className="dropdown-menu">
-              <ul className="dropdown-menu__items">
+            <div className="nav-dropdown-menu">
+              <ul className="nav-dropdown-menu__items">
                 <li>
                   {/* User profile picture and username in the dropdown */}
                   <img
@@ -86,25 +82,6 @@ export default function Navigation() {
                   />
                   <p>user_name</p>
                 </li>
-
-                {/* Dropdown navigation links */}
-                <li>
-                  <Link to="/roadmap">
-                    {" "}
-                    {/* Update to the actual routes */}
-                    <img src={roadmap_icon} alt="roadmap icon" />
-                    Roadmap
-                  </Link>
-                </li>
-
-                <li>
-                  <Link to="/feature-request">
-                    {" "}
-                    {/* Update to the actual routes */}
-                    <img src={feature_icon} alt="feature icon" />
-                    Feature Request
-                  </Link>
-                </li>
               </ul>
             </div>
           </>
@@ -112,6 +89,5 @@ export default function Navigation() {
           <></>
         )}
       </nav>
-    </>
   );
 }

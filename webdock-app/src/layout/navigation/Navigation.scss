@@ -68,6 +68,7 @@ nav {
   .burger-menu-icon {
     @media screen and (min-width: v.$desktop-screen) {
       display: none;
+      position: relative;
     }
   }
 
@@ -75,6 +76,7 @@ nav {
     from {
       transform: translateX(100%);
     }
+
     to {
       transform: translateX(0);
     }
@@ -82,21 +84,20 @@ nav {
 
   .dark-backdrop {
     animation: slide 0.2s;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 70px;
     width: 100%;
     height: calc(100vh - 70px);
     background-color: rgb(0, 0, 0);
     opacity: 0.5;
-    z-index: 1;
 
     @media screen and (min-width: v.$desktop-screen) {
       display: none;
     }
   }
 
-  .dropdown-menu {
+  .nav-dropdown-menu {
     animation: slide 0.5s;
     position: absolute;
     display: flex;
@@ -109,7 +110,6 @@ nav {
     height: auto;
     top: 0;
     left: 0;
-    z-index: 2;
 
     @media screen and (min-width: v.$desktop-screen) {
       display: none;

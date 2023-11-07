@@ -10,7 +10,7 @@ import SortFunctionAndFilterContainer from '../components/SortFunctionAndFilterC
 const Router = () => {
   return (
     <BrowserRouter>
-    <Navigation />
+      <Navigation />
       <Routes>
         <Route exact path="/" element={<RoadmapView />} />
         <Route path="/listview" element={<ListView />} />
