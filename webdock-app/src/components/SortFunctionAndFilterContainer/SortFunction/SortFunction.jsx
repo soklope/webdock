@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import '../../SortFunctionAndFilterContainer/SortFunction/SortFunction.scss';
 import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
+import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
+
 
 export default function SortFunction() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -82,13 +84,17 @@ export default function SortFunction() {
       )}
 
       {dataToSort.map((item) => (
-        // Render each item from the sorted data here
         <div key={item.title}>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-          {/* Add more properties as needed */}
-        </div>
-      ))}
+        <RoadmapChildren 
+        title={item.title}
+        numberOfComments={item.numberOfComments}
+        totalUpvotes={item.numberOfUpvotes}
+        category={item.category}
+        status={item.status}
+        statusColor={item.statusColor}
+        />
+    </div>
+    ))}
     </div>
   );
 }

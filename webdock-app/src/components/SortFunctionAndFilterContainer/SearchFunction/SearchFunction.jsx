@@ -1,6 +1,7 @@
 import '../SearchFunction/SearchFunction.scss';
 import { useState, useEffect, useRef } from 'react';
 import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
+import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 
 function SearchFunction() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -89,18 +90,21 @@ function SearchFunction() {
 
       {searchResults.length > 0 && (
         <div>
-          <h3>Search Results</h3>
-          <ul>
-            {searchResults.map((item, index) => (
-              <li key={index}>
-                {item.title} - {item.description}
-              </li>
+            {searchResults.map((item) => (
+              <div key={item.title}>
+              <RoadmapChildren 
+              title={item.title}
+              numberOfComments={item.numberOfComments}
+              totalUpvotes={item.numberOfUpvotes}
+              category={item.category}
+              status={item.status}
+              statusColor={item.statusColor}
+            />
+            </div>
             ))}
-          </ul>
         </div>
       )}
     </div>
   );
 }
-
 export default SearchFunction;

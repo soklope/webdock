@@ -76,20 +76,15 @@ export default function CategoryFilter() {
         )}
       </div>
       <div className="filtered-posts">
-        {filterPosts([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]).map((post) => (
-          <div key={post.title}>
-            {/* <h3>{post.title}</h3>
-            <p>{post.description}</p>
-            <p>Category: {post.category}</p> */}
+        {filterPosts([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]).map((item) => (
+          <div key={item.title}>
             <RoadmapChildren 
-              title={post.title}
-              numberOfComments={post.numberOfComments}
-              totalUpvotes={post.numberOfUpvotes}
-              category={post.category}
-              status={post.status}
-              statusColor={post.statusColor}
-              
-
+              title={item.title}
+              numberOfComments={item.numberOfComments}
+              totalUpvotes={item.numberOfUpvotes}
+              category={item.category}
+              status={item.status}
+              statusColor={item.statusColor}
             />
           </div>
         ))}
