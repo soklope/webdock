@@ -1,8 +1,9 @@
 import React from "react";
 
-import "./SinglePostHeading.scss";
 import UpvoteBtn from "../../UpvoteBtn/UpvoteBtn";
 import Username from "../../Username/Username";
+
+import "./SinglePostHeading.scss";
 
 export default function SinglePostHeading({ postData }) {
 	return (

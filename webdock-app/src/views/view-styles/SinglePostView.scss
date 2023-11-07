@@ -1,0 +1,11 @@
+@use '../../global-styling/Variables.scss' as v;
+@use '../../global-styling/mixins' as mix;
+
+.comment-missing-login {
+    background-color: v.$grey;
+    height: 64px;
+
+    @include mix.flex-center;
+
+    
+}

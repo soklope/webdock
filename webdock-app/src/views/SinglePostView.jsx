@@ -1,10 +1,14 @@
 import { React, useEffect, useState } from "react";
 
+import './view-styles/SinglePostView.scss'
+
 import SinglePostHeading from '../components/SinglePost/SinglePostHeading/SinglePostHeading'
+import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 
 export default function SinglePostView () {
 
     const [post, setPost] = useState({});
+    const [loggedIn, setLoggedIn] = useState(false);
 
 	useEffect(() => {
 		const fetchDummyData = async () => {
@@ -39,11 +43,21 @@ export default function SinglePostView () {
     </div>
 
     <div>
-        main content here
+		<SinglePostContent 
+			postData={post}
+		/>
     </div>
 
-    <div>
-        Comment field and sorting here
+	<div className="comment-missing-login">
+		{!loggedIn &&
+		 <p> Login to leave a comment 
+			 <a href="#"> login</a>
+			 </p>
+		}
+	</div>
+
+    <div >
+        Comment field and sorting here (kun på desktop)
     </div>
 
     <div>
