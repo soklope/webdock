@@ -3,10 +3,13 @@ import './CreatePostModal.scss'
 
 export default function CreatePostModal() {
     return(
-        <div>
+        <>
+            <ModalBackground />
+        <div className="container">
             <div className="create-post-modal-container">
             <p>Hello</p>
             </div>
         </div>
+        </>
     )
 }
