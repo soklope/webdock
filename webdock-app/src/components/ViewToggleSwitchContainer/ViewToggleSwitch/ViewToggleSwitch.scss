@@ -1,0 +1,44 @@
+@use '../../../global-styling/Variables.scss' as v;
+@import '../../../global-styling/mixins';
+
+.view-toggle-switch {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: v.$white;
+    border-radius: 5px;
+    border: v.$medium-green 2px solid;
+    cursor: pointer;
+
+    &__roadmap {
+        @include toggle-switch-default;
+        background-image: url('../../../content/gfx/Icons/roadmap-view-icon.svg');
+    }
+
+    &__roadmap--active {
+        @extend .view-toggle-switch__roadmap;
+        @include toggle-switch-active;
+        background-image: url('../../../content/gfx/Icons/roadmap-view-icon-white.svg');
+
+    }
+
+    &__list {
+        @include toggle-switch-default;
+        background-image: url('../../../content/gfx/Icons/list-view-icon.svg');
+    }
+
+    &__list--active {
+        @extend .view-toggle-switch__list;
+        @include toggle-switch-active;
+        background-image: url('../../../content/gfx/Icons/list-view-white.svg');
+    }
+
+    @media screen and (min-width: v.$desktop-screen) {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+}

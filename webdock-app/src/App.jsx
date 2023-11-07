@@ -1,12 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./layout/navigation/Navigation";
+import Router from "./router/router";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigation />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <div className="background">
+        <div className="background__image">
+          <Router />
+        </div>
+      </div>
+    </>
   );
 }

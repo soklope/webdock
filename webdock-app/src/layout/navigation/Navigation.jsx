@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
 import placeholderProfilePic from "../../content/images/placeholder_profile.webp";
 import logo from "../../content/images/logo_200x200.png";
-import roadmap_icon from "../../content/gfx/roadmap-icon.svg";
-import feature_icon from "../../content/gfx/feature-request-icon.svg";
-import search_icon from "../../content/gfx/search-icon.svg";
+import roadmap_icon from "../../content/gfx/icons/roadmap-icon.svg";
+import feature_icon from "../../content/gfx/icons/feature-request-icon.svg";
+import search_icon from "../../content/gfx/icons/search-icon.svg";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,9 +19,8 @@ export default function Navigation() {
 
   return (
     <>
-      <nav>
+      <nav className="wrap">
         <div className="navigation-logo">
-          {/* Clickable logo */}
           <Link to="/">
             <img
               className="navigation-logo__img"
@@ -30,12 +29,10 @@ export default function Navigation() {
             />
           </Link>
 
-          {/* Company name */}
           <div className="navigation-logo__company-name">Webdock.io</div>
         </div>
 
-        <ul className="menu-items">
-          {/* Navigation links */}
+        {/* <ul className="menu-items">
           <li>
             <Link to="/roadmap">
               <img src={roadmap_icon} alt="roadmap icon" />
@@ -58,15 +55,10 @@ export default function Navigation() {
           </li>
 
           <li>
-            {/* User profile picture and username */}
-            <img
-              src={placeholderProfilePic}
-              alt="username icon"
-              className="navigation-profile-pic"
-            />
+            <img src={placeholderProfilePic} alt="username icon" className="navigation-profile-pic" />
             <p>user_name</p>
           </li>
-        </ul>
+        </ul> */}
 
         <div className="burger-menu-icon">
           {/* Hamburger menu icon */}
