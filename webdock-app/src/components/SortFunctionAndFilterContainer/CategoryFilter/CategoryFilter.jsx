@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import '../CategoryFilter/CategoryFilter.scss';
 import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
+import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 
 export default function CategoryFilter() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
@@ -77,9 +78,19 @@ export default function CategoryFilter() {
       <div className="filtered-posts">
         {filterPosts([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]).map((post) => (
           <div key={post.title}>
-            <h3>{post.title}</h3>
+            {/* <h3>{post.title}</h3>
             <p>{post.description}</p>
-            <p>Category: {post.category}</p>
+            <p>Category: {post.category}</p> */}
+            <RoadmapChildren 
+              title={post.title}
+              numberOfComments={post.numberOfComments}
+              totalUpvotes={post.numberOfUpvotes}
+              category={post.category}
+              status={post.status}
+              statusColor={post.statusColor}
+              
+
+            />
           </div>
         ))}
       </div>
