@@ -4,7 +4,7 @@ import './SinglePostContent.scss'
 
 export default function SinglePostContent({ postData }) {
   return (
-    <p>
+    <div>
       {/* google escape characters for formatting and getting breaks in tekst */}
       {/* style: white-space: something, mike forklarede det */}
       Content: {postData.content}
@@ -15,6 +15,6 @@ export default function SinglePostContent({ postData }) {
           <span>•</span>
           <div>reply</div>
         </div>
-    </p>
+    </div>
   );
 }
