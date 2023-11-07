@@ -1,6 +1,8 @@
 @use "../../global-styling/Variables.scss" as v;
+@use "../../global-styling/mixins" as mix;
 
 nav {
+  background-color: white;
   position: sticky;
   height: 70px;
   width: 100%;
@@ -10,31 +12,64 @@ nav {
   align-items: center;
 
   @media screen and (min-width: v.$desktop-screen) {
-    height: 100px;
+    height: 65px;
     padding: 10px 30px;
   }
 
   .menu-items {
     display: none;
 
+    &__log-out {
+      height: 45px;
+      width: 45px;
+      background-image: url('../../content/gfx/Icons/log-out-icon.svg');
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    &__profile {
+      height: 45px;
+      width: 45px;
+      background-image: url('../../content/gfx/Icons/profile-icon.svg');
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
     @media screen and (min-width: v.$desktop-screen) {
       list-style: none;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 40px;
+
+      &__log-out {
+        height: 30px;
+        width: 30px;
+        background-size: 85%;
+      }
+
+      &__profile {
+        height: 30px;
+        width: 30px;
+        background-size: 85%;
+      }
+
 
       li {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 15px;
         position: relative;
         padding: 10px 0;
+        height: 70px;
+        width: 55px;
+
+        &:hover {
+          transition: 0.5s;
+          background-color: rgba(0, 0, 0, 0.056);
+          cursor: pointer;
+        }
 
         a {
-          display: flex;
-          gap: 15px;
           text-decoration: none;
           font-size: 1rem;
           font-weight: 600;
@@ -42,23 +77,6 @@ nav {
 
           img {
             height: 20px;
-          }
-
-          &::after {
-            background: v.$primary-color;
-            bottom: 0;
-            content: "";
-            display: block;
-            height: 2px;
-            left: 50%;
-            position: absolute;
-            transition: width 0.3s ease 0s, left 0.3s ease 0s;
-            width: 0;
-          }
-
-          &:hover::after {
-            width: 100%;
-            left: 0;
           }
         }
       }
@@ -122,6 +140,10 @@ nav {
       align-items: end;
       gap: 40px;
 
+      &__flex {
+        @include mix.flex-center;
+      }
+
       li {
         display: flex;
         align-items: center;
@@ -141,23 +163,6 @@ nav {
           img {
             height: 20px;
           }
-
-          &::after {
-            background: v.$primary-color;
-            bottom: 0;
-            content: "";
-            display: block;
-            height: 2px;
-            left: 50%;
-            position: absolute;
-            transition: width 0.3s ease 0s, left 0.3s ease 0s;
-            width: 0;
-          }
-
-          &:hover::after {
-            width: 100%;
-            left: 0;
-          }
         }
       }
     }
@@ -172,7 +177,7 @@ nav {
   &__img {
     height: auto;
     width: 100%;
-    max-width: 50px;
+    max-width: 35px;
   }
 
   &__company-name {

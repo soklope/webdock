@@ -46,7 +46,6 @@
 
     &__tooltip {
         background-color: white;
-        position: relative;
         width: 100%;
         cursor: pointer;
         font-weight: 600;
@@ -55,9 +54,9 @@
         gap: 10px;
         align-items: center;
         box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.10);
-        padding: 15px;
         overflow: hidden;
         border-radius: 5px;
+        padding-left: 15px;
     }
 
     &__dropdown-icon {
@@ -73,8 +72,6 @@
     }
 
     &__color-indicator {
-        position: absolute;
-        right: 0;
         width: 4px;
         height: 100%;
         background-color: black;

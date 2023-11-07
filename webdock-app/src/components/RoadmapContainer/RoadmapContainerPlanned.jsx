@@ -29,7 +29,7 @@ export default function RoadmapContainerPlanned() {
       </div>
     ));
   };
-
+  
   return (
     <div className="roadmap-container">
       <div className="roadmap-container__tooltip" onClick={openContainer}>

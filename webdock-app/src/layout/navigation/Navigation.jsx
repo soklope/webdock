@@ -28,33 +28,15 @@ export default function Navigation() {
           <div className="navigation-logo__company-name">Webdock.io</div>
         </div>
 
-        {/* <ul className="menu-items">
+        <ul className="menu-items">
           <li>
-            <Link to="/roadmap">
-              <img src={roadmap_icon} alt="roadmap icon" />
-              Roadmap
-            </Link>
+            <Link className="menu-items__log-out" to="/" />
           </li>
 
           <li>
-            <Link to="/feature-request">
-              <img src={feature_icon} alt="feature icon" />
-              Feature Request
-            </Link>
+            <Link className="menu-items__profile" to="/" />
           </li>
-
-          <li>
-            <Link to="/search">
-              <img src={search_icon} alt="search icon" />
-              Search
-            </Link>
-          </li>
-
-          <li>
-            <img src={placeholderProfilePic} alt="username icon" className="navigation-profile-pic" />
-            <p>user_name</p>
-          </li>
-        </ul> */}
+        </ul>
 
         <div className="burger-menu-icon">
           {/* Hamburger menu icon */}
@@ -73,15 +55,21 @@ export default function Navigation() {
             {/* Dropdown menu */}
             <div className="nav-dropdown-menu">
               <ul className="nav-dropdown-menu__items">
+
                 <li>
-                  {/* User profile picture and username in the dropdown */}
-                  <img
-                    src={placeholderProfilePic}
-                    alt="username icon"
-                    className="navigation-profile-pic"
-                  />
-                  <p>user_name</p>
+                  <Link className="nav-dropdown-menu__items__flex" to="/">
+                    <p>Log Out</p>
+                    <span className="menu-items__log-out"></span>
+                  </Link>
                 </li>
+
+                <li>
+                  <Link className="nav-dropdown-menu__items__flex" to="/">
+                    <p>Profile</p>
+                    <span className="menu-items__profile"></span>
+                  </Link>
+                </li>
+
               </ul>
             </div>
           </>
