@@ -36,7 +36,7 @@ export default function RoadmapContainerPlanned() {
         <p>Planned</p>
         <span className={`roadmap-container__dropdown-icon ${containerIsOpen ? "rotate" : ""}`}></span>
         <p className="roadmap-container__postcount">{postCount}</p>
-        <div className="roadmap-container__color-indicator planned-color" />
+        <div className="roadmap-container__color-indicator-planned" />
       </div>
 
       {containerIsOpen && (
