@@ -15,6 +15,7 @@
 
   &.active {
     @include mix.filter-btn-styling;
+    cursor: initial;
   }
 
   .input-container {
@@ -30,25 +31,23 @@
     font-weight: 500;
     height: 35px;
     width: 100%;
-
     
     &:focus, &:not(:focus) {
       border-radius: 0px;
       border-left:none;
       border-right: none;
       outline: none;
-  
-
     }
   }
 
   .input-icon {
     @include mix.icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
+    cursor: pointer;
   }
 
   .close-icon {
     @include mix.icon-image-centering('../../../content/gfx/Icons/close-icon.svg', 20px, 20px);
+    cursor: pointer;
   }
-  
 }
 

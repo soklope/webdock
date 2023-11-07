@@ -27,10 +27,12 @@ function SearchFunction() {
   const handleInputChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
+    // Trigger the search as the user types
+    performSearch(query);
   };
 
   const handleIconClick = () => {
-    // Trigger the search when the icon is clicked
+    // Trigger the search with the current searchQuery value
     performSearch(searchQuery);
   };
 
@@ -102,4 +104,3 @@ function SearchFunction() {
 }
 
 export default SearchFunction;
-
