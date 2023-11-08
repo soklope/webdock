@@ -106,14 +106,13 @@ export default function FilterContainer() {
   };
 
   const handleCategoryChange = (category) => {
-    if (category === selectedCategory) {
-      // If the same category is selected again, clear the selection
-      setSelectedCategory('All Categories');
-      setCategorySelected(false);
-    } else {
-      setSelectedCategory(category);
-      setCategorySelected(true);
+    if (category === selectedCategory && isCategorySelected) {
+      // If the same category is selected again and it's already selected, do nothing.
+      return;
     }
+  
+    setSelectedCategory(category);
+    setCategorySelected(true);
     setCategoryDropdownOpen(false);
   };
 
