@@ -1,7 +1,13 @@
 
-
 .filter-buttons {
     display: flex;
     gap: 10px;
+    margin-bottom: 10px;
 }
+
+.filter-container {
+    display: flex;
+    flex-direction: column;  // To stack the filtered posts vertically
+    align-items: center;     // Center horizontally
+    }
 
