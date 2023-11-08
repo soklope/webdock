@@ -120,6 +120,7 @@ export default function FilterContainer() {
     setSelectedCategory('All Categories');
     setCategorySelected(false);
     setCategoryDropdownOpen(false);
+    console.log('isCategorySelected:', isCategorySelected); 
   };
 
   const handleSearch = () => {
