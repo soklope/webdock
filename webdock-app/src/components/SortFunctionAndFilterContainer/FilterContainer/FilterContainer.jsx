@@ -1,8 +1,5 @@
 import { useEffect,useState, useRef } from 'react';
 import '../FilterContainer/FilterContainer.scss';
-import '../SortFunction/SortFunction.scss'
-import '../CategoryFilter/CategoryFilter.scss'
-import '../SearchFunction/SearchFunction.scss'
 
 import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
 import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';

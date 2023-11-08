@@ -1,3 +1,5 @@
+@use '../../../global-styling/mixins' as mix;
+@use '../../../global-styling/Variables.scss' as v;
 
 .filter-buttons {
     display: flex;
@@ -11,3 +13,110 @@
     align-items: center;     // Center horizontally
     }
 
+// sort-function-btn styling
+.sort-function-btn {
+    @include mix.filter-btn-styling;
+  
+    &.active {
+      background: darken(v.$offwhite, 10%);
+    }
+  
+      &__icon {
+      @include mix.arrow-icon-size;
+      background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
+      }
+  }
+  
+  .dropdown-menu {
+    @include mix.dropdown-menu-styling;
+  }
+
+  // category-filter-btn styling
+  .category-filter-btn {
+    @include mix.filter-btn-styling;
+  
+    &.active {
+      background: darken(v.$offwhite, 10%);
+    }
+  
+    &__icon {
+      @include mix.arrow-icon-size;
+      background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
+    }
+  }
+  
+  .category-list {
+    @include mix.dropdown-menu-styling;
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+  
+      li {
+        cursor: pointer;
+  
+        button {
+          background: none;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+  
+          &:hover {
+            background: darken(v.$offwhite, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  // search-function-btn styling
+  .search-function-btn {
+    @include mix.filter-btn-styling;
+  
+    &__icon {
+      @include mix.icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
+      margin-left: 5px; 
+    }
+  }
+  
+  .search-input {
+    @include mix.filter-btn-styling;
+  
+    &.active {
+      @include mix.filter-btn-styling;
+      cursor: initial;
+    }
+  
+    .input-container {
+      display: flex;
+      align-items: center;
+    }
+  
+    input {
+      border: none;
+      background: transparent;
+      font-family: v.$secondary-font;
+      font-size: 15px;
+      font-weight: 500;
+      height: 35px;
+      width: 100%;
+      
+      &:focus, &:not(:focus) {
+        border-radius: 0px;
+        border-left:none;
+        border-right: none;
+        outline: none;
+      }
+    }
+  
+    .input-icon {
+      @include mix.icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
+      cursor: pointer;
+    }
+  
+    .close-icon {
+      @include mix.icon-image-centering('../../../content/gfx/Icons/close-icon.svg', 20px, 20px);
+      cursor: pointer;
+    }
+  }
