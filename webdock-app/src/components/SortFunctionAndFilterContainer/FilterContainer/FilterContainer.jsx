@@ -13,6 +13,8 @@ export default function FilterContainer() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
   const [isCategoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
   const categoryDropdownRef = useRef(null);
+  const [isCategorySelected, setCategorySelected] = useState(false); // New state variable
+
 
   const [isInputVisible, setInputVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -104,7 +106,20 @@ export default function FilterContainer() {
   };
 
   const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
+    if (category === selectedCategory) {
+      // If the same category is selected again, clear the selection
+      setSelectedCategory('All Categories');
+      setCategorySelected(false);
+    } else {
+      setSelectedCategory(category);
+      setCategorySelected(true);
+    }
+    setCategoryDropdownOpen(false);
+  };
+
+  const handleClearCategory = () => {
+    setSelectedCategory('All Categories');
+    setCategorySelected(false);
     setCategoryDropdownOpen(false);
   };
 
@@ -162,7 +177,7 @@ export default function FilterContainer() {
           <div className="category-filter-btn-container">
             <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}>
               {selectedCategory}
-              <span className="category-filter-btn__icon"></span>
+              <span className={`category-filter-btn__icon ${isCategorySelected ? 'close-icon' : ''}`} onClick={handleClearCategory}></span>
             </button>
             {isCategoryDropdownOpen && (
               <div className="category-list">
