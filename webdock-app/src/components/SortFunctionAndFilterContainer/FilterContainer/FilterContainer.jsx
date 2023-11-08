@@ -1,3 +1,4 @@
+import { useEffect,useState, useRef } from 'react';
 import '../FilterContainer/FilterContainer.scss';
 import '../SortFunction/SortFunction.scss'
 import '../CategoryFilter/CategoryFilter.scss'
@@ -5,8 +6,6 @@ import '../SearchFunction/SearchFunction.scss'
 
 import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
 import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
-import { useEffect,useState, useRef } from 'react';
-
 
 export default function FilterContainer() {
   const [isSortDropdownOpen, setSortDropdownOpen] = useState(false);
@@ -20,7 +19,6 @@ export default function FilterContainer() {
 
   const [isInputVisible, setInputVisible] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
   const inputRef = useRef(null);
 
   const toggleInput = () => {
@@ -30,7 +28,6 @@ export default function FilterContainer() {
   const closeInput = () => {
     setInputVisible(false);
     setSearchQuery(''); // Clear the search query
-    setSearchResults([]); // Clear the search results
   };
 
   useEffect(() => {
@@ -43,18 +40,15 @@ export default function FilterContainer() {
     const query = event.target.value;
     setSearchQuery(query);
     // Trigger the search as the user types
-    performSearch(query);
   };
 
   const handleIconClick = () => {
     // Trigger the search with the current searchQuery value
-    performSearch(searchQuery);
   };
 
-  const handleEnterPress = (event) => {
+  const onKeyDown = (event) => {
     if (event.key === 'Enter') {
       // Trigger the search when the Enter key is pressed
-      performSearch(searchQuery);
     }
   };
 
@@ -118,7 +112,6 @@ export default function FilterContainer() {
   };
 
   const handleSearch = () => {
-    // Step 3: Function to filter data based on search query
     const filteredData = dataToSort.filter((item) => {
       if (
         (selectedCategory === 'All Categories' || item.category === selectedCategory) &&
@@ -146,11 +139,6 @@ export default function FilterContainer() {
     'Competition',
   ];
 
-
-  const inputClassName = `search-input ${isInputVisible ? 'active' : ''} ${
-    isInputVisible ? 'no-border' : ''
-  }`;
-  // Step 4: Update the filteredData variable with search and category filtering
   const filteredData = handleSearch();
 
   return (
@@ -201,7 +189,7 @@ export default function FilterContainer() {
               type="text"
               value={searchQuery}
               onChange={handleInputChange}
-              onKeyPress={handleEnterPress}
+              onKeyPress={onKeyDown}
               placeholder="Search..."
               className={`search-input ${isInputVisible ? 'active' : ''} ${isInputVisible ? 'no-border' : ''}`}
               ref={inputRef}
@@ -215,8 +203,8 @@ export default function FilterContainer() {
           <span className="search-function-btn__icon"></span>
         </button>
       )}
-
       </div>
+      
       <div className="filtered-posts">
         {filteredData.map((item) => (
           <div key={item.title}>
