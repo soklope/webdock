@@ -46,6 +46,34 @@
     grid-area: sortFilter;
 }
 
+@keyframes slideRight {
+    from {
+      transform: translateX(-100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+.slide-right-animation {
+    animation: slideRight 0.5s;
+}
+
+@keyframes slideLeft {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(0);
+    }
+  }
+
+.slide-left-animation {
+    animation: slideLeft 0.5s;
+}
+
 .roadmap-flex-container {
 
     @media screen and (min-width: v.$desktop-screen) {

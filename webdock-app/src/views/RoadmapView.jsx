@@ -39,7 +39,7 @@ export default function RoadmapView() {
           {
             roadmapView ?
 
-            <div className="roadmap-flex-container">
+            <div className="roadmap-flex-container slide-right-animation">
               <RoadmapContainerPlanned />
               <RoadmapContainerInProgress />
               <RoadmapContainerComplete />
@@ -47,16 +47,10 @@ export default function RoadmapView() {
 
             :
 
-            <div>nope</div>
+            <div className="slide-left-animation">nope</div>
           }
-
-
         </main>
       </div>
-{/* 
-      <Link to="listview">
-        <p>go to list view</p>
-      </Link> */}
     </>
   );
 }

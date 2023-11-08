@@ -101,7 +101,6 @@ nav {
   }
 
   .dark-backdrop {
-    animation: slide 0.2s;
     position: fixed;
     left: 0;
     top: 70px;
@@ -116,7 +115,7 @@ nav {
   }
 
   .nav-dropdown-menu {
-    animation: slide 0.5s;
+    animation: slide 0.3s;
     position: absolute;
     display: flex;
     flex-direction: column;
