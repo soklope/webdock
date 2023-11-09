@@ -274,9 +274,10 @@ export default function FilterContainer() {
               status={item.status}
               statusColor={item.statusColor}
             />
-          </div>
-        ))}
-      </div>
     </div>
-  );
+  ))}
+  {filteredData.length === 0 && <p>No results</p>}
+</div>
+</div>
+)
 }
