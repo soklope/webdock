@@ -240,7 +240,7 @@ export default function FilterContainer() {
       ) : (
       // Button to toggle search input
         <button onClick={toggleInput} className="search-function-btn">
-          Search...
+          <p>Search... </p>
           <span className="search-function-btn__icon"></span>
         </button>
       )}

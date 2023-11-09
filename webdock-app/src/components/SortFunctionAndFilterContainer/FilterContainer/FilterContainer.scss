@@ -79,12 +79,24 @@
   .search-function-btn {
     @include mix.filter-btn-styling;
   
+    p {   
+    @media (max-width: 500px) {
+        display: none; // Hide the text under 500px
+      }
+    }
+  
+
     &__icon {
       @include mix.icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
       margin-left: 5px; 
+
+      @media (max-width: 500px) {
+        margin-left:0px; // Remove margin to center icon
+      }
+
     }
   }
-  
+
   .search-input {
     @include mix.filter-btn-styling;
   
@@ -124,4 +136,6 @@
       @include mix.icon-image-centering('../../../content/gfx/Icons/close-icon.svg', 20px, 20px);
       cursor: pointer;
     }
+
+    
   }
