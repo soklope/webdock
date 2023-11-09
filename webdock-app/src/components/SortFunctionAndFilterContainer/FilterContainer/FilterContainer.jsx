@@ -6,7 +6,7 @@ import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 
 export default function FilterContainer() {
   const [isSortDropdownOpen, setSortDropdownOpen] = useState(false);
-  const [selectedSortOption, setSelectedSortOption] = useState('');
+  const [selectedSortOption, setSelectedSortOption] = useState('Top');
   const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
   const sortRef = useRef(null);
 
@@ -57,7 +57,7 @@ export default function FilterContainer() {
         setSortDropdownOpen(false);
       }
       if (categoryDropdownRef.current && !categoryDropdownRef.current.contains(event.target)) {
-        setCategoryDropdownOpen(!isSortDropdownOpen);
+        setCategoryDropdownOpen(false);
       }
     }
 
@@ -66,7 +66,7 @@ export default function FilterContainer() {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  },);
+  }, []);
 
   const toggleSortDropdown = () => {
     setSortDropdownOpen(!isSortDropdownOpen);
@@ -94,31 +94,36 @@ export default function FilterContainer() {
           return b.createdAt - a.createdAt;
         });
         break;
-      default:
-        sortedData = dataToSort;
-    }
+        default:
+          sortedData = dataToSort;
+        }
 
     setDataToSort(sortedData);
   };
+  const sortOptions = ['Trending', 'Top', 'New'];
+ 
 
   const toggleCategoryDropdown = () => {
     setCategoryDropdownOpen(!isCategoryDropdownOpen);
   };
-
+  
+  
   const handleCategoryChange = (category) => {
     if (category === selectedCategory && isCategorySelected) {
       // If the same category is selected again and it's already selected, do nothing.
       return;
     }
-  
+    
     setSelectedCategory(category);
     setCategorySelected(true);
     setCategoryDropdownOpen(false);
   };
 
-  const handleClearCategory = () => {
+  const handleClearCategory = (event) => {
+    event.stopPropagation();
     setSelectedCategory('All Categories');
     setCategorySelected(false);
+    setCategoryDropdownOpen(false); 
   };
 
   const handleSearch = () => {
@@ -134,7 +139,6 @@ export default function FilterContainer() {
     return filteredData;
   };
 
-  const sortOptions = ['Trending', 'Top', 'New'];
 
   const categoryOptions = [
     'All Categories',
@@ -175,7 +179,7 @@ export default function FilterContainer() {
           <div className="category-filter-btn-container">
             <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}>
               {selectedCategory}
-              <span className={`category-filter-btn__icon ${isCategorySelected ? 'close-icon' : ''}`} onClick={handleClearCategory}></span>
+              <span className={`category-filter-btn__icon ${isCategorySelected ? 'close-icon' : ''}`} onClick={(event) => handleClearCategory(event)}></span>
             </button>
             {isCategoryDropdownOpen && (
               <div className="category-list">
