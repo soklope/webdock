@@ -34,8 +34,12 @@
 // category-filter-btn styling
 .category-filter-btn {
   @include mix.filter-btn-styling;
-  width: 155px; // Set your desired fixed width
+  width: auto; // Set your desired fixed width
   overflow: hidden; // Hide any content that overflows the box
+
+  @media (max-width: 500px) {
+    width: 155px; // Set width to auto for screens under 500px
+  }
 
   &.active {
     background: darken(v.$offwhite, 10%);
