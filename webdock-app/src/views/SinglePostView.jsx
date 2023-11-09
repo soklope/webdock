@@ -21,7 +21,7 @@ export default function SinglePostView() {
         })
         .then((post) => {
           setPost(post);
-        //   console.log(post); // remove in prod
+          //   console.log(post); // remove in prod
         })
         .catch((error) => {
           console.error("There was a problem with the fetch operation:", error);
@@ -54,13 +54,12 @@ export default function SinglePostView() {
       )}
 
       <div>
-		<CommentSection
-			postId={1}
-			postDate={post.publishedAt}
-			loggedIn={false}
-
-		/>
-	  </div>
+        <CommentSection
+          postId={1}
+          postDate={post.publishedAt}
+          loggedIn={loggedIn}
+        />
+      </div>
     </>
   );
 }
