@@ -13,6 +13,11 @@
     @include mix.arrow-icon-size;
     background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
   }
+
+  .close-icon {
+    @include mix.icon-image-centering('../../../content/gfx/Icons/close-icon.svg', 20px, 20px);
+    cursor: pointer;
+  }
 }
 
 .category-list {

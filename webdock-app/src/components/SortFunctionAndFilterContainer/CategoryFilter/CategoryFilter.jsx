@@ -5,15 +5,19 @@ import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 
 export default function CategoryFilter() {
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const [showDropdown, setShowDropdown] = useState(false);
-  const dropdownRef = useRef(null);
+  const [isCategoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
+  const categoryDropdownRef = useRef(null);
+  const [isCategorySelected, setCategorySelected] = useState(false); // New state variable
+  const [dataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
+
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowDropdown(false);
+    function handleClickOutside(event) {
+
+      if (categoryDropdownRef.current && !categoryDropdownRef.current.contains(event.target)) {
+        setCategoryDropdownOpen(false);
       }
-    };
+    }
 
     document.addEventListener('click', handleClickOutside);
 
@@ -22,22 +26,38 @@ export default function CategoryFilter() {
     };
   }, []);
 
-  const filterPosts = (data) => {
-    if (selectedCategory === 'All Categories') {
-      return data; // Return all posts if no category is selected.
-    }
 
-    return data.filter((post) => post.category === selectedCategory);
-  };
-
-  const toggleDropdown = (event) => {
-    event.stopPropagation(); // Prevent the click event from propagating to the document
-    setShowDropdown(!showDropdown);
+  const toggleCategoryDropdown = () => {
+    setCategoryDropdownOpen(!isCategoryDropdownOpen);
   };
 
   const handleCategoryChange = (category) => {
+    if (category === selectedCategory && isCategorySelected) {
+      // If the same category is selected again and it's already selected, do nothing.
+      return;
+    }
+  
     setSelectedCategory(category);
-    setShowDropdown(false);
+    setCategorySelected(true);
+    setCategoryDropdownOpen(false);
+  };
+
+  const handleClearCategory = () => {
+    setSelectedCategory('All Categories');
+    setCategorySelected(false);
+    setCategoryDropdownOpen(false);
+    console.log('isCategorySelected:', isCategorySelected); 
+  };
+
+  const handleSearch = () => {
+    const filteredData = dataToSort.filter((item) => {
+      if (
+        (selectedCategory === 'All Categories' || item.category === selectedCategory)) {
+        return true;
+      }
+      return false;
+    });
+    return filteredData;
   };
 
   const categoryOptions = [
@@ -53,31 +73,34 @@ export default function CategoryFilter() {
     'Competition',
   ];
 
+  const filteredData = handleSearch();
+
   return (
     <div className="category-filter">
-      <div className="category-filter-btn-container">
-        <button
-          onClick={toggleDropdown}
-          className={`category-filter-btn ${showDropdown ? 'active' : ''}`}
-        >
-          {selectedCategory}
-          <span className="category-filter-btn__icon"></span>
-        </button>
-        {showDropdown && (
-          <div ref={dropdownRef} className="category-list">
-            <ul>
-              {categoryOptions.map((category) => (
-                <li key={category}>
-                  <button onClick={() => handleCategoryChange(category)}>{category}</button>
-                </li>
-              ))}
-            </ul>
+        <div ref={categoryDropdownRef} className="category-filter">
+          <div className="category-filter-btn-container">
+            <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}>
+              {selectedCategory}
+              <span className={`category-filter-btn__icon ${isCategorySelected ? 'close-icon' : ''}`} onClick={handleClearCategory}></span>
+            </button>
+            {isCategoryDropdownOpen && (
+              <div className="category-list">
+                <ul>
+                  {categoryOptions.map((category) => (
+                    <li key={category}>
+                      <button onClick={() => handleCategoryChange(category)}>{category}</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <div className="filtered-posts">
-        {filterPosts([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]).map((item) => (
-          <div key={item.title}>
+        </div>
+
+
+          
+        {filteredData.map((item) => (
+           <div key={item.title}>
             <RoadmapChildren 
               title={item.title}
               numberOfComments={item.numberOfComments}
@@ -89,6 +112,5 @@ export default function CategoryFilter() {
           </div>
         ))}
       </div>
-    </div>
   );
 }
