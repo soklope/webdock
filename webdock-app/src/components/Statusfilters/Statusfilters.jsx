@@ -3,30 +3,18 @@
 import { useState } from "react";
 import './Statusfilters.scss'
 
-// This is a Statusfilters  component
-export default function Statusfilter({ indicationColor, title, borderColor, backgroundColor }) {
-  const [isToggled, setIsToggled] = useState(false);
+export default function Statusfilter({ indicationColor, title, borderColor, backgroundColor, isSelected, onSelect }) {
 
   const handleButtonClick = () => {
-    // Update the isToggled state when the button is clicked
-    setIsToggled(!isToggled);
+    onSelect(indicationColor);
   }
 
-  const textClassName = isToggled ? 'Statusfilters-btn-mypost-text-toggled' : 'Statusfilters-btn-mypost-text';
-  const fontClassName = isToggled ? 'Statusfilters-btn-mypost-text-font-toggled' : 'Statusfilters-btn-mypost-text-font';
-
   return (
-    <>
-      <button className={`Statusfilters-btn-mypost-text ${borderColor} ${isToggled && backgroundColor}`} onClick={handleButtonClick}>
-        <p>{title}</p>
-        <div className={`Statusfilters-btn-mypost-text__indicator ${indicationColor}`}></div>
+    <button className={`Statusfilters-btn-mypost-text ${borderColor} ${isSelected && backgroundColor}`} onClick={handleButtonClick}>
+      <p>{title}</p>
+      <div className={`Statusfilters-btn-mypost-text__indicator ${indicationColor}`}></div>
 
-  
-      </button>
-    </>
+    </button>
+    
   );
-  
 }
-
-
-
