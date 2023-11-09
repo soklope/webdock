@@ -31,24 +31,38 @@
     @include mix.dropdown-menu-styling;
   }
 
-  // category-filter-btn styling
-  .category-filter-btn {
-    @include mix.filter-btn-styling;
-  
-    &.active {
-      background: darken(v.$offwhite, 10%);
-    }
-  
-    &__icon {
-      @include mix.arrow-icon-size;
-      background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
-    }
-  
-    .close-icon {
-      @include mix.icon-image-centering('../../../content/gfx/Icons/close-icon.svg', 20px, 20px);
-      cursor: pointer;
-    }
+// category-filter-btn styling
+.category-filter-btn {
+  @include mix.filter-btn-styling;
+  width: 160px; // Set your desired fixed width
+  overflow: hidden; // Hide any content that overflows the box
+
+  &.active {
+    background: darken(v.$offwhite, 10%);
   }
+
+  .content-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    @include mix.arrow-icon-size;
+    background-image: url('../../../content/gfx/Icons/arrow-down-icon.svg');
+  }
+
+  .close-icon {
+    @include mix.icon-image-centering('../../../content/gfx/Icons/close-icon.svg', 20px, 20px);
+    cursor: pointer;
+  }
+
+  .text-container {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1; // Allow the text to grow and take available space
+  }
+}
   
   .category-list {
     @include mix.dropdown-menu-styling;

@@ -193,39 +193,45 @@ export default function FilterContainer() {
         </div>
 
       {/* Category filtering dropdown */}
-        <div ref={categoryDropdownRef} className="category-filter">
-          <div className="category-filter-btn-container">
-          {/* Button to toggle category dropdown */}
-            <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}> {/* Like an if-else statement - styling depends on true/false */}
-              {selectedCategory}
-              {/* Close-icon can clear selected category and close dropdown menu */}
-              <span
-                className={`category-filter-btn__icon ${isCategorySelected && selectedCategory !== 'All Categories' ? 'close-icon' : ''}`}
-                onClick={(event) => {
-                  event.stopPropagation(); // Makes the close-icon display if it's not 'All Categories' option selected, instead of the arrow-icon
-                  if (isCategorySelected && selectedCategory !== 'All Categories') {
-                    handleClearCategory(event);
-                  } else {
-                    toggleCategoryDropdown(); // Toggle the category dropdown
-                  }
-                }}
-              ></span>
-            </button>
-          {/* Render category dropdown if open */}
-            {isCategoryDropdownOpen && (
-              <div className="category-list">
-                <ul>
-                {/* Render each category option */}
-                  {categoryOptions.map((category) => (
-                    <li key={category}>
-                      <button onClick={() => handleCategoryChange(category)}>{category}</button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
+<div ref={categoryDropdownRef} className="category-filter">
+  <div className="category-filter-btn-container">
+    {/* Button to toggle category dropdown */}
+    <button
+      onClick={toggleCategoryDropdown}
+      className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}
+    >
+      {/* Text container with ellipsis properties */}
+      <span className="category-filter-btn__text">
+        {selectedCategory}
+      </span>
+      {/* Close-icon can clear selected category and close dropdown menu */}
+      <span
+        className={`category-filter-btn__icon ${isCategorySelected && selectedCategory !== 'All Categories' ? 'close-icon' : ''}`}
+        onClick={(event) => {
+          event.stopPropagation();
+          if (isCategorySelected && selectedCategory !== 'All Categories') {
+            handleClearCategory(event);
+          } else {
+            toggleCategoryDropdown();
+          }
+        }}
+      ></span>
+    </button>
+    {/* Render category dropdown if open */}
+    {isCategoryDropdownOpen && (
+      <div className="category-list">
+        <ul>
+          {/* Render each category option */}
+          {categoryOptions.map((category) => (
+            <li key={category}>
+              <button onClick={() => handleCategoryChange(category)}>{category}</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</div>
 
       {/* Render search input or button based on visibility */}
         {isInputVisible ? (
