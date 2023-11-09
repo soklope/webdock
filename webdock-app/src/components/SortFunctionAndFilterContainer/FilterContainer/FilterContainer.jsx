@@ -57,7 +57,7 @@ export default function FilterContainer() {
         setSortDropdownOpen(false);
       }
       if (categoryDropdownRef.current && !categoryDropdownRef.current.contains(event.target)) {
-        setCategoryDropdownOpen(false);
+        setCategoryDropdownOpen(!isSortDropdownOpen);
       }
     }
 
@@ -66,7 +66,7 @@ export default function FilterContainer() {
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []);
+  },);
 
   const toggleSortDropdown = () => {
     setSortDropdownOpen(!isSortDropdownOpen);
@@ -119,8 +119,6 @@ export default function FilterContainer() {
   const handleClearCategory = () => {
     setSelectedCategory('All Categories');
     setCategorySelected(false);
-    setCategoryDropdownOpen(false);
-    console.log('isCategorySelected:', isCategorySelected); 
   };
 
   const handleSearch = () => {

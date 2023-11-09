@@ -41,8 +41,8 @@ export default function CategoryFilter() {
   };
 
   const handleClearCategory = () => {
-    setState((prev) => ({ ...prev, selectedCategory: 'All Categories', categorySelected: false, isCategoryDropdownOpen: false }));
-    console.log('isCategorySelected:', categorySelected);
+    // Stop the event propagation to prevent toggleCategoryDropdown from being triggered
+    setState((prev) => ({ ...prev, selectedCategory: 'All Categories', categorySelected: false, isCategoryDropdownOpen: !isCategoryDropdownOpen }));
   };
 
   const handleSearch = () => {
