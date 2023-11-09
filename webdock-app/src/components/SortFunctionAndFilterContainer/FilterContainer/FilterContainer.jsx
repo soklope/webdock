@@ -199,7 +199,7 @@ export default function FilterContainer() {
     {/* Button to toggle category dropdown */}
     <button
       onClick={toggleCategoryDropdown}
-      className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}
+      className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''} ${isCategorySelected && selectedCategory !== 'All Categories' ? 'category-selected' : ''}`}
     >
       {/* Text container with ellipsis properties */}
       <span className="category-filter-btn__text text-container">

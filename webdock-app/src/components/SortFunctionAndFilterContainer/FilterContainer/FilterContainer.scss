@@ -93,6 +93,10 @@
     }
   }
 
+  .category-selected {
+    background: darken(v.$offwhite, 10%);
+  }
+
   // search-function-btn styling
   .search-function-btn {
     @include mix.filter-btn-styling;
