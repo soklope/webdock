@@ -23,7 +23,7 @@ export default function RoadmapContainerInProgress() {
       <div className="roadmap-container">
         <div className="roadmap-container__tooltip" onClick={openContainer}>
           <p>In Progress</p>
-          <span className={`roadmap-container__dropdown-icon in-progress-color ${containerIsOpen ? "rotate" : ""}`}></span>
+          <span className={`roadmap-container__dropdown-icon ${containerIsOpen ? "rotate" : ""}`}></span>
           <p className="roadmap-container__postcount">{postCount}</p>
           <div className={`roadmap-container__color-indicator in-progress-color`}/>
         </div>

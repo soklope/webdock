@@ -11,7 +11,6 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
   const handleUpvotes = () => {
     if (loggedIn) {
         setIsUpvoted(!isUpvoted);
-        console.log(isUpvoted);
         if (isUpvoted) {
             setUpvotes(upvotes - 1)
             return
@@ -24,7 +23,6 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
   };
 
   return (
-    <>
       <div
         className={`upvote-btn${isUpvoted ? "--active" : ""}`}
         onClick={handleUpvotes}
@@ -37,10 +35,5 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
             {numberOfUpvotes}
         </div>
       </div>
-    </>
   );
 }
-
-// To do after review
-// - SLET DEN FUCKING FRAGMENT
-// - Adjust shorthand JSX syntax on 29 if statements, to use &&

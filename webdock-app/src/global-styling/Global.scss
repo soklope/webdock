@@ -1,5 +1,9 @@
 @use "./Variables.scss" as v; // Import variables from Variables.scss for use in this file.
 
+main {
+    max-width: 1200px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,14 +16,16 @@
     width: 100vw;
     height: 100vh;
     background-image: url('../content/gfx/background-image.png'); // Set a background image.
-    background-position: fixed; // Position the background image as fixed.
+    background-attachment: fixed; // Position the background image as fixed.
     background-repeat: no-repeat; // Prevent the background image from repeating.
     background-size: cover; // Scale the background image to cover the container.
+    background-position: center center;
 
     &__image {
         width: 100vw;
         height: 100vh;
-        background: linear-gradient(to bottom, #ffffff 25%, #ffffff00); // Create a vertical gradient background.
+        background: linear-gradient(to bottom, #ffffff 25%, #ffffff00);
+        background-attachment: fixed; // Create a vertical gradient background.
     }
 }
 

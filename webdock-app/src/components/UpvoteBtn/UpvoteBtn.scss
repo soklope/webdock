@@ -1,9 +1,9 @@
 @use '../../global-styling/Variables.scss' as v;
-@import '../../global-styling/mixins';
+@import '../../global-styling/mixins.scss';
 
 .upvote-btn {
-    height: 50px;
-    width: 50px;
+    height: 55px;
+    width: 55px;
 
     border-radius: 5px;
     background-color: v.$offwhite;
@@ -27,13 +27,11 @@
     }
 
     &__icon {
-        background-image: url('../../content/gfx/Icons/upvote-arrow-white.svg');
-        @include icon-image-centering;
-
+        // I'm using a mixin with a variable being the url for the upvoted and un-upvoted states
+        @include icon-image-centering('../../content/gfx/Icons/upvote-arrow-white.svg', 20px, 20px);
 
         &--active {
-            background-image: url('../../content/gfx/Icons/upvote-arrow.svg');
-            @include icon-image-centering;
+            @include icon-image-centering('../../content/gfx/Icons/upvote-arrow.svg', 20px, 20px);
         }
     }
 
@@ -46,6 +44,3 @@
         }
     }
 }
-
-// to do after review
-// - utilize mixin props

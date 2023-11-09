@@ -1,16 +1,17 @@
-import React from "react";
+import "./view-styles/RoadmapView.scss";
 
 import CreatePostBtn from "../components/CreatePostBtn/CreatePostBtn";
 import ViewToggleSwitchContainer from "../components/ViewToggleSwitchContainer/ViewToggleSwitchContainer";
-import SortFunctionAndFilterContainer from "../components/SortFunctionAndFilterContainer/SortFunctionFilterContainer";
 import RoadmapContainerPlanned from "../components/RoadmapContainer/RoadmapContainerPlanned";
 import RoadmapContainerInProgress from "../components/RoadmapContainer/RoadmapContainerInProgress";
 import RoadmapContainerComplete from "../components/RoadmapContainer/RoadmapContainerComplete";
 
-import "./view-styles/RoadmapView.scss";
-import { Link } from "react-router-dom";
+import useRoadmapStore from "../stores/viewStore";
 
 export default function RoadmapView() {
+
+  const { roadmapView } = useRoadmapStore();
+
   return (
     <>
       <div className="wrap">
@@ -29,16 +30,26 @@ export default function RoadmapView() {
               </div>
               
               <div className="filter-grid-sort-filter">
-                <SortFunctionAndFilterContainer />
+                {/* <SortFunctionAndFilterContainer /> */}
+                sort and filter kommer her
               </div>
 
           </section>
 
-          <div className="roadmap-flex-container">
-            <RoadmapContainerPlanned />
-            <RoadmapContainerInProgress />
-            <RoadmapContainerComplete />
-          </div>
+          {
+            roadmapView ?
+
+            <div className="roadmap-flex-container">
+              <RoadmapContainerPlanned />
+              <RoadmapContainerInProgress />
+              <RoadmapContainerComplete />
+            </div>
+
+            :
+
+            <div>nope</div>
+          }
+
 
         </main>
       </div>
