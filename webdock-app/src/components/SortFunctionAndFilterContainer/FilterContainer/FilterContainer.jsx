@@ -193,7 +193,8 @@ export default function FilterContainer() {
         </div>
 
       {/* Category filtering dropdown */}
-<div ref={categoryDropdownRef} className="category-filter">
+
+      <div ref={categoryDropdownRef} className="category-filter">
   <div className="category-filter-btn-container">
     {/* Button to toggle category dropdown */}
     <button
@@ -201,7 +202,7 @@ export default function FilterContainer() {
       className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}
     >
       {/* Text container with ellipsis properties */}
-      <span className="category-filter-btn__text">
+      <span className="category-filter-btn__text text-container">
         {selectedCategory}
       </span>
       {/* Close-icon can clear selected category and close dropdown menu */}
@@ -232,7 +233,6 @@ export default function FilterContainer() {
     )}
   </div>
 </div>
-
       {/* Render search input or button based on visibility */}
         {isInputVisible ? (
         <div className="search-input">
