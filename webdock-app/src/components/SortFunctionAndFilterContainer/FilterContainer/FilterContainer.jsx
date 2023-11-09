@@ -196,10 +196,20 @@ export default function FilterContainer() {
         <div ref={categoryDropdownRef} className="category-filter">
           <div className="category-filter-btn-container">
           {/* Button to toggle category dropdown */}
-            <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}>
+            <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}> {/* Like an if-else statement - styling depends on true/false */}
               {selectedCategory}
-            {/* Close-icon to clear selected category */}
-              <span className={`category-filter-btn__icon ${isCategorySelected ? 'close-icon' : ''}`} onClick={(event) => handleClearCategory(event)}></span>
+              {/* Close-icon can clear selected category and close dropdown menu */}
+              <span
+                className={`category-filter-btn__icon ${isCategorySelected && selectedCategory !== 'All Categories' ? 'close-icon' : ''}`}
+                onClick={(event) => {
+                  event.stopPropagation(); // Makes the close-icon display if it's not 'All Categories' option selected, instead of the arrow-icon
+                  if (isCategorySelected && selectedCategory !== 'All Categories') {
+                    handleClearCategory(event);
+                  } else {
+                    toggleCategoryDropdown(); // Toggle the category dropdown
+                  }
+                }}
+              ></span>
             </button>
           {/* Render category dropdown if open */}
             {isCategoryDropdownOpen && (
