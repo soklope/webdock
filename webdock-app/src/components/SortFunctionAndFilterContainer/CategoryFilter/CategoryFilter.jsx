@@ -4,21 +4,19 @@ import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dum
 import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 
 export default function CategoryFilter() {
-  const [selectedCategory, setSelectedCategory] = useState('All Categories');
-  const [isCategoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
-  const categoryDropdownRef = useRef(null);
-  const [isCategorySelected, setCategorySelected] = useState(false); // New state variable
-  const [dataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
-
+  const [state, setState] = useState({
+    selectedCategory: 'All Categories',
+    isCategoryDropdownOpen: false,
+    categorySelected: false,
+    dataToSort: [...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb],
+  });
 
   useEffect(() => {
     function handleClickOutside(event) {
-
       if (categoryDropdownRef.current && !categoryDropdownRef.current.contains(event.target)) {
-        setCategoryDropdownOpen(false);
+        setState((prev) => ({ ...prev, isCategoryDropdownOpen: false }));
       }
     }
-
     document.addEventListener('click', handleClickOutside);
 
     return () => {
@@ -26,38 +24,29 @@ export default function CategoryFilter() {
     };
   }, []);
 
+  const { selectedCategory, isCategoryDropdownOpen, categorySelected, dataToSort } = state;
+
+  const categoryDropdownRef = useRef(null);
 
   const toggleCategoryDropdown = () => {
-    setCategoryDropdownOpen(!isCategoryDropdownOpen);
+    setState((prev) => ({ ...prev, isCategoryDropdownOpen: !prev.isCategoryDropdownOpen }));
   };
 
   const handleCategoryChange = (category) => {
-    if (category === selectedCategory && isCategorySelected) {
-      // If the same category is selected again and it's already selected, do nothing.
+    if (category === selectedCategory && categorySelected) {
       return;
     }
-  
-    setSelectedCategory(category);
-    setCategorySelected(true);
-    setCategoryDropdownOpen(false);
+
+    setState((prev) => ({ ...prev, selectedCategory: category, categorySelected: true, isCategoryDropdownOpen: false }));
   };
 
   const handleClearCategory = () => {
-    setSelectedCategory('All Categories');
-    setCategorySelected(false);
-    setCategoryDropdownOpen(false);
-    console.log('isCategorySelected:', isCategorySelected); 
+    setState((prev) => ({ ...prev, selectedCategory: 'All Categories', categorySelected: false, isCategoryDropdownOpen: false }));
+    console.log('isCategorySelected:', categorySelected);
   };
 
   const handleSearch = () => {
-    const filteredData = dataToSort.filter((item) => {
-      if (
-        (selectedCategory === 'All Categories' || item.category === selectedCategory)) {
-        return true;
-      }
-      return false;
-    });
-    return filteredData;
+    return dataToSort.filter((item) => selectedCategory === 'All Categories' || item.category === selectedCategory);
   };
 
   const categoryOptions = [
@@ -77,40 +66,38 @@ export default function CategoryFilter() {
 
   return (
     <div className="category-filter">
-        <div ref={categoryDropdownRef} className="category-filter">
-          <div className="category-filter-btn-container">
-            <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}>
-              {selectedCategory}
-              <span className={`category-filter-btn__icon ${isCategorySelected ? 'close-icon' : ''}`} onClick={handleClearCategory}></span>
-            </button>
-            {isCategoryDropdownOpen && (
-              <div className="category-list">
-                <ul>
-                  {categoryOptions.map((category) => (
-                    <li key={category}>
-                      <button onClick={() => handleCategoryChange(category)}>{category}</button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+      <div ref={categoryDropdownRef} className="category-filter">
+        <div className="category-filter-btn-container">
+          <button onClick={toggleCategoryDropdown} className={`category-filter-btn ${isCategoryDropdownOpen ? 'active' : ''}`}>
+            {selectedCategory}
+            <span className={`category-filter-btn__icon ${categorySelected ? 'close-icon' : ''}`} onClick={handleClearCategory}></span>
+          </button>
+          {isCategoryDropdownOpen && (
+            <div className="category-list">
+              <ul>
+                {categoryOptions.map((category) => (
+                  <li key={category}>
+                    <button onClick={() => handleCategoryChange(category)}>{category}</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-
-
-          
-        {filteredData.map((item) => (
-           <div key={item.title}>
-            <RoadmapChildren 
-              title={item.title}
-              numberOfComments={item.numberOfComments}
-              totalUpvotes={item.numberOfUpvotes}
-              category={item.category}
-              status={item.status}
-              statusColor={item.statusColor}
-            />
-          </div>
-        ))}
       </div>
+
+      {filteredData.map((item) => (
+        <div key={item.title}>
+          <RoadmapChildren
+            title={item.title}
+            numberOfComments={item.numberOfComments}
+            totalUpvotes={item.numberOfUpvotes}
+            category={item.category}
+            status={item.status}
+            statusColor={item.statusColor}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
