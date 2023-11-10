@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import "./RoadmapContainer.scss";
 
 import { completeArrayDb } from "../../dummyDb";
@@ -54,7 +56,8 @@ export default function RoadmapContainerComplete() {
         <div className="roadmap-container__children">
           <>
               {completeArrayDb.map((post, index) => (
-                  <div key={index} className="roadmap-child-container">
+                // link to needs to be post.id, its currently not in the dummydatabase
+                  <Link to={`/posts/${index}`} key={index} className="roadmap-child-container">
                     <RoadmapChildren 
                       title={post.title}
                       category={post.category}
@@ -63,7 +66,7 @@ export default function RoadmapContainerComplete() {
                       totalUpvotes={post.numberOfUpvotes}
                       statusColor={"tag-complete-color"}
                     />
-                  </div>
+                  </Link>
               ))}
           </>
         </div>
