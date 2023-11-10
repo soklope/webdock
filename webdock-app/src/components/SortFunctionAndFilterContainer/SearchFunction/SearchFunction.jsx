@@ -1,6 +1,7 @@
 import '../SearchFunction/SearchFunction.scss';
 import { useState, useEffect, useRef } from 'react';
-import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb'; // Import your dummyDb data
+import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
+import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 
 function SearchFunction() {
   const [isInputVisible, setInputVisible] = useState(false);
@@ -12,6 +13,12 @@ function SearchFunction() {
     setInputVisible(!isInputVisible);
   };
 
+  const closeInput = () => {
+    setInputVisible(false);
+    setSearchQuery(''); // Clear the search query
+    setSearchResults([]); // Clear the search results
+  };
+
   useEffect(() => {
     if (isInputVisible) {
       inputRef.current.focus();
@@ -21,8 +28,20 @@ function SearchFunction() {
   const handleInputChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
-    const results = performSearch(query);
-    setSearchResults(results);
+    // Trigger the search as the user types
+    performSearch(query);
+  };
+
+  const handleIconClick = () => {
+    // Trigger the search with the current searchQuery value
+    performSearch(searchQuery);
+  };
+
+  const handleEnterPress = (event) => {
+    if (event.key === 'Enter') {
+      // Trigger the search when the Enter key is pressed
+      performSearch(searchQuery);
+    }
   };
 
   // Perform search and return matching items from the dummyDb arrays
@@ -33,26 +52,35 @@ function SearchFunction() {
       ...completeArrayDb,
     ];
 
-    return allData.filter((item) => {
+    const results = allData.filter((item) => {
       const title = item.title.toLowerCase();
       const description = item.description.toLowerCase();
       const lowerCaseQuery = query.toLowerCase();
 
       return title.includes(lowerCaseQuery) || description.includes(lowerCaseQuery);
     });
+
+    setSearchResults(results);
   };
 
   return (
     <div>
       {isInputVisible ? (
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleInputChange}
-          placeholder="Search..."
-          className={`search-input ${isInputVisible ? 'active' : ''}`}
-          ref={inputRef}
-        />
+        <div className="search-input">
+          <div className="input-container">
+            <span className="input-icon" onClick={handleIconClick}></span>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleInputChange}
+              onKeyPress={handleEnterPress}
+              placeholder="Search..."
+              className={`search-input ${isInputVisible ? 'active' : ''} ${isInputVisible ? 'no-border' : ''}`}
+              ref={inputRef}
+            />
+            <span className="close-icon" onClick={closeInput}></span>
+          </div>
+        </div>
       ) : (
         <button onClick={toggleInput} className="search-function-btn">
           Search...
@@ -62,18 +90,21 @@ function SearchFunction() {
 
       {searchResults.length > 0 && (
         <div>
-          <h3>Search Results</h3>
-          <ul>
-            {searchResults.map((item, index) => (
-              <li key={index}>
-                {item.title} - {item.description}
-              </li>
+            {searchResults.map((item) => (
+              <div key={item.title}>
+              <RoadmapChildren 
+              title={item.title}
+              numberOfComments={item.numberOfComments}
+              totalUpvotes={item.numberOfUpvotes}
+              category={item.category}
+              status={item.status}
+              statusColor={item.statusColor}
+            />
+            </div>
             ))}
-          </ul>
         </div>
       )}
     </div>
   );
 }
-
 export default SearchFunction;

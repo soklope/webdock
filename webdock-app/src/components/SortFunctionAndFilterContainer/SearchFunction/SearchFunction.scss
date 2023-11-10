@@ -1,20 +1,26 @@
 @use '../../../global-styling/Variables.scss' as v;
-@import '../../../global-styling/mixins.scss';
+@use '../../../global-styling/mixins.scss' as mix;
 
 .search-function-btn {
-  @include filter-btn-styling;
+  @include mix.filter-btn-styling;
 
   &__icon {
-    @include icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
-    // background-image: url('../../../content/gfx/Icons/search-function-icon.svg');
+    @include mix.icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
+    margin-left: 5px; /* Adjust the margin to position the icon */
   }
 }
 
 .search-input {
-  @include filter-btn-styling;
+  @include mix.filter-btn-styling;
 
   &.active {
-@include filter-btn-styling
+    @include mix.filter-btn-styling;
+    cursor: initial;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
   }
 
   input {
@@ -24,8 +30,24 @@
     font-size: 15px;
     font-weight: 500;
     height: 35px;
-    padding: 5px 15px;
-    align-items: center;
-    gap: 10px;
+    width: 100%;
+    
+    &:focus, &:not(:focus) {
+      border-radius: 0px;
+      border-left:none;
+      border-right: none;
+      outline: none;
+    }
+  }
+
+  .input-icon {
+    @include mix.icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
+    cursor: pointer;
+  }
+
+  .close-icon {
+    @include mix.icon-image-centering('../../../content/gfx/Icons/close-icon.svg', 20px, 20px);
+    cursor: pointer;
   }
 }
+
