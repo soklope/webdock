@@ -34,6 +34,7 @@ export default function SinglePostView() {
   //   https://www.tutorialspoint.com/how-to-convert-json-results-into-a-date-using-javascript
   return (
     <>
+
       <div className="single-post-view-container wrap">
         <section>
           <div>
