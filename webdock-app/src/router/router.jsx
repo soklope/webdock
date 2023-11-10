@@ -15,6 +15,7 @@ const Router = () => {
         <Route exact path="/" element={<RoadmapView />} />
         <Route path="/listview" element={<ListView />} />
         <Route path="/post" element={<SinglePostView />} /> 
+        <Route path="/posts/:postId" element={<SinglePostView />} /> 
         <Route path="/sort" element={<SortFunctionAndFilterContainer />} /> 
         {/* Add more routes here as needed */}
       </Routes>

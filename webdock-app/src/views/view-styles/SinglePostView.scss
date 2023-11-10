@@ -1,0 +1,20 @@
+@use '../../global-styling/Variables.scss' as v;
+@use '../../global-styling/mixins' as mix;
+
+.single-post-view-container {
+    display: grid;;
+    grid-template-columns: 2fr 1fr;
+    gap: v.$gap-desktop;
+
+}
+
+.comment-missing-login {
+    background-color: v.$grey;
+    height: 64px;
+
+    @include mix.flex-center;
+
+
+}
+
+

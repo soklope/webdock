@@ -11,10 +11,8 @@
     border: v.$border-size solid v.$grey;
     cursor: pointer;
 
-    display: flex;
+    @include flex-center($gap: 0);
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 
     &:hover {
         opacity: .9;

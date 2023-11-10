@@ -1,55 +1,75 @@
 import { React, useEffect, useState } from "react";
 
-import SinglePostHeading from '../components/SinglePost/SinglePostHeading/SinglePostHeading'
+import "./view-styles/SinglePostView.scss";
 
-export default function SinglePostView () {
+import SinglePostHeading from "../components/SinglePost/SinglePostHeading/SinglePostHeading";
+import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
+import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
 
-    const [post, setPost] = useState({});
+export default function SinglePostView() {
+  const [post, setPost] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
 
-	useEffect(() => {
-		const fetchDummyData = async () => {
-			fetch("https://jsonplaceholder.org/posts/1") //id need to be dynamic
-				.then((response) => {
-					if (!response.ok) {
-						throw new Error("Network response was not ok");
-					}
-					return response.json();
-				})
-				.then((post) => {
-					setPost(post);
-          console.log(post); // remove in prod
-				})
-				.catch((error) => {
-					console.error(
-						"There was a problem with the fetch operation:",
-						error
-					);
-				});
-		};
+  useEffect(() => {
+    const fetchDummyData = async () => {
+      fetch("https://jsonplaceholder.org/posts/1") //id need to be dynamic
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((post) => {
+          setPost(post);
+          //   console.log(post); // remove in prod
+        })
+        .catch((error) => {
+          console.error("There was a problem with the fetch operation:", error);
+        });
+    };
 
-		fetchDummyData();
-	}, []);
-
+    fetchDummyData();
+  }, []);
+  //   json date to written date, using regex or string.replace
+  //   https://www.tutorialspoint.com/how-to-convert-json-results-into-a-date-using-javascript
   return (
     <>
-    <div>
-        <SinglePostHeading
-            postData={post}
-        />
-    </div>
 
-    <div>
-        main content here
-    </div>
+      <div className="single-post-view-container wrap">
+        <section>
+          <div>
+            <SinglePostHeading postData={post} />
+          </div>
 
-    <div>
-        Comment field and sorting here
-    </div>
+          <div>
+            <SinglePostContent postData={post} />
+          </div>
 
-    <div>
-        comments and replies here
-    </div>
+          <div>
+			<br />
+            {!loggedIn ? (
+              <div className="comment-missing-login">
+                <p>
+                  {" "}
+                  Login to leave a comment
+                  <a href="#"> login</a>
+                </p>
+              </div>
+            ) : (
+              <div>Comment field and sorting here (kun på desktop)</div>
+            )}
+          </div>
 
+          <div>
+            <CommentSection
+              postId={1}
+              postDate={post.publishedAt}
+              loggedIn={loggedIn}
+            />
+          </div>
+        </section>
+        <div className="test">small container here</div>
+      </div>
     </>
-  )
+  );
 }

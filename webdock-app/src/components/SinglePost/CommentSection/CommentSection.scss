@@ -1,0 +1,28 @@
+@use '../../../global-styling/mixins' as mix;
+
+
+.comment-section-container {
+    margin-top: 60px;
+    
+}
+
+.comment-user {
+    @include mix.flex-center(start);
+
+    &__img {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.comment-meta-container {
+    @include mix.flex-center(start, center, 10px);
+    
+    &__icon {
+        display: inline-block;
+        @include mix.icon-image-centering('../../../content/gfx/Icons/like-grey.svg', 25px, 25px);
+    
+        cursor: pointer;
+    }
+}
+

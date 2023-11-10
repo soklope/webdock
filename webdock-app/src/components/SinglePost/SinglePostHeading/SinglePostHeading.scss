@@ -10,6 +10,7 @@
 
 	&__meta {
 		width: 100%;
+		margin-bottom: 10px;
 
 		&-container {
 			@include flex-center(start);
@@ -21,8 +22,9 @@
 	}
 
 	&__title {
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 		font-size: v.$h1;
+		font-family: v.$primary-color;
 
 		@media screen and (min-width: v.$desktop-screen) {
 			font-size: v.$h1-desktop;
