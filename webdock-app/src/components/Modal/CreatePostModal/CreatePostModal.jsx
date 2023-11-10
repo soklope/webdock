@@ -51,7 +51,9 @@ export default function CreatePostModal() {
                     </div>
                 </div>
             </div>
+            <div className="create-post-modal-container__modal-background">
             <ModalBackground />
+            </div>
         </>
 
         :
