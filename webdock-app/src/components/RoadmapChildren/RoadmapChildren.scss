@@ -19,6 +19,12 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
+    text-decoration: none;
+    color: v.$black;
+
+    &:hover {
+        transform: scale(1.02);
+    }
 
     button {
         height: 100%;
