@@ -1,17 +1,18 @@
 @use '../../../global-styling/mixins' as mix;
 @use '../../../global-styling/Variables.scss' as v;
 
+.filter-container {
+  display: flex;
+  flex-direction: column;  // To stack the filtered posts vertically
+  align-items: center;     // Center horizontally
+}
+
 .filter-buttons {
     display: flex;
+    position: relative;
     gap: 10px;
     margin-bottom: 10px;
 }
-
-.filter-container {
-    display: flex;
-    flex-direction: column;  // To stack the filtered posts vertically
-    align-items: center;     // Center horizontally
-    }
 
 // sort-function-btn styling
 .sort-function-btn {
@@ -121,32 +122,25 @@
 
   .search-input {
     @include mix.filter-btn-styling;
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 3;
+    background-color: aqua;
   
     &.active {
       @include mix.filter-btn-styling;
       cursor: initial;
+      position: relative;
+      border-radius: 0px;
+      border-left:none;
+      border-right: none;
+      outline: none;
     }
   
     .input-container {
       display: flex;
       align-items: center;
-    }
-  
-    input {
-      border: none;
-      background: transparent;
-      font-family: v.$secondary-font;
-      font-size: 15px;
-      font-weight: 500;
-      height: 35px;
-      width: 100%;
-      
-      &:focus, &:not(:focus) {
-        border-radius: 0px;
-        border-left:none;
-        border-right: none;
-        outline: none;
-      }
     }
   
     .input-icon {
