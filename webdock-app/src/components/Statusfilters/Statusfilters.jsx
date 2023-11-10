@@ -6,7 +6,8 @@ import './Statusfilters.scss'
 export default function Statusfilter({ indicationColor, title, borderColor, backgroundColor, isSelected, onSelect }) {
 
   const handleButtonClick = () => {
-    onSelect(indicationColor);
+    onSelect(title);
+    // changes to title 
   }
 
   return (
