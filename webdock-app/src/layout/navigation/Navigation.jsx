@@ -30,25 +30,31 @@ export default function Navigation() {
           <div className="navigation-logo__company-name">Webdock.io</div>
         </div>
 
-        <ul className="menu-items">
-          <li>
-            <Link className="menu-items__log-out" onClick={logout}/>
-          </li>
+        {
+          user &&
+            <>
+              <ul className="menu-items">
+                <li>
+                  <Link className="menu-items__log-out" onClick={logout}/>
+                </li>
 
-          <li>
-            <Link className="menu-items__profile" onClick={loginAsUser} />
-          </li>
-        </ul>
+                <li>
+                  <Link className="menu-items__profile" />
+                </li>
+              </ul>
 
-        <div className="burger-menu-icon">
-          {/* Hamburger menu icon */}
-          <Hamburger
-            direction="left"
-            toggled={isOpen}
-            toggle={toggleDropdownMenu}
-            rounded
-          />
-        </div>
+              <div className="burger-menu-icon">
+                {/* Hamburger menu icon */}
+                <Hamburger
+                  direction="left"
+                  toggled={isOpen}
+                  toggle={toggleDropdownMenu}
+                  rounded
+                  />
+              </div>
+            </>
+        }
+
 
         {/* Short hand if/else statement "If isOpen === true, then show the dropdown menu"*/}
         {isOpen ? (
@@ -59,7 +65,7 @@ export default function Navigation() {
               <ul className="nav-dropdown-menu__items">
 
                 <li>
-                  <Link className="nav-dropdown-menu__items__flex" to="/">
+                  <Link className="nav-dropdown-menu__items__flex" onClick={logout}>
                     <p>Log Out</p>
                     <span className="menu-items__log-out"></span>
                   </Link>
