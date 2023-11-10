@@ -126,7 +126,6 @@
     top:0;
     right:0;
     z-index: 3;
-    background-color: aqua;
   
     &.active {
       @include mix.filter-btn-styling;
