@@ -1,5 +1,11 @@
 @use '../../../global-styling/mixins' as mix;
 
+
+.comment-section-container {
+    margin-top: 60px;
+    
+}
+
 .comment-user {
     @include mix.flex-center(start);
 

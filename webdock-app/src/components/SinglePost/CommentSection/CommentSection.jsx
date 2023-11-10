@@ -1,30 +1,50 @@
 import { React, useState, useEffect } from "react";
 
 import Username from "../../Username/Username";
+import Replies from "./Replies/Replies";
 
 import "./CommentSection.scss";
+
+import dummyComments from './dummyComments.js';
 
 export default function CommentSection({ postId, postDate, loggedIn }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const response = await fetch(
-          `https://jsonplaceholder.typicode.com/comments?postId=` + postId
-        );
-        const data = await response.json();
-        setComments(data);
-      } catch (error) {
-        console.error("Error fetching comments:", error);
-      }
-    };
+    setComments(dummyComments);
+    
+    // const fetchComments = async () => {
+    //   try {
+    //     const response = await fetch(
+    //       `https://jsonplaceholder.typicode.com/comments?postId=` + postId
+    //     );
+    //     const data = await response.json();
+    //     setComments(data);
+    //   } catch (error) {
+    //     console.error("Error fetching comments:", error);
+    //   }
+    // };
 
-    fetchComments();
+    // fetchComments();
   }, []);
 
+  const renderReplies = (replies) => {
+    return (
+      <div className="replies-container">
+        {replies.map((reply) => (
+          <div key={reply.id}>
+            <Replies
+            name={reply.name}
+            content={reply.body}
+            />
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
-    <div>
+    <div className="comment-section-container">
       <h2>Comments</h2>
       {comments.map((comment) => (
         <div key={comment.id}>
@@ -53,6 +73,10 @@ export default function CommentSection({ postId, postDate, loggedIn }) {
               )}
             </div>
           </div>
+          
+          {/* we need to make a call to then backend where we get comments with replies as an array for this to work */}
+          {comment.replies && comment.replies.length > 0 && renderReplies(comment.replies)          }
+
           <br />
         </div>
       ))}

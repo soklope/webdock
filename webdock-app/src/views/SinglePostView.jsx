@@ -30,35 +30,44 @@ export default function SinglePostView() {
 
     fetchDummyData();
   }, []);
-
+  //   json date to written date, using regex or string.replace
+  //   https://www.tutorialspoint.com/how-to-convert-json-results-into-a-date-using-javascript
   return (
     <>
-      <div>
-        <SinglePostHeading postData={post} />
-      </div>
+      <div className="single-post-view-container wrap">
+        <section>
+          <div>
+            <SinglePostHeading postData={post} />
+          </div>
 
-      <div>
-        <SinglePostContent postData={post} />
-      </div>
+          <div>
+            <SinglePostContent postData={post} />
+          </div>
 
-      {!loggedIn ? (
-        <div className="comment-missing-login">
-          <p>
-            {" "}
-            Login to leave a comment
-            <a href="#"> login</a>
-          </p>
-        </div>
-      ) : (
-        <div>Comment field and sorting here (kun på desktop)</div>
-      )}
+          <div>
+			<br />
+            {!loggedIn ? (
+              <div className="comment-missing-login">
+                <p>
+                  {" "}
+                  Login to leave a comment
+                  <a href="#"> login</a>
+                </p>
+              </div>
+            ) : (
+              <div>Comment field and sorting here (kun på desktop)</div>
+            )}
+          </div>
 
-      <div>
-        <CommentSection
-          postId={1}
-          postDate={post.publishedAt}
-          loggedIn={loggedIn}
-        />
+          <div>
+            <CommentSection
+              postId={1}
+              postDate={post.publishedAt}
+              loggedIn={loggedIn}
+            />
+          </div>
+        </section>
+        <div className="test">small container here</div>
       </div>
     </>
   );
