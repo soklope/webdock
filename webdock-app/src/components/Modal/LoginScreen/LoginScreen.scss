@@ -1,0 +1,39 @@
+@use '../../../global-styling/Variables.scss' as v;
+
+.login-page {
+    width: 100%;
+    height: calc(100% - 65px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__container {
+        height: auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+        border-radius: 5px;
+        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.10);
+
+        &__button {
+            cursor: pointer;
+            height: 48px;
+            width: 200px;
+            background-color: v.$primary-color;
+            font-family: v.$secondary-font;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: uppercase;
+
+            &:hover {
+                transition: 0.2s;
+                background-color: darken(v.$primary-color, 2%);
+            }
+        }
+    }
+}

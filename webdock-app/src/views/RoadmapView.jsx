@@ -29,10 +29,9 @@ export default function RoadmapView() {
                 <ViewToggleSwitchContainer />
               </div>
               
-              <div className="filter-grid-sort-filter">
-                {/* <SortFunctionAndFilterContainer /> */}
-                sort and filter kommer her
-              </div>
+              {/* <div className="filter-grid-sort-filter">
+                <SortFunctionAndFilterContainer />
+              </div> */}
 
           </section>
 
