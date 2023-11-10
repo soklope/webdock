@@ -4,9 +4,11 @@ import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
 import placeholderProfilePic from "../../content/images/placeholder_profile.webp";
 import logo from "../../content/images/logo_200x200.png";
+import userStore from "../../stores/loginStore";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, loginAsUser, logout } = userStore()
 
   // Function to toggle the dropdown menu visibility
   const toggleDropdownMenu = () => {
@@ -30,11 +32,11 @@ export default function Navigation() {
 
         <ul className="menu-items">
           <li>
-            <Link className="menu-items__log-out" to="/" />
+            <Link className="menu-items__log-out" onClick={logout}/>
           </li>
 
           <li>
-            <Link className="menu-items__profile" to="/" />
+            <Link className="menu-items__profile" onClick={loginAsUser} />
           </li>
         </ul>
 

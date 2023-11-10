@@ -8,20 +8,31 @@ import SinglePostView from '../views/SinglePostView';
 import SortFunctionAndFilterContainer from '../components/SortFunctionAndFilterContainer/SortFunctionFilterContainer';
 import CreatePostModal from '../components/Modal/CreatePostModal/CreatePostModal';
 import SelectCategory from '../components/Modal/SelectCategory/SelectCategory';
+import LoginScreen from '../components/Modal/LoginScreen/LoginScreen';
+
+import userStore from '../stores/loginStore';
 
 const Router = () => {
+
+  const { user } = userStore()
+  console.log(user);
+
   return (
     <BrowserRouter>
       <Navigation />
       <CreatePostModal />
-      <Routes>
-        <Route exact path="/" element={<RoadmapView />} />
-        <Route path="/listview" element={<ListView />} />
-        <Route path="/post" element={<SinglePostView />} /> 
-        <Route path="/sort" element={<SortFunctionAndFilterContainer />} /> 
-        <Route path="/selectcategory" element={<SelectCategory />} />  
-        {/* Add more routes here as needed */}
-      </Routes>
+
+      { user ? 
+        <Routes>
+          <Route exact path="/" element={<RoadmapView />} />
+          <Route path="/listview" element={<ListView />} />
+          <Route path="/post" element={<SinglePostView />} /> 
+          <Route path="/sort" element={<SortFunctionAndFilterContainer />} /> 
+          <Route path="/selectcategory" element={<SelectCategory />} />  
+        </Routes>
+      :
+        <LoginScreen />
+      }
     </BrowserRouter>
   );
 };
