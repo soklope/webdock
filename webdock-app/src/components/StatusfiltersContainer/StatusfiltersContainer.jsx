@@ -125,7 +125,7 @@ function StatusfiltersContainer() {
           onSelect={handleFilterSelect}
         />
       </div>
-      <div> 
+      <div className='post-container'> 
       {postsWithFilter.map((post, index) => (
           <div key={index} className="roadmap-child-container">
             <RoadmapChildren

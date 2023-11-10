@@ -4,10 +4,6 @@
 // Import variables from the 'Variables.scss' file
 @use '../../global-styling/Variables.scss' as v;
 
-// Base styling for .test class
-.test {
-    background-color: #1c215d;
-}
 
 // Placeholder for border color styles
 .border-color {
@@ -21,6 +17,7 @@
     width: 110px;
     height: 35px;
     flex-shrink: 0;
+   
 
     // Uncomment this line to set the background color to white
     // background-color: white;
@@ -53,6 +50,7 @@
         position: absolute;
         right: 0%;
         top: 0;
+    
     }
 }
 
@@ -135,3 +133,6 @@
 }
 
 
+.post-container{
+    margin-top: 20px;
+}
