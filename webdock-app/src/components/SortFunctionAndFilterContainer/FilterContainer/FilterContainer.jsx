@@ -7,7 +7,7 @@ import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 export default function FilterContainer() {
    // State variables for sorting
   const [isSortDropdownOpen, setSortDropdownOpen] = useState(false);
-  const [selectedSortOption, setSelectedSortOption] = useState('Top');
+  const [selectedSortOption, setSelectedSortOption] = useState('Trending');
   const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
   const sortRef = useRef(null);
 

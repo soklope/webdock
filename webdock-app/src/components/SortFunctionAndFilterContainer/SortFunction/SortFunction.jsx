@@ -6,7 +6,7 @@ import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 
 export default function SortFunction() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedSortOption, setSelectedSortOption] = useState('');
+  const [selectedSortOption, setSelectedSortOption] = useState('Trending');
   const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
   const sortRef = useRef(null); 
 
