@@ -13,12 +13,13 @@ const Router = () => {
   return (
     <BrowserRouter>
     <Navigation />
+    {/* <CreatePostModal /> */}
       <Routes>
         <Route exact path="/" element={<RoadmapView />} />
         <Route path="/listview" element={<ListView />} />
         <Route path="/post" element={<SinglePostView />} /> 
         <Route path="/sort" element={<SortFunctionAndFilterContainer />} /> 
-        <Route path="/modal" element={<CreatePostModal />} />
+        {/* <Route path="/modal" element={<CreatePostModal />} /> */}
         <Route path="/selectcategory" element={<SelectCategory />} />  
         {/* Add more routes here as needed */}
       </Routes>
