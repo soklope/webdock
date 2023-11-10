@@ -1,5 +1,9 @@
 @use "./Variables.scss" as v; // Import variables from Variables.scss for use in this file.
 
+main {
+    max-width: 1200px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +24,7 @@
     &__image {
         width: 100vw;
         height: 100vh;
-        background: linear-gradient(to bottom, #ffffff 25%, #ffffff00);
+        background: linear-gradient(to bottom, #ffffffb3 25%, #ffffff00);
         background-attachment: fixed; // Create a vertical gradient background.
     }
 }

@@ -12,8 +12,7 @@ import SelectCategory from '../components/Modal/SelectCategory/SelectCategory';
 const Router = () => {
   return (
     <BrowserRouter>
-    <Navigation />
-    {/* <CreatePostModal /> */}
+      <Navigation />
       <Routes>
         <Route exact path="/" element={<RoadmapView />} />
         <Route path="/listview" element={<ListView />} />
