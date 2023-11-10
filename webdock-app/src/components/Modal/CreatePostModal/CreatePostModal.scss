@@ -6,14 +6,27 @@
     height: 100vh;
     display: flex;
     position: fixed;
+    z-index: 10;
+
+    @media screen and (min-width: v.$desktop-screen) {
+        align-items: center;
+        justify-content: center;
+    }
+
 }
 
 .create-post-modal-container {
     width: 100%;
-    height: 100%;
     height: calc(100% - 70px);
     padding: 20px;
     background-color: v.$white;
+
+    @media screen and (min-width: v.$desktop-screen) {
+        max-width: 900px;
+        height: auto;
+
+        border-radius: 5px;
+    }
 
     &__flex-parent {
         display: flex;
@@ -26,9 +39,10 @@
         width: 100%;
         display: flex;
         align-items: end;
+        cursor: pointer;
 
         &__icon {
-            background-image: url('../../../content/gfx/Icons/comment-icon.svg');
+            background-image: url('../../../content/gfx/Icons/close-icon-1.svg');
             height: 20px;
             width: 20px;
             display: inline-block;
@@ -44,6 +58,7 @@
         font-size: 16px;
         color: v.$offblack;
         margin-bottom: 10px;
+
 
         &__input {
             margin-bottom: 20px;
@@ -82,14 +97,37 @@
         background: #F2F2F2;
         border: none;
         margin-bottom: 20px;
+
+        @media screen and (min-width: v.$desktop-screen) {
+            margin-bottom: 0;
+        }
+
+
     }
 
     &__upload-icon {
+        cursor: pointer;
         height: 35px;
         width: 35px;
         display: inline-block;
         background-repeat: no-repeat;
         background-position: center center;
         background-image: url('../../../content/gfx/Icons/files.svg');
+    }
+
+    &__flex {
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (min-width: v.$desktop-screen) {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: end;
+        }
+    }
+
+    &__upload-flex {
+        display: flex;
+        flex-direction: column;
     }
 }

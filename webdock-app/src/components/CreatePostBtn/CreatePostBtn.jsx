@@ -1,10 +1,12 @@
-// import { useState} from "react";
 import './CreatePostBtn.scss'
-// CreatePostBtn component represents a button for creating a new post.
-// It includes a button element with an optional icon and the text "CREATE POST."
+import useModalStore from '../../stores/modalStore';
+
 export default function CreatePostBtn() {
+
+  const { toggleModal } = useModalStore();
+
   return (
-    <button className="create-post-btn">
+    <button className="create-post-btn" onClick={toggleModal}>
       <span className='create-post-btn__icon'>
         {/* You can add an icon here */}
       </span>

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import '../SelectCategory/SelectCategory.scss'
 
-export default function SelectCategory({ onSelectCategory }) {
+export default function SelectCategory() {
 const [selectedCategory, setSelectedCategory] = useState(null);
 const [showOptions, setShowOptions] = useState(false);
 const dropdownRef = useRef(null);
@@ -20,7 +20,6 @@ const categoryOptions = [
 
 const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    onSelectCategory(category);
     setShowOptions(false);
 };
 
