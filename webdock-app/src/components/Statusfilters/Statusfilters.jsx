@@ -10,6 +10,9 @@ export default function Statusfilter({ indicationColor, title, borderColor, back
     // changes to title 
   }
 
+// The className is dynamically set based on the provided borderColor and isSelected properties.
+// If the button is selected (isSelected is true), the backgroundColor is applied.
+// The onClick event is handled by the handleButtonClick function
   return (
     <button className={`Statusfilters-btn-mypost-text ${borderColor} ${isSelected && backgroundColor}`} onClick={handleButtonClick}>
       <p>{title}</p>

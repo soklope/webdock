@@ -20,7 +20,7 @@ export default function RoadmapView() {
 
         <main>
           <div>
-            filtering
+            
             <div>
               <ViewToggleSwitchContainer />
             </div>

@@ -1,10 +1,11 @@
-// Import the 'StatueFilters' component and the associated SCSS file.
+// Import the 'Statusfilter' component and the associated SCSS file.
 import Statusfilter from '../Statusfilters/Statusfilters';
 import './StatusfiltersContainer.scss';
 import { postArrayDb } from "../../dummyDb";
 import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
 import React, { useState, useEffect } from 'react';
 
+// Define a function to get color tags based on the status.
 function getColorTagFromStatus(status) {
   switch (status) {
     case 'My Post':
@@ -22,60 +23,41 @@ function getColorTagFromStatus(status) {
   }
 }
 
-// Define the 'StatueFiltersContainer' component, which serves as a container for status filter buttons.
+// Define the 'StatusfiltersContainer' component, which serves as a container for status filter buttons.
 function StatusfiltersContainer() {
 
+  // State hooks for selected filters, all posts, and filtered posts.
   const [selectedFilters] = useState([]);
-
   const [posts, setPosts] = useState([]);
   const [postsWithFilter, setPostsWithFilter] = useState([]);
 
-  //Fetch Get posts and adds the value to both posts and postsWithFilter
-  //because type is not set on first load
+  // Fetch posts and add the values to both 'posts' and 'postsWithFilter'
+  // Because the type is not set on the first load.
   useEffect(() => {
-    // // Define the API URL you want to request
-    // const apiUrl = 'https://jsonplaceholder.org/posts';
-
-    // // Make a GET request when the component mounts
-    // fetch(apiUrl)
-    //   .then((response) => {
-    //     if (!response.ok) {
-    //       throw new Error('Network response was not ok');
-    //     }
-    //     return response.json(); // Parse the response as JSON
-    //   })
-    //   .then((responseData) => {
-    //     setPosts(responseData); // Set the data in your component's state
-    //     setPostsWithFilter(responseData);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
-    
     setPosts(postArrayDb);
     setPostsWithFilter(postArrayDb);
-    
   }, []);
 
+  // Function to handle filter selection and filter posts based on the selected status.
   const handleFilterSelect = (filterStatus) => {
-    //Checks for valid imput
+    // Check for valid input
     if (selectedFilters !== null && filterStatus !== null && filterStatus !== "") {
-      //Findes index of the new selected filter
+      // Find the index of the newly selected filter
       const filterIndex = selectedFilters.findIndex(x => x === filterStatus);
 
-      //If the filter does not exists in array, index wil be -1
+      // If the filter does not exist in the array, the index will be -1
       if(filterIndex !== -1) {
-        //Remove the existing filter from the array
+        // Remove the existing filter from the array
         selectedFilters.splice(filterIndex, 1);
       } else {
-        //Add the new filter to the array
+        // Add the new filter to the array
         selectedFilters.push(filterStatus);
       }
     }
 
-    //Filters the posts on category asuming that postes.category is a list of strings
-    
-    //Replace code underneath with this when we have api //setPostsWithFilter(posts.filter(x => x.category.includes(filterIndicationColor) || x.category.some(y => selectedFilters.includes(y))));
+    // Filter the posts based on the category, assuming that 'posts.category' is a list of strings
+    // Replace the code underneath with this when we have an API:
+    // setPostsWithFilter(posts.filter(x => x.category.includes(filterIndicationColor) || x.category.some(y => selectedFilters.includes(y))));
     setPostsWithFilter(posts.filter(x => selectedFilters.length === 0 || selectedFilters.includes(x.status)));
   };
 
@@ -83,7 +65,7 @@ function StatusfiltersContainer() {
     // Create a container div with the 'flex-container' class.
     <div>
       <div className="flex-container">
-        {/* Render 'StatueFilters' components for different categories */}
+        {/* Render 'Statusfilter' components for different categories */}
         <Statusfilter
           indicationColor={"MyPost"}
           borderColor={"MyPost-border-color"}
@@ -126,7 +108,8 @@ function StatusfiltersContainer() {
         />
       </div>
       <div className='post-container'> 
-      {postsWithFilter.map((post, index) => (
+        {/* Map over filtered posts and render 'RoadmapChildren' components */}
+        {postsWithFilter.map((post, index) => (
           <div key={index} className="roadmap-child-container">
             <RoadmapChildren
               title={post.title}
@@ -135,15 +118,13 @@ function StatusfiltersContainer() {
               numberOfComments={post.numberOfComments}
               totalUpvotes={post.numberOfUpvotes}
               statusColor={getColorTagFromStatus(post.status)}
-              
             />
           </div>
         ))}
       </div>
     </div>
-    
   );
 }
 
-// Export the 'StatusfiltersBtnContainer' component for use in other parts of the application.
+// Export the 'StatusfiltersContainer' component for use in other parts of the application.
 export default StatusfiltersContainer;
