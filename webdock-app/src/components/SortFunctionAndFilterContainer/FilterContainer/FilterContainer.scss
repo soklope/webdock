@@ -10,10 +10,15 @@
 .filter-buttons {
     display: flex;
     position: relative;
+    justify-content: center;
     gap: 10px;
     margin-bottom: 10px;
     width: 417px;
-}
+
+        @media (max-width: 400px) {
+        width:375; // 
+      }
+    }
 
 // sort-function-btn styling
 .sort-function-btn {
@@ -109,7 +114,6 @@
       }
     }
   
-
     &__icon {
       @include mix.icon-image-centering('../../../content/gfx/Icons/search-function-icon.svg', 20px, 20px);
       margin-left: 5px; 
