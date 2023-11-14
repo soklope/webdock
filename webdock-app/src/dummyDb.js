@@ -206,4 +206,22 @@ export const postArrayDb = [
     category: "Features",
     createdAt: new Date("2020-10-11"),
   },
+  {
+    title: "Reseller Hosting ",
+    description: "advanced features",
+    numberOfComments: 2,
+    numberOfUpvotes: 34,
+    status: "Review",
+    category: "Billing",
+    createdAt: new Date("2020-12-21"),
+  },
+  {
+    title: "WordPress ",
+    description: "Optimized for WordPress websites with one-click installation",
+    numberOfComments: 4,
+    numberOfUpvotes: 44,
+    status: "My Post",
+    category: "Documentation",
+    createdAt: new Date("2020-12-15"),
+  },
 ];
