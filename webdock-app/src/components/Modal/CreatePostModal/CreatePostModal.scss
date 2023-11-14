@@ -15,6 +15,16 @@
 
 }
 
+::placeholder {
+    font-family: v.$primary-font;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.40);
+}
+
+:focus::placeholder {
+    color: v.$offblack;
+}
+
 .create-post-modal-container {
     width: 100%;
     height: calc(100% - 70px);
@@ -70,9 +80,6 @@
             background-color: #FFFDFD;
             border: 1px solid rgba(0, 0, 0, 0.20);
             border-radius: 5px;
-            font-family: v.$primary-font;
-            font-size: 14px;
-            color: rgba(0, 0, 0, 0.40);
         }
     }
 
@@ -85,9 +92,6 @@
         background-color: #FFFDFD;
         border: 1px solid rgba(0, 0, 0, 0.20);
         border-radius: 5px;
-        font-family: v.$primary-font;
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.40);
     }
 
     &__upload-btn {
