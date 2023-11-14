@@ -5,6 +5,7 @@ export default function SelectCategory() {
 const [selectedCategory, setSelectedCategory] = useState(null);
 const [showOptions, setShowOptions] = useState(false);
 const dropdownRef = useRef(null);
+const [hasChanged, setHasChanged] = useState(false)
 
 const categoryOptions = [
     'Dashboard Features',
@@ -21,6 +22,7 @@ const categoryOptions = [
 const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     setShowOptions(false);
+    setHasChanged(true);
 };
 
 const handleClickOutside = (event) => {
@@ -39,7 +41,7 @@ useEffect(() => {
 return (
     <div className="category-selector" ref={dropdownRef}>
         <div className="category-selector-dropdown">
-            <button className="category-selector-btn" onClick={() => setShowOptions(!showOptions)}>
+            <button className={`category-selector-btn ${hasChanged ? 'hasChanged' : ''}`} onClick={() => setShowOptions(!showOptions)}>
                 {selectedCategory || 'Select Category'}
                 <span className="category-selector-btn-icon"></span>
             </button>
