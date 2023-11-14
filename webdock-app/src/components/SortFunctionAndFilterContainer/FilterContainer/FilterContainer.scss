@@ -12,6 +12,7 @@
     position: relative;
     gap: 10px;
     margin-bottom: 10px;
+    width: 417px;
 }
 
 // sort-function-btn styling
@@ -126,6 +127,7 @@
     top:0;
     right:0;
     z-index: 3;
+    width: 100%;
   
     &.active {
       @include mix.filter-btn-styling;
@@ -140,6 +142,7 @@
     .input-container {
       display: flex;
       align-items: center;
+      width:100%;
     }
   
     .input-icon {
