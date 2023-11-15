@@ -16,7 +16,7 @@
     width: 417px;
 
         @media (max-width: 400px) {
-        width:375; // 
+        width:375; 
       }
     }
 
@@ -77,7 +77,7 @@
   
   .category-list {
     @include mix.dropdown-menu-styling;
-  
+
     ul {
       list-style-type: none;
       padding: 0;
@@ -121,7 +121,6 @@
       @media (max-width: 500px) {
         margin-left:0px; // Remove margin to center icon
       }
-
     }
   }
 
@@ -129,10 +128,13 @@
     @include mix.filter-btn-styling;
     position: absolute;
     top:0;
-    right:0;
     z-index: 3;
     width: 100%;
-  
+
+    @media (max-width: 500px) {
+      width:83.5%; 
+    }
+
     &.active {
       @include mix.filter-btn-styling;
       cursor: initial;
@@ -141,6 +143,7 @@
       border-left:none;
       border-right: none;
       outline: none;
+      width:100%;
     }
   
     .input-container {
