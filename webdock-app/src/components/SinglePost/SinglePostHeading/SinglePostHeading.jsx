@@ -25,7 +25,7 @@ export default function SinglePostHeading({ postTitle, postStatus, postDate, pos
 						<div className="single-post-heading__desktop">
 							<div>Category: {postCategory}</div>
 							<span>•</span>
-							<div>Date: {postDate}</div>
+							<div>Date: {postDate.toLocaleString()}</div>
 							<span>•</span>
 							<Username user={postAuthor} isAdmin={true} />
 						</div>

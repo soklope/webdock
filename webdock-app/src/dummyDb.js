@@ -94,7 +94,7 @@ export const completeArrayDb = [
 					},
 					{
 						id: 102,
-						name: "Bob Doe",
+						name: "1st pls Doe",
 						body: "Reply 2 for the first comment.",
 					},
 				],
@@ -125,7 +125,7 @@ export const completeArrayDb = [
 					},
 					{
 						id: 102,
-						name: "Bob Doe",
+						name: "test pls work Doe",
 						body: "Reply 2 for the first comment.",
 					},
 				],
@@ -175,7 +175,7 @@ export const completeArrayDb = [
 			},
 			{
 				id: 3,
-				name: "Bob Johnson",
+				name: "Kasper Johnson",
 				body: "This is the third comment.",
 				replies: [],
 			},

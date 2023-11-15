@@ -5,35 +5,38 @@ import "./view-styles/SinglePostView.scss";
 import SinglePostHeading from "../components/SinglePost/SinglePostHeading/SinglePostHeading";
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
-import { completeArrayDb, plannedArrayDb } from "../dummyDb";
+import { completeArrayDb } from "../dummyDb";
 import { useParams } from "react-router-dom";
 
 export default function SinglePostView() {
-	// const idFromUrl = useParams();
   const { postId } = useParams();
-
+  const loggedIn = true;
 
   const [post, setPost] = useState(null)
   
 	useEffect(() => {
-		console.log(postId);
+    const fetchSinglePost = async () => {
+      
+      const parsedId = parseInt(postId, 10)
+      // console.log('postId:', postId)
+      if (!isNaN(parsedId) && parsedId >= 0 && parsedId < completeArrayDb.length) {
+        const singlePost = completeArrayDb[parsedId];
+        setPost(singlePost);
+      } else {
+        console.log('invalid id:', postId)
+      }
+    };
+      
+      fetchSinglePost();
+    }, [postId]);
+  // console.log(post);
 
-    const parsedId = parseInt(postId, 10)
-    // console.log('postId:', postId)
-
-    const singlePost = completeArrayDb[parsedId];
-    setPost(singlePost);
-    console.log(singlePost)
-
-
-	}, [postId]);
-
-	//   json date to written date, using regex or string.replace
-	//   https://www.tutorialspoint.com/how-to-convert-json-results-into-a-date-using-javascript
+  if (!post) {
+    return <div>Loading...</div>
+  }
+  
 	return (
 		<>
-    {post.title}
-			{/* 
       <div className="single-post-view-container wrap">
         <section>
           <div>
@@ -48,7 +51,11 @@ export default function SinglePostView() {
           </div>
 
           <div>
-            <SinglePostContent postData={post} />
+            <SinglePostContent
+             postContent={post.description} 
+             postDate={post.createdAt}
+             
+             />
           </div>
 
           <div>
@@ -68,14 +75,15 @@ export default function SinglePostView() {
 
           <div>
             <CommentSection
-              postId={1}
+              postId={postId}
               postDate={post.publishedAt}
               loggedIn={loggedIn}
+              comments={post.comments}
             />
           </div>
         </section>
         <div className="test">small container here</div>
-      </div> */}
+      </div>
 		</>
 	);
 }
