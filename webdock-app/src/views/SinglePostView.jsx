@@ -5,40 +5,46 @@ import "./view-styles/SinglePostView.scss";
 import SinglePostHeading from "../components/SinglePost/SinglePostHeading/SinglePostHeading";
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
+import { completeArrayDb, plannedArrayDb } from "../dummyDb";
+import { useParams } from "react-router-dom";
 
 export default function SinglePostView() {
-  const [post, setPost] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+	// const idFromUrl = useParams();
+  const { postId } = useParams();
 
-  useEffect(() => {
-    const fetchDummyData = async () => {
-      fetch("https://jsonplaceholder.org/posts/1") //id need to be dynamic
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((post) => {
-          setPost(post);
-          //   console.log(post); // remove in prod
-        })
-        .catch((error) => {
-          console.error("There was a problem with the fetch operation:", error);
-        });
-    };
 
-    fetchDummyData();
-  }, []);
-  //   json date to written date, using regex or string.replace
-  //   https://www.tutorialspoint.com/how-to-convert-json-results-into-a-date-using-javascript
-  return (
-    <>
+  const [post, setPost] = useState(null)
+  
+	useEffect(() => {
+		console.log(postId);
 
+    const parsedId = parseInt(postId, 10)
+    // console.log('postId:', postId)
+
+    const singlePost = completeArrayDb[parsedId];
+    setPost(singlePost);
+    console.log(singlePost)
+
+
+	}, [postId]);
+
+	//   json date to written date, using regex or string.replace
+	//   https://www.tutorialspoint.com/how-to-convert-json-results-into-a-date-using-javascript
+	return (
+		<>
+    {post.title}
+			{/* 
       <div className="single-post-view-container wrap">
         <section>
           <div>
-            <SinglePostHeading postData={post} />
+            <SinglePostHeading
+             postTitle={post.title}
+             postStatus={post.status}
+             postUpvotes={post.numberOfUpvotes}
+             postCategory={post.category}
+             postDate={post.createdAt}
+             postAuthor={post.authorId}
+             />
           </div>
 
           <div>
@@ -69,7 +75,7 @@ export default function SinglePostView() {
           </div>
         </section>
         <div className="test">small container here</div>
-      </div>
-    </>
-  );
+      </div> */}
+		</>
+	);
 }

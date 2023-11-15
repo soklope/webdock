@@ -1,10 +1,10 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 
 import "./UpvoteBtn.scss";
 
 export default function UpvoteBtn( {numberOfUpvotes} ) {
   const [isUpvoted, setIsUpvoted] = useState(false);
-  const [upvotes, setUpvotes] = useState(3);
+  const [upvotes, setUpvotes] = useState(0);
 
   const loggedIn = true; //TODO: FIX NÅR VI HAR LOGIN
 
@@ -22,6 +22,11 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
     }
   };
 
+  useEffect(() => {
+    setUpvotes(numberOfUpvotes);
+    // console.log(upvotes)
+  }, []) 
+
   return (
       <div
         className={`upvote-btn${isUpvoted ? "--active" : ""}`}
@@ -31,7 +36,7 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
         <div
          className={`upvote-btn__text${isUpvoted ? "--active" : ""}`}
          >
-            {upvotes}
+            {/* {upvotes} */}
             {numberOfUpvotes}
         </div>
       </div>
