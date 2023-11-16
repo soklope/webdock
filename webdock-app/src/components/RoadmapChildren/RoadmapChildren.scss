@@ -45,20 +45,20 @@
     &__title-category-tag {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         margin-right: auto;
+        gap: 5px;
         font-family: v.$secondary-font;
         height: 100%;
         align-items: start;
     }
 
     &__title {
-        font-size: 0.75rem;
+        font-size: 1rem;
         font-weight: 600;
     }
 
     &__category {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         font-weight: 400;
     }
 

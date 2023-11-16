@@ -36,11 +36,11 @@ export default function Navigation() {
               <>
                 <ul className="menu-items">
                   <li>
-                    <Link className="menu-items__log-out" onClick={logout}/>
+                    <Link className="menu-items__profile" />
                   </li>
 
                   <li>
-                    <Link className="menu-items__profile" />
+                    <Link className="menu-items__log-out" onClick={logout}/>
                   </li>
                 </ul>
 
