@@ -81,6 +81,16 @@ export const completeArrayDb = [
 		status: "Complete",
 		category: "Competition",
 		createdAt: new Date("2021-05-15"),
+		images: [
+			{
+				id: 1,
+				url: "https://placehold.co/600x400",
+			},
+			{
+				id: 2,
+				url: "https://placehold.co/600x800",
+			},
+		],
 		comments: [
 			{
 				id: 1,
@@ -112,6 +122,20 @@ export const completeArrayDb = [
 		status: "Complete",
 		category: "Perfect Server Stacks",
 		createdAt: new Date("2020-06-28"),
+		images: [
+			{
+				id: 1,
+				url: "https://placehold.co/600x200",
+			},
+			{
+				id: 2,
+				url: "https://placehold.co/600x200",
+			},
+			{
+				id: 3,
+				url: "https://placehold.co/600x200",
+			},
+		],
 		comments: [
 			{
 				id: 1,
@@ -143,6 +167,9 @@ export const completeArrayDb = [
 		status: "Complete",
 		category: "Billing Features",
 		createdAt: new Date("2020-07-10"),
+		images: [
+			
+		],
 		comments: [
 			{
 				id: 1,
