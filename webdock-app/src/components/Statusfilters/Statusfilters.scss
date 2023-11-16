@@ -1,34 +1,22 @@
-// Import React dependencies if needed
-// import { useState } from "react";
-
 // Import variables from the 'Variables.scss' file
 @use '../../global-styling/Variables.scss' as v;
 
-
-// Placeholder for border color styles
-.border-color {
-    // Add border-color styles here
-}
-
 // Styling for .category-btn-mypost-text class
 .Statusfilters-btn-mypost-text {
+    cursor: pointer;
     border-style: solid;
     position: relative;
     width: 110px;
     height: 35px;
     flex-shrink: 0;
     background-color: v.$white;
-
     color: #404040;
     text-align: center;
-    font-family: Poppins;
     font-size: 15px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
-
-    // Use the secondary font defined in Variables.scss
     font-family: v.$secondary-font;
+    transition: 0.2s;
+
 
     border-radius: 5px;
     overflow: hidden;
@@ -40,11 +28,9 @@
     &__indicator {
         width: 4px;
         height: 100%;
-        background-color: #ED8007;
         position: absolute;
         right: 0%;
         top: 0;
-
     }
 }
 
@@ -93,30 +79,31 @@
 
 // Background color classes for specific categories when toggled
 .MyPost-background-color {
+    transition: 0.2s;
     background-color: #ED8007;
     color: white;
 }
 
 .Review-background-color {
+    transition: 0.2s;
     background-color: #85B5B5;
     color: white;
 }
 
 .Planned-background-color {
+    transition: 0.2s;
     background-color: #1FA0FF;
     color: white;
 }
 
 .InProgress-background-color {
+    transition: 0.2s;
     background-color: #C17AFF;
     color: white;
 }
 
 .Complete-background-color {
+    transition: 0.2s;
     background-color: #6CD345;
     color: white;
-}
-
-.post-container {
-    margin-top: 20px;
 }

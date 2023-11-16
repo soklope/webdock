@@ -2,7 +2,7 @@
 import Statusfilter from '../Statusfilters/Statusfilters';
 import './StatusfiltersContainer.scss';
 import { postArrayDb } from "../../dummyDb";
-import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
+import ListViewPostItem from '../ListViewPostItem/ListViewPostItem';
 import React, { useState, useEffect } from 'react';
 
 // Define a function to get color tags based on the status.
@@ -63,9 +63,8 @@ function StatusfiltersContainer() {
 
   return (
     // Create a container div with the 'flex-container' class.
-    <div>
+    <>
       <div className="flex-container">
-        {/* Render 'Statusfilter' components for different categories */}
         <Statusfilter
           indicationColor={"MyPost"}
           borderColor={"MyPost-border-color"}
@@ -107,22 +106,21 @@ function StatusfiltersContainer() {
           onSelect={handleFilterSelect}
         />
       </div>
-      <div className='post-container'> 
-        {/* Map over filtered posts and render 'RoadmapChildren' components */}
-        {postsWithFilter.map((post, index) => (
-          <div key={index} className="roadmap-child-container">
-            <RoadmapChildren
-              title={post.title}
-              category={post.category}
-              status={post.status}
-              numberOfComments={post.numberOfComments}
-              totalUpvotes={post.numberOfUpvotes}
-              statusColor={getColorTagFromStatus(post.status)}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+
+      {postsWithFilter.map((post, index) => (
+        <div key={index}>
+          <ListViewPostItem
+            title={post.title}
+            category={post.category}
+            status={post.status}
+            numberOfComments={post.numberOfComments}
+            totalUpvotes={post.numberOfUpvotes}
+            statusColor={getColorTagFromStatus(post.status)}
+            indicatorColor={getColorTagFromStatus(post.status)}
+          />
+        </div>
+      ))}
+    </>
   );
 }
 
