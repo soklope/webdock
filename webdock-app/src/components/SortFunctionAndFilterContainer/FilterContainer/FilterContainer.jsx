@@ -7,7 +7,7 @@ import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
 export default function FilterContainer() {
    // State variables for sorting
   const [isSortDropdownOpen, setSortDropdownOpen] = useState(false);
-  const [selectedSortOption, setSelectedSortOption] = useState('Trending');
+  const [selectedSortOption, setSelectedSortOption] = useState('Sort');
   const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
   const sortRef = useRef(null);
 
@@ -263,7 +263,7 @@ export default function FilterContainer() {
       </div>
       
     {/* Render the filtered posts using RoadmapChildren component */}
-      <div className="filtered-posts">
+      {/* <div className="filtered-posts">
         {filteredData.map((item) => (
           <div key={item.title}>
             <RoadmapChildren
@@ -274,10 +274,10 @@ export default function FilterContainer() {
               status={item.status}
               statusColor={item.statusColor}
             />
-    </div>
+      </div>
   ))}
   {filteredData.length === 0 && <p>No results</p>}
-</div>
+  </div> */}
 </div>
 )
 }
