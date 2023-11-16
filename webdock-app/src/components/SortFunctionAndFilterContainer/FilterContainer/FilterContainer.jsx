@@ -1,10 +1,12 @@
 import { useEffect,useState, useRef } from 'react';
 import '../FilterContainer/FilterContainer.scss';
 import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
-import RoadmapChildren from '../../RoadmapChildren/RoadmapChildren';
+import usePostArrayStore from '../../../stores/postArrayStore';
 
 // Defining the main FilterContainer component
 export default function FilterContainer() {
+  const { filterAllPosts, setSortValue, setCategoryValue, setSearchValue } = usePostArrayStore()
+
    // State variables for sorting
   const [isSortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('Sort');
@@ -25,12 +27,16 @@ export default function FilterContainer() {
 // Function to toggle visibility of the search input
   const toggleInput = () => {
     setInputVisible(!isInputVisible);
+    setSearchValue("")
   };
 
 // Function to close the search input
   const closeInput = () => {
     setInputVisible(false);
     setSearchQuery(''); // Clear the search query
+
+    setSearchValue("")
+    filterAllPosts()
   };
 
 // useEffect to focus on the search input when it becomes visible
@@ -44,6 +50,9 @@ export default function FilterContainer() {
   const handleInputChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
+
+    setSearchValue(query)
+    filterAllPosts()
     // Trigger the search as the user types
   };
 
@@ -87,28 +96,30 @@ export default function FilterContainer() {
     setSortDropdownOpen(false);
 
   // Sorting the data based on the selected sort option
-    let sortedData;
-    switch (sortOption) {
-      case 'Trending':
-        sortedData = [...dataToSort].sort((a, b) => {
-          return b.numberOfComments - a.numberOfComments;
-        });
-        break;
-      case 'Top':
-        sortedData = [...dataToSort].sort((a, b) => {
-          return b.numberOfUpvotes - a.numberOfUpvotes;
-        });
-        break;
-      case 'New':
-        sortedData = [...dataToSort].sort((a, b) => {
-          return b.createdAt - a.createdAt;
-        });
-        break;
-        default:
-          sortedData = dataToSort;
-        }
+    // let sortedData;
+    // switch (sortOption) {
+    //   case 'Trending':
+    //     sortedData = [...dataToSort].sort((a, b) => {
+    //       return b.numberOfComments - a.numberOfComments;
+    //     });
+    //     break;
+    //   case 'Top':
+    //     sortedData = [...dataToSort].sort((a, b) => {
+    //       return b.numberOfUpvotes - a.numberOfUpvotes;
+    //     });
+    //     break;
+    //   case 'New':
+    //     sortedData = [...dataToSort].sort((a, b) => {
+    //       return b.createdAt - a.createdAt;
+    //     });
+    //     break;
+    //     default:
+    //       sortedData = dataToSort;
+    //     }
 
-    setDataToSort(sortedData);
+    // setDataToSort(sortedData);
+    setSortValue(sortOption)
+    filterAllPosts()
   };
 
 // Array of sort options
@@ -128,6 +139,9 @@ export default function FilterContainer() {
     setSelectedCategory(category);
     setCategorySelected(true);
     setCategoryDropdownOpen(false);
+
+    setCategoryValue(category)
+    filterAllPosts()
   };
 
 // Event handler for clearing the selected category
@@ -136,21 +150,24 @@ export default function FilterContainer() {
     setSelectedCategory('All Categories');
     setCategorySelected(false);
     setCategoryDropdownOpen(false); 
+
+    setCategoryValue('All Categories')
+    filterAllPosts()
   };
 
 // Function to filter data based on category and search query
-  const handleSearch = () => {
-    const filteredData = dataToSort.filter((item) => {
-      if (
-        (selectedCategory === 'All Categories' || item.category === selectedCategory) &&
-        (searchQuery === '' || item.title.toLowerCase().includes(searchQuery.toLowerCase()))
-      ) {
-        return true;
-      }
-      return false;
-    });
-    return filteredData;
-  };
+  // const handleSearch = () => {
+  //   const filteredData = dataToSort.filter((item) => {
+  //     if (
+  //       (selectedCategory === 'All Categories' || item.category === selectedCategory) &&
+  //       (searchQuery === '' || item.title.toLowerCase().includes(searchQuery.toLowerCase()))
+  //     ) {
+  //       return true;
+  //     }
+  //     return false;
+  //   });
+  //   return filteredData;
+  // };
 
 // Array of category options
   const categoryOptions = [
@@ -167,7 +184,7 @@ export default function FilterContainer() {
   ];
 
 // Get the filtered data based on category and search query
-  const filteredData = handleSearch();
+  // const filteredData = handleSearch();
 
 // Rendering the FilterContainer component
   return (
@@ -261,23 +278,6 @@ export default function FilterContainer() {
         </button>
       )}
       </div>
-      
-    {/* Render the filtered posts using RoadmapChildren component */}
-      {/* <div className="filtered-posts">
-        {filteredData.map((item) => (
-          <div key={item.title}>
-            <RoadmapChildren
-              title={item.title}
-              numberOfComments={item.numberOfComments}
-              totalUpvotes={item.numberOfUpvotes}
-              category={item.category}
-              status={item.status}
-              statusColor={item.statusColor}
-            />
-      </div>
-  ))}
-  {filteredData.length === 0 && <p>No results</p>}
-  </div> */}
 </div>
 )
 }

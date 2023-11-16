@@ -4,9 +4,11 @@ import './StatusfiltersContainer.scss';
 import { postArrayDb } from "../../dummyDb";
 import ListViewPostItem from '../ListViewPostItem/ListViewPostItem';
 import React, { useState, useEffect } from 'react';
+import usePostArrayStore from '../../stores/postArrayStore';
 
 // Define a function to get color tags based on the status.
 function getColorTagFromStatus(status) {
+  
   switch (status) {
     case 'My Post':
       return 'tag-my-post-color';
@@ -24,8 +26,9 @@ function getColorTagFromStatus(status) {
 }
 
 // Define the 'StatusfiltersContainer' component, which serves as a container for status filter buttons.
-function StatusfiltersContainer() {
-
+export default function StatusfiltersContainer() {
+  const { statusFilter, filterAllPosts } = usePostArrayStore()
+  
   // State hooks for selected filters, all posts, and filtered posts.
   const [selectedFilters] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -44,14 +47,17 @@ function StatusfiltersContainer() {
     if (selectedFilters !== null && filterStatus !== null && filterStatus !== "") {
       // Find the index of the newly selected filter
       const filterIndex = selectedFilters.findIndex(x => x === filterStatus);
+      const filterStatusIndex = statusFilter.findIndex(x => x === filterStatus);
 
       // If the filter does not exist in the array, the index will be -1
-      if(filterIndex !== -1) {
+      if(filterStatusIndex !== -1) {
         // Remove the existing filter from the array
         selectedFilters.splice(filterIndex, 1);
+        statusFilter.splice(filterIndex, 1);
       } else {
         // Add the new filter to the array
         selectedFilters.push(filterStatus);
+        statusFilter.push(filterStatus);
       }
     }
 
@@ -106,23 +112,9 @@ function StatusfiltersContainer() {
           onSelect={handleFilterSelect}
         />
       </div>
-
-      {postsWithFilter.map((post, index) => (
-        <div key={index}>
-          <ListViewPostItem
-            title={post.title}
-            category={post.category}
-            status={post.status}
-            numberOfComments={post.numberOfComments}
-            totalUpvotes={post.numberOfUpvotes}
-            statusColor={getColorTagFromStatus(post.status)}
-            indicatorColor={getColorTagFromStatus(post.status)}
-          />
-        </div>
-      ))}
     </>
   );
 }
 
 // Export the 'StatusfiltersContainer' component for use in other parts of the application.
-export default StatusfiltersContainer;
+// export default StatusfiltersContainer;

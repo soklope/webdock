@@ -13,7 +13,6 @@ export default function Navigation() {
   // Function to toggle the dropdown menu visibility
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
-    console.log(isOpen);
   };
 
   return (

@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import './Statusfilters.scss'
+import usePostArrayStore from '../../stores/postArrayStore';
 
 export default function Statusfilter({ indicationColor, title, borderColor, backgroundColor, isSelected, onSelect }) {
 
+  const { filterAllPosts } = usePostArrayStore()
+
   const handleButtonClick = () => {
     onSelect(title);
-    // changes to title 
+    filterAllPosts()
   }
 
-// The className is dynamically set based on the provided borderColor and isSelected properties.
-// If the button is selected (isSelected is true), the backgroundColor is applied.
-// The onClick event is handled by the handleButtonClick function
   return (
     <button className={`Statusfilters-btn-mypost-text ${borderColor} ${isSelected && backgroundColor}`} onClick={handleButtonClick}>
       <p>{title}</p>

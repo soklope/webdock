@@ -7,8 +7,7 @@ import RoadmapContainerInProgress from "../components/RoadmapContainer/RoadmapCo
 import RoadmapContainerComplete from "../components/RoadmapContainer/RoadmapContainerComplete";
 
 import useRoadmapStore from "../stores/viewStore";
-import StatusfiltersContainer from "../components/StatusfiltersContainer/StatusfiltersContainer";
-import FilterContainer from "../components/SortFunctionAndFilterContainer/FilterContainer/FilterContainer";
+import ListView from "./ListView";
 
 export default function RoadmapView() {
 
@@ -49,8 +48,7 @@ export default function RoadmapView() {
             :
 
             <div className="slide-left-animation">
-              <FilterContainer />
-              <StatusfiltersContainer />
+              <ListView />
             </div>
           }
         </main>
