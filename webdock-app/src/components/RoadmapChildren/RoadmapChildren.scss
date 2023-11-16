@@ -1,5 +1,13 @@
 @use '../../global-styling/Variables.scss' as v;
 
+.tag-my-post-color {
+    background-color: #ED8007;
+}
+
+.tag-review-color {
+    background-color: #85B5B5;
+}
+
 .tag-planned-color {
     background-color: v.$blue;
 }
