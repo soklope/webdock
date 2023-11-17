@@ -36,74 +36,74 @@
 
 // Background color classes for specific categories
 .MyPost {
-    background-color: #ED8007;
+    background-color: v.$orange;
 }
 
 .Review {
-    background-color: #85B5B5;
+    background-color: v.$light-green;
 }
 
 .Planned {
-    background-color: #1FA0FF;
+    background-color: v.$blue;
 }
 
 .InProgress {
-    background-color: #C17AFF;
+    background-color: v.$purple;
 }
 
 .Complete {
-    background-color: #6CD345;
+    background-color: v.$green;
 }
 
 // Border color classes for specific categories
 // Use these classes to set border colors
 .MyPost-border-color {
-    border-color: #ED8007;
+    border-color: v.$orange;
 }
 
 .Review-border-color {
-    border-color: #85B5B5;
+    border-color: v.$light-green;
 }
 
 .Planned-border-color {
-    border-color: #1FA0FF;
+    border-color: v.$blue;
 }
 
 .InProgress-border-color {
-    border-color: #C17AFF;
+    border-color: v.$purple;
 }
 
 .Complete-border-color {
-    border-color: #6CD345;
+    border-color: v.$green;
 }
 
 // Background color classes for specific categories when toggled
 .MyPost-background-color {
     transition: 0.2s;
-    background-color: #ED8007;
+    background-color: v.$orange;
     color: white;
 }
 
 .Review-background-color {
     transition: 0.2s;
-    background-color: #85B5B5;
+    background-color: v.$light-green;
     color: white;
 }
 
 .Planned-background-color {
     transition: 0.2s;
-    background-color: #1FA0FF;
+    background-color: v.$blue;
     color: white;
 }
 
 .InProgress-background-color {
     transition: 0.2s;
-    background-color: #C17AFF;
+    background-color: v.$purple;
     color: white;
 }
 
 .Complete-background-color {
     transition: 0.2s;
-    background-color: #6CD345;
+    background-color: v.$green;
     color: white;
 }
