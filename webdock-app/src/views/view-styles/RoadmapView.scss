@@ -12,6 +12,16 @@
     }
 }
 
+.filter-flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @media screen and (min-width: v.$desktop-screen) {
+        align-items: end;
+    }
+}
+
 .filter-grid-container {
     display: grid;
     grid-template-areas:

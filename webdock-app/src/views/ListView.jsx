@@ -9,8 +9,11 @@ export default function ListView() {
   
   return (
     <>
-      <FilterContainer />
-      <StatusfiltersContainer />
+      <div className="filter-flex-container">
+        <FilterContainer />
+        <StatusfiltersContainer />
+      </div>
+
       <ListViewArray />
     </>
   );
