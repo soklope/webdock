@@ -1,75 +1,99 @@
 import { React, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import "./view-styles/SinglePostView.scss";
 
 import SinglePostHeading from "../components/SinglePost/SinglePostHeading/SinglePostHeading";
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
+import SinglePostMeta from "../components/SinglePost/SinglePostMeta/SinglePostMeta";
+
+import { completeArrayDb } from "../dummyDb";
 
 export default function SinglePostView() {
-  const [post, setPost] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+	const { postId } = useParams();
+	const loggedIn = true;
 
-  useEffect(() => {
-    const fetchDummyData = async () => {
-      fetch("https://jsonplaceholder.org/posts/1") //id need to be dynamic
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((post) => {
-          setPost(post);
-          //   console.log(post); // remove in prod
-        })
-        .catch((error) => {
-          console.error("There was a problem with the fetch operation:", error);
-        });
-    };
+	const [post, setPost] = useState(null);
 
-    fetchDummyData();
-  }, []);
-  //   json date to written date, using regex or string.replace
-  //   https://www.tutorialspoint.com/how-to-convert-json-results-into-a-date-using-javascript
-  return (
-    <>
+	useEffect(() => {
+		const fetchSinglePost = async () => {
+			const parsedId = parseInt(postId, 10);
+			// console.log('postId:', postId)
+			if (
+				!isNaN(parsedId) &&
+				parsedId >= 0 &&
+				parsedId < completeArrayDb.length
+			) {
+				const singlePost = completeArrayDb[parsedId];
+				setPost(singlePost);
+			} else {
+				console.log("invalid id:", postId);
+			}
+		};
 
-      <div className="single-post-view-container wrap">
-        <section>
-          <div>
-            <SinglePostHeading postData={post} />
-          </div>
+		fetchSinglePost();
+	}, [postId]);
+	// console.log(post);
 
-          <div>
-            <SinglePostContent postData={post} />
-          </div>
+	if (!post) {
+		return <div>Loading...</div>;
+	}
 
-          <div>
-			<br />
-            {!loggedIn ? (
-              <div className="comment-missing-login">
-                <p>
-                  {" "}
-                  Login to leave a comment
-                  <a href="#"> login</a>
-                </p>
-              </div>
-            ) : (
-              <div>Comment field and sorting here (kun på desktop)</div>
-            )}
-          </div>
+	return (
+		<>
+			<div className="single-post-view-container wrap">
+				<section className="single-post-container">
+					<div>
+						<SinglePostHeading
+							postTitle={post.title}
+							postStatus={post.status}
+							postUpvotes={post.numberOfUpvotes}
+							postCategory={post.category}
+							postDate={post.createdAt}
+							postAuthor={post.authorId}
+						/>
+					</div>
 
-          <div>
-            <CommentSection
-              postId={1}
-              postDate={post.publishedAt}
-              loggedIn={loggedIn}
-            />
-          </div>
-        </section>
-        <div className="test">small container here</div>
-      </div>
-    </>
-  );
+					<div>
+						<SinglePostContent
+							postContent={post.description}
+							postDate={post.createdAt}
+						/>
+					</div>
+
+					<div>
+						<br />
+						{!loggedIn ? (
+							<div className="comment-missing-login">
+								<p>
+									{" "}
+									Login to leave a comment
+									<a href="#"> login</a>
+								</p>
+							</div>
+						) : (
+							<div>
+								Comment field and sorting here (kun på desktop)
+							</div>
+						)}
+					</div>
+
+					<div>
+						<CommentSection
+							postId={post.id}
+							postDate={post.publishedAt}
+							loggedIn={loggedIn}
+							comments={post.comments}
+						/>
+					</div>
+				</section>
+				<div className="single-post-container">
+					<SinglePostMeta
+          images={post.images}
+          />
+				</div>
+			</div>
+		</>
+	);
 }
