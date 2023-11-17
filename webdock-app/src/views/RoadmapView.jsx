@@ -7,6 +7,7 @@ import RoadmapContainerInProgress from "../components/RoadmapContainer/RoadmapCo
 import RoadmapContainerComplete from "../components/RoadmapContainer/RoadmapContainerComplete";
 
 import useRoadmapStore from "../stores/viewStore";
+import ListView from "./ListView";
 
 export default function RoadmapView() {
 
@@ -46,7 +47,9 @@ export default function RoadmapView() {
 
             :
 
-            <div className="slide-left-animation">nope</div>
+            <div className="slide-left-animation">
+              <ListView />
+            </div>
           }
         </main>
       </div>

@@ -15,7 +15,6 @@ import userStore from '../stores/loginStore';
 const Router = () => {
 
   const { user } = userStore()
-  console.log(user);
 
   return (
     <BrowserRouter>
