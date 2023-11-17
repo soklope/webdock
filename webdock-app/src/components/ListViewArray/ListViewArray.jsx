@@ -37,11 +37,12 @@ export default function ListViewArray() {
                     <ListViewPostItem
                         title={post.title}
                         category={post.category}
-                        status={post.status}
+                        status={post.status !== "My Post" ? post.status : false}
                         numberOfComments={post.numberOfComments}
                         totalUpvotes={post.numberOfUpvotes}
                         statusColor={getColorTagFromStatus(post.status)}
                         indicatorColor={getColorTagFromStatus(post.status)}
+                        myOwnStatus={post.isYourPost ? true : false}
                         />
                 </div>
             ))}
