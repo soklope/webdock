@@ -36,7 +36,27 @@
 
 .dropdown-menu {
   @include mix.dropdown-menu-styling;
-  padding:5px;
+  padding:0px;
+
+  ul {
+    list-style-type: none;
+
+    li {
+      cursor: pointer;
+      padding: 5px;
+      
+      button {
+        background: none;
+        border: none;
+        width:100%;
+        font: inherit;
+        cursor: pointer;
+        &:hover {
+          background: v.$dropdown;
+        }
+      }
+    }
+  }
 }
 
 // category-filter-btn styling

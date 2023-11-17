@@ -50,7 +50,7 @@
     cursor: pointer;
 
     .active {
-        background: darken(v.$offwhite, 10%);
+        background: v.$dropdown;
     }
 }
 
@@ -74,6 +74,6 @@
     }
 
     &__list-item:hover {
-        background: darken(v.$offwhite, 10%);
+        background:v.$dropdown;
     }
 }
