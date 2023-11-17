@@ -37,9 +37,9 @@
 
 @mixin filter-btn-styling {
     border-radius: 5px;
-    border: 0.5px solid v.$black;
+    border: 0.5px solid v.$offblack;
     background: v.$white;
-    font-family: v.$secondary-font;
+    font-family: v.$primary-font;
     font-size: 15px;
     font-weight: 500;
     display: inline-flex;
