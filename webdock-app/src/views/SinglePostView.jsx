@@ -1,39 +1,41 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import "./view-styles/SinglePostView.scss";
-
 import SinglePostHeading from "../components/SinglePost/SinglePostHeading/SinglePostHeading";
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
 import SinglePostMeta from "../components/SinglePost/SinglePostMeta/SinglePostMeta";
 
-import { completeArrayDb } from "../dummyDb";
+import "./view-styles/SinglePostView.scss";
+
+import { completeArrayDb } from "../dummyDb.js";
 
 export default function SinglePostView() {
-	const { postId } = useParams();
-	const loggedIn = true;
-
 	const [post, setPost] = useState(null);
-
+	
+	console.log('params:', useParams())
+	const { id } = useParams();
+	console.log('postid after useparams:',id)
+	const loggedIn = true;
+	
 	useEffect(() => {
 		const fetchSinglePost = async () => {
-			const parsedId = parseInt(postId, 10);
-			// console.log('postId:', postId)
+			const parsedId = parseInt(id, 10);
+			console.log('parsed postId:', parsedId)
 			if (
 				!isNaN(parsedId) &&
 				parsedId >= 0 &&
-				parsedId < completeArrayDb.length
+				parsedId < completeArrayDb.length + 1
 			) {
-				const singlePost = completeArrayDb[parsedId];
+				const singlePost = completeArrayDb[parsedId - 1];
 				setPost(singlePost);
 			} else {
-				console.log("invalid id:", postId);
+				console.log("invalid id:", id);
 			}
 		};
 
 		fetchSinglePost();
-	}, [postId]);
+	}, [id]);
 	// console.log(post);
 
 	if (!post) {

@@ -12,9 +12,10 @@ export default function SinglePostMeta({ images }) {
                         <h3>Added image</h3>
 						<div className="single-post-meta-image-container">
 							{images.map((image) => (
-								<div className="single-post-meta-image">
+								<div className="single-post-meta-image"
+								key={image.id}
+								>
 									<img
-										key={image.id}
 										src={image.url}
 										alt={`Image ${image.id}`}
 									/>

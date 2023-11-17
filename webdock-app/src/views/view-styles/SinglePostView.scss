@@ -6,6 +6,7 @@
     grid-template-columns: 1fr;
     gap: v.$gap-desktop;
     background-color: black; 
+    padding: 30px;
     
     @media screen and (min-width: calc(v.$desktop-screen * 2)) {
         grid-template-columns: 2fr 1fr;

@@ -25,7 +25,6 @@ const Router = () => {
         <Routes>
           <Route exact path="/" element={<RoadmapView />} />
           <Route path="/listview" element={<ListView />} />
-          {/* <Route path="/post" element={<SinglePostView />} />  */}
           <Route path="/posts/:id" element={<SinglePostView />} /> 
           <Route path="/sort" element={<SortFunctionAndFilterContainer />} /> 
           <Route path="/selectcategory" element={<SelectCategory />} />  

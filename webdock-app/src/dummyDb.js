@@ -10,8 +10,7 @@ export const plannedArrayDb = [
   },
   {
     title: "WordPress Hosting",
-    description:
-      "Optimized for WordPress websites with one-click installation",
+    description: "Optimized for WordPress websites with one-click installation",
     numberOfComments: 8,
     numberOfUpvotes: 50,
     status: "Planned",
@@ -115,8 +114,7 @@ export const completeArrayDb = [
     id: 2,
     authorId: 1, // made this an id instead of a string with the name, name should come from a joined (sql) call
     title: "Cloud Hosting",
-    description:
-      "Scalable cloud hosting for high availability and performance",
+    description: "Scalable cloud hosting for high availability and performance",
     numberOfComments: 12,
     numberOfUpvotes: 65,
     status: "Complete",
@@ -160,16 +158,13 @@ export const completeArrayDb = [
     id: 3,
     authorId: 1, // made this an id instead of a string with the name, name should come from a joined (sql) call
     title: "Dedicated Servers",
-    description:
-      "Full dedicated server for ultimate control and performance",
+    description: "Full dedicated server for ultimate control and performance",
     numberOfComments: 25,
     numberOfUpvotes: 102,
     status: "Complete",
     category: "Billing Features",
     createdAt: new Date("2020-07-10"),
-    images: [
-
-    ],
+    images: [],
     comments: [
       {
         id: 1,
@@ -249,7 +244,8 @@ export const postArrayDb = [
   },
   {
     title: "Enterprise Plan",
-    description: "For large enterprises with high traffic and performance needs",
+    description:
+      "For large enterprises with high traffic and performance needs",
     numberOfComments: 15,
     numberOfUpvotes: 98,
     status: "In Progress",
@@ -258,7 +254,8 @@ export const postArrayDb = [
   },
   {
     title: "Reseller Hosting",
-    description: "Host and manage multiple websites with your own control panel",
+    description:
+      "Host and manage multiple websites with your own control panel",
     numberOfComments: 12,
     numberOfUpvotes: 125,
     status: "In Progress",
@@ -337,4 +334,4 @@ export const postArrayDb = [
     category: "Documentation",
     createdAt: new Date("2020-12-15"),
   },
-  ];
+];

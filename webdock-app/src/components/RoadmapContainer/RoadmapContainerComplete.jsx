@@ -9,7 +9,7 @@ import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
 export default function RoadmapContainerComplete() {
 	const [containerIsOpen, setContainerIsOpen] = useState(false);
 	const [postCount, setPostCount] = useState(0);
-
+	
 	useEffect(() => {
 		setPostCount(completeArrayDb.length);
 	}, []);
@@ -46,6 +46,7 @@ export default function RoadmapContainerComplete() {
 									className="roadmap-child-container"
 								>
 									<RoadmapChildren
+										id={post.id}
 										title={post.title}
 										category={post.category}
 										status={post.status}
@@ -61,11 +62,11 @@ export default function RoadmapContainerComplete() {
 
 				<div className="roadmap-container__children">
 					<>
-						{completeArrayDb.map((post, index) => (
+						{completeArrayDb.map((post) => (
 							// link to needs to be post.id, its currently not in the dummydatabase
 							<Link
-								to={`/posts/${index}`}
-								key={index}
+								to={`/posts/${post.id}`}
+								key={post.id}
 								className="roadmap-child-container"
 							>
 								<RoadmapChildren
