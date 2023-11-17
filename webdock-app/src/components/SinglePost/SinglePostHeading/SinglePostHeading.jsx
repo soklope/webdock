@@ -21,7 +21,6 @@ export default function SinglePostHeading({ postTitle, postStatus, postDate, pos
 
 					<div className="single-post-heading__meta-container">
 						<div>STATUS: {postStatus} </div>
-						<div>STATUS: {postStatus} </div>
 						<div className="single-post-heading__desktop">
 							<div>Category: {postCategory}</div>
 							<span>•</span>

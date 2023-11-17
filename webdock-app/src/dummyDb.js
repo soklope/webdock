@@ -99,11 +99,13 @@ export const completeArrayDb = [
           {
             id: 101,
             name: "Jane Doe",
+            isAdmin: false,
             body: "Reply 1 for the first comment.",
           },
           {
             id: 102,
-            name: "1st pls Doe",
+            name: "Soren Doe",
+            isAdmin: true,
             body: "Reply 2 for the first comment.",
           },
         ],
@@ -143,11 +145,15 @@ export const completeArrayDb = [
           {
             id: 101,
             name: "Jane Doe",
+            isAdmin: false,
+
             body: "Reply 1 for the first comment.",
           },
           {
             id: 102,
             name: "test pls work Doe",
+            isAdmin: false,
+
             body: "Reply 2 for the first comment.",
           },
         ],
@@ -174,6 +180,8 @@ export const completeArrayDb = [
           {
             id: 101,
             name: "Jane Doe",
+            isAdmin: false,
+
             body: "Reply 1 for the first comment.",
           },
           {
@@ -186,11 +194,15 @@ export const completeArrayDb = [
       {
         id: 2,
         name: "Jane Smith",
+        isAdmin: false,
+
         body: "This is the second comment.",
         replies: [
           {
             id: 201,
             name: "John Smith",
+            isAdmin: false,
+
             body: "Reply 1 for the second comment.",
           },
         ],
@@ -198,6 +210,8 @@ export const completeArrayDb = [
       {
         id: 3,
         name: "Kasper Johnson",
+        isAdmin: false,
+
         body: "This is the third comment.",
         replies: [],
       },

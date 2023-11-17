@@ -10,7 +10,7 @@ export default function Username({ isAdmin, user }) {
 					Admin user  {user} <span className="admin--logo">  </span>
 				</div>
 			) : (
-				<div> Normal user {user} </div>
+				<div className="user"> Normal user {user} </div>
 			)}
 		</div>
 	);

@@ -5,8 +5,8 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: v.$gap-desktop;
-    background-color: black; 
-    padding: 30px;
+    background-color: hotpink; 
+    padding: 40px;
     
     @media screen and (min-width: calc(v.$desktop-screen * 2)) {
         grid-template-columns: 2fr 1fr;
@@ -27,5 +27,18 @@
 
     @include mix.flex-center;
 
+}
+
+.new-comment-form {
+    
+    form {
+
+        input {
+            width: 70%;
+            height: 35px;
+            font-size: 15px;
+            padding: 15px;
+        }
+    }
 }
 

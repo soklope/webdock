@@ -44,7 +44,7 @@ export default function SinglePostView() {
 
 	return (
 		<>
-			<div className="single-post-view-container wrap">
+			<div className="wrap single-post-view-container">
 				<section className="single-post-container">
 					<div>
 						<SinglePostHeading
@@ -59,7 +59,7 @@ export default function SinglePostView() {
 
 					<div>
 						<SinglePostContent
-							postContent={post.description}
+							// postContent={post.description}
 							postDate={post.createdAt}
 						/>
 					</div>
@@ -75,8 +75,10 @@ export default function SinglePostView() {
 								</p>
 							</div>
 						) : (
-							<div>
-								Comment field and sorting here (kun på desktop)
+							<div className="new-comment-form">
+								<form action="post">
+									<input type="text"  placeholder="Leave a comment..."/>
+								</form>
 							</div>
 						)}
 					</div>

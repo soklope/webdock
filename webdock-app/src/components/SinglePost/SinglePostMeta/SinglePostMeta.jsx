@@ -5,7 +5,7 @@ import "./SinglePostMeta.scss";
 export default function SinglePostMeta({ images }) {
 	return (
 		<>
-			<div>
+			<div className="single-post-meta">
                 {/* render/map through images if the image array from the post object has any images */}
 				{images.length > 0 && (
                     <div>
@@ -24,7 +24,6 @@ export default function SinglePostMeta({ images }) {
 						</div>
 					</div>
 				)}
-			</div>
 			<div>
 				<h3>People liked</h3>
 				<div>Users here</div>
@@ -32,6 +31,7 @@ export default function SinglePostMeta({ images }) {
 			<div>
 				<h3>Merged with</h3>
 				<div>merged content here</div>
+			</div>
 			</div>
 		</>
 	);
