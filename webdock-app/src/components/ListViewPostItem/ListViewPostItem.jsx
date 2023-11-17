@@ -1,7 +1,7 @@
 import "./ListViewPostItem.scss";
 import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
 
-export default function ListViewPostItem({ title, category, status, numberOfComments, statusColor, totalUpvotes, indicatorColor }) {
+export default function ListViewPostItem({ title, category, status, numberOfComments, statusColor, totalUpvotes, indicatorColor, myOwnStatus }) {
 
   return (
     <div className="listview-child-container">
@@ -13,7 +13,10 @@ export default function ListViewPostItem({ title, category, status, numberOfComm
 
       <div className="listview-child-container__title-category-tag">
         <p className="listview-child-container__title">{title}</p>
-        <p className={`listview-child-container__tag ${statusColor}`}>{status}</p>
+        <div className="listview-child-container__tag-parent">
+          { status && <p className={`listview-child-container__tag ${statusColor}`}>{status}</p>}
+          { myOwnStatus && <p className={`listview-child-container__tag tag-my-post-color`}>My Post</p>}
+        </div>
         <p className="listview-child-container__category">{category}</p>
       </div>
 

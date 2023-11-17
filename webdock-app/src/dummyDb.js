@@ -219,6 +219,7 @@ export const postArrayDb = [
     status: "Complete",
     category: "Competition",
     createdAt: new Date("2021-05-15"),
+    isYourPost: true,
   },
   {
     title: "Cloud Hosting",
@@ -228,6 +229,7 @@ export const postArrayDb = [
     status: "Complete",
     category: "Perfect Server Stacks",
     createdAt: new Date("2020-06-28"),
+    isYourPost: false,
   },
   {
     title: "Dedicated Servers",
@@ -237,6 +239,7 @@ export const postArrayDb = [
     status: "Complete",
     category: "Billing Features",
     createdAt: new Date("2020-07-10"),
+    isYourPost: false,
   },
   {
     title: "Business Plan",
@@ -246,6 +249,7 @@ export const postArrayDb = [
     status: "In Progress",
     category: "Networking",
     createdAt: new Date("2021-08-10"),
+    isYourPost: false,
   },
   {
     title: "Enterprise Plan",
@@ -255,6 +259,7 @@ export const postArrayDb = [
     status: "In Progress",
     category: "Mobile App",
     createdAt: new Date("2019-07-25"),
+    isYourPost: false,
   },
   {
     title: "Reseller Hosting",
@@ -264,6 +269,7 @@ export const postArrayDb = [
     status: "In Progress",
     category: "Hardware and Products",
     createdAt: new Date("2019-11-30"),
+    isYourPost: false,
   },
   {
     title: "Basic Plan",
@@ -273,6 +279,7 @@ export const postArrayDb = [
     status: "Planned",
     category: "Dashboard Features",
     createdAt: new Date("2022-10-01"),
+    isYourPost: false,
   },
   {
     title: "WordPress Hosting",
@@ -282,6 +289,7 @@ export const postArrayDb = [
     status: "Planned",
     category: "Documentation",
     createdAt: new Date("2020-11-15"),
+    isYourPost: false,
   },
   {
     title: "VPS Hosting",
@@ -291,6 +299,7 @@ export const postArrayDb = [
     status: "Planned",
     category: "Hardware and Products",
     createdAt: new Date("2021-09-05"),
+    isYourPost: false,
   },
   {
     title: "Email Hosting",
@@ -300,6 +309,7 @@ export const postArrayDb = [
     status: "Planned",
     category: "Billing Features",
     createdAt: new Date("2019-12-20"),
+    isYourPost: false,
   },
   {
     title: "Hosting",
@@ -309,6 +319,7 @@ export const postArrayDb = [
     status: "My Post",
     category: "Features",
     createdAt: new Date("2020-12-21"),
+    isYourPost: true,
   },
   {
     title: "Email",
@@ -318,6 +329,7 @@ export const postArrayDb = [
     status: "Review",
     category: "Features",
     createdAt: new Date("2020-10-11"),
+    isYourPost: true,
   },
   {
     title: "Reseller Hosting ",
@@ -327,6 +339,7 @@ export const postArrayDb = [
     status: "Review",
     category: "Billing",
     createdAt: new Date("2020-12-21"),
+    isYourPost: false,
   },
   {
     title: "WordPress ",
@@ -336,5 +349,6 @@ export const postArrayDb = [
     status: "My Post",
     category: "Documentation",
     createdAt: new Date("2020-12-15"),
+    isYourPost: true,
   },
-  ];
+];
