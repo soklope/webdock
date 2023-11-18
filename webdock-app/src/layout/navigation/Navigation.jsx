@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
-import placeholderProfilePic from "../../content/images/placeholder_profile.webp";
 import logo from "../../content/images/logo_200x200.png";
 import userStore from "../../stores/loginStore";
 
@@ -10,7 +9,6 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, loginAsUser, logout } = userStore()
 
-  // Function to toggle the dropdown menu visibility
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
@@ -31,7 +29,7 @@ export default function Navigation() {
           </div>
 
           {
-            user &&
+            user ?
               <>
                 <ul className="menu-items">
                   <li>
@@ -42,25 +40,28 @@ export default function Navigation() {
                     <Link className="menu-items__log-out" onClick={logout}/>
                   </li>
                 </ul>
-
-                <div className="burger-menu-icon">
-                  {/* Hamburger menu icon */}
-                  <Hamburger
-                    direction="left"
-                    toggled={isOpen}
-                    toggle={toggleDropdownMenu}
-                    rounded
-                    />
-                </div>
               </>
+
+              : 
+
+              <div className="nav-button-container">
+                <button onClick={loginAsUser} className="nav-button-container__log-in">Login</button>
+                <button className="nav-button-container__sign-up">Sign Up</button>
+              </div>
           }
 
+          <div className="burger-menu-icon">
+            <Hamburger
+              direction="left"
+              toggled={isOpen}
+              toggle={toggleDropdownMenu}
+              rounded
+              />
+          </div>
 
-          {/* Short hand if/else statement "If isOpen === true, then show the dropdown menu"*/}
-          {isOpen ? (
+          {isOpen && (
             <>
               <div className="dark-backdrop" />
-              {/* Dropdown menu */}
               <div className="nav-dropdown-menu">
                 <ul className="nav-dropdown-menu__items">
 
@@ -81,9 +82,8 @@ export default function Navigation() {
                 </ul>
               </div>
             </>
-          ) : (
-            <></>
           )}
+
         </div>
       </nav>
   );

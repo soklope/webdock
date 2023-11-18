@@ -1,11 +1,50 @@
 @use '../../../global-styling/Variables.scss' as v;
 
+@keyframes fadeInFromTop {
+    from {
+      opacity: 0%;
+      transform: translateY(-100%);
+    }
+
+    to {
+      opacity: 100%;
+      transform: translateY(0%);
+    }
+  }
+
 .login-page {
     width: 100%;
     height: calc(100% - 65px);
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+
+    &__headline {
+        animation: fadeInFromTop 2s;
+        font-weight: 700;
+        font-size: 32px;
+        color: v.$primary-color;
+    }
+
+    &__subline {
+        animation: fadeInFromTop 2s;
+        font-weight: 400;
+        font-size: 24px;
+        color: v.$primary-color;
+    }
+
+    @media screen and (min-width: v.$desktop-screen) {
+        &__headline {
+            font-size: 40px;
+        }
+    
+        &__subline {
+            font-size: 32px;
+        }
+    }
 
     &__container {
         height: auto;

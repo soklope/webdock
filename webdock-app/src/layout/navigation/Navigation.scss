@@ -111,6 +111,16 @@ nav {
     }
   }
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0%;
+    }
+
+    to {
+      opacity: 50%;
+    }
+  }
+
   .dark-backdrop {
     position: fixed;
     left: 0;
@@ -118,7 +128,8 @@ nav {
     width: 100%;
     height: calc(100vh - 70px);
     background-color: rgb(0, 0, 0);
-    opacity: 0.5;
+    opacity: 50%;
+    animation: fadeIn 0.3s;
 
     @media screen and (min-width: v.$desktop-screen) {
       display: none;
@@ -201,3 +212,49 @@ nav {
   width: 30px;
   border-radius: 50%;
 }
+
+.nav-button-container {
+  display: none;
+  
+  @media screen and (min-width: v.$desktop-screen) {
+    @include mix.flex-center;
+  
+    &__log-in {
+      height: 40px;
+      padding: 0px 20px;
+      background-color: #00000000;
+      border: solid 2px v.$primary-color;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      color: v.$primary-color;
+      transition: 0.2s;
+  
+      &:hover {
+        transition: 0.2s;
+        background-color: v.$primary-color;
+        color: v.$white;
+      }
+    }
+  
+    &__sign-up {
+      height: 40px;
+      padding: 0px 20px;
+      background-color: v.$primary-color;
+      border: solid 2px v.$primary-color;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      color: v.$white;
+      
+      &:hover {
+        transition: 0.2s;
+        background-color: v.$white;
+        color: v.$primary-color;
+      }
+    }
+  }
+}
+
