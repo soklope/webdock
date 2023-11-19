@@ -3,15 +3,23 @@
 
 .single-post-view-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 10fr;
+
     gap: v.$gap-desktop;
     background-color: hotpink; 
     padding: 40px;
     
     @media screen and (min-width: calc(v.$desktop-screen * 2)) {
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr 20fr 10fr;
     }
 
+    &__upvote {
+        display: none;
+
+        @media screen and (min-width: calc(v.$desktop-screen * 2)) {
+            display: block;
+        }
+    }
 
     .single-post-container {
         padding: 20px;
@@ -41,4 +49,3 @@
         }
     }
 }
-
