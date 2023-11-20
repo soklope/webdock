@@ -10,14 +10,15 @@
     color: v.$grey;
     border: v.$border-size solid v.$grey;
     cursor: pointer;
-
+    font-family: v.$primary-font;
+    
     @include flex-center($gap: 0);
     flex-direction: column;
-
+    
     &:hover {
         opacity: .9;
     }
-
+    
     &--active {
         @extend .upvote-btn;
         background-color: v.$primary-color;
@@ -36,9 +37,10 @@
     &__text {
         color: v.$offblack;
         font-family: v.$secondary-font;
-
+        
         &--active {
             color: v.$offwhite;
+            font-family: v.$secondary-font;
         }
     }
 }
