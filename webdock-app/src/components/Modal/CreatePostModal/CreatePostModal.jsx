@@ -5,6 +5,8 @@ import '../../CreatePostBtn/CreatePostBtn'
 import CreatePostBtn from "../../CreatePostBtn/CreatePostBtn";
 import useModalStore from "../../../stores/modalStore";
 
+import CloseIcon from '../../../content/gfx/Icons/close-icon.svg'
+
 import React, { useState, useRef } from 'react';
 
 export default function CreatePostModal() {
@@ -17,6 +19,10 @@ export default function CreatePostModal() {
       setSelectedFiles([...event.target.files]);
     };
     
+    const removeFile = (fileName) => {
+        setSelectedFiles(selectedFiles.filter(file => file.name !== fileName));
+     };
+
     return  (
         modalIsOpen ? 
         
@@ -63,12 +69,13 @@ export default function CreatePostModal() {
                                     >
                                     <span className="create-post-modal-container__upload-icon"></span>
                                 </button>
-                                
-                                <div>
+
                                     {selectedFiles.map(file => (
-                                        <div key={file.name}>{file.name}</div>
+                                        <div key={file.name} className="file-display">
+                                        {file.name}
+                                        <img src={CloseIcon} alt="close-icon" onClick={() => removeFile(file.name)} />
+                                    </div>
                                     ))}
-                                </div>
 
                             </div>
                             <CreatePostBtn />
