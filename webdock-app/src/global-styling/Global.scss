@@ -15,19 +15,21 @@ main {
 .background {
 	width: 100vw;
 	height: 100vh;
-	background-image: url("../content/gfx/background-image.png"); // Set a background image.
+	background: linear-gradient(to bottom, #ffffffb3 25%, #ffffff00), url("../content/gfx/background-image.png");
 	background-attachment: fixed; // Position the background image as fixed.
 	background-repeat: no-repeat; // Prevent the background image from repeating.
 	background-size: cover; // Scale the background image to cover the container.
 	background-position: center center;
+	overflow: auto;
+	position: relative;
 
 	&__image {
 		width: 100vw;
 		height: 100vh;
-		background: linear-gradient(to bottom, #ffffffb3 25%, #ffffff00);
-		background-attachment: fixed; // Create a vertical gradient background.
 	}
 }
+
+
 
 .wrap {
 	padding-left: 20px;
