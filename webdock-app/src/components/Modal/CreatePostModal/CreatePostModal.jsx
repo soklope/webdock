@@ -15,13 +15,20 @@ export default function CreatePostModal() {
 
     const [selectedFiles, setSelectedFiles] = useState([]);
     const fileUploadRef = useRef();
-    const handleFileSelect = (event) => {
-      setSelectedFiles([...event.target.files]);
-    };
     
+    const handleFileSelect = (event) => {
+    // Create a Set from existing file names for duplicate checking
+    const existingFileNames = new Set(selectedFiles.map(file => file.name));
+    // Filter out the files that are already selected
+    const newFiles = Array.from(event.target.files).filter(
+     file => !existingFileNames.has(file.name));
+    // Append the new files to the current files
+    setSelectedFiles([...selectedFiles, ...newFiles]);
+    };
+
     const removeFile = (fileName) => {
-        setSelectedFiles(selectedFiles.filter(file => file.name !== fileName));
-     };
+    setSelectedFiles(selectedFiles.filter(file => file.name !== fileName));
+    };
 
     return  (
         modalIsOpen ? 
