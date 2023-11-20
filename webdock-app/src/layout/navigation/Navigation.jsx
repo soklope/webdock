@@ -1,27 +1,39 @@
-import { React, useState, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { React, useState } from "react";
+import { Link } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
 import logo from "../../content/images/logo_200x200.png";
 import userStore from "../../stores/loginStore";
 
 export default function Navigation() {
-  const navigate = useNavigate();
-  const { user, loginAsUser, logout } = userStore()
+  const { loginAsUser, logout } = userStore()
   const [isOpen, setIsOpen] = useState(false);
 
   const userIsLoggedIn = localStorage.getItem("user")
-
-  useEffect(() => {
-    if (userIsLoggedIn) {
-      navigate('/');
-    }
-  }, [userIsLoggedIn]);
 
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
+  const handleLoginClick = () => {
+    loginAsUser();
+
+    const loggedInUser = localStorage.getItem('user');
+
+    if (loggedInUser) {
+      window.location.href = "/"
+    }
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+
+    const loggedInUser = localStorage.getItem('user');
+
+    if (!loggedInUser) {
+      window.location.href = "/login"
+    }
+  };
 
   return (
       <nav>
@@ -47,7 +59,7 @@ export default function Navigation() {
                   </li>
 
                   <li>
-                    <Link className="menu-items__log-out" onClick={logout}/>
+                    <Link className="menu-items__log-out" onClick={handleLogoutClick}/>
                   </li>
                 </ul>
               </>
@@ -55,7 +67,7 @@ export default function Navigation() {
               : 
 
               <div className="nav-button-container">
-                <button onClick={loginAsUser} className="nav-button-container__log-in">Login</button>
+                <button onClick={handleLoginClick} className="nav-button-container__log-in">Log In</button>
                 <button className="nav-button-container__sign-up">Sign Up</button>
               </div>
           }

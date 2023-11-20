@@ -18,7 +18,7 @@ export default function RoadmapChildren({
 
       <Link
         to={`/posts/${id}`}
-        className="roadmap-child-container"
+        className="roadmap-child-container__content"
       >
         <div className="roadmap-child-container__title-category-tag">
           <p className="roadmap-child-container__title">{title}</p>

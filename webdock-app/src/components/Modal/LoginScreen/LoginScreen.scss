@@ -1,4 +1,5 @@
 @use '../../../global-styling/Variables.scss' as v;
+@use '../../../global-styling/mixins' as mix;
 
 @keyframes fadeInFromTop {
     from {
@@ -11,68 +12,142 @@
       transform: translateY(0%);
     }
   }
+  
+  .login-page {
+    height: 100%;
 
-.login-page {
-    width: 100%;
-    height: calc(100% - 65px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
-
-    &__headline {
-        animation: fadeInFromTop 2s;
-        font-weight: 700;
-        font-size: 32px;
-        color: v.$primary-color;
+    @media screen and (min-width: v.$desktop-screen) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
     }
-
-    &__subline {
-        animation: fadeInFromTop 2s;
-        font-weight: 400;
-        font-size: 24px;
-        color: v.$primary-color;
-    }
-
+    
     @media screen and (min-width: v.$desktop-screen) {
         &__headline {
             font-size: 40px;
         }
-    
+        
         &__subline {
             font-size: 32px;
         }
     }
 
     &__container {
+        margin-top: 10px;
         height: auto;
         background-color: white;
         display: flex;
+        align-items: center;
         flex-direction: column;
         padding: 20px;
-        gap: 20px;
         border-radius: 5px;
-        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.10);
+        box-shadow: v.$drop-shadow;
+        gap: 15px;
 
-        &__button {
+        @media screen and (min-width: v.$desktop-screen) {
+            height: 600px;
+            width: 100%;
+            margin: 0px;
+            padding: 40px;
+        }
+    }
+    
+    &__logo {
+        height: 50px;
+        width: 60px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url('../../../content/images/logo_200x200.png');
+    }
+
+    &__input {
+        border: none;
+        padding: 5px;
+        border-bottom: solid 1px v.$primary-color;
+        width: 100%;
+    }
+
+    &__checkbox {
+        display: flex;
+        gap: 15px;
+        width: 100%;
+
+        input {
             cursor: pointer;
-            height: 48px;
-            width: 200px;
-            background-color: v.$primary-color;
-            font-family: v.$secondary-font;
-            border: none;
-            color: white;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: 300;
-            text-transform: uppercase;
+        }
 
-            &:hover {
-                transition: 0.2s;
-                background-color: darken(v.$primary-color, 2%);
-            }
+        p {
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+    }
+
+    &__login-button {
+        @include mix.flex-login-button; 
+        background-color: v.$primary-color;
+    }
+
+    hr {
+        width: 100%
+    }
+
+    &__google-button {
+        @include mix.flex-login-button;
+        background-color: v.$white;
+        box-shadow: v.$drop-shadow;
+        color: v.$offblack;
+        font-size: 0.8rem;
+    }
+
+    &__github-button {
+        @include mix.flex-login-button;
+        background-color: v.$white;
+        box-shadow: v.$drop-shadow;
+        color: v.$offblack;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+
+    &__link-text {
+        font-size: 0.8rem;
+        color: v.$blue;
+        margin-bottom: 15px;
+    }
+
+    &__splash-art {
+        display: none;
+        
+        @media screen and (min-width: v.$desktop-screen) {
+            background: url('../../../content/images/login-page-splash.png');
+            background-color: rgba(v.$primary-color, 0.1);
+            background-position: center end;
+            height: 600px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 5px;
+            box-shadow: v.$drop-shadow;
+            padding: 0px 30px;
+        }
+
+        &__headline {
+            color: v.$primary-color;
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        &__subline {
+            font-size: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 15px;
         }
     }
 }

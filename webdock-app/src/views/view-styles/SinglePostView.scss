@@ -26,13 +26,13 @@
 }
 
 .single-post-view-heading {
-    @include mix.flex-center(start, center, 0);
+    @include mix.flex-center(start, start, 20px);
     // 55+20 = 75
 
     &__upvote {
         display: none;
 
-        @media screen and (min-width: calc(v.$desktop-screen * 2)) {
+        @media screen and (min-width: calc(v.$desktop-screen)) {
             display: block;
         }
     }
