@@ -1,17 +1,27 @@
-import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { React, useState, useEffect } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
 import logo from "../../content/images/logo_200x200.png";
 import userStore from "../../stores/loginStore";
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const { user, loginAsUser, logout } = userStore()
+  const [isOpen, setIsOpen] = useState(false);
+
+  const userIsLoggedIn = localStorage.getItem("user")
+
+  useEffect(() => {
+    if (userIsLoggedIn) {
+      navigate('/');
+    }
+  }, [userIsLoggedIn]);
 
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
+
 
   return (
       <nav>
@@ -29,7 +39,7 @@ export default function Navigation() {
           </div>
 
           {
-            user ?
+            userIsLoggedIn ?
               <>
                 <ul className="menu-items">
                   <li>

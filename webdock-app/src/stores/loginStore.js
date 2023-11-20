@@ -3,32 +3,40 @@ import { create } from 'zustand';
 const userStore = create((set) => ({
     user: null,
 
-    loginAsUser: () => set({
-        user:
-        {
+    loginAsUser: () => {
+        const user = {
             loggedIn: true,
-            role: 1
-        }
-    }),
+            role: 1,
+        };
 
-    loginAsAdmin: () => set({
-        user:
-        {
+        localStorage.setItem('user', JSON.stringify(user));
+        set({ user });
+    },
+
+    loginAsAdmin: () => {
+        const user = {
             loggedIn: true,
-            role: 2
-        }
-    }),
+            role: 2,
+        };
 
-    loginAsSuperAdmin: () => set({
-        user:
-        {
+        localStorage.setItem('user', JSON.stringify(user));
+        set({ user });
+    },
+
+    loginAsSuperAdmin: () => {
+        const user = {
             loggedIn: true,
-            role: 3
-        }
-    }),
+            role: 3,
+        };
 
-    logout: () => set({ user: null }),
+        localStorage.setItem('user', JSON.stringify(user));
+        set({ user });
+    },
 
+    logout: () => {
+        localStorage.removeItem('user');
+        set({ user: null });
+    },
 }));
 
 export default userStore;

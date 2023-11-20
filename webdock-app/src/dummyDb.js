@@ -35,6 +35,33 @@ export const plannedArrayDb = [
     category: "Billing Features",
     createdAt: new Date("2019-12-20"),
   },
+  {
+    title: "WordPress Hosting",
+    description: "Optimized for WordPress websites with one-click installation",
+    numberOfComments: 8,
+    numberOfUpvotes: 50,
+    status: "Planned",
+    category: "Documentation",
+    createdAt: new Date("2020-11-15"),
+  },
+  {
+    title: "VPS Hosting",
+    description: "Virtual Private Server hosting with dedicated resources",
+    numberOfComments: 18,
+    numberOfUpvotes: 78,
+    status: "Planned",
+    category: "Hardware and Products",
+    createdAt: new Date("2021-09-05"),
+  },
+  {
+    title: "Email Hosting",
+    description: "Professional email hosting with advanced features",
+    numberOfComments: 3,
+    numberOfUpvotes: 22,
+    status: "Planned",
+    category: "Billing Features",
+    createdAt: new Date("2019-12-20"),
+  },
 ];
 
 export const inProgressArrayDb = [

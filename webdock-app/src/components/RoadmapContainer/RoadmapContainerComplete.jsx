@@ -33,7 +33,7 @@ export default function RoadmapContainerComplete() {
 					></span>
 					<p className="roadmap-container__postcount">{postCount}</p>
 					<div
-						className={`roadmap-container__color-indicator complete-color`}
+						className={`roadmap-container__color-indicator-complete`}
 					/>
 				</div>
 
