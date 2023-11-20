@@ -7,10 +7,10 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
   const [isUpvoted, setIsUpvoted] = useState(false);
   const [upvotes, setUpvotes] = useState(numberOfUpvotes);
 
-  const { user  } = userStore();
+  const loggedInUser = localStorage.getItem('user')
 
   const handleUpvotes = () => {
-    if (user) {
+    if (loggedInUser) {
         setIsUpvoted(!isUpvoted);
         if (isUpvoted) {
             setUpvotes(upvotes - 1)
