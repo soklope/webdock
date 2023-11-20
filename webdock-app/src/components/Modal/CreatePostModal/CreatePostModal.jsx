@@ -7,7 +7,7 @@ import useModalStore from "../../../stores/modalStore";
 
 import CloseIcon from '../../../content/gfx/Icons/close-icon.svg'
 
-import React, { useState, useRef } from 'react';
+import {useState, useRef } from 'react';
 
 export default function CreatePostModal() {
 
@@ -65,7 +65,6 @@ export default function CreatePostModal() {
                                 type="file"
                                 ref={fileUploadRef}
                                 id="fileUpload"
-                                style={{ display: 'none' }}
                                 onChange={handleFileSelect}
                                 multiple
                             />

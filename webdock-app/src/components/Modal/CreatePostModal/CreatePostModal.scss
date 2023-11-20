@@ -133,6 +133,10 @@
     &__upload-flex {
         display: flex;
         flex-direction: column;
+        
+        #fileUpload{
+            display: none;
+        }
     }
 
     &__modal-background {
