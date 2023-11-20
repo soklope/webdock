@@ -6,7 +6,10 @@
 */
 .flex-container {
   display: flex;
-  overflow: scroll;
+  gap: 20px;
+  overflow: auto;
+  height: auto;
+  margin-bottom: 20px;
 }
 
 /* 
@@ -16,4 +19,3 @@
 .flex-element {
   flex: 1;
 }
-

@@ -1,30 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import "./SinglePostHeading.scss";
 import UpvoteBtn from "../../UpvoteBtn/UpvoteBtn";
 import Username from "../../Username/Username";
 
-export default function SinglePostHeading({ postData }) {
+import "./SinglePostHeading.scss";
+
+
+export default function SinglePostHeading({ postTitle, postStatus, postDate, postCategory, postAuthor, postUpvotes }) {
+
 	return (
 		<>
 			<div className="single-post-heading">
 				<div>
 					<UpvoteBtn
-					// numberOfUpvotes={33}
+					numberOfUpvotes={postUpvotes}
 					/>
 				</div>
 				<div className="single-post-heading__meta">
-					<h1 className="single-post-heading__title">TITLE HERE</h1>
+					<h1 className="single-post-heading__title">{postTitle}</h1>
 
 					<div className="single-post-heading__meta-container">
-						<div>STATUS: {postData.status} </div>
-						<div>STATUS: {postData.status} </div>
+						<div>STATUS: {postStatus} </div>
+						<div>STATUS: {postStatus} </div>
 						<div className="single-post-heading__desktop">
-							<div>Category: {postData.category}</div>
+							<div>Category: {postCategory}</div>
 							<span>•</span>
-							<div>Date: {postData.publishedAt}</div>
+							<div>Date: {postDate.toLocaleString()}</div>
 							<span>•</span>
-							<Username user={postData.userId} isAdmin={true} />
+							<Username user={postAuthor} isAdmin={true} />
 						</div>
 					</div>
 				</div>

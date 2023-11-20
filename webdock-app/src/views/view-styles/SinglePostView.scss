@@ -1,0 +1,31 @@
+@use '../../global-styling/Variables.scss' as v;
+@use '../../global-styling/mixins' as mix;
+
+.single-post-view-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: v.$gap-desktop;
+    background-color: black; 
+    padding: 30px;
+    
+    @media screen and (min-width: calc(v.$desktop-screen * 2)) {
+        grid-template-columns: 2fr 1fr;
+    }
+
+
+    .single-post-container {
+        padding: 20px;
+        background-color: v.$white;
+        border-radius: 5px;
+
+    }
+}
+
+.comment-missing-login {
+    background-color: v.$grey;
+    height: 64px;
+
+    @include mix.flex-center;
+
+}
+

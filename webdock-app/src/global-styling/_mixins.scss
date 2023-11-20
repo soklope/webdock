@@ -1,14 +1,21 @@
 @use './Variables.scss' as v;
 
-
 //I use variables/props in the mixin so i can change logo url and sizing when i do @include
 @mixin icon-image-centering($imgpath, $width, $height ) {
     width: $width;
     height: $height;
-
+    
     background-image: url(#{$imgpath});
     background-repeat: no-repeat;
     background-position: center;
+}
+
+//In this mixin the variables/props are defined with a default value
+@mixin flex-center($justify-content: center, $align-items: center, $gap: v.$gap ) {
+    display: flex;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    gap: $gap;
 }
 
 @mixin toggle-switch-active {
@@ -40,6 +47,7 @@
     padding: 5px 15px;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
 
     .active {
         background: darken(v.$offwhite, 10%);
@@ -68,12 +76,4 @@
     &__list-item:hover {
         background: darken(v.$offwhite, 10%);
     }
-}
-
-//In this mixin the variables/props are defined with a default value
-@mixin flex-center($justify-content: center, $align-items: center, $gap: v.$gap ) {
-    display: flex;
-    justify-content: $justify-content;
-    align-items: $align-items;
-    gap: $gap;
 }

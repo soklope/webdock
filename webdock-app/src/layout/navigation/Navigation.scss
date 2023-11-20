@@ -3,17 +3,28 @@
 
 nav {
   background-color: white;
-  position: sticky;
+  position: fixed;
   height: 70px;
   width: 100%;
-  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
+
 
   @media screen and (min-width: v.$desktop-screen) {
     height: 65px;
-    padding: 10px 30px;
+  }
+
+  .nav-wrap {
+    display: flex;
+    width: 100%;
+    padding: 0px 20px;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    height: 100%;
   }
 
   .menu-items {
@@ -38,6 +49,7 @@ nav {
     @media screen and (min-width: v.$desktop-screen) {
       list-style: none;
       display: flex;
+      height: 100%;
       justify-content: space-between;
       align-items: center;
 
@@ -53,18 +65,17 @@ nav {
         background-size: 85%;
       }
 
-
       li {
         display: flex;
         align-items: center;
         justify-content: center;
         position: relative;
-        padding: 10px 0;
-        height: 70px;
-        width: 55px;
+        height: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
 
         &:hover {
-          transition: 0.5s;
+          transition: 0.25s;
           background-color: rgba(0, 0, 0, 0.056);
           cursor: pointer;
         }
@@ -100,6 +111,16 @@ nav {
     }
   }
 
+  @keyframes fadeIn {
+    from {
+      opacity: 0%;
+    }
+
+    to {
+      opacity: 50%;
+    }
+  }
+
   .dark-backdrop {
     position: fixed;
     left: 0;
@@ -107,7 +128,8 @@ nav {
     width: 100%;
     height: calc(100vh - 70px);
     background-color: rgb(0, 0, 0);
-    opacity: 0.5;
+    opacity: 50%;
+    animation: fadeIn 0.3s;
 
     @media screen and (min-width: v.$desktop-screen) {
       display: none;
@@ -190,3 +212,49 @@ nav {
   width: 30px;
   border-radius: 50%;
 }
+
+.nav-button-container {
+  display: none;
+  
+  @media screen and (min-width: v.$desktop-screen) {
+    @include mix.flex-center;
+  
+    &__log-in {
+      height: 40px;
+      padding: 0px 20px;
+      background-color: #00000000;
+      border: solid 2px v.$primary-color;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      color: v.$primary-color;
+      transition: 0.2s;
+  
+      &:hover {
+        transition: 0.2s;
+        background-color: v.$primary-color;
+        color: v.$white;
+      }
+    }
+  
+    &__sign-up {
+      height: 40px;
+      padding: 0px 20px;
+      background-color: v.$primary-color;
+      border: solid 2px v.$primary-color;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      color: v.$white;
+      
+      &:hover {
+        transition: 0.2s;
+        background-color: v.$white;
+        color: v.$primary-color;
+      }
+    }
+  }
+}
+

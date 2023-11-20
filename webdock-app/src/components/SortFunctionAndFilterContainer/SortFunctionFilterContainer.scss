@@ -1,11 +1,11 @@
 @use '../../global-styling/Variables.scss' as v;
 
 .sort-function-and-filter-container {
-  justify-content: end;
   display: flex;
-  gap: 15px;
+  justify-content: center;
 
   @media screen and (min-width: v.$desktop-screen) {
-    justify-content: end;
+    justify-content: right;
+    margin-right: 50px;
   }
 }
