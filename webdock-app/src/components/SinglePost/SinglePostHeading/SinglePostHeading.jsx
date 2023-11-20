@@ -10,11 +10,6 @@ export default function SinglePostHeading({ postTitle, postStatus, postDate, pos
 	return (
 		<>
 			<div className="single-post-heading">
-				<div className="single-post-heading__upvote">
-					<UpvoteBtn
-					numberOfUpvotes={postUpvotes}
-					/>
-				</div>
 				<div className="single-post-heading__meta">
 					<h1 className="single-post-heading__title">{postTitle}</h1>
 

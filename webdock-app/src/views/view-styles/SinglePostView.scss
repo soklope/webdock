@@ -3,30 +3,34 @@
 
 .single-post-view-container {
     display: grid;
-    grid-template-columns: 10fr;
+    grid-template-columns: 1fr;
 
     gap: v.$gap-desktop;
-    // background-color: hotpink; 
     padding: 40px;
-    
-    @media screen and (min-width: calc(v.$desktop-screen * 2)) {
-        grid-template-columns: 1fr 20fr 10fr;
+
+    @media screen and (min-width: v.$desktop-screen) {
+        grid-template-columns: 2fr 1fr;
     }
+}
+
+.single-post-container {
+    padding: 20px;
+    background-color: v.$white;
+    border-radius: 5px;
+
+    // box-shadow: 10px 10px 5px 16px rgba(0,0,0,0.56);
+    &__content {
+        margin-left: 75px;
+
+    }
+}
+
+.single-post-view-heading {
+    @include mix.flex-center(start, center, 0);
+    // 55+20 = 75
 
     &__upvote {
-        display: none;
-
-        @media screen and (min-width: calc(v.$desktop-screen * 2)) {
-            display: block;
-        }
-    }
-
-    .single-post-container {
-        padding: 20px;
-        background-color: v.$white;
-        border-radius: 5px;
-    // box-shadow: 10px 10px 5px 16px rgba(0,0,0,0.56);
-
+        width: 75px;
     }
 }
 
@@ -39,7 +43,7 @@
 }
 
 .new-comment-form {
-    
+
     form {
 
         input {

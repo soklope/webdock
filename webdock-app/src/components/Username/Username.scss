@@ -2,7 +2,7 @@
 @use '../../global-styling/mixins' as mix;
 
 .admin {
-    @include mix.flex-center(start);
+    @include mix.flex-center(start, center, 0);
     
     color: green;
     &--logo {
