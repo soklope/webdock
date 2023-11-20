@@ -6,7 +6,7 @@
     grid-template-columns: 10fr;
 
     gap: v.$gap-desktop;
-    background-color: hotpink; 
+    // background-color: hotpink; 
     padding: 40px;
     
     @media screen and (min-width: calc(v.$desktop-screen * 2)) {
@@ -25,6 +25,7 @@
         padding: 20px;
         background-color: v.$white;
         border-radius: 5px;
+    // box-shadow: 10px 10px 5px 16px rgba(0,0,0,0.56);
 
     }
 }
