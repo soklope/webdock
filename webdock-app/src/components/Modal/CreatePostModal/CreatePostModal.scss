@@ -15,6 +15,16 @@
 
 }
 
+::placeholder {
+    font-family: v.$primary-font;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.40);
+}
+
+:focus::placeholder {
+    color: v.$offblack;
+}
+
 .create-post-modal-container {
     width: 100%;
     height: calc(100% - 70px);
@@ -70,9 +80,6 @@
             background-color: #FFFDFD;
             border: 1px solid rgba(0, 0, 0, 0.20);
             border-radius: 5px;
-            font-family: v.$primary-font;
-            font-size: 14px;
-            color: rgba(0, 0, 0, 0.40);
         }
     }
 
@@ -85,9 +92,6 @@
         background-color: #FFFDFD;
         border: 1px solid rgba(0, 0, 0, 0.20);
         border-radius: 5px;
-        font-family: v.$primary-font;
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.40);
     }
 
     &__upload-btn {
@@ -129,6 +133,10 @@
     &__upload-flex {
         display: flex;
         flex-direction: column;
+        
+        #fileUpload{
+            display: none;
+        }
     }
 
     &__modal-background {
@@ -139,4 +147,16 @@
         }
 
     }
+}
+
+.file-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-display img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px; 
 }

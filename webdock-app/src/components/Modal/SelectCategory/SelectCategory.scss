@@ -9,7 +9,7 @@
 
 .category-options {
     display: none;
-    width: 860px;
+    width: 100%;
     position: absolute;
     top: 100%;
     left: 0;
@@ -30,6 +30,11 @@
         background-color: #f0f0f0;
     }
 }
+
+.hasChanged {
+    color: v.$offblack !important;
+}
+
 
 .category-selector-btn {
     /* Your button styles */
