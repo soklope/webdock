@@ -15,7 +15,7 @@ export default function CreatePostModal() {
 
     const [selectedFiles, setSelectedFiles] = useState([]);
     const fileUploadRef = useRef();
-    
+
     const handleFileSelect = (event) => {
     // Create a Set from existing file names for duplicate checking
     const existingFileNames = new Set(selectedFiles.map(file => file.name));
@@ -85,6 +85,7 @@ export default function CreatePostModal() {
                                     ))}
 
                             </div>
+                            <br/>
                             <CreatePostBtn />
                         </div>
                     </div>
