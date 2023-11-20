@@ -5,13 +5,12 @@ import Username from "../../Username/Username";
 
 import "./SinglePostHeading.scss";
 
-
 export default function SinglePostHeading({ postTitle, postStatus, postDate, postCategory, postAuthor, postUpvotes }) {
 
 	return (
 		<>
 			<div className="single-post-heading">
-				<div>
+				<div className="single-post-heading__upvote">
 					<UpvoteBtn
 					numberOfUpvotes={postUpvotes}
 					/>
@@ -20,7 +19,6 @@ export default function SinglePostHeading({ postTitle, postStatus, postDate, pos
 					<h1 className="single-post-heading__title">{postTitle}</h1>
 
 					<div className="single-post-heading__meta-container">
-						<div>STATUS: {postStatus} </div>
 						<div>STATUS: {postStatus} </div>
 						<div className="single-post-heading__desktop">
 							<div>Category: {postCategory}</div>

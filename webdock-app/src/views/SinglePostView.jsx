@@ -9,19 +9,20 @@ import SinglePostMeta from "../components/SinglePost/SinglePostMeta/SinglePostMe
 import "./view-styles/SinglePostView.scss";
 
 import { completeArrayDb } from "../dummyDb.js";
+import UpvoteBtn from "../components/UpvoteBtn/UpvoteBtn.jsx";
 
 export default function SinglePostView() {
 	const [post, setPost] = useState(null);
-	
-	console.log('params:', useParams())
+
+	console.log("params:", useParams());
 	const { id } = useParams();
-	console.log('postid after useparams:',id)
+	console.log("postid after useparams:", id);
 	const loggedIn = true;
-	
+
 	useEffect(() => {
 		const fetchSinglePost = async () => {
 			const parsedId = parseInt(id, 10);
-			console.log('parsed postId:', parsedId)
+			console.log("parsed postId:", parsedId);
 			if (
 				!isNaN(parsedId) &&
 				parsedId >= 0 &&
@@ -44,7 +45,10 @@ export default function SinglePostView() {
 
 	return (
 		<>
-			<div className="single-post-view-container wrap">
+			<div className="wrap single-post-view-container">
+				<div className="single-post-view-container__upvote">
+					<UpvoteBtn numberOfUpvotes={post.numberOfUpvotes} />
+				</div>
 				<section className="single-post-container">
 					<div>
 						<SinglePostHeading
@@ -59,7 +63,7 @@ export default function SinglePostView() {
 
 					<div>
 						<SinglePostContent
-							postContent={post.description}
+							// postContent={post.description}
 							postDate={post.createdAt}
 						/>
 					</div>
@@ -75,8 +79,13 @@ export default function SinglePostView() {
 								</p>
 							</div>
 						) : (
-							<div>
-								Comment field and sorting here (kun på desktop)
+							<div className="new-comment-form">
+								<form action="post">
+									<input
+										type="text"
+										placeholder="Leave a comment..."
+									/>
+								</form>
 							</div>
 						)}
 					</div>
@@ -91,9 +100,10 @@ export default function SinglePostView() {
 					</div>
 				</section>
 				<div className="single-post-container">
-					<SinglePostMeta
-          images={post.images}
-          />
+					<SinglePostMeta 
+					images={post.images} 
+					postId={post.id} //temp value to showcase merge function
+							/>
 				</div>
 			</div>
 		</>

@@ -3,20 +3,29 @@
 
 .single-post-view-container {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 10fr;
+
     gap: v.$gap-desktop;
-    background-color: black; 
-    padding: 30px;
+    // background-color: hotpink; 
+    padding: 40px;
     
     @media screen and (min-width: calc(v.$desktop-screen * 2)) {
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr 20fr 10fr;
     }
 
+    &__upvote {
+        display: none;
+
+        @media screen and (min-width: calc(v.$desktop-screen * 2)) {
+            display: block;
+        }
+    }
 
     .single-post-container {
         padding: 20px;
         background-color: v.$white;
         border-radius: 5px;
+    // box-shadow: 10px 10px 5px 16px rgba(0,0,0,0.56);
 
     }
 }
@@ -29,3 +38,15 @@
 
 }
 
+.new-comment-form {
+    
+    form {
+
+        input {
+            width: 70%;
+            height: 35px;
+            font-size: 15px;
+            padding: 15px;
+        }
+    }
+}

@@ -8,6 +8,13 @@
 		gap: v.$gap-desktop;
 	}
 
+	&__upvote {
+		display: block;
+		@media screen and (min-width: calc(v.$desktop-screen * 2)) {
+			display: none;
+		}
+	}
+
 	&__meta {
 		width: 100%;
 		margin-bottom: 10px;
