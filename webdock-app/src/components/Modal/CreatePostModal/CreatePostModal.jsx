@@ -63,6 +63,13 @@ export default function CreatePostModal() {
                                     >
                                     <span className="create-post-modal-container__upload-icon"></span>
                                 </button>
+                                
+                                <div>
+                                    {selectedFiles.map(file => (
+                                        <div key={file.name}>{file.name}</div>
+                                    ))}
+                                </div>
+
                             </div>
                             <CreatePostBtn />
                         </div>
