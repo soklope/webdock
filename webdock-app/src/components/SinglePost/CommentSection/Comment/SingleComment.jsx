@@ -4,7 +4,7 @@ import Username from "../../../Username/Username";
 
 import "./SingleComment.scss";
 
-export default function SingleComment({ name, body, replies, loggedin }) {
+export default function SingleComment({ name, body, replies, loggedin, isAdmin }) {
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     setLoggedIn(loggedIn);
@@ -19,10 +19,22 @@ export default function SingleComment({ name, body, replies, loggedin }) {
           alt="yes"
         />
         <h4>
-          <Username isAdmin={false} user={name} />
+          <Username isAdmin={isAdmin} user={name} />
         </h4>
       </div>
       <p>{body}</p>
+
+      <div className="comment-meta-container">
+        <span className="comment-meta-container__icon"></span>
+        <span>•</span>
+        <div className="comment-meta-container__reply-btn">
+          {!loggedIn ? (
+            <a href="#"> Reply </a>
+          ) : (
+            <a href="#"> Login to reply </a>
+          )}
+        </div>
+      </div>
 
       {replies && replies.length > 0 && (
         <div className="replies-container">
@@ -32,17 +44,6 @@ export default function SingleComment({ name, body, replies, loggedin }) {
         </div>
       )}
 
-      <div className="comment-meta-container">
-        <span className="comment-meta-container__icon"></span>
-        <span>•</span>
-        <div>
-          {!loggedIn ? (
-            <a href="#"> Reply </a>
-          ) : (
-            <a href="#"> Login to reply </a>
-          )}
-        </div>
-      </div>
     </div>
   );
 }

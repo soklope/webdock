@@ -1,5 +1,13 @@
 @use '../../../global-styling/Variables.scss' as v;
 
+.single-post-meta {
+
+    h3 {
+        margin: 10px 0;
+
+    }
+}
+
 .single-post-meta-image-container {
     display: grid;
     gap: v.$gap;
