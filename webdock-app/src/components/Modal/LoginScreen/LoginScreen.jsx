@@ -38,7 +38,7 @@ export default function LoginScreen() {
         <div className='login-page__splash-art__blur'/>
         <p className='login-page__splash-art__headline'>Skip the email hassle <br></br> join Webdock's swift forum!</p>
         <p className='login-page__splash-art__subline'>Where communication meets simplicity in the cloud</p>
-        <span className='login-page__logo'></span>
+        {/* <span className='login-page__logo'></span> */}
       </div>
       {/* <div className='login-page__container'>
           <button onClick={loginAsUser} className='login-page__container__button'>Login as User</button>
