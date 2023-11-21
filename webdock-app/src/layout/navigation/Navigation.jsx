@@ -39,15 +39,15 @@ export default function Navigation() {
       <nav>
         <div className="nav-wrap">
           <div className="navigation-logo">
-            <Link to="/">
+            <Link className="navigation-link" to="/">
               <img
                 className="navigation-logo__img"
                 src={logo}
                 alt="Webdock logo"
               />
+              <div className="navigation-logo__company-name">Webdock.io</div>
             </Link>
 
-            <div className="navigation-logo__company-name">Webdock.io</div>
           </div>
 
           {
