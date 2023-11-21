@@ -58,8 +58,8 @@ export default function Navigation() {
                     <Link className="menu-items__profile" />
                   </li>
 
-                  <li>
-                    <Link className="menu-items__log-out" onClick={handleLogoutClick}/>
+                  <li onClick={handleLogoutClick}>
+                    <Link className="menu-items__log-out"/>
                   </li>
                 </ul>
               </>
