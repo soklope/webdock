@@ -81,6 +81,8 @@ ul {
             border: none;
             font: inherit;
             cursor: inherit;
+            width: 100%;
+            text-align: left;
             }
         }
     }
@@ -96,7 +98,6 @@ ul {
             }
          }
       }
-
 }
 
 @mixin flex-login-button {
