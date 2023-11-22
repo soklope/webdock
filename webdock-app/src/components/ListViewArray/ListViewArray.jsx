@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { postArrayDb } from "../../dummyDb";
 import ListViewPostItem from "../ListViewPostItem/ListViewPostItem"
 import usePostArrayStore from "../../stores/postArrayStore";
+import formatCustomDate from "../../helper/formatDate";
 
 export default function ListViewArray() {
 
@@ -24,6 +25,8 @@ export default function ListViewArray() {
         }
     }
 
+    console.log(new Date("2020-10-11"));
+
     const [postsWithFilter, setPostsWithFilter] = useState([]);
 
     useEffect(() => {
@@ -43,6 +46,8 @@ export default function ListViewArray() {
                         statusColor={getColorTagFromStatus(post.status)}
                         indicatorColor={getColorTagFromStatus(post.status)}
                         myOwnStatus={post.isYourPost ? true : false}
+                        content={post.content}
+                        date={formatCustomDate(post.createdAt)}
                         />
                 </div>
             ))}
