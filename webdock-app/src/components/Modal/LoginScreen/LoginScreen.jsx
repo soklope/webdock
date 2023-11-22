@@ -1,5 +1,7 @@
 import './LoginScreen.scss';
 import userStore from '../../../stores/loginStore';
+import { redirectToWebdock, fetchData } from '../../../helper/ssoLogin';
+import { useEffect } from 'react';
 
 export default function LoginScreen() {
 
@@ -15,11 +17,16 @@ export default function LoginScreen() {
     }
   };
 
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
+
   return (
     <div className='login-page wrap'>
       <div className='login-page__container'>
         <span className='login-page__logo'></span>
         <button onClick={handleLoginClick} className='login-page__login-button'>LOG IN</button>
+        <button onClick={redirectToWebdock} className='login-page__google-button'>Sign in with Webdock</button>
         <button className='login-page__google-button'>Sign in with Google</button>
         <button className='login-page__github-button'>Sign in with Github</button>
         <p>Don't have an account yet?</p>
