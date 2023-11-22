@@ -43,23 +43,44 @@ export default function SinglePostView() {
     return <div>Loading...</div>;
   }
 
+  const userRole = JSON.parse(localStorage.getItem('user'));
+
   return (
     <>
       <div className="wrap single-post-view-container">
         <section className="single-post-container">
-          <div className="single-post-view-heading">
-			<div className="single-post-view-heading__upvote">
-              <UpvoteBtn numberOfUpvotes={post.numberOfUpvotes} />
-			</div>
 
-              <SinglePostHeading
-                postTitle={post.title}
-                postStatus={post.status}
-                postUpvotes={post.numberOfUpvotes}
-                postCategory={post.category}
-                postDate={post.createdAt}
-                postAuthor={post.authorId}
-              />
+          { userRole.admin && 
+            <div className="admin-toolbar-container">
+              <div className="admin-toolbar-container__tool">
+                <p>Move</p>
+                <span className="admin-toolbar-container__tool__move"/>
+              </div>
+
+              <div className="admin-toolbar-container__tool">
+                <p>Merge</p>
+                <span className="admin-toolbar-container__tool__merge"/>
+              </div>
+
+              <div className="admin-toolbar-container__tool">
+                <p>Delete</p>
+                <span className="admin-toolbar-container__tool__delete"/>
+              </div>
+            </div>
+          }
+
+          <div className="single-post-view-heading">
+            <div className="single-post-view-heading__upvote">
+              <UpvoteBtn numberOfUpvotes={post.numberOfUpvotes} />
+            </div>
+            <SinglePostHeading
+              postTitle={post.title}
+              postStatus={post.status}
+              postUpvotes={post.numberOfUpvotes}
+              postCategory={post.category}
+              postDate={post.createdAt}
+              postAuthor={post.authorId}
+            />
           </div>
 
           <div className="single-post-container__content">

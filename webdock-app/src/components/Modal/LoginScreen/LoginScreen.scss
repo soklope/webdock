@@ -99,6 +99,7 @@
         @include mix.flex-login-button;
         background-color: v.$primary-color;
         transition: 0.2s;
+        font-size: 0.8rem;
     }
 
     &__login-button:hover {

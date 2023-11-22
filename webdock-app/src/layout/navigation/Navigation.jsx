@@ -51,7 +51,7 @@ export default function Navigation() {
           </div>
 
           {
-            userIsLoggedIn ?
+            userIsLoggedIn &&
               <>
                 <ul className="menu-items">
                   <li>
@@ -64,13 +64,14 @@ export default function Navigation() {
                 </ul>
               </>
 
-              : 
 
-              <div className="nav-button-container">
-                <button onClick={handleLoginClick} className="nav-button-container__log-in">Log In</button>
-                <button className="nav-button-container__sign-up">Sign Up</button>
-              </div>
+
           }
+
+          {/* <div className="nav-button-container">
+              <button onClick={handleLoginClick} className="nav-button-container__log-in">Log In</button>
+              <button className="nav-button-container__sign-up">Sign Up</button>
+          </div> */}
 
           <div className="burger-menu-icon">
             <Hamburger
