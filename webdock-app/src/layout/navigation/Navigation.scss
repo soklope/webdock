@@ -190,8 +190,18 @@ nav {
   }
 }
 
+.navigation-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  text-decoration: none;
+  color: v.$offblack;
+}
+
 .navigation-logo {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 15px;
 
@@ -205,6 +215,7 @@ nav {
     font-size: 1.2rem;
     font-weight: 600;
     font-family: v.$secondary-font;
+    text-decoration: none;
   }
 }
 
@@ -215,10 +226,10 @@ nav {
 
 .nav-button-container {
   display: none;
-  
+
   @media screen and (min-width: v.$desktop-screen) {
     @include mix.flex-center;
-  
+
     &__log-in {
       height: 40px;
       padding: 0px 20px;
@@ -230,14 +241,14 @@ nav {
       font-size: 1rem;
       color: v.$primary-color;
       transition: 0.2s;
-  
+
       &:hover {
         transition: 0.2s;
         background-color: v.$primary-color;
         color: v.$white;
       }
     }
-  
+
     &__sign-up {
       height: 40px;
       padding: 0px 20px;
@@ -248,7 +259,7 @@ nav {
       font-weight: 600;
       font-size: 1rem;
       color: v.$white;
-      
+
       &:hover {
         transition: 0.2s;
         background-color: v.$white;
@@ -257,4 +268,3 @@ nav {
     }
   }
 }
-
