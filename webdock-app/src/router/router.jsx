@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Navigation from '../layout/navigation/Navigation';
 import RoadmapView from '../views/RoadmapView';
@@ -31,6 +31,3 @@ const Router = () => {
 };
 
 export default Router;
-
-// to do after review 
-// - Export default moved to line 8

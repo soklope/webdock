@@ -6,7 +6,7 @@ const userStore = create((set) => ({
     loginAsUser: () => {
         const user = {
             loggedIn: true,
-            role: 1,
+            admin: false,
         };
 
         localStorage.setItem('user', JSON.stringify(user));
@@ -16,17 +16,7 @@ const userStore = create((set) => ({
     loginAsAdmin: () => {
         const user = {
             loggedIn: true,
-            role: 2,
-        };
-
-        localStorage.setItem('user', JSON.stringify(user));
-        set({ user });
-    },
-
-    loginAsSuperAdmin: () => {
-        const user = {
-            loggedIn: true,
-            role: 3,
+            admin: true,
         };
 
         localStorage.setItem('user', JSON.stringify(user));
