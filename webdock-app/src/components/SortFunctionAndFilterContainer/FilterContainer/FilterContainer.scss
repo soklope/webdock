@@ -75,6 +75,10 @@
   @include mix.dropdown-menu-styling;
 }
 
+.category-selected {
+  background: v.$dropdown;
+}
+
 // search-function-btn styling
 .search-function-btn {
   width: 100%;
