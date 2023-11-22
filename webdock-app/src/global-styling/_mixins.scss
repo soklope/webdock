@@ -84,6 +84,19 @@ ul {
             }
         }
     }
+
+    @media (max-width: v.$desktop-screen) {
+        width: 100%; 
+        left: 50%;
+        transform: translateX(-50%);
+    
+        ul{
+         li {
+          padding: 10px;
+            }
+         }
+      }
+
 }
 
 @mixin flex-login-button {
