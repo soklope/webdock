@@ -30,13 +30,20 @@ export default function CreatePostModal() {
     setSelectedFiles(selectedFiles.filter(file => file.name !== fileName));
     };
 
+    const handleCloseModal = () => {
+        // Clear the selected files
+        setSelectedFiles([]);
+        // Then toggle the modal
+        toggleModal();
+    };
+
     return  (
         modalIsOpen ? 
         
         <>
             <div className="container">
                 <div className="create-post-modal-container">
-                    <div className="create-post-modal-container__close" onClick={toggleModal}>
+                    <div className="create-post-modal-container__close" onClick={handleCloseModal}>
                         <span className="create-post-modal-container__close__icon"></span>
                     </div>
 

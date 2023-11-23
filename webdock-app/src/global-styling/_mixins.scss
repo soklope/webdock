@@ -39,9 +39,7 @@
     border-radius: 5px;
     border: 0.5px solid v.$offblack;
     background: v.$white;
-    font-family: v.$primary-font;
     font-size: 15px;
-    font-weight: 500;
     display: inline-flex;
     height: 35px;
     padding: 5px 15px;
@@ -62,20 +60,44 @@
 @mixin dropdown-menu-styling {
     position: absolute;
     background: v.$white;
-    border: 1px solid v.$offblack;
+    border: 1px solid rgba(0, 0, 0, 0.20);
     box-shadow: 4px 4px 10px 5px rgba(0, 0, 0, 0.05);
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1;
 
-    ul {
-        list-style-type: none;
+ul {
+    list-style-type: none;
+    li {
+        cursor: inherit;
+        padding: 5px;
+        padding-left: 15px;
+            &:hover {
+            background: v.$dropdown;
+            }
+            
+            button {
+            background: none;
+            border: none;
+            font: inherit;
+            cursor: inherit;
+            width: 100%;
+            text-align: left;
+            }
+        }
     }
 
-    &__list-item:hover {
-        background:v.$dropdown;
-    }
+    @media (max-width: v.$desktop-screen) {
+        width: 100%; 
+        left: 50%;
+        transform: translateX(-50%);
+    
+        ul{
+         li {
+          padding: 10px;
+            }
+         }
+      }
 }
 
 @mixin flex-login-button {

@@ -37,27 +37,6 @@
 
 .dropdown-menu {
   @include mix.dropdown-menu-styling;
-  padding:0px;
-
-  ul {
-    list-style-type: none;
-
-    li {
-      cursor: pointer;
-      padding: 5px;
-      
-      button {
-        background: none;
-        border: none;
-        width:100%;
-        font: inherit;
-        cursor: pointer;
-        &:hover {
-          background: v.$dropdown;
-        }
-      }
-    }
-  }
 }
 
 // category-filter-btn styling
@@ -72,11 +51,6 @@
 
   &.active {
     background: v.$dropdown;
-  }
-
-  .content-container {
-    display: flex;
-    align-items: center;
   }
 
   &__icon {
@@ -99,29 +73,6 @@
 
 .category-list {
   @include mix.dropdown-menu-styling;
-  padding:0;
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-
-    li {
-      cursor: pointer;
-
-      button {
-        background: none;
-        border: none;
-        padding: 5px;
-        width:100%;
-        font: inherit;
-        cursor: pointer;
-
-        &:hover {
-          background: v.$dropdown;
-        }
-      }
-    }
-  }
 }
 
 .category-selected {
@@ -148,10 +99,6 @@
     width: auto;
   }
 
-  .active {
-    background: darken(v.$offwhite, 10%);
-  }
-
   p {
     @media (max-width: v.$desktop-screen) {
       display: none; // Hide the text under 500px
@@ -163,7 +110,7 @@
     margin-left: 5px;
 
     @media (max-width: 500px) {
-      margin-left: 0px; // Remove margin to center icon
+      margin-left: 0px; 
     }
   }
 }
