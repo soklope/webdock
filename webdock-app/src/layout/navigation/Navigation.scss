@@ -226,6 +226,7 @@ nav {
 
 .nav-button-container {
   display: none;
+  text-decoration: none;
 
   @media screen and (min-width: v.$desktop-screen) {
     @include mix.flex-center;

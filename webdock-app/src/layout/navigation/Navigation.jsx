@@ -6,23 +6,13 @@ import logo from "../../content/images/logo_200x200.png";
 import userStore from "../../stores/loginStore";
 
 export default function Navigation() {
-  const { loginAsUser, logout } = userStore()
+  const { logout } = userStore()
   const [isOpen, setIsOpen] = useState(false);
 
   const userIsLoggedIn = localStorage.getItem("user")
 
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
-  };
-
-  const handleLoginClick = () => {
-    loginAsUser();
-
-    const loggedInUser = localStorage.getItem('user');
-
-    if (loggedInUser) {
-      window.location.href = "/"
-    }
   };
 
   const handleLogoutClick = () => {
@@ -63,15 +53,14 @@ export default function Navigation() {
                   </li>
                 </ul>
               </>
-
-
-
           }
 
-          {/* <div className="nav-button-container">
-              <button onClick={handleLoginClick} className="nav-button-container__log-in">Log In</button>
-              <button className="nav-button-container__sign-up">Sign Up</button>
-          </div> */}
+          { !userIsLoggedIn &&
+            <Link className="nav-button-container" to={'/login'}>
+                <button className="nav-button-container__log-in">Log In</button>
+                {/* <button className="nav-button-container__sign-up">Sign Up</button> */}
+            </Link>
+          }
 
           <div className="burger-menu-icon">
             <Hamburger
@@ -79,7 +68,7 @@ export default function Navigation() {
               toggled={isOpen}
               toggle={toggleDropdownMenu}
               rounded
-              />
+            />
           </div>
 
           {isOpen && (
@@ -106,7 +95,6 @@ export default function Navigation() {
               </div>
             </>
           )}
-
         </div>
       </nav>
   );

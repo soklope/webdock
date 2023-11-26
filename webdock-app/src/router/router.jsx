@@ -19,12 +19,14 @@ const Router = () => {
       <CreatePostModal />
 
         <Routes>
-          <Route exact path="/" element={loggedIn === null ? <Navigate replace to={"/login"}/> : <RoadmapView />} />
+          {/* <Route exact path="/" element={loggedIn === null ? <Navigate replace to={"/login"}/> : <RoadmapView />} /> */}
+          <Route exact path="/" element={<RoadmapView />} />
           <Route path="/listview" element={<ListView />} />
           <Route path="/posts/:id" element={<SinglePostView />} /> 
           <Route path="/sort" element={<SortFunctionAndFilterContainer />} /> 
           <Route path="/selectcategory" element={<SelectCategory />} />  
-          <Route path="/login" element={loggedIn !== null ? <Navigate replace to={"/"}/> : <LoginScreen />} />  
+          {/* <Route path="/login" element={loggedIn !== null ? <Navigate replace to={"/"}/> : <LoginScreen />} />   */}
+          <Route path="/login" element={<LoginScreen />} />  
         </Routes>
     </BrowserRouter>
   );
