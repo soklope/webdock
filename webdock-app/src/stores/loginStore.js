@@ -3,6 +3,17 @@ import { create } from 'zustand';
 const userStore = create((set) => ({
     user: null,
 
+    loginWithSso: (userId, avatar, username, email) => set({
+        user:
+        {
+            loggedIn: true,
+            id: userId,
+            avatarURL: avatar,
+            name: username,
+            mail: email,
+        }
+    }),
+
     loginAsUser: () => {
         const user = {
             loggedIn: true,

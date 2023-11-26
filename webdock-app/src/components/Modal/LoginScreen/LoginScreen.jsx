@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 
 export default function LoginScreen() {
 
-  const { loginAsUser, loginAsAdmin } = userStore()
+  const { loginAsUser, loginAsAdmin, loginWithSso } = userStore()
 
   const handleLoginClickUser = () => {
     loginAsUser();
@@ -27,10 +27,17 @@ export default function LoginScreen() {
     }
   };
 
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
+  const redirectToWebdock = async () => {
+      const encodedURL = encodeURIComponent('http://localhost:5173/')
+      const redirectURL = `https://webdock.io/en/login?companyID=ucl_feedback_tool&redirect=${encodedURL}`
+      window.location.href = redirectURL
+  }
 
+  // if (localStorage.getItem("user")) {
+  //     const storedUser = JSON.parse(localStorage.getItem("user"));
+  //     loginWithSso(storedUser.id, storedUser.avatarURL, storedUser.name, storedUser.email)
+  // }
+  
   return (
     <div className='login-page wrap'>
       <div className='login-page__container'>
