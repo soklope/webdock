@@ -13,13 +13,15 @@ export const fetchData = async () => {
         })
 
         const userData = await response.json()
+
         localStorage.setItem('user', JSON.stringify(userData));
 
-        // console.log(userData);
+        return userData;
     } catch (error) {
         console.error("error fetching data:", error);
+        throw error;
     }
-  }
+}
 
 export const redirectToWebdock = async () => {
     const encodedURL = encodeURIComponent('http://localhost:5173/')

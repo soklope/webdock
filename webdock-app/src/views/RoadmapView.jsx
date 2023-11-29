@@ -1,6 +1,7 @@
 import "./view-styles/RoadmapView.scss";
 import { useEffect } from "react";
 import { fetchData } from "../services/ssoService";
+import userStore from "../stores/loginStore";
 
 import CreatePostBtn from "../components/CreatePostBtn/CreatePostBtn";
 import ViewToggleSwitchContainer from "../components/ViewToggleSwitchContainer/ViewToggleSwitchContainer";
@@ -12,14 +13,26 @@ import useRoadmapStore from "../stores/viewStore";
 import ListView from "./ListView";
 
 export default function RoadmapView() {
-  const localStorageUser = localStorage.getItem('user')
   const { roadmapView } = useRoadmapStore();
+  const { setUserState } = userStore()
+  const userIsLoggedIn = JSON.parse(localStorage.getItem('user')) 
 
+  const fetchDataAndHandleUserData = async () => {
+      try {
+          const userData = await fetchData();
+          setUserState(userData)
+      } catch (error) {
+          console.log(error);
+      }
+  };
+  
   useEffect(() => {
-    if (!localStorageUser) {
-      fetchData()
+    if (!userIsLoggedIn) {
+      fetchDataAndHandleUserData();
+    } else {
+      setUserState(userIsLoggedIn)
     }
-  }, [])
+  }, []);
 
   return (
     <>

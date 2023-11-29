@@ -6,9 +6,8 @@ import logo from "../../content/images/logo_200x200.png";
 import userStore from "../../stores/loginStore";
 
 export default function Navigation() {
-  const { logout, setUserState, user} = userStore()
+  const { logout, user} = userStore()
   const [isOpen, setIsOpen] = useState(false);
-  const loggedInUser = localStorage.getItem("user")
 
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -18,11 +17,6 @@ export default function Navigation() {
     logout();
     window.location.href = "/login"
   };
-
-  useEffect(() => {
-    setUserState(loggedInUser)
-    console.log(JSON.parse(user)); 
-  }, [user, loggedInUser]) 
   
   return (
       <nav>
