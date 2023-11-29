@@ -1,52 +1,16 @@
 import './LoginScreen.scss';
 import userStore from '../../../stores/loginStore';
-import { redirectToWebdock, fetchData } from '../../../helper/ssoLogin';
-import { useEffect } from 'react';
+import { redirectToWebdock } from '../../../services/ssoService';
 
 export default function LoginScreen() {
 
-  const { loginAsUser, loginAsAdmin, loginWithSso } = userStore()
+  // const { loginAsUser, loginAsAdmin, loginWithSso } = userStore()
 
-  const handleLoginClickUser = () => {
-    loginAsUser();
-
-    const loggedInUser = localStorage.getItem('user');
-
-    if (loggedInUser) {
-      window.location.href = "/"
-    }
-  };
-
-  const handleLoginClickAdmin = () => {
-    loginAsAdmin();
-
-    const loggedInUser = localStorage.getItem('user');
-
-    if (loggedInUser) {
-      window.location.href = "/"
-    }
-  };
-
-  const redirectToWebdock = async () => {
-      const encodedURL = encodeURIComponent('http://localhost:5173/')
-      const redirectURL = `https://webdock.io/en/login?companyID=ucl_feedback_tool&redirect=${encodedURL}`
-      window.location.href = redirectURL
-  }
-
-  // if (localStorage.getItem("user")) {
-  //     const storedUser = JSON.parse(localStorage.getItem("user"));
-  //     loginWithSso(storedUser.id, storedUser.avatarURL, storedUser.name, storedUser.email)
-  // }
-  
   return (
     <div className='login-page wrap'>
       <div className='login-page__container'>
         <span className='login-page__logo'></span>
-        <button onClick={handleLoginClickUser} className='login-page__login-button'>LOG IN - User</button>
-        <button onClick={handleLoginClickAdmin} className='login-page__login-button'>LOG IN - Admin</button>
         <button onClick={redirectToWebdock} className='login-page__google-button'>Sign in with Webdock</button>
-        {/* <button className='login-page__google-button'>Sign in with Google</button>
-        <button className='login-page__github-button'>Sign in with Github</button> */}
         <p>Don't have an account yet?</p>
         <p className='login-page__link-text'>sign up here!</p>
       </div>
@@ -59,3 +23,28 @@ export default function LoginScreen() {
     </div>
   );
 }
+
+
+  // const handleLoginClickUser = () => {
+  //   loginAsUser();
+
+  //   const loggedInUser = localStorage.getItem('user');
+
+  //   if (loggedInUser) {
+  //     window.location.href = "/"
+  //   }
+  // };
+
+  // const handleLoginClickAdmin = () => {
+  //   loginAsAdmin();
+
+  //   const loggedInUser = localStorage.getItem('user');
+
+  //   if (loggedInUser) {
+  //     window.location.href = "/"
+  //   }
+  // };
+
+
+    {/* <button onClick={handleLoginClickUser} className='login-page__login-button'>LOG IN - User</button>
+        <button onClick={handleLoginClickAdmin} className='login-page__login-button'>LOG IN - Admin</button> */}

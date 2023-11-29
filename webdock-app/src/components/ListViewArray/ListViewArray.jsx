@@ -25,8 +25,6 @@ export default function ListViewArray() {
         }
     }
 
-    console.log(new Date("2020-10-11"));
-
     const [postsWithFilter, setPostsWithFilter] = useState([]);
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Sling as Hamburger } from "hamburger-react";
 import "./Navigation.scss";
@@ -6,25 +6,24 @@ import logo from "../../content/images/logo_200x200.png";
 import userStore from "../../stores/loginStore";
 
 export default function Navigation() {
-  const { logout } = userStore()
+  const { logout, setUserState, user} = userStore()
   const [isOpen, setIsOpen] = useState(false);
-
-  const userIsLoggedIn = localStorage.getItem("user")
+  const loggedInUser = localStorage.getItem("user")
 
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
-
+  
   const handleLogoutClick = () => {
     logout();
-
-    const loggedInUser = localStorage.getItem('user');
-
-    if (!loggedInUser) {
-      window.location.href = "/login"
-    }
+    window.location.href = "/login"
   };
 
+  useEffect(() => {
+    setUserState(loggedInUser)
+    console.log(JSON.parse(user)); 
+  }, [user, loggedInUser]) 
+  
   return (
       <nav>
         <div className="nav-wrap">
@@ -41,7 +40,7 @@ export default function Navigation() {
           </div>
 
           {
-            userIsLoggedIn &&
+            user &&
               <>
                 <ul className="menu-items">
                   <li>
@@ -55,7 +54,7 @@ export default function Navigation() {
               </>
           }
 
-          { !userIsLoggedIn &&
+          { !user &&
             <Link className="nav-button-container" to={'/login'}>
                 <button className="nav-button-container__log-in">Log In</button>
                 {/* <button className="nav-button-container__sign-up">Sign Up</button> */}
