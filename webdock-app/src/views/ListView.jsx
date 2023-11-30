@@ -5,7 +5,6 @@ import StatusfiltersContainer from "../components/StatusfiltersContainer/Statusf
 import ListViewArray from "../components/ListViewArray/ListViewArray";
 
 export default function ListView() {
-
   
   return (
     <>

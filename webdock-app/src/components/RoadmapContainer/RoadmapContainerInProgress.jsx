@@ -1,28 +1,25 @@
 import { useState, useEffect } from "react";
+import fetchPostsByStatus from "../../services/fetchPostData";
 import "./RoadmapContainer.scss";
 import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
 
 export default function RoadmapContainerPlanned() {
   const [containerIsOpen, setContainerIsOpen] = useState(false);
   const [postCount, setPostCount] = useState(0);
-
-  const endpointURL = `http://localhost:8080/api/v1/getallpostsbystatus/in_progress`
   const [inProgressArray, setInProgressArray] = useState([])
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchDataAndSetState = async () => {
       try {
-        const response = await fetch(endpointURL);
-        const data = await response.json();
-        setInProgressArray(data)
-        setPostCount(data.length)
+        const fetchedData = await fetchPostsByStatus("in_progress");
+        setPostCount(fetchedData.length)
+        setInProgressArray(fetchedData)
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error setting state:', error);
       }
     };
-    
-    fetchData();
-  }, []);
+    fetchDataAndSetState();
+  }, []); 
 
   const openContainer = () => {
     setContainerIsOpen(!containerIsOpen);
