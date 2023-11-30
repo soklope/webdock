@@ -1,14 +1,27 @@
 import { useState, useEffect } from "react";
 import "./RoadmapContainer.scss";
-import { plannedArrayDb } from "../../dummyDb";
 import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
 
 export default function RoadmapContainerPlanned() {
   const [containerIsOpen, setContainerIsOpen] = useState(false);
   const [postCount, setPostCount] = useState(0);
 
+  const endpointURL = `http://localhost:8080/api/v1/getallpostsbystatus/planned`
+  const [plannedArray, setPlannedArray] = useState([])
+
   useEffect(() => {
-    setPostCount(plannedArrayDb.length);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(endpointURL);
+        const data = await response.json();
+        setPlannedArray(data)
+        setPostCount(data.length)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    
+    fetchData();
   }, []);
 
   const openContainer = () => {
@@ -16,15 +29,15 @@ export default function RoadmapContainerPlanned() {
   };
 
   const renderRoadmapChildren = () => {
-    return plannedArrayDb.map((post, index) => (
+    return plannedArray.map((post, index) => (
       <div key={index} className="roadmap-child-container">
         <RoadmapChildren
           title={post.title}
-          category={post.category}
-          status={post.status}
-          numberOfComments={post.numberOfComments}
-          totalUpvotes={post.numberOfUpvotes}
-          statusColor={"tag-planned-color"}
+          category={post.Category.category}
+          numberOfComments={post.Comments.length}
+          totalUpvotes={post.upvotes}
+          // status={post.status}
+          // statusColor={"tag-planned-color"}
         />
       </div>
     ));
@@ -43,7 +56,11 @@ export default function RoadmapContainerPlanned() {
         <div className="roadmap-container__dropdown">{renderRoadmapChildren()}</div>
       )}
 
-      <div className="roadmap-container__children">{renderRoadmapChildren()}</div>
+      { plannedArray ?
+        ( <div className="roadmap-container__children">{renderRoadmapChildren()}</div> )
+        :
+        <div>Loading...</div>
+      }
     </div>
-  );
+  )
 }

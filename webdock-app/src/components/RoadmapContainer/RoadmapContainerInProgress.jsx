@@ -1,71 +1,66 @@
 import { useState, useEffect } from "react";
 import "./RoadmapContainer.scss";
-
 import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
-import { inProgressArrayDb } from "../../dummyDb";
 
-export default function RoadmapContainerInProgress() {
+export default function RoadmapContainerPlanned() {
+  const [containerIsOpen, setContainerIsOpen] = useState(false);
+  const [postCount, setPostCount] = useState(0);
 
-  const [containerIsOpen, setContainerIsOpen] = useState(false)
-  const [postCount, setPostCount] = useState(0)
+  const endpointURL = `http://localhost:8080/api/v1/getallpostsbystatus/in_progress`
+  const [inProgressArray, setInProgressArray] = useState([])
 
   useEffect(() => {
-    setPostCount(inProgressArrayDb.length)
-  }, [])
+    const fetchData = async () => {
+      try {
+        const response = await fetch(endpointURL);
+        const data = await response.json();
+        setInProgressArray(data)
+        setPostCount(data.length)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    
+    fetchData();
+  }, []);
 
   const openContainer = () => {
-    setContainerIsOpen(!containerIsOpen)
-  }
+    setContainerIsOpen(!containerIsOpen);
+  };
 
-  return (
-
-    <>
-      <div className="roadmap-container">
-        <div className="roadmap-container__tooltip" onClick={openContainer}>
-          <p>In Progress</p>
-          <span className={`roadmap-container__dropdown-icon ${containerIsOpen ? "rotate" : ""}`}></span>
-          <p className="roadmap-container__postcount">{postCount}</p>
-          <div className={`roadmap-container__color-indicator-in-progress`}/>
-        </div>
-  
-        { containerIsOpen  && 
-          
-          <div className="roadmap-container__dropdown">
-            <>
-                {inProgressArrayDb.map((post, index) => (
-                  <div key={index} className="roadmap-child-container">
-                    <RoadmapChildren 
-                      title={post.title}
-                      category={post.category}
-                      status={post.status}
-                      numberOfComments={post.numberOfComments}
-                      totalUpvotes={post.numberOfUpvotes}
-                      statusColor={"tag-in-progress-color"}
-                    />
-                  </div>
-                ))}
-            </>
-          </div>
-
-        }
-
-        <div className="roadmap-container__children">
-          <>
-              {inProgressArrayDb.map((post, index) => (
-                  <div key={index} className="roadmap-child-container">
-                    <RoadmapChildren 
-                      title={post.title}
-                      category={post.category}
-                      status={post.status}
-                      numberOfComments={post.numberOfComments}
-                      totalUpvotes={post.numberOfUpvotes}
-                      statusColor={"tag-in-progress-color"}
-                    />
-                  </div>
-              ))}
-          </>
-        </div>
+  const renderRoadmapChildren = () => {
+    return inProgressArray.map((post, index) => (
+      <div key={index} className="roadmap-child-container">
+        <RoadmapChildren
+          title={post.title}
+          category={post.Category.category}
+          numberOfComments={post.Comments.length}
+          totalUpvotes={post.upvotes}
+          // status={post.status}
+          // statusColor={"tag-planned-color"}
+        />
       </div>
-    </>
-  )
+    ));
+  };
+  
+  return (
+    <div className="roadmap-container">
+      <div className="roadmap-container__tooltip" onClick={openContainer}>
+        <p>In Progress</p>
+        <span className={`roadmap-container__dropdown-icon ${containerIsOpen ? "rotate" : ""}`}></span>
+        <p className="roadmap-container__postcount">{postCount}</p>
+        <div className="roadmap-container__color-indicator-in-progress" />
+      </div>
+
+      {containerIsOpen && (
+        <div className="roadmap-container__dropdown">{renderRoadmapChildren()}</div>
+      )}
+
+      { inProgressArray ?
+        ( <div className="roadmap-container__children">{renderRoadmapChildren()}</div> )
+        :
+        <div>Loading...</div>
+		  }
+    </div>
+  );
 }
