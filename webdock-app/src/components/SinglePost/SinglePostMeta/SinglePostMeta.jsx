@@ -1,10 +1,28 @@
 import { React } from "react";
-import { Link } from 'react-router-dom';
 
 import "./SinglePostMeta.scss";
 import Username from "../../Username/Username";
+import LabelTag from "../../LabelTag/LabelTag";
 
-export default function SinglePostMeta({ images, postId }) {
+export default function SinglePostMeta({ images }) {
+
+	function getColorTagFromStatus(status) {
+        switch (status) {
+            case 'My Post':
+                return 'tag-my-post-color';
+            case 'Review':
+                return 'tag-review-color';
+            case 'Planned':
+                return 'tag-planned-color';
+            case 'In Progress':
+                return 'tag-in-progress-color';
+            case 'Complete':
+                return 'tag-complete-color';
+            default:
+                return '';
+        }
+    }
+
 	return (
 		<>
 			<div className="single-post-meta">
@@ -39,16 +57,11 @@ export default function SinglePostMeta({ images, postId }) {
 					/>
 				</div>
 			</div>
+			
 			<div>
-				<h3>Merged with</h3>
-				{postId == 1 ? <Link to="/posts/2"> <div> Merged with /post/2 </div> </Link>
-				:
-				postId == 2 ?
-				<Link to="/posts/1"> <div> Merged with /post/1 </div> </Link>
-				:
-				""
-			}
-				<div>merged content here</div>
+				<h4>
+					This post has been marked as <LabelTag LabelColor={getColorTagFromStatus('Complete')} LabelStatus={'Complete'} />
+				</h4>
 			</div>
 			</div>
 		</>

@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 import SinglePostHeading from "../components/SinglePost/SinglePostHeading/SinglePostHeading";
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
@@ -48,18 +49,18 @@ export default function SinglePostView() {
       <div className="wrap single-post-view-container">
         <section className="single-post-container">
           <div className="single-post-view-heading">
-			<div className="single-post-view-heading__upvote">
+            <div className="single-post-view-heading__upvote">
               <UpvoteBtn numberOfUpvotes={post.numberOfUpvotes} />
-			</div>
+            </div>
 
-              <SinglePostHeading
-                postTitle={post.title}
-                postStatus={post.status}
-                postUpvotes={post.numberOfUpvotes}
-                postCategory={post.category}
-                postDate={post.createdAt}
-                postAuthor={post.authorId}
-              />
+            <SinglePostHeading
+              postTitle={post.title}
+              postStatus={post.status}
+              postUpvotes={post.numberOfUpvotes}
+              postCategory={post.category}
+              postDate={post.createdAt}
+              postAuthor={post.authorId}
+            />
           </div>
 
           <div className="single-post-container__content">
@@ -67,35 +68,56 @@ export default function SinglePostView() {
               // postContent={post.description}
               postDate={post.createdAt}
             />
-
-          <div>
-            <br />
-            {!loggedIn ? (
-              <div className="comment-missing-login">
-                <p>
-                  {" "}
-                  Login to leave a comment
-                  <a href="#"> login</a>
-                </p>
+	
+            <div className="single-post-container__merges">
+              <div>
+                <h3>Merged with in a post:</h3>
+                <h4>Title of merged post</h4>
+				<div>merged content here </div>
+                {post.id == 1 ? (
+                  <Link to="/posts/2">
+                    {" "}
+                    <div> Merged with /post/2 (should open as a modal) </div>{" "}
+                  </Link>
+                ) : post.id == 2 ? (
+                  <Link to="/posts/1">
+                    {" "}
+                    <div> Merged with /post/1 (should open as a modal) </div>{" "}
+                  </Link>
+                ) : (
+                  ""
+                )}
               </div>
-            ) : (
-				<div className="new-comment-form">
-                <form action="post">
-                  <input type="text" placeholder="Leave a comment..." />
-                </form>
-              </div>
-            )}
-          </div>
+            </div>
 
-          <div>
-            <CommentSection
-              postId={post.id}
-              postDate={post.publishedAt}
-              loggedIn={loggedIn}
-              comments={post.comments}
-			  />
+            <div>
+              <br />
+              {!loggedIn ? (
+                <div className="comment-missing-login">
+                  <p>
+                    {" "}
+                    Login to leave a comment
+                    <a href="#"> login</a>
+                  </p>
+                </div>
+              ) : (
+                <div className="new-comment-form">
+                  <form action="post">
+                    <input type="text" placeholder="Leave a comment..." />
+                  </form>
+                </div>
+              )}
+            </div>
+
+            <div>
+              <CommentSection
+                postId={post.id}
+                postDate={post.publishedAt}
+                loggedIn={loggedIn}
+                comments={post.comments}
+              />
+            </div>
           </div>
-			</div>
         </section>
         <div className="single-post-container">
           <SinglePostMeta
