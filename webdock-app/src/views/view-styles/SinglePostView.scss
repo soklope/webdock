@@ -23,6 +23,13 @@
         margin-left: 75px;
 
     }
+
+    &__merges {
+        margin: 10px 0px;
+        border-top: 1px solid v.$grey;
+        border-bottom: 1px solid v.$grey;
+        padding: 10px 0;
+    }
 }
 
 .single-post-view-heading {
