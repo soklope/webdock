@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import fetchPostsByStatus from "../../services/fetchPostData";
+import fetchPostsByStatus from "../../services/fetchPostByStatusService";
 import "./RoadmapContainer.scss";
 import RoadmapChildren from "../RoadmapChildren/RoadmapChildren";
 

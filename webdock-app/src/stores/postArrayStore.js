@@ -3,11 +3,16 @@ import { create } from "zustand";
 
 const usePostArrayStore = create((set) => ({
     allPosts: postArrayDb,
+
     sustainAllPosts: postArrayDb,
     statusFilter: [],
     sort: "",
     category: "All Categories",
     searchValue: "",
+
+    setAllPosts: (newValue) => {
+        set((state) => ({ allPosts: newValue }));
+    },
 
     setSortValue: (newValue) => {
         set((state) => ({ sort: newValue }));

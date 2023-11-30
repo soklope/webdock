@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { postArrayDb } from "../../dummyDb";
+import fetchAllPostData from "../../services/fetchAllPostsService";
 import ListViewPostItem from "../ListViewPostItem/ListViewPostItem"
 import usePostArrayStore from "../../stores/postArrayStore";
 import formatCustomDate from "../../helper/formatDate";
 
 export default function ListViewArray() {
 
-    const { allPosts } = usePostArrayStore()
+    const { allPosts, setAllPosts } = usePostArrayStore()
 
     function getColorTagFromStatus(status) {
         switch (status) {
@@ -16,7 +16,7 @@ export default function ListViewArray() {
                 return 'tag-review-color';
             case 'Planned':
                 return 'tag-planned-color';
-            case 'In Progress':
+            case 'In_Progress':
                 return 'tag-in-progress-color';
             case 'Complete':
                 return 'tag-complete-color';
@@ -25,11 +25,19 @@ export default function ListViewArray() {
         }
     }
 
-    const [postsWithFilter, setPostsWithFilter] = useState([]);
-
     useEffect(() => {
-        setPostsWithFilter(postArrayDb);
-    }, [allPosts]);
+        const fetchDataAndSetState = async () => {
+            try {
+                const fetchedData = await fetchAllPostData();
+                setAllPosts(fetchedData)
+                console.log(fetchedData);
+            } catch (error) {
+                console.error('Error setting state:', error);
+            }
+        };
+
+        fetchDataAndSetState();
+    }, []);
     
     return (
         <>
@@ -37,15 +45,16 @@ export default function ListViewArray() {
                 <div key={index}>
                     <ListViewPostItem
                         title={post.title}
-                        category={post.category}
-                        status={post.status !== "My Post" ? post.status : false}
-                        numberOfComments={post.numberOfComments}
-                        totalUpvotes={post.numberOfUpvotes}
-                        statusColor={getColorTagFromStatus(post.status)}
-                        indicatorColor={getColorTagFromStatus(post.status)}
-                        myOwnStatus={post.isYourPost ? true : false}
+                        category={post.Category && post.Category.category}
+                        // status={post.Status && post.Status.status !== "My Post" ? post.Status.status : false}
+                        status={post.Status && post.Status.status !== "My Post" ? post.Status.status : false}
+                        numberOfComments={post.Comments && post.Comments.length}
+                        totalUpvotes={post.upvotes}
+                        statusColor={post.Status && getColorTagFromStatus(post.Status.status)}
+                        indicatorColor={post.Status && getColorTagFromStatus(post.Status.status)}
+                        // myOwnStatus={post.isYourPost ? true : false}
                         content={post.content}
-                        date={formatCustomDate(post.createdAt)}
+                        date={formatCustomDate(new Date(post.createdAt))}
                         />
                 </div>
             ))}

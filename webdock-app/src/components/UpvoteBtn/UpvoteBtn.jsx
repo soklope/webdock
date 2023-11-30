@@ -5,6 +5,7 @@ import "./UpvoteBtn.scss";
 
 export default function UpvoteBtn( {numberOfUpvotes} ) {
   const [isUpvoted, setIsUpvoted] = useState(false);
+  
   const [upvotes, setUpvotes] = useState(numberOfUpvotes);
 
   const loggedInUser = localStorage.getItem('user')
@@ -37,7 +38,7 @@ export default function UpvoteBtn( {numberOfUpvotes} ) {
         <div
          className={`upvote-btn__text${isUpvoted ? "--active" : ""}`}
          >
-            {upvotes}
+            {numberOfUpvotes}
         </div>
       </div>
   );
