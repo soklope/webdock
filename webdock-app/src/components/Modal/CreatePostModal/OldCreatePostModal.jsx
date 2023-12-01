@@ -10,6 +10,12 @@ import CloseIcon from '../../../content/gfx/Icons/close-icon.svg'
 import {useState, useRef } from 'react';
 
 export default function CreatePostModal() {
+    const [data, setData] = useState({
+        category: "kat1",
+        title: "title1",
+        details: "detail",
+    })
+
 
     const { modalIsOpen, toggleModal } = useModalStore();
 
@@ -50,7 +56,9 @@ export default function CreatePostModal() {
                     <div className="create-post-modal-container__flex-parent">
                         <label className="create-post-modal-container__title">Category</label>
                         <div className="category">
-                            <SelectCategory />
+                            <SelectCategory
+                            onCategoryChange={(category) => setData({ ...data, category })}
+                            />
                         </div>
 
                         <label className="create-post-modal-container__title">Titel</label>
@@ -92,7 +100,10 @@ export default function CreatePostModal() {
 
                             </div>
                             <br/>
-                            <CreatePostBtn />
+                            <CreatePostBtn 
+                                onClick={console.log(data)}
+
+                            />
                         </div>
                     </div>
                 </div>
