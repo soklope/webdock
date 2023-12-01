@@ -1,14 +1,17 @@
-import { postArrayDb } from "../dummyDb";
+// import { postArrayDb } from "../dummyDb";
 import { create } from "zustand";
 
 const usePostArrayStore = create((set) => ({
-    allPosts: postArrayDb,
-
-    sustainAllPosts: postArrayDb,
+    allPosts: [],
+    sustainAllPosts: [],
     statusFilter: [],
     sort: "",
     category: "All Categories",
     searchValue: "",
+
+    setSustainAllPosts: (newValue) => {
+        set((state) => ({ sustainAllPosts: newValue }));
+    },
 
     setAllPosts: (newValue) => {
         set((state) => ({ allPosts: newValue }));
@@ -29,27 +32,27 @@ const usePostArrayStore = create((set) => ({
     filterAllPosts: () => {
         set((state) => {
             let filteredPosts = [...state.sustainAllPosts];
-
+    
             switch (state.sort) {
                 case 'Trending':
-                    filteredPosts.sort((a, b) => b.numberOfComments - a.numberOfComments);
+                    filteredPosts.sort((a, b) => b.Comments.length - a.Comments.length);
                     break;
-
+    
                 case 'Top':
-                    filteredPosts.sort((a, b) => b.numberOfUpvotes - a.numberOfUpvotes);
+                    filteredPosts.sort((a, b) => b.upvotes - a.upvotes);
                     break;
-
+    
                 case 'New':
-                    filteredPosts.sort((a, b) => b.createdAt - a.createdAt);
+                    filteredPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
                     break;
             }
-
+    
             filteredPosts = filteredPosts.filter((post) =>
-                (state.category === 'All Categories' || post.category === state.category) &&
+                (state.category === 'All Categories' || post.Category.category === state.category) &&
                 (state.searchValue === '' || post.title.toLowerCase().includes(state.searchValue.toLowerCase())) &&
-                (state.statusFilter.length === 0 || state.statusFilter.includes(post.status))
+                (state.statusFilter.length === 0 || state.statusFilter.includes(post.Status.status))
             );
-
+    
             return { allPosts: filteredPosts };
         });
     },
