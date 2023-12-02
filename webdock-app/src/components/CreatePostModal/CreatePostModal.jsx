@@ -7,7 +7,6 @@ import CloseIcon from "../../content/gfx/Icons/close-icon.svg";
 
 import "./CreatePostModal.scss";
 
-
 export default function CreatePostModal() {
     const categoryArray = [
       {
@@ -96,12 +95,9 @@ export default function CreatePostModal() {
     }));
   };
 
-
-
   const removeFile = (fileName) => {
     setSelectedFiles(selectedFiles.filter((file) => file.name !== fileName));
   };
-
 
   const handleSubmit = async () => {
     try {
