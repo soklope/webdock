@@ -3,9 +3,10 @@ import useModalStore from "../../stores/modalStore";
 
 import SelectCategory from "../Modal/SelectCategory/SelectCategory";
 
+import CloseIcon from "../../content/gfx/Icons/close-icon.svg";
+
 import "./CreatePostModal.scss";
 
-import CloseIcon from "../../content/gfx/Icons/close-icon.svg";
 
 export default function CreatePostModal() {
     const categoryArray = [
@@ -51,43 +52,107 @@ export default function CreatePostModal() {
       },
     ];
     
-    const { modalIsOpen, toggleModal } = useModalStore();
+  const { modalIsOpen, toggleModal } = useModalStore();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const fileUploadRef = useRef();
 
   const [postData, setPostData] = useState({
-    category: "kat1",
+    // category_id: 1, is now handled in backend (postController)
     title: "title1",
-    details: "detail",
-    attachments: [],
+    content: "detail",
+    image: [],
+    user_id: null, 
   });
 
   const handleCloseModal = () => {
     setSelectedFiles([]);
     setPostData((prevData) => ({
         ...prevData,
-        attachments: [],
+        image: [],
       }));
     toggleModal();
   };
   
+  // const handleFileSelect = (event) => {
+  //   const existingFileNames = new Set(
+  //     postData.image.map((file) => file.name)
+  //   );
+  //   const newFiles = Array.from(event.target.files).filter(
+  //     (file) => !existingFileNames.has(file.name)
+  //   );
+
+  //   setPostData((prevData) => ({
+  //     ...prevData,
+  //     image: [...prevData.image, ...newFiles],
+  //   }));
+  // };
+
   const handleFileSelect = (event) => {
-    const existingFileNames = new Set(
-      postData.attachments.map((file) => file.name)
-    );
-    const newFiles = Array.from(event.target.files).filter(
-      (file) => !existingFileNames.has(file.name)
-    );
+    const files = event.target.files;
 
     setPostData((prevData) => ({
       ...prevData,
-      attachments: [...prevData.attachments, ...newFiles],
+      image: [...prevData.image, ...files],
     }));
   };
+
+
 
   const removeFile = (fileName) => {
     setSelectedFiles(selectedFiles.filter((file) => file.name !== fileName));
   };
+
+
+  const handleSubmit = async () => {
+    try {
+
+    //   // get userid from localstorage
+      const dataFromLS = localStorage.getItem('user');
+
+    if (dataFromLS) {
+      const user = JSON.parse(dataFromLS);
+
+      // Update the user_id in the state
+      setPostData((prevData) => ({
+        ...prevData,
+        user_id: user.id,
+      }))
+    };
+
+      // get inputed data from modal
+      const formData = new FormData();
+      
+      // handling files broke the old structure, this way we can add files correctly with no errors
+      formData.append('category_id', postData.category_id);
+      formData.append('title', postData.title);
+      formData.append('content', postData.content);
+      formData.append('user_id', postData.user_id);
+  
+      // Append each file to the FormData
+      postData.image.forEach((file, index) => {
+        formData.append('file', file);
+      });
+  
+      const response = await fetch('http://localhost:8080/api/v1/createpost', {
+        method: 'POST',
+        body: formData,
+      });
+  
+      if (response.ok) {
+        const result = await response.json();
+        console.log('Response:', result);
+        alert('success', result);
+
+        const newPostId = result.data.id;
+        // redirect til ny post
+        window.location.href = `/posts/${newPostId}`;
+      } else {
+        console.error('Error:', response.status);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
   return (
     <>
@@ -109,7 +174,7 @@ export default function CreatePostModal() {
                   onCategoryChange={(category) =>
                     setPostData((prevData) => ({
                       ...prevData,
-                      category: category,
+                      category: category.id,
                     }))
                   }
                 />
@@ -131,7 +196,7 @@ export default function CreatePostModal() {
               </div>
 
               <div>
-                <h4 className="modal__title">Details</h4>
+                <h4 className="modal__title">content</h4>
                 <textarea
                   className="modal__desc"
                   type="text"
@@ -139,7 +204,7 @@ export default function CreatePostModal() {
                   onKeyUp={(event) =>
                     setPostData((prevData) => ({
                       ...prevData,
-                      details: event.target.value,
+                      content: event.target.value,
                     }))
                   }
                 />
@@ -148,6 +213,7 @@ export default function CreatePostModal() {
               <div className="modal__upload-flex">
                 <input
                   type="file"
+                  name="file"
                   ref={fileUploadRef}
                   id="fileUpload"
                   onChange={handleFileSelect}
@@ -161,30 +227,30 @@ export default function CreatePostModal() {
                   <span className="modal__upload-icon"></span>
                 </button>
 
-                {postData.attachments.map((file) => (
-                  <div key={file.name} className="file-display">
+                {postData.image.map((file, index) => (
+                  <div key={index} className="file-display">
                     {file.name}
                     <img
                       src={CloseIcon}
                       alt="close-icon"
-                      onClick={() => removeFile(file.name)}
+                      onClick={() => removeFile(index)}
                     />
                   </div>
                 ))}
               </div>
 
               <div>
-                {/* {postData.category}
+                {/* {postData.category_id}
                 <br />
                 {postData.title}
                 <br />
-                {postData.details}
+                {postData.content}
                 <br />
-                {postData.attachments.map((file) => (
+                {postData.image.map((file) => (
                   <div key={file.name}>{file.name}</div>
                 ))} */}
 
-                <button onClick={() => console.log(postData)}>
+                <button onClick={handleSubmit}>
                     submit
                 </button>
               </div>
