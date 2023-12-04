@@ -81,14 +81,14 @@ export default function SinglePostView() {
               postCategory={post.category}
               postDate={post.createdAt}
               postAuthor={post.authorId}
-            />
+              />
           </div>
 
           <div className="single-post-container__content">
             <SinglePostContent
               // postContent={post.description}
               postDate={post.createdAt}
-            />
+              />
 	
             <div className="single-post-container__merges">
               <div>
@@ -107,7 +107,7 @@ export default function SinglePostView() {
                   </Link>
                 ) : (
                   ""
-                )}
+                  )}
               </div>
             </div>
 
@@ -136,7 +136,7 @@ export default function SinglePostView() {
                 postDate={post.publishedAt}
                 loggedIn={loggedIn}
                 comments={post.comments}
-              />
+                />
             </div>
           </div>
         </section>
@@ -144,8 +144,10 @@ export default function SinglePostView() {
           <SinglePostMeta
             images={post.images}
             postId={post.id} //temp value to showcase merge function
-          />
+            />
         </div>
+          <Link to="/" className="single-post-view-back__icon">
+          </Link>
       </div>
     </>
   );
