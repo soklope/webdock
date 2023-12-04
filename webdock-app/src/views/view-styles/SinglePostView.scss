@@ -1,7 +1,19 @@
 @use '../../global-styling/Variables.scss' as v;
 @use '../../global-styling/mixins' as mix;
 
+.single-post-view-back__icon {
+
+    display: inline-block;
+    position: absolute;
+    top: 10%;
+    left: -50px;
+    background-size: contain;
+
+    @include mix.icon-image-centering('../../content/gfx/Icons/goBack.svg', 30px, 50px)
+}
+
 .single-post-view-container {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr;
 
@@ -82,7 +94,7 @@
     gap: 15px;
     transition: 0.2s;
 
-    
+
     &__tool {
         display: flex;
         align-items: center;
@@ -115,6 +127,6 @@
         background-color: v.$white;
         box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
-    
+
     }
 }
