@@ -2,14 +2,18 @@
 @use '../../global-styling/mixins' as mix;
 
 .single-post-view-back__icon {
+    display: none;
 
-    display: inline-block;
-    position: absolute;
-    top: 10%;
-    left: -50px;
-    background-size: contain;
+    @media screen and (min-width: v.$desktop-screen) {
 
-    @include mix.icon-image-centering('../../content/gfx/Icons/goBack.svg', 30px, 50px)
+        display: inline-block;
+        position: absolute;
+        top: 10%;
+        left: -50px;
+        background-size: contain;
+
+        @include mix.icon-image-centering('../../content/gfx/Icons/goBack.svg', 30px, 50px)
+    }
 }
 
 .single-post-view-container {
