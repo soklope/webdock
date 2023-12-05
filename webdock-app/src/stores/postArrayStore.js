@@ -49,7 +49,7 @@ const usePostArrayStore = create((set) => ({
 
             filteredPosts = filteredPosts.filter((post) =>
                 (state.category === 'All Categories' || (post.Category && post.Category.category === state.category)) &&
-                (state.searchValue === '' || post.title.toLowerCase().includes(state.searchValue.toLowerCase())) &&
+                (state.searchValue === '' || post.title?.toLowerCase().includes(state.searchValue.toLowerCase())) &&
                 (state.statusFilter.length === 0 || (post.Status && state.statusFilter.includes(post.Status.status)))
             );
 
