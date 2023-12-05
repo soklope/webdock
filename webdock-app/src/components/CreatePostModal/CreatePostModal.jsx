@@ -133,7 +133,7 @@ export default function CreatePostModal() {
         method: 'POST',
         body: formData,
       });
-  
+      
       if (response.ok) {
         const result = await response.json();
         console.log('Response:', result);
@@ -234,18 +234,7 @@ export default function CreatePostModal() {
                   </div>
                 ))}
               </div>
-
               <div>
-                {/* {postData.category_id}
-                <br />
-                {postData.title}
-                <br />
-                {postData.content}
-                <br />
-                {postData.image.map((file) => (
-                  <div key={file.name}>{file.name}</div>
-                ))} */}
-
                 <button onClick={handleSubmit}>
                     submit
                 </button>
