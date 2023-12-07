@@ -14,6 +14,7 @@ import UpvoteBtn from "../components/UpvoteBtn/UpvoteBtn.jsx";
 
 export default function SinglePostView() {
   const [post, setPost] = useState(null);
+  const [upvotes, setUpvotes] = useState(0);
   const { id } = useParams();
 
   useEffect(() => {
@@ -27,7 +28,19 @@ export default function SinglePostView() {
     }
     };
 
+    const fetchSinglePostUpvotes = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/v1/postupvotes/${id}`);
+        const data = await response.json();
+        console.log(data.totalUpvotes);
+        setUpvotes(data)
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+    };
+
     fetchSinglePost();
+    fetchSinglePostUpvotes();
   }, [id]);
 
   if (!post) {
@@ -62,7 +75,7 @@ export default function SinglePostView() {
 
           <div className="single-post-view-heading">
             <div className="single-post-view-heading__upvote">
-              <UpvoteBtn numberOfUpvotes={post.numberOfUpvotes} />
+              <UpvoteBtn numberOfUpvotes={upvotes.totalUpvotes} />
             </div>
             <SinglePostHeading
               postTitle={post.title}
@@ -135,6 +148,7 @@ export default function SinglePostView() {
           <SinglePostMeta
             images={post.images}
             postId={post.id} //temp value to showcase merge function
+            upvoters={upvotes.upvotes}
             />
         </div>
           <Link to="/" className="single-post-view-back__icon">

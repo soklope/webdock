@@ -4,9 +4,10 @@ import "./SinglePostMeta.scss";
 import Username from "../../Username/Username";
 import LabelTag from "../../LabelTag/LabelTag";
 import { getColorTagFromStatus } from "../../../helper/colorFromStatus";
+import { checkAdmin } from "../../../helper/checkAdmin";
 
-export default function SinglePostMeta({ images }) {
-
+export default function SinglePostMeta({ images, upvoters }) {
+console.log("upvoters:",upvoters);
 	return (
 		<>
 			<div className="single-post-meta">
@@ -32,15 +33,10 @@ export default function SinglePostMeta({ images }) {
 			<div>
 				<h3>People liked</h3>
 				<div>
-					<Username
-					user={"Test User"}
-					isAdmin={true}
-					/>
-					<Username
-					user={"Test User 2"}
-					isAdmin={false}
-					/>
-				</div>
+     				 {upvoters.map((user, index) => (
+      				  <Username key={index} user={user.User.name} isAdmin={checkAdmin(user.User.email)} />
+     				 ))}
+    </div>
 			</div>
 			
 			<div>
