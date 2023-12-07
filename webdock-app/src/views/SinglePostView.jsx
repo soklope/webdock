@@ -23,20 +23,19 @@ export default function SinglePostView() {
         const response = await fetch(`http://localhost:8080/api/v1/post/${id}`);
         const data = await response.json();
         setPost(data)
-    } catch (error) {
+      } catch (error) {
         console.error('Error fetching data:', error);
-    }
+      }
     };
 
     const fetchSinglePostUpvotes = async () => {
       try {
         const response = await fetch(`http://localhost:8080/api/v1/postupvotes/${id}`);
         const data = await response.json();
-        console.log(data.totalUpvotes);
         setUpvotes(data)
-    } catch (error) {
+      } catch (error) {
         console.error('Error fetching data:', error);
-    }
+      }
     };
 
     fetchSinglePost();
@@ -54,21 +53,21 @@ export default function SinglePostView() {
       <div className="wrap single-post-view-container">
         <section className="single-post-container">
 
-          { userRole.admin && 
+          {userRole.admin &&
             <div className="admin-toolbar-container">
               <div className="admin-toolbar-container__tool">
                 <p>Move</p>
-                <span className="admin-toolbar-container__tool__move"/>
+                <span className="admin-toolbar-container__tool__move" />
               </div>
 
               <div className="admin-toolbar-container__tool">
                 <p>Merge</p>
-                <span className="admin-toolbar-container__tool__merge"/>
+                <span className="admin-toolbar-container__tool__merge" />
               </div>
 
               <div className="admin-toolbar-container__tool">
                 <p>Delete</p>
-                <span className="admin-toolbar-container__tool__delete"/>
+                <span className="admin-toolbar-container__tool__delete" />
               </div>
             </div>
           }
@@ -85,20 +84,20 @@ export default function SinglePostView() {
               postDate={post.createdAt}
               postAuthor={post.User.name}
               isAdmin={checkAdmin(post.User.email)}
-              />
+            />
           </div>
 
           <div className="single-post-container__content">
             <SinglePostContent
               // postContent={post.description}
               postDate={post.createdAt}
-              />
-	
+            />
+
             <div className="single-post-container__merges">
               <div>
                 <h3>Merged with in a post:</h3>
                 <h4>Title of merged post</h4>
-				<div>merged content here </div>
+                <div>merged content here </div>
                 {post.id == 1 ? (
                   <Link to="/posts/2">
                     {" "}
@@ -111,7 +110,7 @@ export default function SinglePostView() {
                   </Link>
                 ) : (
                   ""
-                  )}
+                )}
               </div>
             </div>
 
@@ -134,25 +133,25 @@ export default function SinglePostView() {
               )}
             </div> */}
 
-            {/* <div>
+            <div>
               <CommentSection
-                postId={post.id}
-                postDate={post.publishedAt}
+                // postId={post.id}
+                // postDate={post.publishedAt}
                 // loggedIn={loggedIn}
-                comments={post.comments}
-                />
-            </div> */}
+                comments={post.Comments}
+              />
+            </div>
           </div>
         </section>
         <div className="single-post-container">
           <SinglePostMeta
-            images={post.images}
+            images={post.image}
             postId={post.id} //temp value to showcase merge function
             upvoters={upvotes.upvotes}
-            />
+          />
         </div>
-          <Link to="/" className="single-post-view-back__icon">
-          </Link>
+        <Link to="/" className="single-post-view-back__icon">
+        </Link>
       </div>
     </>
   );

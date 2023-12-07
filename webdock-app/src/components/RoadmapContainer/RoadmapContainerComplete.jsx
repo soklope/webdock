@@ -14,13 +14,13 @@ export default function RoadmapContainerPlanned() {
         const fetchedData = await fetchPostsByStatus("complete");
         setPostCount(fetchedData.length)
         setCompleteArray(fetchedData)
-        console.log(fetchedData);
+        // console.log(fetchedData);
       } catch (error) {
         console.error('Error setting state:', error);
       }
     };
     fetchDataAndSetState();
-  }, []); 
+  }, []);
 
   const openContainer = () => {
     setContainerIsOpen(!containerIsOpen);
@@ -35,32 +35,32 @@ export default function RoadmapContainerPlanned() {
           numberOfComments={post.Comments.length}
           totalUpvotes={post.upvotes}
           id={post.id}
-          // status={post.status}
-          // statusColor={"tag-planned-color"}
+        // status={post.status}
+        // statusColor={"tag-planned-color"}
         />
       </div>
     ));
   };
-  
+
   return (
     <div className="roadmap-container">
-		<div className="roadmap-container__tooltip" onClick={openContainer}>
-			<p>Complete</p>
-			<span className={`roadmap-container__dropdown-icon ${containerIsOpen ? "rotate" : ""}`}></span>
-			<p className="roadmap-container__postcount">{postCount}</p>
-			<div className="roadmap-container__color-indicator-complete" />
-		</div>
+      <div className="roadmap-container__tooltip" onClick={openContainer}>
+        <p>Complete</p>
+        <span className={`roadmap-container__dropdown-icon ${containerIsOpen ? "rotate" : ""}`}></span>
+        <p className="roadmap-container__postcount">{postCount}</p>
+        <div className="roadmap-container__color-indicator-complete" />
+      </div>
 
-		{containerIsOpen && (
-			<div className="roadmap-container__dropdown">{renderRoadmapChildren()}</div>
-		)}
+      {containerIsOpen && (
+        <div className="roadmap-container__dropdown">{renderRoadmapChildren()}</div>
+      )}
 
-      
-		{ completeArray ?
-        	( <div className="roadmap-container__children">{renderRoadmapChildren()}</div> )
-        	:
-        	<div>Loading...</div>
-		}
+
+      {completeArray ?
+        (<div className="roadmap-container__children">{renderRoadmapChildren()}</div>)
+        :
+        <div>Loading...</div>
+      }
     </div>
   );
 }
