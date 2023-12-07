@@ -6,6 +6,7 @@ import SinglePostHeading from "../components/SinglePost/SinglePostHeading/Single
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
 import SinglePostMeta from "../components/SinglePost/SinglePostMeta/SinglePostMeta";
+import { checkAdmin } from "../helper/checkAdmin.js";
 
 import "./view-styles/SinglePostView.scss";
 
@@ -13,18 +14,13 @@ import UpvoteBtn from "../components/UpvoteBtn/UpvoteBtn.jsx";
 
 export default function SinglePostView() {
   const [post, setPost] = useState(null);
-
   const { id } = useParams();
-  // const loggedIn = true;
 
   useEffect(() => {
     const fetchSinglePost = async () => {
-      // const parsedId = parseInt(id, 10);
-      console.log(id);
       try {
         const response = await fetch(`http://localhost:8080/api/v1/post/${id}`);
         const data = await response.json();
-        console.log(data);
         setPost(data)
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -70,11 +66,12 @@ export default function SinglePostView() {
             </div>
             <SinglePostHeading
               postTitle={post.title}
-              postStatus={post.status}
+              postStatus={post.Status.status}
               postUpvotes={post.numberOfUpvotes}
-              postCategory={post.category}
+              postCategory={post.Category.category}
               postDate={post.createdAt}
-              postAuthor={post.authorId}
+              postAuthor={post.User.name}
+              isAdmin={checkAdmin(post.User.email)}
               />
           </div>
 
@@ -105,7 +102,7 @@ export default function SinglePostView() {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <br />
               {!loggedIn ? (
                 <div className="comment-missing-login">
@@ -122,16 +119,16 @@ export default function SinglePostView() {
                   </form>
                 </div>
               )}
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
               <CommentSection
                 postId={post.id}
                 postDate={post.publishedAt}
-                loggedIn={loggedIn}
+                // loggedIn={loggedIn}
                 comments={post.comments}
                 />
-            </div>
+            </div> */}
           </div>
         </section>
         <div className="single-post-container">

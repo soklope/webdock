@@ -14,6 +14,7 @@ export default function RoadmapContainerPlanned() {
         const fetchedData = await fetchPostsByStatus("complete");
         setPostCount(fetchedData.length)
         setCompleteArray(fetchedData)
+        console.log(fetchedData);
       } catch (error) {
         console.error('Error setting state:', error);
       }
@@ -26,13 +27,14 @@ export default function RoadmapContainerPlanned() {
   };
 
   const renderRoadmapChildren = () => {
-    return completeArray.map((post, index) => (
-      <div key={index} className="roadmap-child-container">
+    return completeArray.map((post) => (
+      <div key={post.id} className="roadmap-child-container">
         <RoadmapChildren
           title={post.title}
           category={post.Category.category}
           numberOfComments={post.Comments.length}
           totalUpvotes={post.upvotes}
+          id={post.id}
           // status={post.status}
           // statusColor={"tag-planned-color"}
         />

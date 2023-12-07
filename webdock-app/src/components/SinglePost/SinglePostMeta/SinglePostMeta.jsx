@@ -3,31 +3,15 @@ import { React } from "react";
 import "./SinglePostMeta.scss";
 import Username from "../../Username/Username";
 import LabelTag from "../../LabelTag/LabelTag";
+import { getColorTagFromStatus } from "../../../helper/colorFromStatus";
 
 export default function SinglePostMeta({ images }) {
-
-	function getColorTagFromStatus(status) {
-        switch (status) {
-            case 'My Post':
-                return 'tag-my-post-color';
-            case 'Review':
-                return 'tag-review-color';
-            case 'Planned':
-                return 'tag-planned-color';
-            case 'In Progress':
-                return 'tag-in-progress-color';
-            case 'Complete':
-                return 'tag-complete-color';
-            default:
-                return '';
-        }
-    }
 
 	return (
 		<>
 			<div className="single-post-meta">
                 {/* render/map through images if the image array from the post object has any images */}
-				{images.length > 0 && (
+				{/* {images.length > 0 && (
                     <div>
                         <h3>Added image</h3>
 						<div className="single-post-meta-image-container">
@@ -43,7 +27,8 @@ export default function SinglePostMeta({ images }) {
 							))}
 						</div>
 					</div>
-				)}
+				)} */}
+				{images}
 			<div>
 				<h3>People liked</h3>
 				<div>
