@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
@@ -9,36 +9,30 @@ import SinglePostMeta from "../components/SinglePost/SinglePostMeta/SinglePostMe
 
 import "./view-styles/SinglePostView.scss";
 
-import { completeArrayDb } from "../dummyDb.js";
 import UpvoteBtn from "../components/UpvoteBtn/UpvoteBtn.jsx";
 
 export default function SinglePostView() {
   const [post, setPost] = useState(null);
 
-  console.log("params:", useParams());
   const { id } = useParams();
-  console.log("postid after useparams:", id);
-  const loggedIn = true;
+  // const loggedIn = true;
 
   useEffect(() => {
     const fetchSinglePost = async () => {
-      const parsedId = parseInt(id, 10);
-      console.log("parsed postId:", parsedId);
-      if (
-        !isNaN(parsedId) &&
-        parsedId >= 0 &&
-        parsedId < completeArrayDb.length + 1
-      ) {
-        const singlePost = completeArrayDb[parsedId - 1];
-        setPost(singlePost);
-      } else {
-        console.log("invalid id:", id);
-      }
+      // const parsedId = parseInt(id, 10);
+      console.log(id);
+      try {
+        const response = await fetch(`http://localhost:8080/api/v1/post/${id}`);
+        const data = await response.json();
+        console.log(data);
+        setPost(data)
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
     };
 
     fetchSinglePost();
   }, [id]);
-  // console.log(post);
 
   if (!post) {
     return <div>Loading...</div>;
