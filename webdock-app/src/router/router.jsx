@@ -6,7 +6,7 @@ import ListView from '../views/ListView';
 import SinglePostView from '../views/SinglePostView';
 
 import SortFunctionAndFilterContainer from '../components/SortFunctionAndFilterContainer/SortFunctionFilterContainer';
-import CreatePostModal from '../components/Modal/CreatePostModal/CreatePostModal';
+import CreatePostModal from '../components/CreatePostModal/CreatePostModal';
 import SelectCategory from '../components/Modal/SelectCategory/SelectCategory';
 import LoginScreen from '../components/Modal/LoginScreen/LoginScreen';
 
