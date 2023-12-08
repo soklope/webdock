@@ -1,4 +1,4 @@
-import { React, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import useModalStore from "../../stores/modalStore";
 
 import SelectCategory from "../Modal/SelectCategory/SelectCategory";
@@ -56,12 +56,24 @@ export default function CreatePostModal() {
   const fileUploadRef = useRef();
 
   const [postData, setPostData] = useState({
-    // category_id: 1, is now handled in backend (postController)
+    category_id: 0,
     title: "title1",
     content: "detail",
     image: [],
-    user_id: null, 
+    user_id: 0, 
   });
+
+  useEffect(() => {
+    const dataFromLS = localStorage.getItem('user');
+
+      if (dataFromLS) {
+        const user = JSON.parse(dataFromLS);
+      setPostData((prevData) => ({
+        ...prevData,
+        user_id: parseInt(user.id, 10),
+      }))
+    }; 
+  },[])
 
   const handleCloseModal = () => {
     setSelectedFiles([]);
@@ -71,20 +83,6 @@ export default function CreatePostModal() {
       }));
     toggleModal();
   };
-  
-  // const handleFileSelect = (event) => {
-  //   const existingFileNames = new Set(
-  //     postData.image.map((file) => file.name)
-  //   );
-  //   const newFiles = Array.from(event.target.files).filter(
-  //     (file) => !existingFileNames.has(file.name)
-  //   );
-
-  //   setPostData((prevData) => ({
-  //     ...prevData,
-  //     image: [...prevData.image, ...newFiles],
-  //   }));
-  // };
 
   const handleFileSelect = (event) => {
     const files = event.target.files;
@@ -101,23 +99,11 @@ export default function CreatePostModal() {
 
   const handleSubmit = async () => {
     try {
-
-    //   // get userid from localstorage
-      const dataFromLS = localStorage.getItem('user');
-
-    if (dataFromLS) {
-      const user = JSON.parse(dataFromLS);
-
-      // Update the user_id in the state
-      setPostData((prevData) => ({
-        ...prevData,
-        user_id: user.id,
-      }))
-    };
-
+      
+      console.log('category after',postData.category_id)
       // get inputed data from modal
       const formData = new FormData();
-      
+    
       // handling files broke the old structure, this way we can add files correctly with no errors
       formData.append('category_id', postData.category_id);
       formData.append('title', postData.title);
@@ -128,7 +114,7 @@ export default function CreatePostModal() {
       postData.image.forEach((file, index) => {
         formData.append('file', file);
       });
-  
+      
       const response = await fetch('http://localhost:8080/api/v1/createpost', {
         method: 'POST',
         body: formData,
@@ -137,11 +123,11 @@ export default function CreatePostModal() {
       if (response.ok) {
         const result = await response.json();
         console.log('Response:', result);
-        alert('success', result);
+        // alert('success', result);
 
         const newPostId = result.data.id;
         // redirect til ny post
-        window.location.href = `/posts/${newPostId}`;
+        // window.location.href = `/posts/${newPostId}`;
       } else {
         console.error('Error:', response.status);
       }
@@ -170,7 +156,7 @@ export default function CreatePostModal() {
                   onCategoryChange={(category) =>
                     setPostData((prevData) => ({
                       ...prevData,
-                      category: category.id,
+                      category_id: category,
                     }))
                   }
                 />
@@ -192,7 +178,7 @@ export default function CreatePostModal() {
               </div>
 
               <div>
-                <h4 className="modal__title">content</h4>
+                <h4 className="modal__title">Description</h4>
                 <textarea
                   className="modal__desc"
                   type="text"
