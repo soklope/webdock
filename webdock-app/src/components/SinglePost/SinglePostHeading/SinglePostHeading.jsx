@@ -5,25 +5,10 @@ import Username from "../../Username/Username";
 
 import "./SinglePostHeading.scss";
 import LabelTag from "../../LabelTag/LabelTag";
+import { getColorTagFromStatus } from "../../../helper/colorFromStatus";
+import formatCustomDate from "../../../helper/formatDate";
 
-export default function SinglePostHeading({ postTitle, postStatus, postDate, postCategory, postAuthor, postUpvotes }) {
-
-    function getColorTagFromStatus(status) {
-        switch (status) {
-            case 'My Post':
-                return 'tag-my-post-color';
-            case 'Review':
-                return 'tag-review-color';
-            case 'Planned':
-                return 'tag-planned-color';
-            case 'In Progress':
-                return 'tag-in-progress-color';
-            case 'Complete':
-                return 'tag-complete-color';
-            default:
-                return '';
-        }
-    }
+export default function SinglePostHeading({ postTitle, postStatus, postDate, postCategory, postAuthor, postUpvotes, isAdmin }) {
 
 	return (
 		<>
@@ -39,9 +24,9 @@ export default function SinglePostHeading({ postTitle, postStatus, postDate, pos
 						<div className="single-post-heading__desktop">
 							<div>Category: {postCategory}</div>
 							<span>•</span>
-							<div>Date: {postDate.toLocaleString()}</div>
+							<div>Date: {formatCustomDate(new Date(postDate))}</div>
 							<span>•</span>
-							<Username user={postAuthor} isAdmin={true} />
+							<Username user={postAuthor} isAdmin={isAdmin} />
 						</div>
 					</div>
 				</div>

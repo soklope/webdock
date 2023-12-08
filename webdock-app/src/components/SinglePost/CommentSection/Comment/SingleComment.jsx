@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Username from "../../../Username/Username";
 
 import "./SingleComment.scss";
+import formatCustomDate from "../../../../helper/formatDate";
+import { create } from "zustand";
+import { checkAdmin } from "../../../../helper/checkAdmin";
 
-export default function SingleComment({ name, body, replies, loggedin, isAdmin }) {
-  const [loggedIn, setLoggedIn] = useState(false);
-  useEffect(() => {
-    setLoggedIn(loggedIn);
-  }, []);
+export default function SingleComment({ User, content, Replies, createdAt }) {
 
   return (
     <div className="comment-container">
@@ -19,27 +18,30 @@ export default function SingleComment({ name, body, replies, loggedin, isAdmin }
           alt="yes"
         />
         <h4>
-          <Username isAdmin={isAdmin} user={name} />
+          <Username isAdmin={checkAdmin(User.email)} user={User.name} />
         </h4>
       </div>
-      <p>{body}</p>
+      <p>{content}</p>
 
       <div className="comment-meta-container">
         <span className="comment-meta-container__icon"></span>
         <span>•</span>
-        <div className="comment-meta-container__reply-btn">
-          {!loggedIn ? (
+        <div>
+          {formatCustomDate(new Date(createdAt))}
+        </div>
+        {/* <div className="comment-meta-container__reply-btn">
+          {loggedIn ? (
             <a href="#"> Reply </a>
           ) : (
             <a href="#"> Login to reply </a>
           )}
-        </div>
+        </div> */}
       </div>
 
-      {replies && replies.length > 0 && (
+      {Replies && Replies.length > 0 && (
         <div className="replies-container">
-          {replies.map((reply) => (
-            <SingleComment key={reply.id} {...reply} loggedIn={loggedin} />
+          {Replies.map((reply) => (
+            <SingleComment key={reply.id} {...reply} />
           ))}
         </div>
       )}

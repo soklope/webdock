@@ -15,7 +15,6 @@ export default function ListViewArray() {
                 const fetchedData = await fetchAllPostData();
                 setAllPosts(fetchedData)
                 setSustainAllPosts(fetchedData)
-                {console.log(fetchedData[0].createdAt)}
             } catch (error) {
                 console.error('Error setting state:', error);
             }
