@@ -1,4 +1,4 @@
-import { React, useRef, useState } from "react";
+import { React, useEffect, useRef, useState } from "react";
 import useModalStore from "../../stores/modalStore";
 
 import SelectCategory from "../Modal/SelectCategory/SelectCategory";
@@ -8,83 +8,81 @@ import CloseIcon from "../../content/gfx/Icons/close-icon.svg";
 import "./CreatePostModal.scss";
 
 export default function CreatePostModal() {
-    const categoryArray = [
-      {
-        id: 1,
-        category: "Dashboard Features",
-      },
-      {
-        id: 2,
-        category: "Documentation",
-      },
-      {
-        id: 3,
-        category: "Billing features",
-      },
-      {
-        id: 4,
-        category: "Networking",
-      },
-      {
-        id: 5,
-        category: "Hardware and Products",
-      },
-      {
-        id: 6,
-        category: "Perfect Server Stacks",
-      },
-      {
-        id: 7,
-        category: "Mobile App",
-      },
-      {
-        id: 8,
-        category: "Webdock API",
-      },
-      {
-        id: 9,
-        category: "Competition",
-      },
-      {
-        id: 10,
-        category: "Other",
-      },
-    ];
-    
+  const categoryArray = [
+    {
+      id: 1,
+      category: "Dashboard Features",
+    },
+    {
+      id: 2,
+      category: "Documentation",
+    },
+    {
+      id: 3,
+      category: "Billing features",
+    },
+    {
+      id: 4,
+      category: "Networking",
+    },
+    {
+      id: 5,
+      category: "Hardware and Products",
+    },
+    {
+      id: 6,
+      category: "Perfect Server Stacks",
+    },
+    {
+      id: 7,
+      category: "Mobile App",
+    },
+    {
+      id: 8,
+      category: "Webdock API",
+    },
+    {
+      id: 9,
+      category: "Competition",
+    },
+    {
+      id: 10,
+      category: "Other",
+    },
+  ];
+
   const { modalIsOpen, toggleModal } = useModalStore();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const fileUploadRef = useRef();
 
   const [postData, setPostData] = useState({
-    // category_id: 1, is now handled in backend (postController)
+    category_id: 0,
     title: "title1",
     content: "detail",
     image: [],
-    user_id: null, 
+    user_id: 0,
   });
+
+  useEffect(() => {
+    const dataFromLS = localStorage.getItem("user");
+
+    if (dataFromLS) {
+      const user = JSON.parse(dataFromLS);
+      setPostData((prevData) => ({
+        ...prevData,
+        user_id: parseInt(user.id, 10),
+      }));
+    }
+  }, []);
 
   const handleCloseModal = () => {
     setSelectedFiles([]);
     setPostData((prevData) => ({
-        ...prevData,
-        image: [],
-      }));
+      ...prevData,
+      image: [],
+    }));
     toggleModal();
   };
-  
-  // const handleFileSelect = (event) => {
-  //   const existingFileNames = new Set(
-  //     postData.image.map((file) => file.name)
-  //   );
-  //   const newFiles = Array.from(event.target.files).filter(
-  //     (file) => !existingFileNames.has(file.name)
-  //   );
-
-  //   setPostData((prevData) => ({
-  //     ...prevData,
-  //     image: [...prevData.image, ...newFiles],
-  //   }));
-  // };
 
   const handleFileSelect = (event) => {
     const files = event.target.files;
@@ -95,60 +93,55 @@ export default function CreatePostModal() {
     }));
   };
 
+  // const removeFile = (fileName) => {
+  //   console.log(fileName)
+  //   console.log(postData.image)
+  //   setSelectedFiles(selectedFiles.filter((file) => postData.image.name !== file.name));
+  // };
+
   const removeFile = (fileName) => {
-    setSelectedFiles(selectedFiles.filter((file) => file.name !== fileName));
+    setPostData((prevData) => ({
+      ...prevData,
+      image: prevData.image.filter((file) => file.name !== fileName),
+    }));
   };
 
   const handleSubmit = async () => {
     try {
-
-    //   // get userid from localstorage
-      const dataFromLS = localStorage.getItem('user');
-
-    if (dataFromLS) {
-      const user = JSON.parse(dataFromLS);
-
-      // Update the user_id in the state
-      setPostData((prevData) => ({
-        ...prevData,
-        user_id: user.id,
-      }))
-    };
-
+      console.log("category after", postData.category_id);
       // get inputed data from modal
       const formData = new FormData();
-      
+
       // handling files broke the old structure, this way we can add files correctly with no errors
-      formData.append('category_id', postData.category_id);
-      formData.append('title', postData.title);
-      formData.append('content', postData.content);
-      formData.append('user_id', postData.user_id);
-  
+      formData.append("category_id", postData.category_id);
+      formData.append("title", postData.title);
+      formData.append("content", postData.content);
+      formData.append("user_id", postData.user_id);
+
       // Append each file to the FormData
       postData.image.forEach((file, index) => {
-        formData.append('file', file);
+        formData.append("file", file);
       });
-  
-      const response = await fetch('http://localhost:8080/api/v1/createpost', {
-        method: 'POST',
+
+      const response = await fetch("http://localhost:8080/api/v1/createpost", {
+        method: "POST",
         body: formData,
       });
-      
+
       if (response.ok) {
         const result = await response.json();
-        console.log('Response:', result);
-        alert('success', result);
+        console.log("Response:", result);
 
         const newPostId = result.data.id;
         // redirect til ny post
         window.location.href = `/posts/${newPostId}`;
       } else {
-        console.error('Error:', response.status);
+        console.error("Error:", response.status);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
-  }
+  };
 
   return (
     <>
@@ -170,7 +163,7 @@ export default function CreatePostModal() {
                   onCategoryChange={(category) =>
                     setPostData((prevData) => ({
                       ...prevData,
-                      category: category.id,
+                      category_id: category,
                     }))
                   }
                 />
@@ -192,7 +185,7 @@ export default function CreatePostModal() {
               </div>
 
               <div>
-                <h4 className="modal__title">content</h4>
+                <h4 className="modal__title">Description</h4>
                 <textarea
                   className="modal__desc"
                   type="text"
@@ -229,14 +222,18 @@ export default function CreatePostModal() {
                     <img
                       src={CloseIcon}
                       alt="close-icon"
-                      onClick={() => removeFile(index)}
+                      onClick={() => removeFile(file.name)}
                     />
                   </div>
                 ))}
               </div>
               <div>
-                <button onClick={handleSubmit}>
-                    submit
+                <button
+                  className="modal__create-post-btn"
+                  onClick={handleSubmit}
+                >
+                  <span className="modal__create-post-btn-icon"> </span> SUBMIT
+                  POST
                 </button>
               </div>
             </div>

@@ -11,7 +11,6 @@
     color: v.$offblack;
 }
 
-
 .modal {
     position: relative;
 
@@ -19,9 +18,9 @@
         width: 100vw;
         height: 100vh;
         background: rgba(0, 0, 0, 0.30);
-        position: fixed; 
-        top: 0; 
-        left: 0; 
+        position: fixed;
+        top: 0;
+        left: 0;
         z-index: 8;
 
         @include mix.flex-center;
@@ -32,15 +31,15 @@
         height: calc(100% - 70px);
         padding: 20px;
         background-color: v.$white;
-    
+
         @media screen and (min-width: v.$desktop-screen) {
             max-width: 900px;
             height: auto;
-    
+
             border-radius: 5px;
         }
     }
-    
+
     &__close {
         @include mix.flex-center(end);
         cursor: pointer;
@@ -104,20 +103,34 @@
         display: inline-block;
     }
 
+    &__create-post-btn {
+        float: right;
+        padding: 10px 60px;
+        background-color: #018647;
+        color: v.$white;
+        font-size: 20px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+
+        &-icon {
+            margin: auto;
+            display: inline-block;
+            @include mix.icon-image-centering('../../content/gfx/Icons/create-icon.svg', 15px, 15px);
+        }
+    }
 }
 
-#fileUpload{
+#fileUpload {
     display: none;
 }
 
 .file-display {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include mix.flex-center(start, center, 5px);
 }
 
 .file-display img {
     cursor: pointer;
     width: 20px;
-    height: 20px; 
+    height: 20px;
 }
