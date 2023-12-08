@@ -5,10 +5,9 @@
     display: none;
 
     @media screen and (min-width: v.$desktop-screen) {
-
         display: inline-block;
         position: absolute;
-        top: 10%;
+        top: 11vh;
         left: -50px;
         background-size: contain;
 
