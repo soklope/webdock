@@ -1,28 +1,30 @@
 import React, { useState, useRef, useEffect } from "react";
 import '../SelectCategory/SelectCategory.scss'
 
-export default function SelectCategory() {
+export default function SelectCategory({categoryArray, onCategoryChange}) {
 const [selectedCategory, setSelectedCategory] = useState(null);
 const [showOptions, setShowOptions] = useState(false);
 const dropdownRef = useRef(null);
 const [hasChanged, setHasChanged] = useState(false)
 
-const categoryOptions = [
-    'Dashboard Features',
-    'Documentation',
-    'Billing Features',
-    'Networking',
-    'Hardware and Products',
-    'Perfect Server Stacks',
-    'Mobile App',
-    'Webdock API',
-    'Competition',
-];
+// const categoryOptions = [
+//     'Dashboard Features',
+//     'Documentation',
+//     'Billing Features',
+//     'Networking',
+//     'Hardware and Products',
+//     'Perfect Server Stacks',
+//     'Mobile App',
+//     'Webdock API',
+//     'Competition',
+// ];
 
 const handleCategoryChange = (category) => {
     setSelectedCategory(category);
     setShowOptions(false);
     setHasChanged(true);
+
+    onCategoryChange(category);
 };
 
 const handleClickOutside = (event) => {
@@ -47,13 +49,13 @@ return (
             </button>
         {showOptions && (
         <div className="category-options">
-            {categoryOptions.map((category) => (
+            {categoryArray.map((category, index) => (
             <div
-                key={category}
+                key={index}
                 className="category-option"
-                onClick={() => handleCategoryChange(category)}
+                onClick={() => handleCategoryChange(category.category)}
             >
-                {category}
+                {category.category}
             </div>
             ))}
         </div>
@@ -63,11 +65,15 @@ return (
 );
 }
 
+// import React, { useState, useRef, useEffect } from "react";
+// import '../SelectCategory/SelectCategory.scss';
 
-// export default function SelectCategory( { onSelectCategory }) {
-//     const [SelectCategory, SetSelectCategory] = useState(null);
+// export default function SelectCategory({ onCategoryChange }) {
+//     const [selectedCategory, setSelectedCategory] = useState(null);
 //     const [showOptions, setShowOptions] = useState(false);
-//     //The options should later be taking from an API to our backend
+//     const dropdownRef = useRef(null);
+//     const [hasChanged, setHasChanged] = useState(false);
+
 //     const categoryOptions = [
 //         'Dashboard Features',
 //         'Documentation',
@@ -81,33 +87,47 @@ return (
 //     ];
 
 //     const handleCategoryChange = (category) => {
-//         SetSelectCategory(category);
-//         onSelectCategory(category);
+//         setSelectedCategory(category);
+//         setShowOptions(false);
+//         setHasChanged(true);
+
+//         // Notify parent component of the category change
+//         onCategoryChange(category);
 //     };
 
-//     return(
-//         <div className="category-selector">
-//             <div className="category-selector-dropdowm">
-//                 <button className="category-selector-btn" onClick={() => setShowOptions(!showOptions)}>
-//                     {SelectCategory || 'Select Category'}
-//                     <span className="category-selector-btn-icon"> 
-//                     </span>
+//     const handleClickOutside = (event) => {
+//         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+//             setShowOptions(false);
+//         }
+//     };
+
+//     useEffect(() => {
+//         document.addEventListener("click", handleClickOutside);
+//         return () => {
+//             document.removeEventListener("click", handleClickOutside);
+//         };
+//     }, []);
+
+//     return (
+//         <div className="category-selector" ref={dropdownRef}>
+//             <div className="category-selector-dropdown">
+//                 <button className={`category-selector-btn ${hasChanged ? 'hasChanged' : ''}`} onClick={() => setShowOptions(!showOptions)}>
+//                     {selectedCategory || 'Select Category'}
+//                     <span className="category-selector-btn-icon"></span>
 //                 </button>
-//                 <div className="category-options">
-//                     {categoryOptions.map((category) => (
-//                         <div
-//                         key={category}
-//                         className="category-option"
-//                         onClick={() => {
-//                             handleCategoryChange(category);
-//                             setShowOptions(false);
-//                         }}
-//                         >
-//                             {category}
-//                         </div>
-                            
-//                     ))}
-//                 </div>
+//                 {showOptions && (
+//                     <div className="category-options">
+//                         {categoryOptions.map((category) => (
+//                             <div
+//                                 key={category}
+//                                 className="category-option"
+//                                 onClick={() => handleCategoryChange(category)}
+//                             >
+//                                 {category}
+//                             </div>
+//                         ))}
+//                     </div>
+//                 )}
 //             </div>
 //         </div>
 //     );
