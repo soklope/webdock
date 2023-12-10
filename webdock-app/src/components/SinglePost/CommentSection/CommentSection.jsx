@@ -23,6 +23,7 @@ const [commentData, setCommentData] = useState({
 	setCommentData(prevData => ({ ...prevData, post_id: postId }));
 }, [postId]);
 
+	const currentUser = JSON.parse(localStorage.getItem("user"));
 
 const handleSubmit = async () => {
     try {
@@ -42,14 +43,15 @@ const handleSubmit = async () => {
         const result = await response.json();
         console.log("Response:", result);
 
-		// Assuming 'result' contains the new comment data
-        // Or construct the new comment using 'commentData'
         const newComment = {
-            id: result.id, // or a generated ID if not returned by the server
+            id: result.id, 
             ...commentData,
-            User: { /* user data, if needed */ },
-            Replies: [], // Assuming no replies initially
-            createdAt: new Date().toISOString(), // Assuming current time for creation
+            User: {
+				name: currentUser.name,
+				email: currentUser.email,
+			},
+            Replies: [], 
+            createdAt: new Date().toISOString(),
         };
         // Update the comments state to include the new comment
 		updateComments(newComment);	
@@ -94,7 +96,7 @@ const handleSubmit = async () => {
 
 
 			{comments.map((comment) => (
-				<SingleComment key={comment.id} {...comment} />
+				<SingleComment key={comment.id} {...comment} content={comment.content} createdAt={comment.createdAt} />
 			))}
 		</div>
 	);

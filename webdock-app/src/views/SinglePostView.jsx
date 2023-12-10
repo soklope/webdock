@@ -108,12 +108,12 @@ export default function SinglePostView() {
                 {post.id == 1 ? (
                   <Link to="/posts/2">
                     {" "}
-                    <div> Merged with /post/2 (should open as a modal) </div>{" "}
+                    <div> Merged with /post/2 (Swithes post) </div>{" "}
                   </Link>
                 ) : post.id == 2 ? (
                   <Link to="/posts/1">
                     {" "}
-                    <div> Merged with /post/1 (should open as a modal) </div>{" "}
+                    <div> Merged with /post/1 (Swithes post) </div>{" "}
                   </Link>
                 ) : (
                   ""
@@ -147,7 +147,7 @@ export default function SinglePostView() {
                 // loggedIn={loggedIn}
                 comments={post.Comments}
                 postId={post.id}
-                onNewComment={handleNewComment}
+                updateComments={handleNewComment}
               />
             </div>
           </div>
