@@ -11,26 +11,6 @@ const userStore = create((set) => ({
         localStorage.removeItem('user');
         set({ user: null });
     },
-
-    // loginAsUser: () => {
-    //     const user = {
-    //         loggedIn: true,
-    //         admin: false,
-    //     };
-
-    //     localStorage.setItem('user', JSON.stringify(user));
-    //     set({ user });
-    // },
-
-    // loginAsAdmin: () => {
-    //     const user = {
-    //         loggedIn: true,
-    //         admin: true,
-    //     };
-
-    //     localStorage.setItem('user', JSON.stringify(user));
-    //     set({ user });
-    // },
 }));
 
 export default userStore;

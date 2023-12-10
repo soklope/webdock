@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { checkAdmin } from "../helper/checkAdmin.js";
 
 import SinglePostHeading from "../components/SinglePost/SinglePostHeading/SinglePostHeading";
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
 import SinglePostMeta from "../components/SinglePost/SinglePostMeta/SinglePostMeta";
-import { checkAdmin } from "../helper/checkAdmin.js";
 
 import "./view-styles/SinglePostView.scss";
-
 import UpvoteBtn from "../components/UpvoteBtn/UpvoteBtn.jsx";
 
 export default function SinglePostView() {
@@ -40,8 +39,9 @@ export default function SinglePostView() {
 
     fetchSinglePost();
     fetchSinglePostUpvotes();
-  }, [id]);
 
+  }, [id]);
+  
   if (!post) {
     return <div>Loading...</div>;
   }
@@ -53,7 +53,7 @@ export default function SinglePostView() {
       <div className="wrap single-post-view-container">
         <section className="single-post-container">
 
-          {userRole.admin &&
+          {checkAdmin(userRole.email) &&
             <div className="admin-toolbar-container">
               <div className="admin-toolbar-container__tool">
                 <p>Move</p>
