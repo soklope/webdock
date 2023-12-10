@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import "./CommentSection.scss";
 import SingleComment from "./Comment/SingleComment.jsx";
 
-export default function CommentSection({ comments }) {
+export default function CommentSection({ comments, postId }) {
 const [commentData, setCommentData] = useState({
     content: "detail",
     user_id: 0,
+	post_id: 0,
   });
 
 
@@ -32,6 +33,7 @@ const handleSubmit = async () => {
 		body: JSON.stringify({
 			content: commentData.content,
 			user_id: commentData.user_id,
+			post_id: commentData.post_id,
 		}),
 	});
 
