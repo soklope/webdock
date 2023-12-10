@@ -1,28 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function AdminToolBar( {itemId} ) {
 
-    const handleDelete = async () => {
-        try {
-          const response = await fetch(`http://localhost:8080/api/v1/items/${itemId}`, {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-    
-          if (response.ok) {
-            console.log('Item deleted successfully');
-          } else {
-            console.error('Failed to delete item');
-          }
-        } catch (error) {
-          console.error('Error deleting item:', error);
-        }
-      };
+  const [showDropdown, setShowDropdown] = useState(false)
 
-    const handleChangeStatus = async () => {
-    const newStatus = 2;
+  const handleDelete = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/v1/items/${itemId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+  
+        if (response.ok) {
+          console.log('Item deleted successfully');
+        } else {
+          console.error('Failed to delete item');
+        }
+      } catch (error) {
+        console.error('Error deleting item:', error);
+      }
+    };
+
+  const handleChangeStatus = async (newStatus) => {
 
     try {
         const response = await fetch(`http://localhost:8080/api/v1/changePostStatus/${itemId}/status/${newStatus}`, {
@@ -41,24 +42,34 @@ export default function AdminToolBar( {itemId} ) {
     } catch (error) {
         console.error('Error updating post status:', error);
     }
-    };
+  };
 
-    return (
-        <div className="admin-toolbar-container">
-            <div className="admin-toolbar-container__tool" onClick={handleChangeStatus}>
-                <p>Change Status</p>
-                <span className="admin-toolbar-container__tool__move" />
-            </div>
+  return (
+      <div className="admin-toolbar-container">
+          <div className="admin-toolbar-container__tool" onClick={() => setShowDropdown(!showDropdown)}>
+              <p>Change Status</p>
+              <span className="admin-toolbar-container__tool__move" />
 
-            <div className="admin-toolbar-container__tool">
-                <p>Merge</p>
-                <span className="admin-toolbar-container__tool__merge" />
-            </div>
+              { showDropdown &&
+                <ul className="admin-toolbar-container__dropdown">
+                  <li onClick={() => handleChangeStatus(1)}>Review</li>
+                  <li onClick={() => handleChangeStatus(2)}>Planned</li>
+                  <li onClick={() => handleChangeStatus(3)}>In Progress</li>
+                  <li onClick={() => handleChangeStatus(4)}>Complete</li>
+                  <li onClick={() => handleChangeStatus(5)}>Deprecated</li>
+                </ul>
+              }
+          </div>
 
-            <div className="admin-toolbar-container__tool" onClick={handleDelete}>
-                <p>Delete</p>
-                <span className="admin-toolbar-container__tool__delete" />
-            </div>
-        </div>
-    )
+          <div className="admin-toolbar-container__tool">
+              <p>Merge</p>
+              <span className="admin-toolbar-container__tool__merge" />
+          </div>
+
+          <div className="admin-toolbar-container__tool" onClick={handleDelete}>
+              <p>Delete</p>
+              <span className="admin-toolbar-container__tool__delete" />
+          </div>
+      </div>
+  )
 }

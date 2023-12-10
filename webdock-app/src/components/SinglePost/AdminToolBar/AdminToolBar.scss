@@ -2,12 +2,35 @@
 
 .admin-toolbar-container {
     display: flex;
+    position: relative;
     width: 100%;
     align-items: center;
     justify-content: end;
     gap: 15px;
     transition: 0.2s;
 
+    &__dropdown {
+        list-style: none;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 5px;
+        top: 30px;
+        background-color: v.$white;
+        box-shadow: v.$drop-shadow;
+        align-items: center;
+
+        li {
+            text-align: center;
+            width: 100%;
+            padding: 5px 20px;
+        }
+
+        li:hover {
+            background-color: v.$offwhite;
+        }
+    }
 
     &__tool {
         display: flex;
