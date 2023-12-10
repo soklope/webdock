@@ -7,9 +7,11 @@ import SinglePostHeading from "../components/SinglePost/SinglePostHeading/Single
 import SinglePostContent from "../components/SinglePost/SinglePostContent/SinglePostContent";
 import CommentSection from "../components/SinglePost/CommentSection/CommentSection";
 import SinglePostMeta from "../components/SinglePost/SinglePostMeta/SinglePostMeta";
+import AdminToolBar from "../components/SinglePost/AdminToolBar/AdminToolBar.jsx";
 
 import "./view-styles/SinglePostView.scss";
 import UpvoteBtn from "../components/UpvoteBtn/UpvoteBtn.jsx";
+import "../components/SinglePost/AdminToolBar/AdminToolBar.scss"
 
 export default function SinglePostView() {
   const [post, setPost] = useState(null);
@@ -54,22 +56,9 @@ export default function SinglePostView() {
         <section className="single-post-container">
 
           {checkAdmin(userRole.email) &&
-            <div className="admin-toolbar-container">
-              <div className="admin-toolbar-container__tool">
-                <p>Move</p>
-                <span className="admin-toolbar-container__tool__move" />
-              </div>
-
-              <div className="admin-toolbar-container__tool">
-                <p>Merge</p>
-                <span className="admin-toolbar-container__tool__merge" />
-              </div>
-
-              <div className="admin-toolbar-container__tool">
-                <p>Delete</p>
-                <span className="admin-toolbar-container__tool__delete" />
-              </div>
-            </div>
+            <AdminToolBar 
+              itemId={id}
+            />
           }
 
           <div className="single-post-view-heading">

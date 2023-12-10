@@ -99,7 +99,7 @@ export default function StatusfiltersContainer() {
           indicationColor={"InProgress"}
           borderColor={"InProgress-border-color"}
           backgroundColor={"InProgress-background-color"}
-          title="In Progress"
+          title="In_Progress"
           isSelected={selectedFilters.includes("In Progress")}
           onSelect={handleFilterSelect}
         />
