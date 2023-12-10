@@ -48,6 +48,13 @@ export default function SinglePostView() {
 
   const userRole = JSON.parse(localStorage.getItem('user'));
 
+  const handleNewComment = (newComment) => {
+    setPost(prevPost => ({
+        ...prevPost,
+        Comments: [...prevPost.Comments, newComment]
+    }));
+};
+
   return (
     <>
       <div className="wrap single-post-view-container">
@@ -139,6 +146,8 @@ export default function SinglePostView() {
                 // postDate={post.publishedAt}
                 // loggedIn={loggedIn}
                 comments={post.Comments}
+                postId={post.id}
+                onNewComment={handleNewComment}
               />
             </div>
           </div>

@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import "./CommentSection.scss";
 import SingleComment from "./Comment/SingleComment.jsx";
 
-export default function CommentSection({ comments, postId }) {
+export default function CommentSection({ comments, postId, updateComments }) {
 const [commentData, setCommentData] = useState({
-    content: "detail",
+    content: "",
     user_id: 0,
-	post_id: 0,
+	post_id: postId,
   });
 
 
@@ -20,7 +20,8 @@ const [commentData, setCommentData] = useState({
         user_id: parseInt(user.id, 10),
       }));
     }
-  }, []);
+	setCommentData(prevData => ({ ...prevData, post_id: postId }));
+}, [postId]);
 
 
 const handleSubmit = async () => {
@@ -41,7 +42,19 @@ const handleSubmit = async () => {
         const result = await response.json();
         console.log("Response:", result);
 
-			//needs to post the new comment somehow
+		// Assuming 'result' contains the new comment data
+        // Or construct the new comment using 'commentData'
+        const newComment = {
+            id: result.id, // or a generated ID if not returned by the server
+            ...commentData,
+            User: { /* user data, if needed */ },
+            Replies: [], // Assuming no replies initially
+            createdAt: new Date().toISOString(), // Assuming current time for creation
+        };
+        // Update the comments state to include the new comment
+		updateComments(newComment);	
+
+
       } else {
         console.error("Error:", response.status);
       }

@@ -18,7 +18,7 @@ export default function SingleComment({ User, content, Replies, createdAt }) {
           alt="yes"
         />
         <h4>
-          <Username isAdmin={checkAdmin(User.email)} user={User.name} />
+          <Username isAdmin={User && checkAdmin(User.email)} user={User ? User.name : 'Unknown'} />
         </h4>
       </div>
       <p>{content}</p>
