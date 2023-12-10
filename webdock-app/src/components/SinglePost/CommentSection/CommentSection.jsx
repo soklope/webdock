@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./CommentSection.scss";
 import SingleComment from "./Comment/SingleComment.jsx";
 
@@ -7,6 +7,20 @@ const [commentData, setCommentData] = useState({
     content: "detail",
     user_id: 0,
   });
+
+
+  useEffect(() => {
+    const dataFromLS = localStorage.getItem("user");
+
+    if (dataFromLS) {
+      const user = JSON.parse(dataFromLS);
+      setCommentData((prevData) => ({
+        ...prevData,
+        user_id: parseInt(user.id, 10),
+      }));
+    }
+  }, []);
+
 
 const handleSubmit = async () => {
     try {
