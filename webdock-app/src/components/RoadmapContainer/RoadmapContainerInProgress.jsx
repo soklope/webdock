@@ -26,13 +26,14 @@ export default function RoadmapContainerPlanned() {
   };
 
   const renderRoadmapChildren = () => {
-    return inProgressArray.map((post, index) => (
-      <div key={index} className="roadmap-child-container">
+    return inProgressArray.map((post) => (
+      <div key={post.id} className="roadmap-child-container">
         <RoadmapChildren
           title={post.title}
           category={post.Category.category}
           numberOfComments={post.Comments.length}
           totalUpvotes={post.upvotes}
+          id={post.id}
           // status={post.status}
           // statusColor={"tag-planned-color"}
         />
