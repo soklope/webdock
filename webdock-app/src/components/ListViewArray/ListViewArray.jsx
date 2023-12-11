@@ -25,8 +25,8 @@ export default function ListViewArray() {
 
     return (
         <>
-            {allPosts.map((post, index) => (
-                <div key={index}>
+            {allPosts.map((post) => (
+                <div key={post.id}>
                     <ListViewPostItem
                         title={post.title}
                         category={post.Category && post.Category.category}
@@ -37,6 +37,7 @@ export default function ListViewArray() {
                         indicatorColor={post.Status && getColorTagFromStatus(post.Status.status)}
                         content={post.content}
                         date={formatCustomDate(new Date(post.createdAt))}
+                        id={post.id}
                         // status={post.Status && post.Status.status !== "My Post" ? post.Status.status : false}
                         // myOwnStatus={post.isYourPost ? true : false}
                         />

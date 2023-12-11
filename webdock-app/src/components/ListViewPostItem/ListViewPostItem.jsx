@@ -1,10 +1,16 @@
 import "./ListViewPostItem.scss";
 import UpvoteBtn from "../UpvoteBtn/UpvoteBtn";
 
-export default function ListViewPostItem({ title, category, status, numberOfComments, statusColor, totalUpvotes, indicatorColor, myOwnStatus, content, date }) {
+import { Link } from 'react-router-dom';
+
+export default function ListViewPostItem({ id, title, category, status, numberOfComments, statusColor, totalUpvotes, indicatorColor, myOwnStatus, content, date }) {
 
   return (
-    <div className="listview-child-container">
+
+    <Link 
+    to={`/posts/${id}`} 
+    className="listview-child-container"
+    >
       <div className="listview-child-container__button">
         <UpvoteBtn
           numberOfUpvotes={totalUpvotes}
@@ -33,6 +39,7 @@ export default function ListViewPostItem({ title, category, status, numberOfComm
       </div>
 
       <div className={`listview-child-container__indicator ${indicatorColor}`}/>
-    </div>
+
+    </Link>
   );
 }
