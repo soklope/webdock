@@ -57,8 +57,11 @@ const handleSubmit = async () => {
             Replies: [], 
             createdAt: new Date().toISOString(),
         };
-        // Update the comments state to include the new comment
+        // Update the comments state to include the new comment, and clear inputfield
 		updateComments(newComment);	
+		setCommentData(prevData => {
+			return { ...prevData, content: "" };
+		});
 
       } else {
         console.error("Error:", response.status);
@@ -79,7 +82,8 @@ const handleSubmit = async () => {
 					className="comment-post"
 					type="text"
 					placeholder="Leave a comment"
-					onKeyUp={(event) =>
+					value={commentData.content}
+					onChange={(event) =>
                     setCommentData((prevData) => ({
                       ...prevData,
                       content: event.target.value,

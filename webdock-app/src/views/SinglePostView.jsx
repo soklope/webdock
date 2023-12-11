@@ -142,7 +142,6 @@ export default function SinglePostView() {
 
             <div>
               <CommentSection
-                // postId={post.id}
                 // postDate={post.publishedAt}
                 // loggedIn={loggedIn}
                 comments={post.Comments}
