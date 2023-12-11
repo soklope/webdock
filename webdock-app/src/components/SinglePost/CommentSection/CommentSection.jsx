@@ -23,19 +23,12 @@ const [commentData, setCommentData] = useState({
 	setCommentData(prevData => ({ ...prevData, post_id: postId }));
 }, [postId]);
 
-	const currentUser = JSON.parse(localStorage.getItem("user"));
+const currentUser = JSON.parse(localStorage.getItem("user"));
 
-
-  // Check if user is logged in
-  const isUserLoggedIn = currentUser && currentUser.id;
-
+// Check if user is logged in
+const isUserLoggedIn = currentUser && currentUser.id;
 
 const handleSubmit = async () => {
-
-	if (!isUserLoggedIn) {
-		alert("You must be logged in to post a comment.");
-		return;
-	}
 
     try {
 	const response = await fetch("http://localhost:8080/api/v1/createcomment", {
@@ -67,18 +60,19 @@ const handleSubmit = async () => {
         // Update the comments state to include the new comment
 		updateComments(newComment);	
 
-
       } else {
         console.error("Error:", response.status);
-      }
+		}
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-
 	return (
 		<div className="comment-section-container">
+
+			{isUserLoggedIn ? (
+
 			<div className="comment-post-container">
 				
 				<textarea 
@@ -92,19 +86,19 @@ const handleSubmit = async () => {
                     }))
                   }
 				></textarea>
-
 				<button 
-				className="submit-comment"
-				onClick={handleSubmit}>
-					SUBMIT
+					className="submit-comment"
+					onClick={handleSubmit}>
+						SUBMIT
 				</button>
 			</div>
 
+			) : ( 
 
-				{/* <div className="log-in-to-comment">
+				<div className="log-in-to-comment">
 					<p>Log in to leave a comment</p>
-				</div> */}
-
+				</div> 
+			)}
 
 			{comments.map((comment) => (
 				<SingleComment key={comment.id} {...comment} content={comment.content} createdAt={comment.createdAt} />
