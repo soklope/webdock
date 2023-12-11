@@ -25,7 +25,18 @@ const [commentData, setCommentData] = useState({
 
 	const currentUser = JSON.parse(localStorage.getItem("user"));
 
+
+  // Check if user is logged in
+  const isUserLoggedIn = currentUser && currentUser.id;
+
+
 const handleSubmit = async () => {
+
+	if (!isUserLoggedIn) {
+		alert("You must be logged in to post a comment.");
+		return;
+	}
+
     try {
 	const response = await fetch("http://localhost:8080/api/v1/createcomment", {
 		method: "POST",
