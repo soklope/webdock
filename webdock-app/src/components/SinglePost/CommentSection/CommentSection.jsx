@@ -92,7 +92,8 @@ const handleSubmit = async () => {
 				></textarea>
 				<button 
 					className="submit-comment"
-					onClick={handleSubmit}>
+					onClick={handleSubmit}
+					disabled={!commentData.content.trim()}>
 						SUBMIT
 				</button>
 			</div>
