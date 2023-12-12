@@ -27,7 +27,7 @@ export default function AdminToolBar( {itemId} ) {
 
     try {
         const response = await fetch(`http://localhost:8080/api/v1/changePostStatus/${itemId}/status/${newStatus}`, {
-        method: 'GET', // You may need to change this to 'PUT' or 'PATCH' depending on your server implementation
+        method: 'PATCH', // You may need to change this to 'PUT' or 'PATCH' depending on your server implementation
         headers: {
             'Content-Type': 'application/json',
         },
