@@ -16,6 +16,7 @@ import "../components/SinglePost/AdminToolBar/AdminToolBar.scss"
 export default function SinglePostView() {
   const [post, setPost] = useState(null);
   const [upvotes, setUpvotes] = useState(0);
+  const [mergedPostArray, setMergedPostArray] = useState([]);
   const { id } = useParams();
   const userRole = JSON.parse(localStorage.getItem('user'));
 
@@ -40,15 +41,25 @@ export default function SinglePostView() {
       }
     };
 
+    const fetchMergedPosts = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/v1/merged-post/${id}`);
+        const data = await response.json();
+        setMergedPostArray(data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
     fetchSinglePost();
     fetchSinglePostUpvotes();
-
+    fetchMergedPosts();
   }, [id]);
   
   if (!post) {
     return <div>Loading...</div>;
   }
-
+  
+  console.log(mergedPostArray) 
 
   const handleNewComment = (newComment) => {
     setPost(prevPost => ({
@@ -91,8 +102,18 @@ export default function SinglePostView() {
 
             <div className="single-post-container__merges">
               <div>
-                <h3>Merged with in a post:</h3>
-                <h4>Title of merged post</h4>
+                <h3>Merged with in a post:</h3> 
+                {   
+                  <ul>
+                    {mergedPostArray.map((post, index) => (
+                      <li key={index}> 
+                        {post.Title}
+                      </li>
+                    ))}
+                  </ul>
+                }
+
+                {/* <h4>Title of merged post</h4>
                 <div>merged content here </div>
                 {post.id == 1 ? (
                   <Link to="/posts/2">
@@ -106,7 +127,7 @@ export default function SinglePostView() {
                   </Link>
                 ) : (
                   ""
-                )}
+                )} */}
               </div>
             </div>
 
