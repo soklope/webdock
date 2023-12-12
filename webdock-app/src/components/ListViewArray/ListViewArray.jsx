@@ -23,6 +23,8 @@ export default function ListViewArray() {
         fetchDataAndSetState();
     }, []);
 
+    console.log(allPosts);
+
     return (
         <>
             {allPosts.map((post) => (
@@ -32,7 +34,7 @@ export default function ListViewArray() {
                         category={post.Category && post.Category.category}
                         status={post.Status && post.Status.status !== "My Post" ? post.Status.status : false}
                         numberOfComments={post.Comments && post.Comments.length}
-                        totalUpvotes={post.upvotes}
+                        totalUpvotes={post.upvoteCount}
                         statusColor={post.Status && getColorTagFromStatus(post.Status.status)}
                         indicatorColor={post.Status && getColorTagFromStatus(post.Status.status)}
                         content={post.content}

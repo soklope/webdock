@@ -59,7 +59,7 @@ export default function SinglePostView() {
     return <div>Loading...</div>;
   }
   
-  console.log(mergedPostArray) 
+  console.log(upvotes) 
 
   const handleNewComment = (newComment) => {
     setPost(prevPost => ({

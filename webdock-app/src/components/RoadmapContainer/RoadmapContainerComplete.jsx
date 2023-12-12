@@ -14,7 +14,6 @@ export default function RoadmapContainerPlanned() {
         const fetchedData = await fetchPostsByStatus("complete");
         setPostCount(fetchedData.length)
         setCompleteArray(fetchedData)
-        // console.log(fetchedData);
       } catch (error) {
         console.error('Error setting state:', error);
       }
@@ -33,10 +32,8 @@ export default function RoadmapContainerPlanned() {
           title={post.title}
           category={post.Category.category}
           numberOfComments={post.Comments.length}
-          totalUpvotes={post.upvotes}
+          totalUpvotes={post.upvoteCount}
           id={post.id}
-        // status={post.status}
-        // statusColor={"tag-planned-color"}
         />
       </div>
     ));

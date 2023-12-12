@@ -32,10 +32,8 @@ export default function RoadmapContainerPlanned() {
           title={post.title}
           category={post.Category.category}
           numberOfComments={post.Comments.length}
-          totalUpvotes={post.upvotes}
+          totalUpvotes={post.upvoteCount}
           id={post.id}
-          // status={post.status}
-          // statusColor={"tag-planned-color"}
         />
       </div>
     ));
