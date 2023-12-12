@@ -3,7 +3,7 @@ import "./SingleComment.scss";
 import formatCustomDate from "../../../../helper/formatDate";
 import { checkAdmin } from "../../../../helper/checkAdmin";
 
-export default function SingleComment({ User, content, Replies, createdAt }) {
+export default function SingleComment({ User, content, Replies, createdAt, Email }) {
   return (
     <div className="comment-container">
       <div className="comment-user">

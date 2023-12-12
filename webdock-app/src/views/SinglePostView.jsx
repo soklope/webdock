@@ -62,11 +62,11 @@ export default function SinglePostView() {
       <div className="wrap single-post-view-container">
         <section className="single-post-container">
 
-          {checkAdmin(userRole.email) &&
+          {/* {checkAdmin(userRole.email) &&
             <AdminToolBar 
               itemId={id}
             />
-          }
+          } */}
 
           <div className="single-post-view-heading">
             <div className="single-post-view-heading__upvote">

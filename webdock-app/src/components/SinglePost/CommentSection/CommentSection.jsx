@@ -3,45 +3,32 @@ import "./CommentSection.scss";
 import SingleComment from "./Comment/SingleComment.jsx";
 
 export default function CommentSection({ comments, postId, updateComments }) {
-const [commentData, setCommentData] = useState({
-    content: "",
-    user_id: 0,
-	post_id: postId,
-  });
+	const currentUser = JSON.parse(localStorage.getItem("user"));
+	const isUserLoggedIn = currentUser && currentUser.id;
 
+	const [commentData, setCommentData] = useState(
+		{
+			content: "",
+			user_id: currentUser.id,
+			post_id: postId,
+  		}
+	);
 
-  useEffect(() => {
-    const dataFromLS = localStorage.getItem("user");
-
-    if (dataFromLS) {
-      const user = JSON.parse(dataFromLS);
-      setCommentData((prevData) => ({
-        ...prevData,
-        user_id: parseInt(user.id, 10),
-      }));
-    }
-	setCommentData(prevData => ({ ...prevData, post_id: postId }));
-}, [postId]);
-
-const currentUser = JSON.parse(localStorage.getItem("user"));
-
-// Check if user is logged in
-const isUserLoggedIn = currentUser && currentUser.id;
-
-const handleSubmit = async () => {
-
-    try {
-	const response = await fetch("http://localhost:8080/api/v1/createcomment", {
-		method: "POST",
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			content: commentData.content,
-			user_id: commentData.user_id,
-			post_id: commentData.post_id,
-		}),
-	});
+	const handleSubmit = async () => {
+		console.log(commentData);
+					  
+		try {
+			const response = await fetch("http://localhost:8080/api/v1/createcomment", {
+				method: "POST",
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					content: commentData.content,
+					user_id: commentData.user_id,
+					post_id: commentData.post_id,
+				}),
+			});
 
       if (response.ok) {
         const result = await response.json();
@@ -63,8 +50,8 @@ const handleSubmit = async () => {
 			return { ...prevData, content: "" };
 		});
 
-      } else {
-        console.error("Error:", response.status);
+      	} else {
+			console.error("Error:", response.status);
 		}
     } catch (error) {
       console.error("Error:", error);
@@ -94,7 +81,7 @@ const handleSubmit = async () => {
 					className="submit-comment"
 					onClick={handleSubmit}
 					disabled={!commentData.content.trim()}>
-						SUBMIT
+					SUBMIT
 				</button>
 			</div>
 
@@ -106,7 +93,11 @@ const handleSubmit = async () => {
 			)}
 
 			{comments.map((comment) => (
-				<SingleComment key={comment.id} {...comment} content={comment.content} createdAt={comment.createdAt} />
+				<SingleComment 
+					key={comment.id} {...comment} 
+					content={comment.content} 
+					createdAt={comment.createdAt} 
+				/>
 			))}
 		</div>
 	);
