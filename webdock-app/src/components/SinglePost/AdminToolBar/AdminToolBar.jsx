@@ -44,8 +44,8 @@ export default function AdminToolBar( {itemId} ) {
   };
   const handleMerge = async (postId, newParent) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/mergepost/${postId}/newparent/${newParent}`, {
-        method: 'PATCH', // You may need to change this to 'PUT' or 'PATCH' depending on your server implementation
+        const response = await fetch(`http://localhost:8080/api/v1/createmerge/${postId}/newparent/${newParent}`, {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -79,7 +79,7 @@ export default function AdminToolBar( {itemId} ) {
               }
           </div>
 
-          <div className="admin-toolbar-container__tool" onClick={() => handleMerge(2, 1)}>
+          <div className="admin-toolbar-container__tool" onClick={() => handleMerge(10, 1)}>
               <p>Merge</p>
               <span className="admin-toolbar-container__tool__merge" />
           </div>
