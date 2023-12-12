@@ -34,7 +34,6 @@ export default function LoginScreen() {
         <button onClick={redirectToWebdock} className='login-page__google-button'>Sign in with Webdock</button>
         <p>Don't have an account yet?</p>
         <p className='login-page__link-text'>sign up here!</p>
-        <button onClick={handleLogin}> Hej </button>
       </div>
 
       <div className='login-page__splash-art'>

@@ -27,9 +27,7 @@ export default function SinglePostContent({ postDate }) {
         pariatur beatae qui. 
       </p>
       <div className="content-meta-container">
-        <div>Date: {postDate.toLocaleString()} </div>
-        <span>•</span>
-        <div>reply</div>
+      {/* reply to post moved to CommentSection.jsx */}
       </div>
     </div>
   );

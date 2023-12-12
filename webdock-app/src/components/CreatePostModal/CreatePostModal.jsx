@@ -57,7 +57,7 @@ export default function CreatePostModal() {
 
   const [postData, setPostData] = useState({
     category_id: 0,
-    title: "title1",
+    title: "",
     content: "detail",
     image: [],
     user_id: 0,
@@ -175,7 +175,8 @@ export default function CreatePostModal() {
                   className="modal__input"
                   type="text"
                   placeholder="Short, descriptive title"
-                  onKeyUp={(event) =>
+                  value={postData.title}
+                  onChange={(event) =>
                     setPostData((prevData) => ({
                       ...prevData,
                       title: event.target.value,
@@ -231,6 +232,7 @@ export default function CreatePostModal() {
                 <button
                   className="modal__create-post-btn"
                   onClick={handleSubmit}
+                  disabled={!postData.title.trim()}
                 >
                   <span className="modal__create-post-btn-icon"> </span> SUBMIT
                   POST
