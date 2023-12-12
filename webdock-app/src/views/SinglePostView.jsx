@@ -81,7 +81,11 @@ export default function SinglePostView() {
 
           <div className="single-post-view-heading">
             <div className="single-post-view-heading__upvote">
-              <UpvoteBtn numberOfUpvotes={upvotes.totalUpvotes} />
+              <UpvoteBtn 
+              numberOfUpvotes={upvotes.totalUpvotes}
+              postId={post.id}
+              />
+            
             </div>
             <SinglePostHeading
               postTitle={post.title}

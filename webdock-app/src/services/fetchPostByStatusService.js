@@ -1,5 +1,6 @@
 const fetchPostsByStatus = async (statusValue) => {
     try {
+        // console.log(statusValue)
         const response = await fetch(`http://localhost:8080/api/v1/getallpostsbystatus/${statusValue}`);
         const data = await response.json();
         return data;
