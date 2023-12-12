@@ -17,6 +17,36 @@ export default function SinglePostView() {
   const [upvotes, setUpvotes] = useState(0);
   const { id } = useParams();
 
+  const handleReplyClick = (replyText, comentId) => {
+    //Call backend recive the new created reply
+
+    const testReply = { //Test return object (Replace with the returned object from backend)
+      id: 100, 
+      content: "test", 
+      user_id: 2200, 
+      like_id: 20, 
+      comment_id: 6, 
+      createdAt: "2023-12-10T19:13:28.000Z", 
+      updatedAt: "2023-12-10T19:13:28.000Z",
+      User: {
+        name: "Alice",
+        email: "alicej@example.com"
+      }
+    }
+
+    addReplyToComentInPost(testReply, comentId)
+  };
+
+  const addReplyToComentInPost = (reply) => {
+    const currentPost = post;
+
+    const commentIndex = currentPost.Comments.findIndex(x => x.id === reply.comment_id);
+
+    currentPost.Comments[commentIndex].Replies.push(reply);
+
+    setPost(currentPost);
+  };
+
   useEffect(() => {
     const fetchSinglePost = async () => {
       try {
@@ -139,6 +169,7 @@ export default function SinglePostView() {
                 // postDate={post.publishedAt}
                 // loggedIn={loggedIn}
                 comments={post.Comments}
+                handleReply={handleReplyClick}
               />
             </div>
           </div>

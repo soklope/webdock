@@ -34,6 +34,25 @@
     &__reply-btn a {
         text-decoration: none;
         color: v.$black;
+        border: 1px solid rgba(0, 0, 0, 0.2);
     }
+}
+
+
+
+.reply-button-style {
+    border: none;
+    background-color: v.$white;
+}
+.reply-input-container {
+    .send-button-style{
+        border: none;
+        background-color: v.$white;
+        margin-left: 10px;   
+        
+        
+    }
+    margin-bottom: 20px; 
+    margin-top: -20px;
 }
 
