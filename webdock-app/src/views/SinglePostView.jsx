@@ -17,6 +17,7 @@ export default function SinglePostView() {
   const [post, setPost] = useState(null);
   const [upvotes, setUpvotes] = useState(0);
   const { id } = useParams();
+  const userRole = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     const fetchSinglePost = async () => {
@@ -48,7 +49,6 @@ export default function SinglePostView() {
     return <div>Loading...</div>;
   }
 
-  const userRole = JSON.parse(localStorage.getItem('user'));
 
   const handleNewComment = (newComment) => {
     setPost(prevPost => ({
@@ -62,11 +62,11 @@ export default function SinglePostView() {
       <div className="wrap single-post-view-container">
         <section className="single-post-container">
 
-          {/* {checkAdmin(userRole.email) &&
-            <AdminToolBar 
-              itemId={id}
-            />
-          } */}
+        {userRole && checkAdmin(userRole.email) &&
+          <AdminToolBar 
+            itemId={id}
+          />
+        }
 
           <div className="single-post-view-heading">
             <div className="single-post-view-heading__upvote">

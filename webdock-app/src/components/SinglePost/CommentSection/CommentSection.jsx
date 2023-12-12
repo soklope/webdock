@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./CommentSection.scss";
 import SingleComment from "./Comment/SingleComment.jsx";
 
@@ -7,12 +7,13 @@ export default function CommentSection({ comments, postId, updateComments }) {
 	const isUserLoggedIn = currentUser && currentUser.id;
 
 	const [commentData, setCommentData] = useState(
-		{
-			content: "",
-			user_id: currentUser.id,
-			post_id: postId,
-  		}
-	);
+		currentUser
+		  &&  {
+			  content: "",
+			  user_id: currentUser.id,
+			  post_id: postId,
+			}
+	  );
 
 	const handleSubmit = async () => {
 		console.log(commentData);
