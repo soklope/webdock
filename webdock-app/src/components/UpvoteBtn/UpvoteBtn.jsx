@@ -11,7 +11,6 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
   const loggedInUser = localStorage.getItem("user");
 
   const upvotePost = async () => {
-  
     try {
       const response = await fetch(`http://localhost:8080/api/v1/upvotepost/${postId}`, {
         method: "PATCH",

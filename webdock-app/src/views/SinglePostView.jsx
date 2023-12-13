@@ -17,6 +17,7 @@ export default function SinglePostView() {
   const [post, setPost] = useState(null);
   const [upvotes, setUpvotes] = useState(0);
   const [mergedPostArray, setMergedPostArray] = useState([]);
+
   const { id } = useParams();
   const userRole = JSON.parse(localStorage.getItem('user'));
 
@@ -53,13 +54,12 @@ export default function SinglePostView() {
     fetchSinglePost();
     fetchSinglePostUpvotes();
     fetchMergedPosts();
+    
   }, [id]);
   
   if (!post) {
     return <div>Loading...</div>;
   }
-  
-  console.log(upvotes) 
 
   const handleNewComment = (newComment) => {
     setPost(prevPost => ({
@@ -67,6 +67,8 @@ export default function SinglePostView() {
         Comments: [...prevPost.Comments, newComment]
     }));
 };
+
+
 
   return (
     <>
@@ -82,8 +84,8 @@ export default function SinglePostView() {
           <div className="single-post-view-heading">
             <div className="single-post-view-heading__upvote">
               <UpvoteBtn 
-              numberOfUpvotes={upvotes.totalUpvotes}
-              postId={post.id}
+                numberOfUpvotes={upvotes.totalUpvotes}
+                postId={post.id}
               />
             
             </div>

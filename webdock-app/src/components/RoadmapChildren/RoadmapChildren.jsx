@@ -10,9 +10,10 @@ export default function RoadmapChildren({
   totalUpvotes,
   id
 }) {
+
   return (
     <>
-      <UpvoteBtn numberOfUpvotes={totalUpvotes} />
+      <UpvoteBtn numberOfUpvotes={totalUpvotes} postId={id} />
 
       <Link
         to={`/posts/${id}`}
