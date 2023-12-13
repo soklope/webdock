@@ -10,6 +10,8 @@ export const getColorTagFromStatus = (status) => {
             return 'tag-in-progress-color';
         case 'Complete':
             return 'tag-complete-color';
+        case 'Deprecated':
+            return 'tag-deprecated-color';
         default:
             return '';
     }
