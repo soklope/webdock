@@ -6,8 +6,9 @@ import logo from "../../content/images/logo_200x200.png";
 import userStore from "../../stores/loginStore";
 
 export default function Navigation() {
-  const { logout, user} = userStore()
+  const {logout} = userStore()
   const [isOpen, setIsOpen] = useState(false);
+  const user = localStorage.getItem("user")
 
   const toggleDropdownMenu = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -51,7 +52,6 @@ export default function Navigation() {
           { !user &&
             <Link className="nav-button-container" to={'/login'}>
                 <button className="nav-button-container__log-in">Log In</button>
-                {/* <button className="nav-button-container__sign-up">Sign Up</button> */}
             </Link>
           }
 

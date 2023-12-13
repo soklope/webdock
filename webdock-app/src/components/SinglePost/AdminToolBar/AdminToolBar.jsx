@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import useModalStore from "../../../stores/modalStore";
 
 export default function AdminToolBar( {itemId} ) {
-
   const [showDropdown, setShowDropdown] = useState(false)
+  const { toggleMergeModal } = useModalStore()
 
   const handleDelete = async () => {
       try {
@@ -15,6 +16,7 @@ export default function AdminToolBar( {itemId} ) {
   
         if (response.ok) {
           console.log('Item deleted successfully');
+          window.location.href = '/';
         } else {
           console.error('Failed to delete item');
         }
@@ -26,36 +28,18 @@ export default function AdminToolBar( {itemId} ) {
   const handleChangeStatus = async (newStatus) => {
     try {
         const response = await fetch(`http://localhost:8080/api/v1/changePostStatus/${itemId}/status/${newStatus}`, {
-        method: 'PATCH', // You may need to change this to 'PUT' or 'PATCH' depending on your server implementation
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },
         });
 
         if (response.ok) {
-        const data = await response.json();
-        console.log('Post status updated successfully', data);
+          const data = await response.json();
+          window.location.href = '/';
+          console.log('Post status updated successfully', data);
         } else {
-        console.error('Failed to update post status');
-        }
-    } catch (error) {
-        console.error('Error updating post status:', error);
-    }
-  };
-  const handleMerge = async (postId, newParent) => {
-    try {
-        const response = await fetch(`http://localhost:8080/api/v1/createmerge/${postId}/newparent/${newParent}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        });
-
-        if (response.ok) {
-        const data = await response.json();
-        console.log('Post merged successfully', data);
-        } else {
-        console.error('Failed to merge posts');
+          console.error('Failed to update post status');
         }
     } catch (error) {
         console.error('Error updating post status:', error);
@@ -79,7 +63,8 @@ export default function AdminToolBar( {itemId} ) {
               }
           </div>
 
-          <div className="admin-toolbar-container__tool" onClick={() => handleMerge(10, 1)}>
+          {/* <div className="admin-toolbar-container__tool" onClick={() => handleMerge(10, 1)}> */}
+          <div className="admin-toolbar-container__tool" onClick={() => toggleMergeModal()}>
               <p>Merge</p>
               <span className="admin-toolbar-container__tool__merge" />
           </div>
