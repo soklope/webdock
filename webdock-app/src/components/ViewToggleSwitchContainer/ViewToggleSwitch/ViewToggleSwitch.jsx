@@ -5,7 +5,7 @@ import "../ViewToggleSwitch/ViewToggleSwitch.scss";
 export default function ViewToggleSwitch({ switchIcon, onToggle }) {
   // Renders a clickable toggle switch element.
   return (
-    <button className="view-toggle-switch">
+    <button className="view-toggle-switch ">
       <span className={switchIcon} onClick={onToggle}></span>
     </button>
   );

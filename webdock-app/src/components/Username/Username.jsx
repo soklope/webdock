@@ -7,7 +7,7 @@ export default function Username({ isAdmin, user }) {
 		<div>
 			{isAdmin ? (
 				<div className="admin">
-					{user} <span className="admin--logo">  </span>
+					{user} <span className="admin__logo ">  </span>
 				</div>
 			) : (
 				<div className="user"> {user} </div>
