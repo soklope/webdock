@@ -7,12 +7,10 @@ export default function SingleComment({ User, content, Replies, createdAt, Email
   return (
     <div className="comment-container">
       <div className="comment-user">
-        
-        <img
-          className="comment-user__img"
-          src="https://placehold.co/200x200"
-          alt="yes"
-        />
+
+        <div className={`comment-user__avatarURL${User && checkAdmin(User.email) ? "--admin" : ""}`}>
+          {User.name.charAt(0)} <br />
+        </div>
 
         <h4>
           <Username isAdmin={User && checkAdmin(User.email)} user={User ? User.name : 'Unknown'} />

@@ -18,7 +18,12 @@ export default function SinglePostMeta({ images, upvoters }) {
 					<div>
 						{upvoters ?
 							upvoters.map((user, index) => (
-								<Username key={index} user={user.User.name} isAdmin={checkAdmin(user.User.email)} />
+								<div className="comment-user" key={index}>
+									<div className={`comment-user__avatarURL${user.User && checkAdmin(user.User.email) ? "--admin" : ""}`}>
+										{user.User.name.charAt(0)} <br />
+									</div>
+									<Username user={user.User.name} isAdmin={checkAdmin(user.User.email)} />
+								</div>
 							))
 							:
 							<div>
