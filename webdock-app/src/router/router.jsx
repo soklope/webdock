@@ -9,12 +9,14 @@ import SortFunctionAndFilterContainer from '../components/SortFunctionAndFilterC
 import CreatePostModal from '../components/CreatePostModal/CreatePostModal';
 import SelectCategory from '../components/Modal/SelectCategory/SelectCategory';
 import LoginScreen from '../components/Modal/LoginScreen/LoginScreen';
+import MergePostModal from '../components/Modal/MergePostModal/MergePostModal';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Navigation />
       <CreatePostModal />
+      <MergePostModal />
         <Routes>
           <Route exact path="/" element={<RoadmapView />} />
           <Route path="/listview" element={<ListView />} />

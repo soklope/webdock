@@ -45,6 +45,11 @@
         border-bottom: 1px solid v.$grey;
         padding: 10px 0;
     }
+
+    &__li {
+        list-style: none;
+        color: v.$blue;
+    }
 }
 
 .single-post-view-heading {

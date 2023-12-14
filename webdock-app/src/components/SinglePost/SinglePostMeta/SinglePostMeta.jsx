@@ -10,7 +10,9 @@ export default function SinglePostMeta({ images, upvoters }) {
 	return (
 		<>
 			<div className="single-post-meta">
-				{images}
+				<div className="single-post-meta__images">
+					{images}
+				</div>
 				<div>
 					<h3>People liked</h3>
 					<div>
@@ -27,11 +29,11 @@ export default function SinglePostMeta({ images, upvoters }) {
 					</div>
 				</div>
 
-				<div>
+				{/* <div>
 					<h4>
 						This post has been marked as <LabelTag LabelColor={getColorTagFromStatus('Complete')} LabelStatus={'Complete'} />
 					</h4>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);
