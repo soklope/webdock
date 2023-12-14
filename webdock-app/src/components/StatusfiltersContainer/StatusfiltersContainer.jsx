@@ -8,7 +8,7 @@ import usePostArrayStore from '../../stores/postArrayStore';
 
 // Define a function to get color tags based on the status.
 function getColorTagFromStatus(status) {
-  
+
   switch (status) {
     case 'My Post':
       return 'tag-my-post-color';
@@ -16,7 +16,7 @@ function getColorTagFromStatus(status) {
       return 'tag-review-color';
     case 'Planned':
       return 'tag-planned-color';
-    case 'In Progress':
+    case 'In_Progress':
       return 'tag-in-progress-color';
     case 'Complete':
       return 'tag-complete-color';
@@ -28,7 +28,7 @@ function getColorTagFromStatus(status) {
 // Define the 'StatusfiltersContainer' component, which serves as a container for status filter buttons.
 export default function StatusfiltersContainer() {
   const { statusFilter, filterAllPosts } = usePostArrayStore()
-  
+
   // State hooks for selected filters, all posts, and filtered posts.
   const [selectedFilters] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -50,7 +50,7 @@ export default function StatusfiltersContainer() {
       const filterStatusIndex = statusFilter.findIndex(x => x === filterStatus);
 
       // If the filter does not exist in the array, the index will be -1
-      if(filterStatusIndex !== -1) {
+      if (filterStatusIndex !== -1) {
         // Remove the existing filter from the array
         selectedFilters.splice(filterIndex, 1);
         statusFilter.splice(filterIndex, 1);
@@ -100,7 +100,7 @@ export default function StatusfiltersContainer() {
           borderColor={"InProgress-border-color"}
           backgroundColor={"InProgress-background-color"}
           title="In_Progress"
-          isSelected={selectedFilters.includes("In Progress")}
+          isSelected={selectedFilters.includes("In_Progress")}
           onSelect={handleFilterSelect}
         />
         <Statusfilter
