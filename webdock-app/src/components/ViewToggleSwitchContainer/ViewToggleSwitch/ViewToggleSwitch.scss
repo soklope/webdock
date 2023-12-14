@@ -1,6 +1,17 @@
 @use '../../../global-styling/Variables.scss' as v;
 @import '../../../global-styling/mixins';
 
+.view-toggle-switch-tooltip-container {
+    position: relative;
+}
+
+.view-toggle-switch-tooltip-text {
+    position: absolute;
+    top: -25px;
+    left: 0px;
+    width: 115px;
+}
+
 .view-toggle-switch {
     @include flex-center;
     width: 50px;
