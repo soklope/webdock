@@ -26,9 +26,6 @@ export default function ListViewArray() {
 
     }, []);
 
-    // console.log(allPosts[0].user_id);
-    console.log(user.id);
-
     return (
         <>
             {allPosts.map((post) => (
