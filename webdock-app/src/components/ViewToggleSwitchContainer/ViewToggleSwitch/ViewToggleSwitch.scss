@@ -16,6 +16,7 @@
         &--active {
             @include toggle-switch-active;
             background-image: url('../../../content/gfx/Icons/roadmap-view-icon-white.svg');
+            cursor: not-allowed;
         }
     }
 
@@ -26,6 +27,7 @@
         &--active {
             @include toggle-switch-active;
             background-image: url('../../../content/gfx/Icons/list-view-white.svg');
+            cursor: not-allowed;
         }
     }
 
