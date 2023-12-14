@@ -104,14 +104,21 @@
     }
 
     &__create-post-btn {
+        @include mix.flex-center(end, end, 10px);
         float: right;
         padding: 10px 60px;
-        background-color: #018647;
+        background-color: v.$primary-color;
         color: v.$white;
-        font-size: 20px;
+        font-family: v.$primary-font;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.75px;
+        text-transform: uppercase;
         cursor: pointer;
         border: none;
         border-radius: 5px;
+        margin-top: 20px;
 
         &-icon {
             margin: auto;

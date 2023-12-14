@@ -1,5 +1,6 @@
 // Import variables from '../../global-styling/Variables.scss'
 @use '../../global-styling/Variables.scss' as v;
+@use '../../global-styling/mixins' as mix;
 
 // Define styles for the .create-post-btn class
 .create-post-btn {
@@ -28,10 +29,7 @@
 
     // Define styles for the nested .create-post-btn__icon class
     &__icon {
-        background-image: url('../../content/gfx/Icons/create-icon.svg');
-        width: 15px;
-        height: 15px;
-        flex-shrink: 0;
+        @include mix.icon-image-centering('../../content/gfx/Icons/create-icon.svg', 15px, 15px);
     }
 
     // Media query for screens with a minimum width of the desktop-screen variable

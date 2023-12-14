@@ -216,6 +216,14 @@ export default function CreatePostModal() {
                 >
                   <span className="modal__upload-icon"></span>
                 </button>
+                <button
+                  className="modal__create-post-btn"
+                  onClick={handleSubmit}
+                  disabled={!postData.title.trim()}
+                >
+                  <span className="modal__create-post-btn-icon"> </span> SUBMIT
+                  POST
+                </button>
 
                 {postData.image.map((file, index) => (
                   <div key={index} className="file-display">
@@ -228,16 +236,7 @@ export default function CreatePostModal() {
                   </div>
                 ))}
               </div>
-              <div>
-                <button
-                  className="modal__create-post-btn"
-                  onClick={handleSubmit}
-                  disabled={!postData.title.trim()}
-                >
-                  <span className="modal__create-post-btn-icon"> </span> SUBMIT
-                  POST
-                </button>
-              </div>
+
             </div>
           </section>
         </div>
