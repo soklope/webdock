@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import fetchAllPostData from "../../services/fetchAllPostsService";
 import ListViewPostItem from "../ListViewPostItem/ListViewPostItem"
 import usePostArrayStore from "../../stores/postArrayStore";
@@ -8,6 +8,8 @@ import { getColorTagFromStatus } from "../../helper/colorFromStatus";
 export default function ListViewArray() {
 
     const { allPosts, setAllPosts, setSustainAllPosts } = usePostArrayStore()
+    const [postAuthorId, setPostAuthorId] = useState(null)
+    const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
         const fetchDataAndSetState = async () => {
@@ -21,9 +23,11 @@ export default function ListViewArray() {
         };
 
         fetchDataAndSetState();
+
     }, []);
 
-    console.log(allPosts);
+    // console.log(allPosts[0].user_id);
+    console.log(user.id);
 
     return (
         <>
@@ -40,9 +44,9 @@ export default function ListViewArray() {
                         content={post.content}
                         date={formatCustomDate(new Date(post.createdAt))}
                         id={post.id}
-                        // status={post.Status && post.Status.status !== "My Post" ? post.Status.status : false}
-                        // myOwnStatus={post.isYourPost ? true : false}
-                        />
+                        // status={true}
+                        myOwnStatus={user.id === post.user_id ? true : false}
+                    />
                 </div>
             ))}
         </>
