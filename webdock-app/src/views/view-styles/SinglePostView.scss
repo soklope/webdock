@@ -1,17 +1,40 @@
 @use '../../global-styling/Variables.scss' as v;
 @use '../../global-styling/mixins' as mix;
 
-.single-post-view-back__icon {
-    display: none;
 
-    @media screen and (min-width: v.$desktop-screen) {
-        display: inline-block;
-        position: absolute;
-        top: 11vh;
-        left: -50px;
-        background-size: contain;
+.single-post-view-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
 
-        @include mix.icon-image-centering('../../content/gfx/Icons/goBack.svg', 30px, 50px)
+.single-post-view-back {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: v.$offblack;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 0.2s;
+
+    &:hover {
+        transition: 0.2s;
+        transform: scale(1.02);
+        background-color: v.$white;
+        box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    &__icon {
+        display: none;
+
+        @media screen and (min-width: v.$desktop-screen) {
+            display: inline-block;
+            background-size: contain;
+
+            @include mix.icon-image-centering('../../content/gfx/Icons/goBack.svg', 20px, 20px)
+        }
     }
 }
 
@@ -93,4 +116,3 @@
         }
     }
 }
-

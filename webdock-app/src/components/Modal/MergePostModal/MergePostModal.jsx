@@ -24,12 +24,12 @@ export default function MergePostModal() {
     const handleMerge = async (postId, newParent) => {
         try {
             const response = await fetch(`http://localhost:8080/api/v1/createmerge/${postId}/newparent/${newParent}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             });
-    
+
             if (response.ok) {
                 const data = await response.json();
                 console.log('Post merged successfully', data);
@@ -40,24 +40,24 @@ export default function MergePostModal() {
         } catch (error) {
             console.error('Error updating post status:', error);
         }
-      };
+    };
 
     return (
-         mergePostModalIsOpen && (
+        mergePostModalIsOpen && (
             <div className="merge-post-modal">
                 <div className="merge-post-modal__container">
                     <p className="merge-post-modal__close" onClick={() => toggleMergeModal()}>Close</p>
-                        {allPosts
-                            .filter((post) => postParamId !== post.id)
-                            .map((post) => (
-                                <div key={post.id} className="merge-post-modal__item">
-                                    <p>{post.title}</p>
-                                    <span className="hide-on-mobile">•</span>
-                                    <p className="hide-on-mobile">{post.Category.category}</p>
-                                    <span className="hide-on-mobile">•</span>
-                                    <p className="hide-on-mobile">{formatCustomDate(new Date(post.createdAt))}</p>
-                                    <button onClick={() => handleMerge(postParamId, post.id)}>Merge</button>
-                                </div>
+                    {allPosts
+                        .filter((post) => postParamId !== post.id)
+                        .map((post) => (
+                            <div key={post.id} className="merge-post-modal__item">
+                                <p>{post.title}</p>
+                                <span className="hide-on-mobile">•</span>
+                                <p className="hide-on-mobile">{post.Category.category}</p>
+                                <span className="hide-on-mobile">•</span>
+                                <p className="hide-on-mobile">{formatCustomDate(new Date(post.createdAt))}</p>
+                                <button onClick={() => handleMerge(postParamId, post.id)}>Merge</button>
+                            </div>
                         ))}
                 </div>
             </div>

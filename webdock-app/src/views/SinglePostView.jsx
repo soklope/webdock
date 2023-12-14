@@ -58,17 +58,17 @@ export default function SinglePostView() {
     fetchMergedPosts();
     setNewPostParam(id)
   }, [id]);
-  
+
   if (!post) {
     return <div>Loading...</div>;
   }
-  
+
   const handleNewComment = (newComment) => {
     setPost(prevPost => ({
-        ...prevPost,
-        Comments: [...prevPost.Comments, newComment]
+      ...prevPost,
+      Comments: [...prevPost.Comments, newComment]
     }));
-};
+  };
 
 
 
@@ -77,19 +77,28 @@ export default function SinglePostView() {
       <div className="wrap single-post-view-container">
         <section className="single-post-container">
 
-        {userRole && checkAdmin(userRole.email) &&
-          <AdminToolBar 
-            itemId={id}
-          />
-        }
+          <div className="single-post-view-toolbar">
+            <Link to="/" className="single-post-view-back" >
+              <span className="single-post-view-back__icon" ></span>
+              Back
+            </Link>
+
+            {userRole && checkAdmin(userRole.email) &&
+              <>
+                <AdminToolBar
+                  itemId={id}
+                />
+              </>
+            }
+          </div>
 
           <div className="single-post-view-heading">
             <div className="single-post-view-heading__upvote">
-              <UpvoteBtn 
+              <UpvoteBtn
                 numberOfUpvotes={upvotes.totalUpvotes}
                 postId={post.id}
               />
-            
+
             </div>
             <SinglePostHeading
               postTitle={post.title}
@@ -110,11 +119,11 @@ export default function SinglePostView() {
 
             <div className="single-post-container__merges">
               <div>
-                <h3>Posts covering the same topic</h3> 
-                {   
+                <h3>Posts covering the same topic</h3>
+                {
                   <ul>
                     {mergedPostArray.map((post, index) => (
-                      <li className="single-post-container__li" key={index}> 
+                      <li className="single-post-container__li" key={index}>
                         <Link to={`/posts/${post.Id}`}>{post.Title}</Link>
                       </li>
                     ))}
@@ -139,8 +148,8 @@ export default function SinglePostView() {
             upvoters={upvotes.upvotes}
           />
         </div>
-        <Link to="/" className="single-post-view-back__icon">
-        </Link>
+        {/* <Link to="/" className="single-post-view-back__icon">
+        </Link> */}
       </div>
     </>
   );
