@@ -3,7 +3,7 @@ export const fetchData = async () => {
         const urlParams = new URLSearchParams(window.location.search)
         const ssoToken = urlParams.get('ssoToken')
 
-        const response = await fetch("http://localhost:8080/verify", {
+        const response = await fetch("http://kmfpgroup5.vps.webdock.cloud:1234/verify", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

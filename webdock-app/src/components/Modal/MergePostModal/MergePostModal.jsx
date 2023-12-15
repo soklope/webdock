@@ -23,7 +23,7 @@ export default function MergePostModal() {
 
     const handleMerge = async (postId, newParent) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/v1/createmerge/${postId}/newparent/${newParent}`, {
+            const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/createmerge/${postId}/newparent/${newParent}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

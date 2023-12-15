@@ -4,29 +4,6 @@ import { redirectToWebdock } from '../../../services/ssoService';
 
 export default function LoginScreen() {
 
-  // const { loginAsUser, loginAsAdmin, loginWithSso } = userStore()
-  // const alvi = {
-  //   'avatarURL': "",
-  //   'email': "ahmo38299@edu.ucl.dk",
-  //   'id': 22654,
-  //   'name': "Alvi Møller"
-  // }
-
-  // const handleLogin = async () => {
-  //   console.log(alvi);
-  //   const response = await fetch('http://localhost:8080/api/v1/handlelogin', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(alvi)
-  //   })
-  //   console.log(response);
-
-  //   const result = response.json();
-  //   console.log(result)
-  // }
-
   return (
     <div className='login-page wrap'>
       <div className='login-page__container'>
@@ -46,28 +23,3 @@ export default function LoginScreen() {
     </div>
   );
 }
-
-
-// const handleLoginClickUser = () => {
-//   loginAsUser();
-
-//   const loggedInUser = localStorage.getItem('user');
-
-//   if (loggedInUser) {
-//     window.location.href = "/"
-//   }
-// };
-
-// const handleLoginClickAdmin = () => {
-//   loginAsAdmin();
-
-//   const loggedInUser = localStorage.getItem('user');
-
-//   if (loggedInUser) {
-//     window.location.href = "/"
-//   }
-// };
-
-
-{/* <button onClick={handleLoginClickUser} className='login-page__login-button'>LOG IN - User</button>
-        <button onClick={handleLoginClickAdmin} className='login-page__login-button'>LOG IN - Admin</button> */}

@@ -7,7 +7,7 @@ export default function AdminToolBar( {itemId} ) {
 
   const handleDelete = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/v1/items/${itemId}`, {
+        const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/items/${itemId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export default function AdminToolBar( {itemId} ) {
 
   const handleChangeStatus = async (newStatus) => {
     try {
-        const response = await fetch(`http://localhost:8080/api/v1/changePostStatus/${itemId}/status/${newStatus}`, {
+        const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/changePostStatus/${itemId}/status/${newStatus}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',

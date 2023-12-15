@@ -123,7 +123,7 @@ export default function CreatePostModal() {
         formData.append("file", file);
       });
 
-      const response = await fetch("http://localhost:8080/api/v1/createpost", {
+      const response = await fetch("http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/createpost", {
         method: "POST",
         body: formData,
       });
