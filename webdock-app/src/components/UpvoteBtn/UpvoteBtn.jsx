@@ -19,20 +19,29 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
         },
         body: loggedInUser,
       });
-  
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
+
       const data = await response.json();
-  
+
+      //If data has "createdUpvote" incremtent upvotes, otherwise decrement.
+      if (data.createdUpvote) {
+        setUpvotes(upvotes + 1)
+        setIsUpvoted(true)
+      } else {
+        setUpvotes(upvotes - 1)
+        setIsUpvoted(false)
+      }
+
       console.log("data is:", data);
       console.log("Upvote successful!", data);
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
     }
   };
-  
+
 
   const handleUpvotes = () => {
     if (loggedInUser) {
@@ -55,7 +64,7 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
     >
       <div className={`upvote-btn__icon${isUpvoted ? "--active" : ""}`}></div>
       <div className={`upvote-btn__text${isUpvoted ? "--active" : ""}`}>
-        {numberOfUpvotes}
+        {upvotes}
       </div>
     </div>
   );
