@@ -1,5 +1,5 @@
 @use '../../../../global-styling/mixins' as mix;
-@use '../../../../global-styling/variables' as v;
+@use '../../../../global-styling/Variables.scss' as v;
 
 .replies-container {
     margin-left: 50px;
