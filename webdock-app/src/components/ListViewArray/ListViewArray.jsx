@@ -8,7 +8,8 @@ import { getColorTagFromStatus } from "../../helper/colorFromStatus";
 export default function ListViewArray() {
 
     const { allPosts, setAllPosts, setSustainAllPosts } = usePostArrayStore()
-    const [postAuthorId, setPostAuthorId] = useState(null)
+
+    const [userId, setUserId] = useState(0)
     const user = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
@@ -22,8 +23,11 @@ export default function ListViewArray() {
             }
         };
 
-        fetchDataAndSetState();
+        if (user) { // But why?
+            setUserId(user.id)
+        }
 
+        fetchDataAndSetState();
     }, []);
 
     return (
@@ -42,7 +46,7 @@ export default function ListViewArray() {
                         date={formatCustomDate(new Date(post.createdAt))}
                         id={post.id}
                         // status={true}
-                        myOwnStatus={user.id === post.user_id ? true : false}
+                        myOwnStatus={userId === post.user_id ? true : false}
                     />
                 </div>
             ))}

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 export default function ListViewPostItem({ id, title, category, status, numberOfComments, statusColor, totalUpvotes, indicatorColor, myOwnStatus, content, date }) {
 
   return (
-
     <Link 
     to={`/posts/${id}`} 
     className="listview-child-container"
