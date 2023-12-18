@@ -29,7 +29,7 @@ export default function SinglePostView() {
       try {
         const response = await fetch(`${window.apiHostName}/v1/post/${id}`);
         const data = await response.json();
-        setPost(data)
+        setPost(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -39,26 +39,24 @@ export default function SinglePostView() {
       try {
         const response = await fetch(`${window.apiHostName}/v1/postupvotes/${id}`);
         const data = await response.json();
-        setUpvotes(data)
+        setUpvotes(data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     const fetchMergedPosts = async () => {
-      console.log(window.apiHostName)
       try {
         const response = await fetch(`${window.apiHostName}/v1/merged-post/${id}`);
         const data = await response.json();
-        setMergedPostArray(data)
+        setMergedPostArray(data);
       } catch (error) {
         console.error('Error fetching data:', error);
-      }
+      };
     };
 
     if (userRole) { // But why?
-      setUserId(userRole.id)
-      console.log(userId)
+      setUserId(userRole.id);
   }
     
     fetchSinglePost();
@@ -77,7 +75,6 @@ export default function SinglePostView() {
       Comments: [...prevPost.Comments, newComment]
     }));
   };
-
   return (
     <>
       <div className="wrap single-post-view-container">
@@ -113,7 +110,7 @@ export default function SinglePostView() {
               postDate={post.createdAt}
               postAuthor={post.User.name}
               isAdmin={checkAdmin(post.User.email)}
-              myOwnStatus={userId === post.User.user_id ? true : false}
+              myOwnStatus={userId === post.User.id ? true : false}
             />
           </div>
 

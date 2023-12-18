@@ -3,15 +3,13 @@
 
 
 .single-post-view-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include mix.flex-center(space-between, center, 0);
+    
     margin-bottom: 10px;
 }
 
 .single-post-view-back {
-    display: flex;
-    align-items: center;
+    @include mix.flex-center(center, center, 0);
     text-decoration: none;
     color: v.$offblack;
     padding: 5px;
@@ -33,7 +31,7 @@
             display: inline-block;
             background-size: contain;
 
-            @include mix.icon-image-centering('../../content/gfx/Icons/goBack.svg', 20px, 20px)
+            @include mix.icon-image-centering('../../content/gfx/Icons/goBack.svg', 20px, 20px);
         }
     }
 }
