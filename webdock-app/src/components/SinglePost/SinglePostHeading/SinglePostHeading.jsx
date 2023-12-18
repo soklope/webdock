@@ -17,6 +17,7 @@ export default function SinglePostHeading({
   isAdmin,
   myOwnStatus,
 }) {
+	console.log(myOwnStatus)
   return (
     <>
       <div className="single-post-heading">
@@ -30,8 +31,8 @@ export default function SinglePostHeading({
             />
             {myOwnStatus && (
               <LabelTag
-                LabelStatus={postStatus}
-                LabelColor={getColorTagFromStatus(postStatus)}
+                LabelStatus={'deprecated'}
+                LabelColor={getColorTagFromStatus('My Post')}
               />
             )}
 
