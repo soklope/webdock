@@ -48,7 +48,7 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
       // setIsUpvoted(!isUpvoted);
       upvotePost();
     } else {
-      alert("Du skal logge ind mester");
+      alert("Log in to leave an upvote");
     }
   };
 
