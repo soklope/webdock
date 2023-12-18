@@ -48,7 +48,12 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
       // setIsUpvoted(!isUpvoted);
       upvotePost();
     } else {
-      window.confirm("Log in to leave an upvote", "whaddup?");
+      const userConfirmed = window.confirm("You need to login to upvote, go to login page?");
+
+      if (userConfirmed) {
+        // Redirect to a specific route using React Router
+        window.location.href = `/login`;
+      } 
     }
   };
 
