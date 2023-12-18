@@ -2,10 +2,12 @@ import React from "react";
 
 import "./SinglePostContent.scss";
 
-export default function SinglePostContent({ postDate, postContent }) {
+export default function SinglePostContent({ postContent }) {
+  
   return (
     <div>
-      <p dangerouslySetInnerHTML={{ __html: postContent }}></p>
+      {/* important when using dangerouslySetInnerHTML, to sanitize data in database. It opens xss vulnerabilities */}
+      <p dangerouslySetInnerHTML={{ __html: postContent }}></p> 
       
       {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, cum iste?
