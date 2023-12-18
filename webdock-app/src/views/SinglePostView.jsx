@@ -70,8 +70,6 @@ export default function SinglePostView() {
     }));
   };
 
-
-
   return (
     <>
       <div className="wrap single-post-view-container">
@@ -113,7 +111,7 @@ export default function SinglePostView() {
 
           <div className="single-post-container__content">
             <SinglePostContent
-              // postContent={post.description}
+              postContent={post.content}
               postDate={post.createdAt}
             />
 

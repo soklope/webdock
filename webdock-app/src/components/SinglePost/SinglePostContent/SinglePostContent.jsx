@@ -2,13 +2,12 @@ import React from "react";
 
 import "./SinglePostContent.scss";
 
-export default function SinglePostContent({ postDate }) {
+export default function SinglePostContent({ postDate, postContent }) {
   return (
     <div>
-      {/* postContent} */}
-      {/* google escape characters for formatting and getting breaks in tekst */}
-      {/* style: white-space: something, mike forklarede det */}
-      <p>
+      {postContent}
+      
+      {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, cum iste?
         Libero quas et quaerat dignissimos explicabo eligendi autem ducimus
         veritatis. Quaerat, sit? Ut animi omnis ipsa, veritatis enim minima?
@@ -26,9 +25,7 @@ export default function SinglePostContent({ postDate }) {
         inventore labore. At earum quibusdam in quisquam nulla architecto
         pariatur beatae qui. 
       </p>
-      <div className="content-meta-container">
-      {/* reply to post moved to CommentSection.jsx */}
-      </div>
+       */}
     </div>
   );
 }
