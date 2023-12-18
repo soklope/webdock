@@ -4,8 +4,14 @@ import useModalStore from '../../stores/modalStore';
 export default function CreatePostBtn() {
   const user = localStorage.getItem('user');
   const { toggleModal } = useModalStore();
+  
   const userIsNotLoggedIn = () => {
-    alert('Log in to create a post')
+    const userConfirmed = window.confirm("You need to login to create a post, go to login page?");
+
+      if (userConfirmed) {
+        // Redirect to a specific route using React Router
+        window.location.href = `/login`;
+      } 
   }
 
   return (
