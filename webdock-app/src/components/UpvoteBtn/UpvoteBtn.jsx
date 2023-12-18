@@ -48,7 +48,7 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
       // setIsUpvoted(!isUpvoted);
       upvotePost();
     } else {
-      alert("Log in to leave an upvote");
+      window.confirm("Log in to leave an upvote", "whaddup?");
     }
   };
 
