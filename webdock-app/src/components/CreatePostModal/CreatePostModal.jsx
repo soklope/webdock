@@ -108,7 +108,7 @@ export default function CreatePostModal() {
 
   const handleSubmit = async () => {
     try {
-      console.log("category after", postData.category_id);
+      // console.log("category after", postData.category_id);
       // get inputed data from modal
       const formData = new FormData();
 

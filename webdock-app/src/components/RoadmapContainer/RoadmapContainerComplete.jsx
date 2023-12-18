@@ -42,6 +42,7 @@ export default function RoadmapContainerPlanned() {
           numberOfComments={post.Comments.length}
           totalUpvotes={post.upvoteCount}
           id={post.id}
+          myOwnStatus={userId === post.user_id ? true : false}
           
         />
       </div>
