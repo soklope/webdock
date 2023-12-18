@@ -21,6 +21,7 @@ export default function SinglePostView() {
 
   const { id } = useParams();
   const userRole = JSON.parse(localStorage.getItem('user'));
+  const [userId, setUserId] = useState(0)
   const { setNewPostParam } = useModalStore()
 
   useEffect(() => {
@@ -53,6 +54,11 @@ export default function SinglePostView() {
         console.error('Error fetching data:', error);
       }
     };
+
+    if (userRole) { // But why?
+      setUserId(userRole.id)
+  }
+    
     fetchSinglePost();
     fetchSinglePostUpvotes();
     fetchMergedPosts();
@@ -101,11 +107,11 @@ export default function SinglePostView() {
             <SinglePostHeading
               postTitle={post.title}
               postStatus={post.Status.status}
-              postUpvotes={post.numberOfUpvotes}
               postCategory={post.Category.category}
               postDate={post.createdAt}
               postAuthor={post.User.name}
               isAdmin={checkAdmin(post.User.email)}
+              myOwnStatus={userRole === post.user_id ? true : false}
             />
           </div>
 
