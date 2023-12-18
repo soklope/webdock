@@ -111,7 +111,7 @@ export default function SinglePostView() {
               postDate={post.createdAt}
               postAuthor={post.User.name}
               isAdmin={checkAdmin(post.User.email)}
-              myOwnStatus={userRole === post.user_id ? true : false}
+              myOwnStatus={userRole === post.User.user_id ? true : false}
             />
           </div>
 
