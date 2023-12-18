@@ -8,6 +8,9 @@ export default function RoadmapContainerPlanned() {
   const [postCount, setPostCount] = useState(0);
   const [completeArray, setCompleteArray] = useState([])
 
+  const [userId, setUserId] = useState(0)
+  const user = JSON.parse(localStorage.getItem('user'))
+
   useEffect(() => {
     const fetchDataAndSetState = async () => {
       try {
@@ -18,6 +21,11 @@ export default function RoadmapContainerPlanned() {
         console.error('Error setting state:', error);
       }
     };
+
+    if (user) { // But why?
+      setUserId(user.id)
+  }
+    
     fetchDataAndSetState();
   }, []);
 
@@ -34,6 +42,7 @@ export default function RoadmapContainerPlanned() {
           numberOfComments={post.Comments.length}
           totalUpvotes={post.upvoteCount}
           id={post.id}
+          
         />
       </div>
     ));
