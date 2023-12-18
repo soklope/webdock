@@ -5,7 +5,7 @@ import "./SinglePostContent.scss";
 export default function SinglePostContent({ postDate, postContent }) {
   return (
     <div>
-      {postContent}
+      <p dangerouslySetInnerHTML={{ __html: postContent }}></p>
       
       {/* <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Et, cum iste?
