@@ -19,7 +19,7 @@ export default function CommentSection({ comments, postId, updateComments }) {
 		console.log(commentData);
 					  
 		try {
-			const response = await fetch("http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/createcomment", {
+			const response = await fetch(`${window.apiHostName}/v1/createcomment`, {
 				method: "POST",
 				headers: {
 					'Content-Type': 'application/json'

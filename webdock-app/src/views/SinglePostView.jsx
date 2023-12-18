@@ -27,7 +27,7 @@ export default function SinglePostView() {
   useEffect(() => {
     const fetchSinglePost = async () => {
       try {
-        const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/post/${id}`);
+        const response = await fetch(`${window.apiHostName}/v1/post/${id}`);
         const data = await response.json();
         setPost(data)
       } catch (error) {
@@ -37,7 +37,7 @@ export default function SinglePostView() {
 
     const fetchSinglePostUpvotes = async () => {
       try {
-        const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/postupvotes/${id}`);
+        const response = await fetch(`${window.apiHostName}/v1/postupvotes/${id}`);
         const data = await response.json();
         setUpvotes(data)
       } catch (error) {
@@ -48,7 +48,7 @@ export default function SinglePostView() {
     const fetchMergedPosts = async () => {
       console.log(window.apiHostName)
       try {
-        const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/merged-post/${id}`);
+        const response = await fetch(`${window.apiHostName}/v1/merged-post/${id}`);
         const data = await response.json();
         setMergedPostArray(data)
       } catch (error) {

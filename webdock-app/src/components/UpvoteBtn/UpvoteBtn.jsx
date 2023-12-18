@@ -12,7 +12,7 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
 
   const upvotePost = async () => {
     try {
-      const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/upvotepost/${postId}`, {
+      const response = await fetch(`${window.apiHostName}/v1/upvotepost/${postId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
