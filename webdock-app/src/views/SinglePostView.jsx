@@ -46,6 +46,7 @@ export default function SinglePostView() {
     };
 
     const fetchMergedPosts = async () => {
+      console.log(window.apiHostName)
       try {
         const response = await fetch(`http://kmfpgroup5.vps.webdock.cloud:1234/api/v1/merged-post/${id}`);
         const data = await response.json();
@@ -57,6 +58,7 @@ export default function SinglePostView() {
 
     if (userRole) { // But why?
       setUserId(userRole.id)
+      console.log(userId)
   }
     
     fetchSinglePost();
@@ -111,7 +113,7 @@ export default function SinglePostView() {
               postDate={post.createdAt}
               postAuthor={post.User.name}
               isAdmin={checkAdmin(post.User.email)}
-              myOwnStatus={userRole.id === post.User.user_id ? true : false}
+              myOwnStatus={userId === post.User.user_id ? true : false}
             />
           </div>
 
