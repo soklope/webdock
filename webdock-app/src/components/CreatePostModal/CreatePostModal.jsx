@@ -50,30 +50,19 @@ export default function CreatePostModal() {
       category: "Other",
     },
   ];
-
   const { modalIsOpen, toggleModal } = useModalStore();
   const [selectedFiles, setSelectedFiles] = useState([]);
   const fileUploadRef = useRef();
-
+  // const [userId, setUserId] = useState(0)
+  const user = JSON.parse(localStorage.getItem('user'))
   const [postData, setPostData] = useState({
     category_id: 0,
     title: "",
     content: "detail",
     image: [],
-    user_id: 0,
+    // user_id: userId,
   });
 
-  useEffect(() => {
-    const dataFromLS = localStorage.getItem("user");
-
-    if (dataFromLS) {
-      const user = JSON.parse(dataFromLS);
-      setPostData((prevData) => ({
-        ...prevData,
-        user_id: parseInt(user.id, 10),
-      }));
-    }
-  }, []);
 
   const handleCloseModal = () => {
     setSelectedFiles([]);
@@ -93,12 +82,6 @@ export default function CreatePostModal() {
     }));
   };
 
-  // const removeFile = (fileName) => {
-  //   console.log(fileName)
-  //   console.log(postData.image)
-  //   setSelectedFiles(selectedFiles.filter((file) => postData.image.name !== file.name));
-  // };
-
   const removeFile = (fileName) => {
     setPostData((prevData) => ({
       ...prevData,
@@ -107,8 +90,12 @@ export default function CreatePostModal() {
   };
 
   const handleSubmit = async () => {
+
     try {
-      // console.log("category after", postData.category_id);
+    //   if (user) { // But why? - some kind of fix for localstorage race conditions -Ptak
+    //     setUserId(user.id)
+    //     console.log(user.id)
+    // } 
       // get inputed data from modal
       const formData = new FormData();
 
@@ -116,12 +103,14 @@ export default function CreatePostModal() {
       formData.append("category_id", postData.category_id);
       formData.append("title", postData.title);
       formData.append("content", postData.content);
-      formData.append("user_id", postData.user_id);
+      // formData.append("user_id", postData.user_id);
+      formData.append("user_id", user.id);
 
       // Append each file to the FormData
       postData.image.forEach((file, index) => {
         formData.append("file", file);
       });
+      console.log(formData)
 
       const response = await fetch(`${window.apiHostName}/v1/createpost`, {
         method: "POST",
