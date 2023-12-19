@@ -144,7 +144,10 @@
             display: block;
             height: 20px;
             width: 100%;
+            white-space: nowrap;
             overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: clamp(60ch, 80%, 100ch);
         }
     }
 
@@ -158,8 +161,3 @@
         }
     }
 }
-
-// Todo after code review 
-// Btn styling not used anymore 
-// Generally we use pixels in px, instead of rem
-// color variables
