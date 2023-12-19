@@ -124,7 +124,7 @@ export default function SinglePostView() {
             {mergedPostArray.length > 0 && (
               <>
                 <div className="single-post-container__merges">
-                <h3>Posts covering the same topic</h3>
+                  <h3>Posts covering the same topic</h3>
                   <div>
                     {
                       <ul>

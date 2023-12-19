@@ -1,6 +1,5 @@
 import { useEffect,useState, useRef } from 'react';
 import '../FilterContainer/FilterContainer.scss';
-import { plannedArrayDb, inProgressArrayDb, completeArrayDb } from '../../../dummyDb';
 import usePostArrayStore from '../../../stores/postArrayStore';
 
 export default function FilterContainer() {
@@ -8,7 +7,6 @@ export default function FilterContainer() {
 
   const [isSortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [selectedSortOption, setSelectedSortOption] = useState('Sort');
-  const [dataToSort, setDataToSort] = useState([...plannedArrayDb, ...inProgressArrayDb, ...completeArrayDb]);
   const sortRef = useRef(null);
 
   const [selectedCategory, setSelectedCategory] = useState('All Categories');
