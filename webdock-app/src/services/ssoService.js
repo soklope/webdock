@@ -24,8 +24,8 @@ export const fetchData = async () => {
 }
 
 export const redirectToWebdock = async () => {
-    const encodedURL = encodeURIComponent('http://kmfpgroup5.vps.webdock.cloud:5173/')
-    // const encodedURL = encodeURIComponent('http://localhost:5173/')
+    // const encodedURL = encodeURIComponent('http://kmfpgroup5.vps.webdock.cloud:5173/')
+    const encodedURL = encodeURIComponent('http://localhost:5173/')
     const redirectURL = `https://webdock.io/en/login?companyID=ucl_feedback_tool&redirect=${encodedURL}`
     window.location.href = redirectURL
 }

@@ -23,8 +23,7 @@ export default function MergePostModal() {
 
     const handleMerge = async (postId, newParent) => {
         try {
-            const response = await fetch(`
-            /v1/createmerge/${postId}/newparent/${newParent}`, {
+            const response = await fetch(`${window.apiHostName}/v1/createmerge/${postId}/newparent/${newParent}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
