@@ -136,10 +136,10 @@ export default function CreatePostModal() {
         // redirect til ny post
         window.location.href = `/posts/${newPostId}`;
       } else {
-        console.error("Error:", response.status);
+        console.error("Error: 139", response.status);
       }
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error: 142", error);
     }
   };
 
