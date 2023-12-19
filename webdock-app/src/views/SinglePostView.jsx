@@ -100,7 +100,7 @@ export default function SinglePostView() {
           <div className="single-post-view-heading">
             <div className="single-post-view-heading__upvote">
               <UpvoteBtn
-                numberOfUpvotes={upvotes.totalUpvotes}
+                numberOfUpvotes={upvotes.totalUpvotes || 0}
                 postId={post.id}
               />
             </div>

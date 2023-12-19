@@ -22,6 +22,7 @@
 }
 
 .listview-child-container {
+    position: relative;
     display: flex;
     width: 100%;
     align-items: center;
@@ -114,6 +115,9 @@
     }
 
     &__comment {
+        position: absolute;
+        right: 10px;
+
         display: flex;
         align-items: center;
         justify-content: center;
@@ -155,9 +159,13 @@
         display: none;
 
         @media screen and (min-width: v.$desktop-screen) {
+            position: absolute;
+            right: 0;
+
             display: block;
             height: 100%;
             width: 5px;
+            background-color: hotpink;
         }
     }
 }

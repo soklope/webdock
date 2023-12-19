@@ -24,7 +24,6 @@ export default function RoadmapContainerPlanned() {
 
     if (user) { // But why?
       setUserId(user.id)
-      console.log('users id is:',user.id)
   }
     
     fetchDataAndSetState();

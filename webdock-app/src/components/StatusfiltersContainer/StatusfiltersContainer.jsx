@@ -1,53 +1,32 @@
 // Import the 'Statusfilter' component and the associated SCSS file.
-import Statusfilter from '../Statusfilters/Statusfilters';
-import './StatusfiltersContainer.scss';
-import { postArrayDb } from "../../dummyDb";
-import ListViewPostItem from '../ListViewPostItem/ListViewPostItem';
-import React, { useState, useEffect } from 'react';
-import usePostArrayStore from '../../stores/postArrayStore';
+import Statusfilter from "../Statusfilters/Statusfilters";
+import "./StatusfiltersContainer.scss";
+// import { postArrayDb } from "../../dummyDb";
+// import ListViewPostItem from '../ListViewPostItem/ListViewPostItem';
+import React, { useState, useEffect } from "react";
+import usePostArrayStore from "../../stores/postArrayStore";
 
-// Define a function to get color tags based on the status.
-function getColorTagFromStatus(status) {
-
-  switch (status) {
-    case 'My Post':
-      return 'tag-my-post-color';
-    case 'Review':
-      return 'tag-review-color';
-    case 'Planned':
-      return 'tag-planned-color';
-    case 'In_Progress':
-      return 'tag-in-progress-color';
-    case 'Complete':
-      return 'tag-complete-color';
-    default:
-      return '';
-  }
-}
-
-// Define the 'StatusfiltersContainer' component, which serves as a container for status filter buttons.
 export default function StatusfiltersContainer() {
-  const { statusFilter, filterAllPosts } = usePostArrayStore()
+  const { statusFilter, filterAllPosts } = usePostArrayStore();
 
-  // State hooks for selected filters, all posts, and filtered posts.
   const [selectedFilters] = useState([]);
   const [posts, setPosts] = useState([]);
+  const statusArray = [];
   const [postsWithFilter, setPostsWithFilter] = useState([]);
-
-  // Fetch posts and add the values to both 'posts' and 'postsWithFilter'
-  // Because the type is not set on the first load.
-  useEffect(() => {
-    setPosts(postArrayDb);
-    setPostsWithFilter(postArrayDb);
-  }, []);
 
   // Function to handle filter selection and filter posts based on the selected status.
   const handleFilterSelect = (filterStatus) => {
     // Check for valid input
-    if (selectedFilters !== null && filterStatus !== null && filterStatus !== "") {
+    if (
+      selectedFilters !== null &&
+      filterStatus !== null &&
+      filterStatus !== ""
+    ) {
       // Find the index of the newly selected filter
-      const filterIndex = selectedFilters.findIndex(x => x === filterStatus);
-      const filterStatusIndex = statusFilter.findIndex(x => x === filterStatus);
+      const filterIndex = selectedFilters.findIndex((x) => x === filterStatus);
+      const filterStatusIndex = statusFilter.findIndex(
+        (x) => x === filterStatus
+      );
 
       // If the filter does not exist in the array, the index will be -1
       if (filterStatusIndex !== -1) {
@@ -61,14 +40,14 @@ export default function StatusfiltersContainer() {
       }
     }
 
-    // Filter the posts based on the category, assuming that 'posts.category' is a list of strings
-    // Replace the code underneath with this when we have an API:
-    // setPostsWithFilter(posts.filter(x => x.category.includes(filterIndicationColor) || x.category.some(y => selectedFilters.includes(y))));
-    setPostsWithFilter(posts.filter(x => selectedFilters.length === 0 || selectedFilters.includes(x.status)));
+    setPostsWithFilter(
+      posts.filter(
+        (x) => statusArray.length === 0 || statusArray.includes(x.status)
+      )
+    );
   };
 
   return (
-    // Create a container div with the 'flex-container' class.
     <>
       <div className="flex-container">
         <Statusfilter
@@ -83,7 +62,7 @@ export default function StatusfiltersContainer() {
           indicationColor={"Review"}
           borderColor={"Review-border-color"}
           backgroundColor={"Review-background-color"}
-          title='Review'
+          title="Review"
           isSelected={selectedFilters.includes("Review")}
           onSelect={handleFilterSelect}
         />
@@ -115,6 +94,3 @@ export default function StatusfiltersContainer() {
     </>
   );
 }
-
-// Export the 'StatusfiltersContainer' component for use in other parts of the application.
-// export default StatusfiltersContainer;

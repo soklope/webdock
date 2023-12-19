@@ -1,13 +1,10 @@
 import { React, useEffect, useState } from "react";
-import userStore from "../../stores/loginStore";
 
 import "./UpvoteBtn.scss";
 
 export default function UpvoteBtn({ numberOfUpvotes, postId }) {
   const [isUpvoted, setIsUpvoted] = useState(false);
-
   const [upvotes, setUpvotes] = useState(numberOfUpvotes);
-
   const loggedInUser = localStorage.getItem("user");
 
   const upvotePost = async () => {
@@ -57,10 +54,6 @@ export default function UpvoteBtn({ numberOfUpvotes, postId }) {
     }
   };
 
-  // useEffect(() => {
-  //   setUpvotes(numberOfUpvotes);
-  //   console.log(upvotes)
-  // }, [])
 
   return (
     <div

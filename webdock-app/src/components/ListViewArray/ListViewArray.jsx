@@ -26,10 +26,9 @@ export default function ListViewArray() {
         if (user) { // But why?
             setUserId(user.id)
         }
-
         fetchDataAndSetState();
     }, []);
-
+    
     return (
         <>
             {allPosts.map((post) => (
